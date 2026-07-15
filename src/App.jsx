@@ -229,6 +229,10 @@ function priceToNumber(price) {
   return Number(price.replace(/[^0-9]/g, ""));
 }
 
+function formatCurrency(amount) {
+  return `\u20b9${Number(amount || 0).toLocaleString("en-IN")}`;
+}
+
 function IconButton({ label, onClick, active }) {
   return (
     <button className={`icon-button ${active ? "is-active" : ""}`} onClick={onClick} aria-label={label}>
@@ -1342,6 +1346,175 @@ function CheckoutPage({ cartItems, setNotice, setPage }) {
           <p key={item.product.id}><span>{item.product.name} x {item.quantity}</span><strong>{item.product.price}</strong></p>
         ))}
         <div><span>Estimated total</span><strong>₹{subtotal.toLocaleString("en-IN")}</strong></div>
+      </aside>
+    </section>
+  );
+}
+
+function CartPagePro({ cartItems, updateCartQuantity, removeFromCart, setPage }) {
+  const subtotal = cartItems.reduce((sum, item) => sum + priceToNumber(item.product.price) * item.quantity, 0);
+  const gst = Math.round(subtotal * 0.03);
+  const total = subtotal + gst;
+  const itemCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+
+  return (
+    <section className="commerce-page ecommerce-page">
+      <div className="commerce-heading ecommerce-heading">
+        <p className="eyebrow">Shopping Bag</p>
+        <h3>Your Manosi Bag</h3>
+        <span>{itemCount} {itemCount === 1 ? "piece" : "pieces"} selected</span>
+      </div>
+      <div className="commerce-layout ecommerce-layout">
+        <div className="cart-main">
+          <div className="checkout-steps" aria-label="Checkout progress">
+            <span className="is-active">Bag</span>
+            <span>Delivery</span>
+            <span>Payment</span>
+          </div>
+          <div className="cart-list ecommerce-cart-list">
+            {cartItems.length === 0 && (
+              <div className="empty-state ecommerce-empty-state">
+                <strong>Your bag is empty</strong>
+                <p>Add a lightweight natural diamond piece to begin.</p>
+                <button onClick={() => setPage("collections")}>Shop all jewellery</button>
+              </div>
+            )}
+            {cartItems.map((item) => (
+              <article key={item.product.id}>
+                <button className="cart-product-image" onClick={() => setPage("product")} aria-label={`View ${item.product.name}`}>
+                  <img src={imageUrl(item.product.image)} alt={item.product.name} onError={(event) => setImageFallback(event, imageFallbackFor(item.product))} />
+                </button>
+                <div className="cart-product-info">
+                  <div>
+                    <p>{item.product.category}</p>
+                    <h4>{item.product.name}</h4>
+                    <span>{productMetal(item.product)} - {productKarat(item.product)} - Certified natural diamonds</span>
+                  </div>
+                  <div className="cart-product-bottom">
+                    <strong>{cleanPrice(item.product.price)}</strong>
+                    <div className="quantity-control ecommerce-quantity">
+                      <button onClick={() => updateCartQuantity(item.product.id, item.quantity - 1)} aria-label="Decrease quantity">-</button>
+                      <span>{item.quantity}</span>
+                      <button onClick={() => updateCartQuantity(item.product.id, item.quantity + 1)} aria-label="Increase quantity">+</button>
+                    </div>
+                    <button className="cart-remove" onClick={() => removeFromCart(item.product.id)}>Remove</button>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+          <div className="cart-service-strip">
+            <span><b>Insured shipping</b> across India</span>
+            <span><b>BIS Hallmarked</b> gold</span>
+            <span><b>Certified</b> natural diamonds</span>
+          </div>
+        </div>
+        <aside className="order-summary ecommerce-summary">
+          <h4>Order Summary</h4>
+          <label className="coupon-box">
+            <span>Apply offer</span>
+            <div><input placeholder="MANOSI10" /><button>Apply</button></div>
+          </label>
+          <p><span>Subtotal</span><strong>{formatCurrency(subtotal)}</strong></p>
+          <p><span>Estimated GST</span><strong>{formatCurrency(gst)}</strong></p>
+          <p><span>Shipping</span><strong>Free</strong></p>
+          <div><span>Total</span><strong>{formatCurrency(total)}</strong></div>
+          <button onClick={() => setPage("checkout")} disabled={!cartItems.length}>Checkout</button>
+          <small>Secure order request. Final confirmation shared on WhatsApp or call.</small>
+        </aside>
+      </div>
+    </section>
+  );
+}
+
+function CheckoutPagePro({ cartItems, setNotice, setPage }) {
+  const subtotal = cartItems.reduce((sum, item) => sum + priceToNumber(item.product.price) * item.quantity, 0);
+  const gst = Math.round(subtotal * 0.03);
+  const total = subtotal + gst;
+  const [paymentMethod, setPaymentMethod] = useState("UPI");
+
+  function submit(event) {
+    event.preventDefault();
+    setNotice("Checkout request saved. Admin can review this order in the panel.");
+    setPage("admin");
+  }
+
+  return (
+    <section className="checkout-page ecommerce-checkout-page">
+      <div className="checkout-main">
+        <p className="eyebrow">Secure Checkout</p>
+        <h3>Delivery details</h3>
+        <div className="checkout-steps" aria-label="Checkout progress">
+          <span>Bag</span>
+          <span className="is-active">Delivery</span>
+          <span>Payment</span>
+        </div>
+        <form onSubmit={submit}>
+          <section className="checkout-card">
+            <div className="checkout-card-title">
+              <span>01</span>
+              <div>
+                <h4>Contact details</h4>
+                <p>We will use this to confirm your natural diamond order.</p>
+              </div>
+            </div>
+            <div className="checkout-field-grid">
+              <label>Full name<input placeholder="Enter full name" required /></label>
+              <label>Mobile number<input placeholder="+91 mobile number" required /></label>
+              <label>Email address<input placeholder="you@example.com" type="email" required /></label>
+            </div>
+          </section>
+          <section className="checkout-card">
+            <div className="checkout-card-title">
+              <span>02</span>
+              <div>
+                <h4>Shipping address</h4>
+                <p>Insured delivery is available across India.</p>
+              </div>
+            </div>
+            <textarea placeholder="House / flat, street, city, state, PIN code" required />
+            <div className="checkout-field-grid">
+              <label>City<input placeholder="City" /></label>
+              <label>PIN code<input placeholder="PIN code" inputMode="numeric" /></label>
+            </div>
+          </section>
+          <section className="checkout-card">
+            <div className="checkout-card-title">
+              <span>03</span>
+              <div>
+                <h4>Payment option</h4>
+                <p>Choose how you want to complete payment after order confirmation.</p>
+              </div>
+            </div>
+            <div className="payment-options">
+              {["UPI", "Credit / Debit Card", "Net Banking", "Pay in Store"].map((method) => (
+                <button type="button" className={paymentMethod === method ? "is-selected" : ""} key={method} onClick={() => setPaymentMethod(method)}>
+                  <span className="material-symbols-rounded">{paymentMethod === method ? "radio_button_checked" : "radio_button_unchecked"}</span>
+                  {method}
+                </button>
+              ))}
+            </div>
+          </section>
+          <button disabled={!cartItems.length}>Place Order Request</button>
+        </form>
+      </div>
+      <aside className="order-summary ecommerce-summary checkout-review">
+        <h4>Bag Total</h4>
+        {cartItems.map((item) => (
+          <article key={item.product.id}>
+            <img src={imageUrl(item.product.image)} alt="" onError={(event) => setImageFallback(event, imageFallbackFor(item.product))} />
+            <div>
+              <span>{item.product.name}</span>
+              <small>Qty {item.quantity}</small>
+            </div>
+            <strong>{formatCurrency(priceToNumber(item.product.price) * item.quantity)}</strong>
+          </article>
+        ))}
+        <p><span>Subtotal</span><strong>{formatCurrency(subtotal)}</strong></p>
+        <p><span>Estimated GST</span><strong>{formatCurrency(gst)}</strong></p>
+        <p><span>Shipping</span><strong>Free</strong></p>
+        <div><span>Estimated total</span><strong>{formatCurrency(total)}</strong></div>
+        <button onClick={() => setPage("cart")}>Edit Bag</button>
       </aside>
     </section>
   );
@@ -3160,8 +3333,8 @@ export function App() {
       {page === "education" && <EducationPage />}
       {page === "bespoke" && <BespokePage setCartOpen={() => setPage("cart")} />}
       {page === "concierge" && <ConciergePage notice={notice} setNotice={setNotice} />}
-      {page === "cart" && <CartPage cartItems={cartItems} updateCartQuantity={updateCartQuantity} removeFromCart={removeFromCart} setPage={setPage} />}
-      {page === "checkout" && <CheckoutPage cartItems={cartItems} setNotice={setNotice} setPage={setPage} />}
+      {page === "cart" && <CartPagePro cartItems={cartItems} updateCartQuantity={updateCartQuantity} removeFromCart={removeFromCart} setPage={setPage} />}
+      {page === "checkout" && <CheckoutPagePro cartItems={cartItems} setNotice={setNotice} setPage={setPage} />}
       {page === "wishlist" && <WishlistPage favorites={favorites} toggleFavorite={toggleFavorite} openProduct={openProduct} />}
       {page === "admin" && <AdminPage cartItems={cartItems} favorites={favorites} setPage={setPage} />}
 
