@@ -3071,7 +3071,9 @@ export function App() {
     const validPages = new Set(["home", "collections", "product", "new-arrivals", "education", "bespoke", "concierge", "cart", "checkout", "wishlist", "admin"]);
     const openHashPage = () => {
       const hashPage = window.location.hash.replace("#", "");
+      const pathPage = window.location.pathname.replace(/^\/+/, "").replace(/\/+$/, "");
       if (validPages.has(hashPage)) setPageState(hashPage);
+      else if (validPages.has(pathPage)) setPageState(pathPage);
     };
     openHashPage();
     window.addEventListener("hashchange", openHashPage);
