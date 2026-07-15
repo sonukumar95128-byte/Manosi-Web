@@ -1,7 +1,12 @@
 export const CLOUDINARY_CLOUD_NAME = "sbj4xmfv";
 
+export function publicAssetUrl(url) {
+  if (!url) return url;
+  return String(url).replace(/^\/src\/assets\//, "/assets/");
+}
+
 export function cloudinaryFetchImage(url, width = 1200) {
-  if (!url || url.startsWith("/")) return url;
+  if (!url || url.startsWith("/")) return publicAssetUrl(url);
   const encodedUrl = encodeURIComponent(url);
   return `https://res.cloudinary.com/${CLOUDINARY_CLOUD_NAME}/image/fetch/f_auto,q_auto,w_${width}/${encodedUrl}`;
 }

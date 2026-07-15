@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { catalogProducts } from "./catalogData";
-import { withCloudinaryImages } from "./cloudinary";
+import { publicAssetUrl, withCloudinaryImages } from "./cloudinary";
 
 const sampleProducts = [
   {
@@ -99,7 +99,11 @@ function imageFallbackFor(product, lifestyle = false) {
 function setImageFallback(event, fallback) {
   if (event.currentTarget.dataset.fallbackApplied) return;
   event.currentTarget.dataset.fallbackApplied = "true";
-  event.currentTarget.src = fallback;
+  event.currentTarget.src = imageUrl(fallback);
+}
+
+function imageUrl(url) {
+  return publicAssetUrl(url);
 }
 
 const pages = [
@@ -243,7 +247,7 @@ function PageHero({ eyebrow, title, copy, image, dark = false }) {
       </div>
       {image && (
         <figure>
-          <img src={image} alt={title} />
+          <img src={imageUrl(image)} alt={title} />
         </figure>
       )}
     </section>
@@ -258,7 +262,7 @@ function ProductCard({ product, favorite, onFavorite, onOpen }) {
       </button>
       <span className="product-badge">{deliveryText(product)}</span>
       <button className="product-image-button" onClick={() => onOpen(product)}>
-        <img src={product.image} alt={product.name} onError={(event) => setImageFallback(event, imageFallbackFor(product))} />
+        <img src={imageUrl(product.image)} alt={product.name} onError={(event) => setImageFallback(event, imageFallbackFor(product))} />
       </button>
       <p>{product.category} · {productMetal(product)}</p>
       <h4>{product.name}</h4>
@@ -552,7 +556,7 @@ function HomePage({ setPage, openProduct, openCategory, homepageProducts, homepa
                     <h4>{card.title}</h4>
                     <p>{card.subtitle}</p>
                   </div>
-                  <img src={card.image} alt={card.subtitle} onError={(event) => setImageFallback(event, categoryFallbackImages[card.category] || categoryFallbackImages.Rings)} />
+                  <img src={imageUrl(card.image)} alt={card.subtitle} onError={(event) => setImageFallback(event, categoryFallbackImages[card.category] || categoryFallbackImages.Rings)} />
                   <button onClick={() => openCategory(card.category)}>Shop Now</button>
                 </article>
               ))}
@@ -607,7 +611,7 @@ function HomePage({ setPage, openProduct, openCategory, homepageProducts, homepa
               {promoLoopSlides.map((slide, index) => (
                 <article className={`promo-slide ${slide.tone}`} key={`${slide.title}-${index}`}>
                   <button className="promo-image-button" onClick={() => openCategory(slide.category)} aria-label={`Shop ${slide.category}`}>
-                    <img src={slide.image} alt="" onError={(event) => setImageFallback(event, imageFallbackFor({ category: slide.category }, true))} />
+                    <img src={imageUrl(slide.image)} alt="" onError={(event) => setImageFallback(event, imageFallbackFor({ category: slide.category }, true))} />
                   </button>
                 </article>
               ))}
@@ -676,13 +680,13 @@ function HomePage({ setPage, openProduct, openCategory, homepageProducts, homepa
               return (
                 <article className={`motion-reel ${position}`} key={`${reel.id}-${index}`} onClick={() => setMotionSlide(index)}>
                   {reel.videoUrl ? (
-                    <video id={videoId} src={reel.videoUrl} poster={reel.poster} autoPlay={position === "is-active"} muted={motionMuted} loop playsInline />
+                    <video id={videoId} src={reel.videoUrl} poster={imageUrl(reel.poster)} autoPlay={position === "is-active"} muted={motionMuted} loop playsInline />
                   ) : (
-                    <img src={reel.poster} alt="" onError={(event) => setImageFallback(event, imageFallbackFor(reel.product, true))} />
+                    <img src={imageUrl(reel.poster)} alt="" onError={(event) => setImageFallback(event, imageFallbackFor(reel.product, true))} />
                   )}
                   <button className="motion-product-link" onClick={(event) => { event.stopPropagation(); openProduct(reel.product); }} aria-label={`Open ${reel.product.name}`} />
                   <button className="motion-product" onClick={(event) => { event.stopPropagation(); openProduct(reel.product); }}>
-                    <img src={reel.product.image} alt="" onError={(event) => setImageFallback(event, imageFallbackFor(reel.product))} />
+                    <img src={imageUrl(reel.product.image)} alt="" onError={(event) => setImageFallback(event, imageFallbackFor(reel.product))} />
                     <span>{reel.product.name}</span>
                     <span className="material-symbols-rounded">chevron_right</span>
                   </button>
@@ -916,7 +920,7 @@ function ProductPage({ product, favorites, toggleFavorite, addToCart, openProduc
       <section className="product-page">
         <div className="product-gallery">
           <div className="product-main-image">
-            <img src={activeImage} alt={product.name} onError={(event) => setImageFallback(event, imageFallbackFor(product, true))} />
+            <img src={imageUrl(activeImage)} alt={product.name} onError={(event) => setImageFallback(event, imageFallbackFor(product, true))} />
             <span>1 / {galleryImages.length}</span>
             <button className="gallery-zoom" aria-label="Zoom image">
               <span className="material-symbols-rounded">search</span>
@@ -925,7 +929,7 @@ function ProductPage({ product, favorites, toggleFavorite, addToCart, openProduc
           <div className="product-thumbnails">
             {galleryImages.map((image, index) => (
               <button className={activeImage === image ? "is-active" : ""} key={`${image}-${index}`} onClick={() => setActiveImage(image)} aria-label={`View image ${index + 1}`}>
-                <img src={image} alt="" onError={(event) => setImageFallback(event, imageFallbackFor(product, index === 1))} />
+                <img src={imageUrl(image)} alt="" onError={(event) => setImageFallback(event, imageFallbackFor(product, index === 1))} />
               </button>
             ))}
           </div>
@@ -1038,7 +1042,7 @@ function NewArrivalsPage({ openProduct }) {
       <section className="arrival-feature">
         {products.slice(2, 6).map((product, index) => (
           <article key={`${product.id}-arrival-page-${product.sku || index}`}>
-            <img src={product.image} alt={product.name} onError={(event) => setImageFallback(event, imageFallbackFor(product))} />
+            <img src={imageUrl(product.image)} alt={product.name} onError={(event) => setImageFallback(event, imageFallbackFor(product))} />
             <div>
               <p className="eyebrow">{product.category}</p>
               <h3>{product.name}</h3>
@@ -1251,7 +1255,7 @@ function InstagramSection() {
       <div className="instagram-grid">
         {instagramPosts.slice(0, 5).map(([title, copy, product]) => (
           <article key={title}>
-            <img src={product.lifestyle || product.image} alt={title} onError={(event) => setImageFallback(event, imageFallbackFor(product, true))} />
+            <img src={imageUrl(product.lifestyle || product.image)} alt={title} onError={(event) => setImageFallback(event, imageFallbackFor(product, true))} />
           </article>
         ))}
       </div>
@@ -1275,7 +1279,7 @@ function CartPage({ cartItems, updateCartQuantity, removeFromCart, setPage }) {
           {cartItems.length === 0 && <p className="empty-state">Your bag is empty. Add a lightweight diamond piece to begin.</p>}
           {cartItems.map((item) => (
             <article key={item.product.id}>
-              <img src={item.product.image} alt={item.product.name} onError={(event) => setImageFallback(event, imageFallbackFor(item.product))} />
+              <img src={imageUrl(item.product.image)} alt={item.product.name} onError={(event) => setImageFallback(event, imageFallbackFor(item.product))} />
               <div>
                 <p>{item.product.category}</p>
                 <h4>{item.product.name}</h4>
@@ -1385,7 +1389,7 @@ function LegacyAdminPage({ cartItems, favorites }) {
           <h4>Product Catalogue</h4>
           {products.map((product, index) => (
             <article key={`${product.id}-legacy-${product.sku || index}`}>
-              <img src={product.image} alt="" />
+              <img src={imageUrl(product.image)} alt="" />
               <div><strong>{product.name}</strong><span>{product.category} · {product.price}</span></div>
               <button>Edit</button>
             </article>
@@ -1524,7 +1528,7 @@ function AdminDashboardOld({ cartItems, favorites, setPage }) {
             </div>
             {products.slice(0, 5).map((product, index) => (
               <article key={`${product.id}-manager-${product.sku || index}`}>
-                <img src={product.image} alt="" />
+                <img src={imageUrl(product.image)} alt="" />
                 <div><strong>{product.name}</strong><span>{product.category} · {product.price}</span></div>
                 <button>Edit</button>
               </article>
@@ -2080,7 +2084,7 @@ function AdminPage({ cartItems, favorites, setPage }) {
   function ProductRows() {
     return adminProducts.map((product, index) => (
       <article key={`${product.id}-row-${product.sku || index}`}>
-        <img src={product.image} alt="" />
+        <img src={imageUrl(product.image)} alt="" />
         <div><strong>{product.name}</strong><span>{product.category} · {product.price}</span></div>
         <button>Edit</button>
       </article>
@@ -2144,7 +2148,7 @@ function AdminPage({ cartItems, favorites, setPage }) {
             <aside className="admin-editor-side">
               <article>
                 <h4>Product image</h4>
-                <div className="admin-editor-preview"><img src={draftImage} alt="" /></div>
+                <div className="admin-editor-preview"><img src={imageUrl(draftImage)} alt="" /></div>
                 <label className="admin-upload-control">Upload product image<input type="file" accept="image/*" onChange={(event) => readImageFile(event.target.files?.[0], (image) => changeProductDraft("image", image))} /></label>
                 <label>Image path or Cloudinary URL<input value={productEditor.image} onChange={(event) => changeProductDraft("image", event.target.value)} placeholder="https://..." /></label>
                 <label className="admin-upload-control">Upload lifestyle image<input type="file" accept="image/*" onChange={(event) => readImageFile(event.target.files?.[0], (image) => changeProductDraft("lifestyle", image))} /></label>
@@ -2202,7 +2206,7 @@ function AdminPage({ cartItems, favorites, setPage }) {
               const selected = selectedIds.includes(product.id);
               return (
                 <article className={selected ? "is-selected" : ""} key={`${product.id}-picker-${product.sku || "sku"}-${index}`}>
-                  <img src={categoryFallbackImages[product.category] || product.image} alt="" />
+                  <img src={imageUrl(categoryFallbackImages[product.category] || product.image)} alt="" />
                   <div>
                     <strong>{product.name}</strong>
                     <span>{product.sku} - {adminCategoryLabel(product.category)} - {product.price}</span>
@@ -2246,7 +2250,7 @@ function AdminPage({ cartItems, favorites, setPage }) {
                 <div className="admin-bulk-upload-preview">
                   {bulkUploadRows.slice(0, 5).map((product) => (
                     <article key={`${product.sku}-bulk-preview`}>
-                      <img src={product.image} alt="" />
+                      <img src={imageUrl(product.image)} alt="" />
                       <span>{product.name}</span>
                       <b>{product.sku}</b>
                       <small>{product.price}</small>
@@ -2305,7 +2309,7 @@ function AdminPage({ cartItems, favorites, setPage }) {
           {filteredAdminProducts.map((product, index) => (
             <article key={`${product.id}-admin-${product.sku || "sku"}-${index}`}>
               <div className="admin-product-name">
-                <img src={categoryFallbackImages[product.category] || product.image} alt="" />
+                <img src={imageUrl(categoryFallbackImages[product.category] || product.image)} alt="" />
                 <strong>{product.name}</strong>
               </div>
               <span>{product.sku}</span>
@@ -2368,7 +2372,7 @@ function AdminPage({ cartItems, favorites, setPage }) {
             {filteredBulkProducts.map((product, index) => (
               <article key={`${product.id}-bulk-${product.sku || "sku"}-${index}`}>
                 <div className="individual-price-product">
-                  <img src={categoryFallbackImages[product.category] || product.image} alt="" />
+                  <img src={imageUrl(categoryFallbackImages[product.category] || product.image)} alt="" />
                   <div>
                     <strong>{product.name}</strong>
                     <span>{adminCategoryLabel(product.category)} <small>#{product.sku}</small></span>
@@ -2599,7 +2603,7 @@ function AdminPage({ cartItems, favorites, setPage }) {
             const stars = "?".repeat(row.rating || 5) + "?".repeat(Math.max(0, 5 - (row.rating || 5)));
             return (
             <article key={row.id || row.name}>
-              <img src={row.avatar || `https://i.pravatar.cc/96?img=${index + 32}`} alt="" />
+              <img src={imageUrl(row.avatar || `https://i.pravatar.cc/96?img=${index + 32}`)} alt="" />
               <div>
                 <div className="admin-review-meta"><input defaultValue={row.name} onBlur={(event) => updateTestimonial(row, { name: event.target.value })} /><span>{stars}</span><b>{row.status}</b>{row.featured && <b className="soft">Featured</b>}</div>
                 <textarea defaultValue={row.quote} onBlur={(event) => updateTestimonial(row, { quote: event.target.value })} />
@@ -2631,7 +2635,7 @@ function AdminPage({ cartItems, favorites, setPage }) {
         <div className="admin-review-tabs">{tabs.map((tabName) => <button key={tabName} className={reviewFilter === tabName ? "is-active" : ""} onClick={() => setReviewFilter(tabName)}>{tabName}</button>)}</div>
         {visibleRows.length ? <div className="admin-review-list">
           {visibleRows.map((row) => <article key={row.id}>
-            <img src={row.avatar || "https://i.pravatar.cc/96?img=45"} alt="" />
+            <img src={imageUrl(row.avatar || "https://i.pravatar.cc/96?img=45")} alt="" />
             <div>
               <div className="admin-review-meta"><strong>{row.customer}</strong><span>{"?".repeat(row.rating || 5)}</span><b>{row.status}</b><b className="soft">{row.product}</b></div>
               <textarea defaultValue={row.text} onBlur={(event) => updateReview(row, { text: event.target.value })} />
@@ -2659,7 +2663,7 @@ function AdminPage({ cartItems, favorites, setPage }) {
         <div className="admin-collection-grid">
           {collectionRows.map((collection) => (
             <article key={collection.id || collection.name}>
-              <img src={collection.image} alt="" />
+              <img src={imageUrl(collection.image)} alt="" />
               <label className="admin-upload-control">Upload 1080 x 760 image<input type="file" accept="image/*" onChange={(event) => readImageFile(event.target.files?.[0], (image) => updateCollection(collection, { image }))} /></label>
               <button onClick={() => { const image = window.prompt("Image path or URL", collection.image); if (image) updateCollection(collection, { image }); }}>Change image</button>
               <input defaultValue={collection.name} onBlur={(event) => updateCollection(collection, { name: event.target.value })} />
@@ -2744,7 +2748,7 @@ function AdminPage({ cartItems, favorites, setPage }) {
             const image = shopBannerImage(category, categoryBanners);
             return (
               <article key={category}>
-                <img src={image} alt="" />
+                <img src={imageUrl(image)} alt="" />
                 <strong>{category === "All" ? "All Jewellery" : category}</strong>
                 <label className="admin-upload-control">Upload banner image<input type="file" accept="image/*" onChange={(event) => readImageFile(event.target.files?.[0], (nextImage) => updateCategoryBanner(category, nextImage))} /></label>
                 <button onClick={() => { const nextImage = window.prompt("Image path or URL", image); if (nextImage) updateCategoryBanner(category, nextImage); }}>Change image URL</button>
@@ -2760,7 +2764,7 @@ function AdminPage({ cartItems, favorites, setPage }) {
         </div>
         <div className="admin-image-board admin-banner-grid">
           {banners.map((banner) => <article key={banner.id}>
-            <img src={banner.image} alt="" />
+            <img src={imageUrl(banner.image)} alt="" />
             <input defaultValue={banner.title} onBlur={(event) => updateBanner(banner, { title: event.target.value })} />
             <span>{banner.desktop}</span><span>{banner.mobile}</span>
             <textarea defaultValue={banner.note} onBlur={(event) => updateBanner(banner, { note: event.target.value })} />
@@ -2804,9 +2808,9 @@ function AdminPage({ cartItems, favorites, setPage }) {
             return (
               <article key={reel.id}>
                 {reel.videoUrl ? (
-                  <video src={reel.videoUrl} poster={selectedProduct?.lifestyle || selectedProduct?.image} muted loop playsInline />
+                  <video src={reel.videoUrl} poster={imageUrl(selectedProduct?.lifestyle || selectedProduct?.image)} muted loop playsInline />
                 ) : (
-                  <img src={selectedProduct?.lifestyle || selectedProduct?.image || "/src/assets/real-products/ring-lifestyle.webp"} alt="" />
+                  <img src={imageUrl(selectedProduct?.lifestyle || selectedProduct?.image || "/src/assets/real-products/ring-lifestyle.webp")} alt="" />
                 )}
                 <label>Video URL<input defaultValue={reel.videoUrl || ""} onBlur={(event) => updateReel(reel, { videoUrl: event.target.value })} placeholder="https://...mp4 or Cloudinary video URL" /></label>
                 <label className="admin-upload-control">Upload video file<input type="file" accept="video/*" onChange={(event) => readVideoFile(event.target.files?.[0], (videoUrl) => updateReel(reel, { videoUrl }))} /></label>
@@ -3170,7 +3174,7 @@ export function App() {
           <div className="drawer-list">
             {visibleProducts.map((product, index) => (
               <button key={`${product.id}-search-${product.sku || index}`} onClick={() => openProduct(product)}>
-                <img src={product.image} alt="" />
+                <img src={imageUrl(product.image)} alt="" />
                 <span>{product.name}</span>
               </button>
             ))}
