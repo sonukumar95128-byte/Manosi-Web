@@ -388,7 +388,7 @@ function HomePage({ setPage, openProduct, openCategory, homepageProducts, homepa
         id: reel.id || product.id,
         product,
         videoUrl: reel.videoUrl || "",
-        poster: imageFallbackFor(product, true),
+        poster: reel.image || imageFallbackFor(product, true),
       };
     });
   const motionReels = configuredMotionReels.length ? configuredMotionReels : fallbackMotionReels;
@@ -509,9 +509,10 @@ function HomePage({ setPage, openProduct, openCategory, homepageProducts, homepa
           <img
             className={`hero-slide ${activeSlide === index ? "is-active" : ""}`}
             key={slide}
-            src={slide}
+            src={imageUrl(slide)}
             alt=""
             aria-hidden={activeSlide !== index}
+            onError={(event) => setImageFallback(event, imageFallbackFor(ringFeature, true))}
           />
         ))}
         <div className="hero-carousel-controls" aria-label="Banner controls">
