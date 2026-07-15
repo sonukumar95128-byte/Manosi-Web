@@ -105,7 +105,7 @@
 
   .ecommerce-heading h3,
   .ecommerce-checkout-page h3 {
-    font-size: 38px;
+    font-size: 32px;
   }
 
   .checkout-steps {
@@ -1788,7 +1788,8 @@ h3 {
 
 .ecommerce-heading h3 {
   color: var(--soft-ink);
-  font-size: clamp(42px, 5.4vw, 76px);
+  font-size: clamp(34px, 4vw, 56px);
+  line-height: 1.05;
 }
 
 .ecommerce-heading > span {
@@ -1877,7 +1878,8 @@ h3 {
 .cart-product-info h4 {
   max-width: 620px;
   color: var(--soft-ink);
-  font-size: clamp(20px, 1.7vw, 28px);
+  font-size: clamp(17px, 1.25vw, 22px);
+  line-height: 1.25;
 }
 
 .cart-product-info > div > span {
@@ -1896,7 +1898,7 @@ h3 {
 .cart-product-bottom > strong {
   margin-right: auto;
   color: var(--soft-ink);
-  font-size: 20px;
+  font-size: 17px;
 }
 
 .ecommerce-quantity {
@@ -1966,7 +1968,7 @@ h3 {
 .ecommerce-summary h4 {
   color: var(--soft-ink);
   font-family: "Playfair Display", Georgia, serif;
-  font-size: 28px;
+  font-size: 23px;
   font-weight: 600;
 }
 
@@ -2028,7 +2030,7 @@ h3 {
 
 .ecommerce-empty-state strong {
   color: var(--soft-ink);
-  font-size: 22px;
+  font-size: 18px;
 }
 
 .ecommerce-empty-state button {
@@ -2042,7 +2044,8 @@ h3 {
 
 .ecommerce-checkout-page h3 {
   color: var(--soft-ink);
-  font-size: clamp(40px, 5vw, 72px);
+  font-size: clamp(34px, 4vw, 56px);
+  line-height: 1.05;
 }
 
 .checkout-main form {
@@ -2080,7 +2083,7 @@ h3 {
 .checkout-card h4 {
   margin: 0;
   color: var(--soft-ink);
-  font-size: 20px;
+  font-size: 17px;
 }
 
 .checkout-card p {
