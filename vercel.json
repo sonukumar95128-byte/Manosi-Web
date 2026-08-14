@@ -11,14 +11,12 @@
   ],
   "headers": [
     {
-      "comment": "Vite puts a content hash in these filenames, so a new build produces a new URL and this can never serve a stale bundle.",
       "source": "/assets/(.*).(js|css)",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
       ]
     },
     {
-      "comment": "Images in public/ keep their filenames across builds, so they get a day of caching rather than a year.",
       "source": "/assets/(.*).(png|jpg|jpeg|webp|avif|svg|gif)",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=86400, stale-while-revalidate=604800" }
