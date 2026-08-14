@@ -13,7 +13,12 @@ import {
   seedTestimonials,
 } from "./seedData";
 
-const API_ORIGIN = String(import.meta.env?.VITE_API_BASE || "http://127.0.0.1:5175").replace(/\/+$/, "");
+// In production the API is served from the same origin by Vercel functions, so a
+// relative /api is correct. Locally it lives on its own port. VITE_API_BASE
+// overrides both (useful when the API is hosted separately).
+const API_ORIGIN = String(
+  import.meta.env?.VITE_API_BASE ?? (import.meta.env?.PROD ? "" : "http://127.0.0.1:5175"),
+).replace(/\/+$/, "");
 const API_BASE = `${API_ORIGIN}/api`;
 
 const sampleProducts = [
