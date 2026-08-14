@@ -1,5 +1,10 @@
 // Vercel serverless entry point. Every /api/* request lands here and is passed
 // to the shared router, so production runs exactly the same code as local dev.
+//
+// Routing note: an api/[...path].mjs catch-all only matched a single segment on
+// this project, so /api/products/x and /api/auth/session 404'd. vercel.json now
+// rewrites /api/(.*) here and passes the original path as ?__path=, which is
+// unambiguous.
 
 import { handleApiRequest } from "./_router.mjs";
 import { clearedCookie, sessionCookie } from "./auth.mjs";
@@ -22,7 +27,8 @@ export default async function handler(req, res) {
   if (req.method === "OPTIONS") return res.status(200).json({ ok: true });
 
   try {
-    const pathname = new URL(req.url, `https://${req.headers.host}`).pathname;
+    const url = new URL(req.url, `https://${req.headers.host}`);
+    const pathname = url.searchParams.get("__path") || url.pathname;
     let body = req.body ?? {};
     if (typeof body === "string") body = body ? JSON.parse(body) : {};
 
