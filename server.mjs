@@ -4,6 +4,21 @@ import { existsSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { catalogProducts } from "./src/catalogData.js";
+import {
+  seedBanners,
+  seedCollections,
+  seedCoupons,
+  seedHomepageProducts,
+  seedHomepageSections,
+  seedOrders,
+  seedReels,
+  seedReviews,
+  seedSettings,
+  seedTestimonials,
+} from "./src/seedData.js";
+import { computeInvoiceTotals, toAmount } from "./src/invoiceMath.js";
+import { buildSalesVoucherXml } from "./tally/voucherXml.mjs";
+import { newTallyState, syncInvoice, syncPendingInvoices, tallyConfig } from "./tally/sync.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const dataDir = path.join(__dirname, "data");
@@ -11,75 +26,106 @@ const dbPath = path.join(dataDir, "db.json");
 const port = Number(process.env.PORT || 5175);
 const rupee = String.fromCharCode(8377);
 
-const seedOrders = [
-  { id: "ORD-178419250789", status: "Pending payment", statusKey: "pending", customer: "ghghghgh", phone: "+91 21321", address: "nvcgcd, bh, j - 3244, India", item: "Rose Gold Diamond Earrings", quantity: 1, total: `${rupee}18,003`, date: "15 Jul 2026, 06:10 pm", dateISO: "2026-07-15" },
-  { id: "ORD-1783862406916", status: "Pending payment", statusKey: "pending", customer: "Test", phone: "+91 81405 16517", address: "Bsj, near Jsjs, Jsjesjsj, Jej - Jsjs, India", item: "Rose Gold Diamond Earrings", quantity: 1, total: `${rupee}17,803`, date: "12 Jul 2026, 06:50 pm", dateISO: "2026-07-12" },
-  { id: "ORD-1783029108842", status: "Paid", statusKey: "paid", customer: "Priya Sharma", phone: "+91 98765 43210", address: "Bandra West, Mumbai - 400050, India", item: "Yellow Gold Diamond Bracelet", quantity: 1, total: `${rupee}34,819`, date: "10 Jul 2026, 02:25 pm", dateISO: "2026-07-10" },
-  { id: "ORD-1782965401288", status: "Pending payment", statusKey: "pending", customer: "Nisha Rao", phone: "+91 99887 77665", address: "Indiranagar, Bengaluru - 560038, India", item: "Rose Gold Diamond Bracelet", quantity: 1, total: `${rupee}27,181`, date: "09 Jul 2026, 11:40 am", dateISO: "2026-07-09" },
-  { id: "ORD-1782119085120", status: "Paid", statusKey: "paid", customer: "Kavya Iyer", phone: "+91 90909 12345", address: "T Nagar, Chennai - 600017, India", item: "Natural Diamond Nosepin", quantity: 1, total: `${rupee}28,500`, date: "06 Jul 2026, 08:18 pm", dateISO: "2026-07-06" },
-  { id: "ORD-1781849921124", status: "Pending payment", statusKey: "pending", customer: "Aarohi Shah", phone: "+91 98222 44110", address: "Satellite, Ahmedabad - 380015, India", item: "Everyday Diamond Pendant", quantity: 1, total: `${rupee}82,000`, date: "04 Jul 2026, 05:04 pm", dateISO: "2026-07-04" },
-  { id: "ORD-1781023304501", status: "Pending payment", statusKey: "pending", customer: "Ritika Shah", phone: "+91 91234 56780", address: "Koregaon Park, Pune - 411001, India", item: "Lightweight Diamond Necklace", quantity: 1, total: `${rupee}64,000`, date: "01 Jul 2026, 01:12 pm", dateISO: "2026-07-01" },
-];
-
 function seedDb() {
   return {
     products: catalogProducts,
     orders: seedOrders,
-    coupons: [
-      { id: "JB50", code: "JB50", type: "% off", value: "8", minOrder: "No minimum", expires: "2026-12-31", active: true },
-      { id: "DAZZLING20", code: "DAZZLING20", type: "% off", value: "5", minOrder: "No minimum", expires: "2026-12-31", active: true },
-      { id: "WELCOME20", code: "WELCOME20", type: `Flat ${rupee} off`, value: "200", minOrder: `${rupee}5,000`, expires: "2026-09-30", active: false },
-    ],
-    homepageSections: [
-      { id: "hero", title: "Hero Banner Carousel", note: "Full-screen image-only slider", action: "Manage banners ->", visible: true },
-      { id: "collections", title: "Collections Carousel", note: "Home collection cards - 1080 x 760 images", action: "Manage collections ->", visible: true },
-      { id: "bestsellers", title: "Trending Now Products", note: "Product carousel shown after collections", action: "Choose products ->", visible: true },
-      { id: "offer", title: "Campaign Banner Carousel", note: "Wide image-only promotional slider", action: "Manage banners ->", visible: true },
-      { id: "arrivals", title: "New Arrivals Products", note: "Fresh drops product carousel", action: "Choose products ->", visible: true },
-      { id: "reels", title: "Manosi in Motion Reels", note: "Video carousel with linked products", action: "Manage reels ->", visible: true },
-      { id: "badges", title: "Manosi Promises", note: "Trust and service promise icons", action: "Edit promises ->", visible: true },
-      { id: "testimonials", title: "Customer Testimonials", note: "Approved customer notes carousel", action: "Manage testimonials ->", visible: true },
-      { id: "instagram", title: "Instagram Feed", note: "Social media post preview grid", action: "Manage posts ->", visible: true },
-    ],
-    testimonials: [
-      { id: "aarohi", name: "Aarohi Mehta", rating: 5, status: "Approved", featured: true, quote: "The ring exceeded my expectations - the craftsmanship is stunning and it arrived beautifully packaged. Customer service was wonderful throughout." },
-      { id: "priya", name: "Priya Nair", rating: 4, status: "Approved", featured: false, quote: "Gorgeous earrings, exactly like the pictures. Delivery was quick and the return policy gave me peace of mind." },
-      { id: "kavya", name: "Kavya Reddy", rating: 5, status: "Approved", featured: false, quote: "Bought this necklace for my anniversary and it is even more beautiful in person. The hallmark certification made me trust the purchase completely." },
-    ],
-    reviews: [],
-    banners: [
-      { id: "hero-main", title: "Hero full-screen banner", desktop: "1920 x 980 desktop", mobile: "1080 x 1440 mobile", note: "Image-only, auto slide", image: "/src/assets/real-products/ring-lifestyle.webp", active: true },
-      { id: "collection-strip", title: "Collection carousel", desktop: "520 x 620 card", mobile: "2 cards on mobile", note: "Infinite smooth loop", image: "/src/assets/real-products/earrings-lifestyle.webp", active: true },
-      { id: "campaign-wide", title: "Campaign banner carousel", desktop: "1680 x 610 wide", mobile: "86vw mobile", note: "No text overlay", image: "/src/assets/real-products/necklace-lifestyle.webp", active: true },
-    ],
-    homepageProducts: {
-      trending: catalogProducts.slice(0, 4).map((product) => product.id),
-      arrivals: catalogProducts.slice(2, 6).map((product) => product.id),
-      featured: catalogProducts.slice(0, 4).map((product) => product.id),
-    },
-    reels: [
-      { id: "daily-ring-story", title: "Diamonds are all you need...", productLabel: "Daily Ring Story", productId: catalogProducts[0]?.id || "aura", image: "/src/assets/real-products/ring-lifestyle.webp", videoUrl: "", active: true },
-      { id: "office-sparkle", title: "Lightweight hoops in motion", productLabel: "Office Sparkle", productId: catalogProducts[1]?.id || "eternal", image: "/src/assets/real-products/earrings-lifestyle.webp", videoUrl: "", active: true },
-      { id: "necklace-edit", title: "Your everyday necklace edit", productLabel: "Necklace Set", productId: catalogProducts[2]?.id || "emerald", image: "/src/assets/real-products/necklace-lifestyle.webp", videoUrl: "", active: true },
-      { id: "pendant-glow", title: "Pendant glow for every day", productLabel: "Pendant Reel", productId: catalogProducts[3]?.id || "marquise", image: "/src/assets/real-products/pendant-lifestyle.webp", videoUrl: "", active: true },
-      { id: "bracelet-stack", title: "Slim bracelet styling", productLabel: "Stack Story", productId: catalogProducts[4]?.id || "bracelet", image: "/src/assets/real-products/bracelet-lifestyle.webp", videoUrl: "", active: true },
-    ],
-    collections: [
-      { id: "bridal", name: "Bridal", count: "8 products", image: "/src/assets/real-products/necklace-lifestyle.webp", visible: true },
-      { id: "everyday-light", name: "Everyday Light", count: "8 products", image: "/src/assets/real-products/earrings-lifestyle.webp", visible: true },
-      { id: "gifting", name: "Gifting", count: "8 products", image: "/src/assets/real-products/bracelet-lifestyle.webp", visible: true },
-    ],
+    coupons: seedCoupons,
+    homepageSections: seedHomepageSections,
+    testimonials: seedTestimonials,
+    reviews: seedReviews,
+    banners: seedBanners,
+    homepageProducts: seedHomepageProducts(catalogProducts),
+    reels: seedReels(catalogProducts),
+    collections: seedCollections,
     customers: [],
-    settings: {
-      goldMode: "Auto (Live)",
-      goldRate: "0",
-      showGoldRate: false,
-      announcement: "Certified Diamonds - Hallmarked Gold - Free Shipping Across India",
-      upi: "7077596064@ybi",
-      freeShippingThreshold: "1000",
-      payments: { upi: true, card: true, netbanking: true, cod: true },
-      gstGold: "3",
+    invoices: [],
+    settings: seedSettings,
+  };
+}
+
+// Indian financial year runs April -> March, so FY 2026-27 renders as "2627".
+function financialYearCode(date = new Date()) {
+  const year = date.getFullYear();
+  const startYear = date.getMonth() + 1 >= 4 ? year : year - 1;
+  return `${String(startYear).slice(-2)}${String(startYear + 1).slice(-2)}`;
+}
+
+function nextInvoiceNumber(db, date = new Date()) {
+  const prefix = `INV-${financialYearCode(date)}-`;
+  const highest = (db.invoices || [])
+    .filter((invoice) => String(invoice.number || "").startsWith(prefix))
+    .reduce((max, invoice) => Math.max(max, Number(String(invoice.number).slice(prefix.length)) || 0), 0);
+  return `${prefix}${String(highest + 1).padStart(4, "0")}`;
+}
+
+function buildInvoice(db, payload, date = new Date()) {
+  const settings = db.settings || {};
+  const config = tallyConfig(settings);
+  const dateISO = date.toISOString().slice(0, 10);
+  const customer = payload.customer || {};
+  const placeOfSupply = customer.state || payload.placeOfSupply || "";
+
+  const items = (payload.items || []).map((item) => ({
+    sku: item.sku || item.id || "",
+    name: item.name || "",
+    hsn: item.hsn || config.hsnCode,
+    quantity: Number(item.quantity) || 1,
+    rate: toAmount(item.rate ?? item.price),
+  }));
+
+  const totals = computeInvoiceTotals({
+    items,
+    gstRate: Number(settings.gstGold || 3),
+    sellerState: config.sellerState,
+    placeOfSupply,
+    shipping: payload.shipping || 0,
+    pricesIncludeGst: config.pricesIncludeGst !== false,
+  });
+
+  return {
+    id: `inv-${Date.now()}`,
+    number: nextInvoiceNumber(db, date),
+    orderId: payload.orderId || "",
+    date: date.toLocaleString("en-IN", { day: "2-digit", month: "short", year: "numeric" }),
+    dateISO,
+    createdAt: date.toISOString(),
+    customer: {
+      name: customer.name || "",
+      phone: customer.phone || "",
+      email: customer.email || "",
+      address: customer.address || "",
+      city: customer.city || "",
+      state: customer.state || "",
+      pincode: customer.pincode || "",
+      gstin: customer.gstin || "",
     },
+    placeOfSupply,
+    paymentMethod: payload.paymentMethod || "",
+    status: payload.status || "unpaid",
+    items: totals.lines,
+    totals,
+    tally: newTallyState(),
+  };
+}
+
+function orderFromInvoice(invoice) {
+  const item = invoice.items[0];
+  return {
+    id: invoice.orderId || `ORD-${Date.now()}`,
+    status: invoice.status === "paid" ? "Paid" : "Pending payment",
+    statusKey: invoice.status === "paid" ? "paid" : "pending",
+    customer: invoice.customer.name,
+    phone: invoice.customer.phone,
+    address: [invoice.customer.address, invoice.customer.city, invoice.customer.state, invoice.customer.pincode]
+      .filter(Boolean).join(", "),
+    item: item ? item.name : "",
+    quantity: invoice.items.reduce((sum, line) => sum + line.quantity, 0),
+    total: `${rupee}${Math.round(invoice.totals.total).toLocaleString("en-IN")}`,
+    date: invoice.date,
+    dateISO: invoice.dateISO,
+    invoiceId: invoice.id,
+    invoiceNumber: invoice.number,
   };
 }
 
@@ -142,11 +188,80 @@ createServer(async (req, res) => {
 
     if (req.method === "GET" && url.pathname === "/api/admin") return send(res, 200, db);
 
+    // ---- Invoices + Tally ---------------------------------------------------
+
+    if (req.method === "POST" && url.pathname === "/api/invoices") {
+      const payload = await bodyJson(req);
+      if (!payload.items?.length) return send(res, 400, { error: "Invoice needs at least one item" });
+
+      const invoice = buildInvoice(db, payload);
+      const order = orderFromInvoice(invoice);
+      invoice.orderId = order.id;
+
+      db.invoices = [invoice, ...(db.invoices || [])];
+      db.orders = [order, ...(db.orders || [])];
+      await writeDb(db);
+
+      // Books should only carry real sales, so an unpaid order waits in the queue
+      // until it is marked Paid (see the PATCH /api/orders handler below).
+      let syncResult = { ok: false, message: "Queued - will sync when the order is marked Paid" };
+      if (invoice.status === "paid") {
+        const synced = await syncInvoice(invoice, db.settings);
+        db.invoices = applyPatch(db.invoices, invoice.id, synced.invoice);
+        syncResult = synced.result;
+        await writeDb(db);
+      }
+
+      return send(res, 200, { ...db, createdInvoice: invoice.number, tallySync: syncResult });
+    }
+
+    if (req.method === "POST" && url.pathname.startsWith("/api/invoices/") && url.pathname.endsWith("/tally-sync")) {
+      const id = decodeURIComponent(url.pathname.split("/").at(-2));
+      const invoice = (db.invoices || []).find((item) => String(item.id) === String(id));
+      if (!invoice) return send(res, 404, { error: "Invoice not found" });
+
+      const synced = await syncInvoice(invoice, db.settings, { force: true });
+      db.invoices = applyPatch(db.invoices, id, synced.invoice);
+      await writeDb(db);
+      return send(res, 200, { ...db, tallySync: synced.result });
+    }
+
+    // Returns the exact XML that would be sent - useful for verifying ledger
+    // names against Tally before switching the integration on.
+    if (req.method === "GET" && url.pathname.startsWith("/api/invoices/") && url.pathname.endsWith("/tally-xml")) {
+      const id = decodeURIComponent(url.pathname.split("/").at(-2));
+      const invoice = (db.invoices || []).find((item) => String(item.id) === String(id));
+      if (!invoice) return send(res, 404, { error: "Invoice not found" });
+      return send(res, 200, { number: invoice.number, xml: buildSalesVoucherXml(invoice, tallyConfig(db.settings)) });
+    }
+
+    if (req.method === "POST" && url.pathname === "/api/tally/sync-pending") {
+      const outcome = await syncPendingInvoices(db.invoices || [], db.settings);
+      db.invoices = outcome.invoices;
+      await writeDb(db);
+      return send(res, 200, { ...db, tallyBatch: { summary: outcome.summary, results: outcome.results } });
+    }
+
     if (req.method === "PATCH" && url.pathname.startsWith("/api/orders/")) {
       const id = decodeURIComponent(url.pathname.split("/").pop());
-      db.orders = applyPatch(db.orders, id, await bodyJson(req));
+      const patch = await bodyJson(req);
+      db.orders = applyPatch(db.orders, id, patch);
+
+      // Marking an order Paid is what releases its invoice into Tally.
+      let tallySync = null;
+      const order = db.orders.find((item) => String(item.id) === String(id));
+      const config = tallyConfig(db.settings);
+      if (patch.statusKey === "paid" && order?.invoiceId && config.autoSyncOnPaid !== false) {
+        const invoice = (db.invoices || []).find((item) => String(item.id) === String(order.invoiceId));
+        if (invoice) {
+          const synced = await syncInvoice({ ...invoice, status: "paid" }, db.settings);
+          db.invoices = applyPatch(db.invoices, invoice.id, synced.invoice);
+          tallySync = synced.result;
+        }
+      }
+
       await writeDb(db);
-      return send(res, 200, db);
+      return send(res, 200, tallySync ? { ...db, tallySync } : db);
     }
 
     if (req.method === "POST" && url.pathname === "/api/products") {
@@ -158,19 +273,19 @@ createServer(async (req, res) => {
 
     if (req.method === "POST" && url.pathname === "/api/products/bulk-upload") {
       const { products = [] } = await bodyJson(req);
-      const existingBySku = new Map(db.products.map((product, index) => [String(product.sku || product.id || index).toLowerCase(), { product, index }]));
+      const productKey = (item, fallback) => String(item?.sku || item?.id || fallback || "").toLowerCase();
       let added = 0;
       let updated = 0;
       for (const item of products) {
         if (!item?.name) continue;
-        const key = String(item.sku || item.id || item.name).toLowerCase();
-        const nextProduct = { ...item, id: item.id || item.sku?.toLowerCase() || `bulk-${Date.now()}-${added}` };
-        if (existingBySku.has(key)) {
-          const { product, index } = existingBySku.get(key);
-          db.products[index] = { ...product, ...nextProduct, id: product.id };
+        const key = productKey(item, item.name);
+        const existingIndex = db.products.findIndex((product, index) => productKey(product, index) === key);
+        if (existingIndex >= 0) {
+          const existing = db.products[existingIndex];
+          db.products[existingIndex] = { ...existing, ...item, id: existing.id };
           updated += 1;
         } else {
-          db.products.unshift(nextProduct);
+          db.products.unshift({ ...item, id: item.id || item.sku?.toLowerCase() || `bulk-${Date.now()}-${added}` });
           added += 1;
         }
       }
@@ -217,6 +332,7 @@ createServer(async (req, res) => {
       "/api/banners": "banners",
       "/api/collections": "collections",
       "/api/customers": "customers",
+      "/api/invoices": "invoices",
       "/api/settings": "settings",
     };
 

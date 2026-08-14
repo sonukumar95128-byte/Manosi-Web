@@ -6,3 +6,7 @@ dist/
 *.log
 .npmrc
 qa-evidence/
+
+# Runtime database - holds live settings incl. Tally auth token.
+# Seeded automatically by server.mjs on first run.
+data/db.json

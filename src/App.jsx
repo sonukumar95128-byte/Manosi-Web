@@ -1,6 +1,20 @@
-import { useEffect, useMemo, useState } from "react";
+import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { catalogProducts } from "./catalogData";
 import { publicAssetUrl, withCloudinaryImages } from "./cloudinary";
+import { computeInvoiceTotals, formatAmount, INDIAN_STATES } from "./invoiceMath";
+import {
+  seedBanners,
+  seedCollections,
+  seedCoupons,
+  seedHomepageSections,
+  seedOrders,
+  seedReviews,
+  seedSettings,
+  seedTestimonials,
+} from "./seedData";
+
+const API_ORIGIN = String(import.meta.env?.VITE_API_BASE || "http://127.0.0.1:5175").replace(/\/+$/, "");
+const API_BASE = `${API_ORIGIN}/api`;
 
 const sampleProducts = [
   {
@@ -71,8 +85,22 @@ const sampleProducts = [
   },
 ];
 
-const products = (catalogProducts.length ? catalogProducts : sampleProducts).map(withCloudinaryImages);
-const categoryFeature = (category, fallbackIndex) => products.find((product) => product.category === category) || sampleProducts[fallbackIndex];
+const catalogFallbackProducts = (catalogProducts.length ? catalogProducts : sampleProducts).map(withCloudinaryImages);
+
+// Live store data (products + settings) published by the admin API. Falls back to the
+// bundled catalogue when the API is unreachable, so the storefront always renders.
+const StoreContext = createContext({ products: catalogFallbackProducts, settings: seedSettings, config: null });
+
+function useStore() {
+  return useContext(StoreContext);
+}
+
+function useProducts() {
+  return useContext(StoreContext).products;
+}
+
+const categoryFeature = (category, fallbackIndex, list = catalogFallbackProducts) =>
+  list.find((product) => product.category === category) || list[fallbackIndex] || sampleProducts[fallbackIndex];
 const categoryFallbackImages = {
   Rings: "/src/assets/real-products/ring.webp",
   Earrings: "/src/assets/real-products/earrings.webp",
@@ -119,13 +147,13 @@ const categories = ["All", "Rings", "Earrings", "Necklace", "Pendant", "Bracelet
 
 const menuCategories = ["Rings", "Earrings", "Necklace", "Pendant", "Bracelet", "Nosepins"];
 
-function defaultShopBannerImage(category) {
+function defaultShopBannerImage(category, list) {
   const lookupCategory = category === "All" ? "Necklace" : category;
-  return imageFallbackFor(categoryFeature(lookupCategory, 2), true);
+  return imageFallbackFor(categoryFeature(lookupCategory, 2, list), true);
 }
 
-function shopBannerImage(category, categoryBanners = {}) {
-  return categoryBanners?.[category] || defaultShopBannerImage(category);
+function shopBannerImage(category, categoryBanners = {}, list) {
+  return categoryBanners?.[category] || defaultShopBannerImage(category, list);
 }
 
 function cleanPrice(value) {
@@ -147,6 +175,95 @@ function productKarat(product) {
 
 function deliveryText(product) {
   return product.inStock === false ? "Made to order" : "Ships in 48 hrs";
+}
+
+function ratingStars(rating) {
+  const filled = Math.max(0, Math.min(5, Math.round(Number(rating) || 5)));
+  return "★".repeat(filled) + "☆".repeat(5 - filled);
+}
+
+// Declared at module scope (not inside AdminPage) so that re-rendering the admin
+// shell updates this panel instead of remounting it and discarding the draft.
+function AdminSettingsPanel({ liveSettings, adminData, saveAdmin }) {
+  const [draftSettings, setDraftSettings] = useState(liveSettings);
+  useEffect(() => setDraftSettings(liveSettings), [adminData]);
+  const paymentRows = [
+    ["upi", "UPI"],
+    ["card", "Credit / Debit card"],
+    ["netbanking", "Net banking"],
+    ["cod", "Cash on delivery"],
+  ];
+  const setSetting = (key, value) => setDraftSettings((current) => ({ ...current, [key]: value }));
+  const setPayment = (key) => setDraftSettings((current) => ({ ...current, payments: { ...current.payments, [key]: !current.payments?.[key] } }));
+  const tally = draftSettings.tally || {};
+  const setTally = (key, value) => setDraftSettings((current) => ({ ...current, tally: { ...(current.tally || {}), [key]: value } }));
+  const tallyLedgers = [
+    ["salesLedger", "Sales ledger"],
+    ["cgstLedger", "CGST ledger"],
+    ["sgstLedger", "SGST ledger"],
+    ["igstLedger", "IGST ledger"],
+    ["roundOffLedger", "Round off ledger"],
+    ["shippingLedger", "Shipping ledger"],
+  ];
+  return (
+    <section className="admin-settings-panel">
+      <button className="admin-primary-action" onClick={() => saveAdmin("/settings", draftSettings)}>Save settings</button>
+      <div className="admin-settings-grid">
+        <article><h4>Gold rate</h4><div className="admin-review-tabs"><button className={draftSettings.goldMode !== "Manual" ? "is-active" : ""} onClick={() => setSetting("goldMode", "Auto (Live)")}>Auto (Live)</button><button className={draftSettings.goldMode === "Manual" ? "is-active" : ""} onClick={() => setSetting("goldMode", "Manual")}>Manual</button></div><label>Rate per gram (22kt)<span><b>₹</b><input value={draftSettings.goldRate || ""} onChange={(event) => setSetting("goldRate", event.target.value)} /><b>/ g</b></span></label><p>Live rate (auto-fetched): ₹0/g</p><button className="settings-line" onClick={() => setSetting("showGoldRate", !draftSettings.showGoldRate)}><span>Show gold rate in top bar</span><TogglePill on={draftSettings.showGoldRate} /></button></article>
+        <article><h4>Announcement bar</h4><textarea value={draftSettings.announcement || ""} onChange={(event) => setSetting("announcement", event.target.value)} /><p>Shown in the dark strip at the very top of every page.</p></article>
+        <article><h4>UPI Payment</h4><label>Your UPI ID<input value={draftSettings.upi || ""} onChange={(event) => setSetting("upi", event.target.value)} /></label><p>Customers will see a QR code + UPI link at checkout to pay directly to you.</p></article>
+        <article><h4>WhatsApp</h4><label>Business number<input value={draftSettings.whatsapp || ""} onChange={(event) => setSetting("whatsapp", event.target.value)} placeholder="919876543210" /></label><p>Shown as the "Buy on WhatsApp" button on product pages. Leave blank to hide it.</p></article>
+        <article><h4>Shipping</h4><label>Free shipping threshold<span><b>₹</b><input value={draftSettings.freeShippingThreshold || ""} onChange={(event) => setSetting("freeShippingThreshold", event.target.value)} /></span></label><p>Orders above this amount ship free; below it, a flat fee applies.</p></article>
+        <article><h4>Payments &amp; tax</h4>{paymentRows.map(([key, label]) => <button className="settings-line" key={key} onClick={() => setPayment(key)}><span>{label}</span><TogglePill on={draftSettings.payments?.[key]} /></button>)}<label>GST on gold<span><input value={draftSettings.gstGold || ""} onChange={(event) => setSetting("gstGold", event.target.value)} /><b>%</b></span></label></article>
+      </div>
+
+      <div className="admin-panel-heading">
+        <div>
+          <p className="eyebrow">Accounting</p>
+          <h4>Tally integration</h4>
+          <p>Every invoice is posted to Tally as a Sales voucher when its order is marked Paid.</p>
+        </div>
+      </div>
+      <div className="admin-settings-grid tally-settings-grid">
+        <article>
+          <h4>Connection</h4>
+          <button className="settings-line" onClick={() => setTally("enabled", !tally.enabled)}><span>Enable Tally sync</span><TogglePill on={tally.enabled} /></button>
+          <label>Endpoint URL<input value={tally.endpoint || ""} onChange={(event) => setTally("endpoint", event.target.value)} placeholder="https://your-tally-cloud-host/" /></label>
+          <label>Auth header name <small>(blank = Bearer token)</small><input value={tally.authHeader || ""} onChange={(event) => setTally("authHeader", event.target.value)} placeholder="authorization" /></label>
+          <label>Auth token / key<input type="password" value={tally.authToken || ""} onChange={(event) => setTally("authToken", event.target.value)} placeholder="Leave blank for on-premise Tally" /></label>
+          <label>Company name in Tally<input value={tally.companyName || ""} onChange={(event) => setTally("companyName", event.target.value)} placeholder="Manosi Diamonds Pvt Ltd" /></label>
+          <p>On-premise Tally usually needs no token — just enable the gateway and use http://localhost:9000.</p>
+        </article>
+
+        <article>
+          <h4>Ledger names</h4>
+          <p>These must already exist in your Tally company, spelled exactly the same.</p>
+          {tallyLedgers.map(([key, label]) => (
+            <label key={key}>{label}<input value={tally[key] || ""} onChange={(event) => setTally(key, event.target.value)} /></label>
+          ))}
+          <label>Voucher type<input value={tally.voucherType || ""} onChange={(event) => setTally("voucherType", event.target.value)} placeholder="Sales" /></label>
+        </article>
+
+        <article>
+          <h4>Tax &amp; behaviour</h4>
+          <label>Your state <small>(decides CGST+SGST vs IGST)</small>
+            <select value={tally.sellerState || ""} onChange={(event) => setTally("sellerState", event.target.value)}>
+              <option value="">Select state</option>
+              {INDIAN_STATES.map((state) => <option key={state}>{state}</option>)}
+            </select>
+          </label>
+          <label>HSN code<input value={tally.hsnCode || ""} onChange={(event) => setTally("hsnCode", event.target.value)} placeholder="7113" /></label>
+          <button className="settings-line" onClick={() => setTally("pricesIncludeGst", !(tally.pricesIncludeGst !== false))}><span>Product prices include GST</span><TogglePill on={tally.pricesIncludeGst !== false} /></button>
+          <button className="settings-line" onClick={() => setTally("autoSyncOnPaid", !(tally.autoSyncOnPaid !== false))}><span>Auto-send when order marked Paid</span><TogglePill on={tally.autoSyncOnPaid !== false} /></button>
+          <label>Max retry attempts<input inputMode="numeric" value={tally.maxAttempts ?? 5} onChange={(event) => setTally("maxAttempts", Number(event.target.value.replace(/[^0-9]/g, "")) || 1)} /></label>
+        </article>
+      </div>
+    </section>
+  );
+}
+
+function TogglePill({ on = true }) {
+  return <span className={`admin-toggle-pill ${on ? "is-on" : ""}`} />;
 }
 
 const testimonials = [
@@ -191,42 +308,17 @@ const promiseItems = [
   ["inventory_2", "Manosi quality check", "Finished, inspected, and prepared before dispatch."],
 ];
 
-const instagramPosts = [
-  ["Daily ring stack", "Office-ready natural diamond rings", products[0]],
-  ["Soft hoop sparkle", "Light earrings for regular wear", products[1]],
-  ["Kurta pairing", "Minimal necklace styling", products[2]],
-  ["Pendant detail", "Tiny diamonds, easy polish", products[3]],
-  ["Bracelet layer", "Slim shine with watches", products[4]],
-  ["Nosepin note", "Indian daily-wear detail", products[5]],
-];
-
-const dummyOrders = [
-  ["MD-1024", "Aarohi Shah", "Natural Diamond Earrings", "Paid", "Mumbai", "₹58,000"],
-  ["MD-1025", "Neha Kapoor", "Slim Diamond Bracelet", "Pending", "Delhi", "₹74,000"],
-  ["MD-1026", "Isha Mehta", "Everyday Diamond Pendant", "Packed", "Ahmedabad", "₹82,000"],
-  ["MD-1027", "Riya Nair", "Natural Diamond Nosepin", "Delivered", "Bengaluru", "₹28,500"],
-];
-
-const dummyCustomers = [
-  ["Priya Sharma", "Mumbai", "High intent", "Wishlist: 3"],
-  ["Kavya Iyer", "Chennai", "Repeat buyer", "Orders: 2"],
-  ["Ananya Mehta", "Pune", "Concierge lead", "Budget: ₹75k"],
-];
-
-const dummyBanners = [
-  ["Hero carousel", "3 live banners", "Auto-slide active"],
-  ["Collections strip", "6 categories", "Rings leading"],
-  ["Campaign carousel", "3 banners", "Image-only mode"],
-];
-
-const dummyPromotions = [
-  ["MANOSI10", "10% styling appointment benefit", "Active"],
-  ["FREESHIP", "Free insured shipping", "Active"],
-  ["DIAMONDCARE", "Complimentary cleaning note", "Draft"],
+const instagramCaptions = [
+  ["Daily ring stack", "Office-ready natural diamond rings"],
+  ["Soft hoop sparkle", "Light earrings for regular wear"],
+  ["Kurta pairing", "Minimal necklace styling"],
+  ["Pendant detail", "Tiny diamonds, easy polish"],
+  ["Bracelet layer", "Slim shine with watches"],
+  ["Nosepin note", "Indian daily-wear detail"],
 ];
 
 function priceToNumber(price) {
-  return Number(price.replace(/[^0-9]/g, ""));
+  return Number(String(price || "").replace(/[^0-9]/g, ""));
 }
 
 function formatCurrency(amount) {
@@ -261,8 +353,13 @@ function PageHero({ eyebrow, title, copy, image, dark = false }) {
 function ProductCard({ product, favorite, onFavorite, onOpen }) {
   return (
     <article className="product-card">
-      <button className="favorite" onClick={() => onFavorite(product.id)} aria-label={`Favorite ${product.name}`}>
-        <span className="material-symbols-rounded">{favorite ? "favorite" : "favorite"}</span>
+      <button
+        className={`favorite ${favorite ? "is-saved" : ""}`}
+        onClick={() => onFavorite(product.id)}
+        aria-pressed={Boolean(favorite)}
+        aria-label={`${favorite ? "Remove" : "Save"} ${product.name} ${favorite ? "from" : "to"} wishlist`}
+      >
+        <span className="material-symbols-rounded">{favorite ? "favorite" : "favorite_border"}</span>
       </button>
       <span className="product-badge">{deliveryText(product)}</span>
       <button className="product-image-button" onClick={() => onOpen(product)}>
@@ -282,20 +379,21 @@ function ProductCard({ product, favorite, onFavorite, onOpen }) {
   );
 }
 
-function pickProductsByIds(ids, fallbackProducts) {
+function pickProductsByIds(ids, fallbackProducts, list = catalogFallbackProducts) {
   const selected = (ids || [])
-    .map((id) => products.find((product) => product.id === id || product.sku === id))
+    .map((id) => list.find((product) => product.id === id || product.sku === id))
     .filter(Boolean);
   return selected.length ? selected : fallbackProducts;
 }
 
 function HomePage({ setPage, openProduct, openCategory, homepageProducts, homepageReels, homepageCollections }) {
-  const ringFeature = categoryFeature("Rings", 0);
-  const earringFeature = categoryFeature("Earrings", 1);
-  const necklaceFeature = categoryFeature("Necklace", 2);
-  const pendantFeature = categoryFeature("Pendant", 3);
-  const braceletFeature = categoryFeature("Bracelet", 4);
-  const nosepinFeature = categoryFeature("Nosepins", 5);
+  const products = useProducts();
+  const ringFeature = categoryFeature("Rings", 0, products);
+  const earringFeature = categoryFeature("Earrings", 1, products);
+  const necklaceFeature = categoryFeature("Necklace", 2, products);
+  const pendantFeature = categoryFeature("Pendant", 3, products);
+  const braceletFeature = categoryFeature("Bracelet", 4, products);
+  const nosepinFeature = categoryFeature("Nosepins", 5, products);
   const heroSlides = [
     imageFallbackFor(ringFeature, true),
     imageFallbackFor(necklaceFeature, true),
@@ -353,7 +451,7 @@ function HomePage({ setPage, openProduct, openCategory, homepageProducts, homepa
     .filter((collection) => collection.visible !== false)
     .map((collection, index) => {
       const category = collection.category || (menuCategories.includes(collection.name) ? collection.name : "All");
-      const feature = categoryFeature(category, index % sampleProducts.length);
+      const feature = categoryFeature(category, index % sampleProducts.length, products);
       return {
         title: collection.title || collection.name || feature.category,
         subtitle: collection.subtitle || `${category === "All" ? collection.name || "Shop" : category} Collection`,
@@ -363,7 +461,7 @@ function HomePage({ setPage, openProduct, openCategory, homepageProducts, homepa
       };
     });
   const collectionCards = configuredCollectionCards.length ? configuredCollectionCards : defaultCollectionCards;
-  const trendingProducts = pickProductsByIds(homepageProducts?.trending, products.slice(0, 4));
+  const trendingProducts = pickProductsByIds(homepageProducts?.trending, products.slice(0, 4), products);
   const [collectionSlide, setCollectionSlide] = useState(collectionCards.length);
   const [collectionSnap, setCollectionSnap] = useState(false);
   const [trendingSlide, setTrendingSlide] = useState(trendingProducts.length);
@@ -372,7 +470,7 @@ function HomePage({ setPage, openProduct, openCategory, homepageProducts, homepa
   const trendingLoopProducts = [...trendingProducts, ...trendingProducts, ...trendingProducts];
   const activeCollectionDot = ((collectionSlide % collectionCards.length) + collectionCards.length) % collectionCards.length;
   const activeTrendingDot = ((trendingSlide % trendingProducts.length) + trendingProducts.length) % trendingProducts.length;
-  const arrivalProducts = pickProductsByIds(homepageProducts?.arrivals, products.slice(2, 6));
+  const arrivalProducts = pickProductsByIds(homepageProducts?.arrivals, products.slice(2, 6), products);
   const [arrivalSlide, setArrivalSlide] = useState(arrivalProducts.length);
   const [arrivalSnap, setArrivalSnap] = useState(false);
   const arrivalLoopProducts = [...arrivalProducts, ...arrivalProducts, ...arrivalProducts];
@@ -767,6 +865,7 @@ function HomePage({ setPage, openProduct, openCategory, homepageProducts, homepa
 }
 
 function CollectionsPage({ favorites, toggleFavorite, openProduct, initialCategory, categoryBanners }) {
+  const products = useProducts();
   const [category, setCategory] = useState(initialCategory || "All");
   const [metal, setMetal] = useState("All metals");
   const [karat, setKarat] = useState("All karats");
@@ -796,15 +895,15 @@ function CollectionsPage({ favorites, toggleFavorite, openProduct, initialCatego
       if (sort === "Newest") return String(b.sku || b.id).localeCompare(String(a.sku || a.id));
       return Number(b.featured || 0) - Number(a.featured || 0);
     });
-  }, [category, metal, karat, maxPrice, sort]);
+  }, [products, category, metal, karat, maxPrice, sort]);
 
   return (
     <>
       <section className="shop-banner" aria-label={`${category === "All" ? "All Jewellery" : category} banner`}>
         <img
-          src={shopBannerImage(category, categoryBanners)}
+          src={imageUrl(shopBannerImage(category, categoryBanners, products))}
           alt=""
-          onError={(event) => setImageFallback(event, defaultShopBannerImage(category))}
+          onError={(event) => setImageFallback(event, defaultShopBannerImage(category, products))}
         />
       </section>
       <section className="catalog-layout">
@@ -890,24 +989,41 @@ function CollectionsPage({ favorites, toggleFavorite, openProduct, initialCatego
   );
 }
 
-function ProductPage({ product, favorites, toggleFavorite, addToCart, openProduct }) {
+function productSpecs(product) {
+  if (product.specs?.length) return product.specs;
+  return [
+    product.diamondType || "Natural diamonds",
+    product.goldKarat && `Gold Karat: ${product.goldKarat}`,
+    product.goldColour && `Gold Colour: ${product.goldColour}`,
+    product.occasion || "Daily wear",
+  ].filter(Boolean);
+}
+
+function ProductPage({ product, favorites, toggleFavorite, addToCart, buyNow, openProduct }) {
+  const products = useProducts();
+  const { settings } = useStore();
   const fallbackIndex = Math.max(0, products.findIndex((item) => item.id === product.id));
   const galleryImages = [
     product.image,
     product.lifestyle,
     ...(product.images || []),
-    products[(fallbackIndex + 1) % products.length]?.image,
+    products[(fallbackIndex + 1) % Math.max(1, products.length)]?.image,
   ].filter(Boolean).filter((image, index, list) => list.indexOf(image) === index).slice(0, 4);
-  const [activeImage, setActiveImage] = useState(galleryImages[0] || imageFallbackFor(product));
+  const [activeIndex, setActiveIndex] = useState(0);
   const [goldColour, setGoldColour] = useState(productMetal(product));
   const [purity, setPurity] = useState(productKarat(product).replace("KT", "K"));
   const [length, setLength] = useState(product.category === "Necklace" ? "16 inch" : "Standard size");
+  const activeImage = galleryImages[activeIndex] || galleryImages[0] || imageFallbackFor(product);
   const salePrice = cleanPrice(product.salePrice || product.price);
   const regularPrice = product.regularPrice ? cleanPrice(product.regularPrice) : "";
-  const collectionLabel = `${product.category}${product.category.endsWith("s") ? "" : "s"} Collection`;
+  const category = product.category || "Jewellery";
+  const collectionLabel = `${category}${category.endsWith("s") ? "" : "s"} Collection`;
+  const specs = productSpecs(product);
+  const whatsappNumber = String(settings?.whatsapp || "").replace(/[^0-9]/g, "");
+  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(`Hi Manosi, I'd like to know more about ${product.name} (${product.sku || product.id}).`)}`;
 
   useEffect(() => {
-    setActiveImage(galleryImages[0] || imageFallbackFor(product));
+    setActiveIndex(0);
     setGoldColour(productMetal(product));
     setPurity(productKarat(product).replace("KT", "K"));
     setLength(product.category === "Necklace" ? "16 inch" : "Standard size");
@@ -926,14 +1042,14 @@ function ProductPage({ product, favorites, toggleFavorite, addToCart, openProduc
         <div className="product-gallery">
           <div className="product-main-image">
             <img src={imageUrl(activeImage)} alt={product.name} onError={(event) => setImageFallback(event, imageFallbackFor(product, true))} />
-            <span>1 / {galleryImages.length}</span>
-            <button className="gallery-zoom" aria-label="Zoom image">
+            <span>{Math.min(activeIndex + 1, galleryImages.length || 1)} / {galleryImages.length || 1}</span>
+            <a className="gallery-zoom" href={imageUrl(activeImage)} target="_blank" rel="noreferrer" aria-label="Open full-size image">
               <span className="material-symbols-rounded">search</span>
-            </button>
+            </a>
           </div>
           <div className="product-thumbnails">
             {galleryImages.map((image, index) => (
-              <button className={activeImage === image ? "is-active" : ""} key={`${image}-${index}`} onClick={() => setActiveImage(image)} aria-label={`View image ${index + 1}`}>
+              <button className={activeIndex === index ? "is-active" : ""} key={`${image}-${index}`} onClick={() => setActiveIndex(index)} aria-label={`View image ${index + 1}`}>
                 <img src={imageUrl(image)} alt="" onError={(event) => setImageFallback(event, imageFallbackFor(product, index === 1))} />
               </button>
             ))}
@@ -999,16 +1115,23 @@ function ProductPage({ product, favorites, toggleFavorite, addToCart, openProduc
           </div>
           <div className="detail-actions product-action-grid">
             <button onClick={() => addToCart(product)}>Add to Cart</button>
-            <button className="buy-now" onClick={() => addToCart(product)}>Buy Now</button>
-            <button className="wishlist-square" onClick={() => toggleFavorite(product.id)} aria-label="Save product">
-              <span className="material-symbols-rounded">{favorites.has(product.id) ? "favorite" : "favorite"}</span>
+            <button className="buy-now" onClick={() => buyNow(product)}>Buy Now</button>
+            <button
+              className="wishlist-square"
+              onClick={() => toggleFavorite(product.id)}
+              aria-pressed={favorites.has(product.id)}
+              aria-label={favorites.has(product.id) ? "Remove from wishlist" : "Save to wishlist"}
+            >
+              <span className="material-symbols-rounded">{favorites.has(product.id) ? "favorite" : "favorite_border"}</span>
             </button>
-            <a className="whatsapp-buy" href="https://wa.me/" target="_blank" rel="noreferrer">
-              Buy on WhatsApp
-            </a>
+            {whatsappNumber && (
+              <a className="whatsapp-buy" href={whatsappLink} target="_blank" rel="noreferrer">
+                Buy on WhatsApp
+              </a>
+            )}
           </div>
           <dl>
-            {product.specs.map((spec, index) => (
+            {specs.map((spec, index) => (
               <div key={spec}>
                 <dt>0{index + 1}</dt>
                 <dd>{spec}</dd>
@@ -1035,13 +1158,14 @@ function ProductPage({ product, favorites, toggleFavorite, addToCart, openProduc
 }
 
 function NewArrivalsPage({ openProduct }) {
+  const products = useProducts();
   return (
     <>
       <PageHero
         eyebrow="New Arrivals"
         title="New daily-wear diamonds"
         copy="Easy rings, hoops, mangalsutra pendants, studs, and bracelets with real natural diamonds and a soft Indian luxury mood."
-        image={products[4].image}
+        image={products[4]?.image}
         dark
       />
       <section className="arrival-feature">
@@ -1062,6 +1186,7 @@ function NewArrivalsPage({ openProduct }) {
 }
 
 function EducationPage() {
+  const products = useProducts();
   const guides = [
     ["Cut", "A good cut keeps even small everyday diamonds bright in office light, daylight, and evening settings."],
     ["Clarity", "We choose natural diamonds that look clean and lively when worn close to the face or hand."],
@@ -1075,7 +1200,7 @@ function EducationPage() {
         eyebrow="Mastery"
         title="Choose natural diamonds with confidence"
         copy="Simple guidance on cut, clarity, color, and carat for lightweight jewellery you can wear often, not only lock away."
-        image={products[0].image}
+        image={products[0]?.image}
       />
       <section className="guide-page">
         {guides.map(([title, copy]) => (
@@ -1091,13 +1216,14 @@ function EducationPage() {
 }
 
 function BespokePage({ setCartOpen }) {
+  const products = useProducts();
   return (
     <>
       <PageHero
         eyebrow="Personal Styling"
         title="Create your daily diamond stack"
         copy="Build a lightweight set around your lifestyle: office earrings, a mangalsutra pendant, a slim bracelet, or a ring you never need to remove."
-        image={products[5].image}
+        image={products[5]?.image}
         dark
       />
       <section className="process">
@@ -1124,6 +1250,7 @@ function BespokePage({ setCartOpen }) {
 }
 
 function ConciergePage({ notice, setNotice }) {
+  const products = useProducts();
   function submit(event) {
     event.preventDefault();
     setNotice("Your concierge request is ready. We will prepare a private appointment summary.");
@@ -1135,7 +1262,7 @@ function ConciergePage({ notice, setNotice }) {
         eyebrow="Concierge"
         title="Find what you will actually wear"
         copy="Ask for help choosing lightweight natural diamond jewellery for office, gifting, mangalsutra styling, travel, or daily wear."
-        image={products[1].image}
+        image={products[1]?.image}
       />
       <section className="contact-page">
         <form onSubmit={submit}>
@@ -1174,10 +1301,15 @@ function ConciergePage({ notice, setNotice }) {
 }
 
 function Testimonials() {
-  const [activeTestimonial, setActiveTestimonial] = useState(testimonials.length);
+  const { config } = useStore();
+  const approved = (config?.testimonials || []).filter((item) => item.status === "Approved" && item.quote);
+  const list = approved.length
+    ? approved.map((item) => ({ quote: item.quote, person: item.name, date: item.date || "Verified buyer" }))
+    : testimonials;
+  const [activeTestimonial, setActiveTestimonial] = useState(list.length);
   const [testimonialSnap, setTestimonialSnap] = useState(false);
-  const testimonialLoop = [...testimonials, ...testimonials, ...testimonials];
-  const activeTestimonialDot = ((activeTestimonial % testimonials.length) + testimonials.length) % testimonials.length;
+  const testimonialLoop = [...list, ...list, ...list];
+  const activeTestimonialDot = ((activeTestimonial % list.length) + list.length) % list.length;
 
   useEffect(() => {
     const timer = window.setInterval(() => {
@@ -1192,9 +1324,9 @@ function Testimonials() {
   }
 
   function handleTestimonialTransitionEnd() {
-    if (activeTestimonial >= testimonials.length * 2 || activeTestimonial < testimonials.length) {
+    if (activeTestimonial >= list.length * 2 || activeTestimonial < list.length) {
       setTestimonialSnap(true);
-      setActiveTestimonial(activeTestimonialDot + testimonials.length);
+      setActiveTestimonial(activeTestimonialDot + list.length);
       window.requestAnimationFrame(() => {
         window.requestAnimationFrame(() => setTestimonialSnap(false));
       });
@@ -1234,11 +1366,11 @@ function Testimonials() {
         </button>
       </div>
       <div className="testimonial-dots">
-        {testimonials.map((item, index) => (
+        {list.map((item, index) => (
           <button
             className={activeTestimonialDot === index ? "is-active" : ""}
-            key={item.person}
-            onClick={() => setActiveTestimonial(index + testimonials.length)}
+            key={`${item.person}-${index}`}
+            onClick={() => setActiveTestimonial(index + list.length)}
             aria-label={`Show testimonial ${index + 1}`}
           />
         ))}
@@ -1248,6 +1380,7 @@ function Testimonials() {
 }
 
 function InstagramSection() {
+  const products = useProducts();
   return (
     <section className="instagram-section">
       <div className="social-heading">
@@ -1258,95 +1391,16 @@ function InstagramSection() {
         <a className="social-follow-link" href="https://www.instagram.com/">Follow on Instagram</a>
       </div>
       <div className="instagram-grid">
-        {instagramPosts.slice(0, 5).map(([title, copy, product]) => (
-          <article key={title}>
-            <img src={imageUrl(product.lifestyle || product.image)} alt={title} onError={(event) => setImageFallback(event, imageFallbackFor(product, true))} />
-          </article>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function CartPage({ cartItems, updateCartQuantity, removeFromCart, setPage }) {
-  const subtotal = cartItems.reduce((sum, item) => sum + priceToNumber(item.product.price) * item.quantity, 0);
-  const gst = Math.round(subtotal * 0.03);
-  const total = subtotal + gst;
-
-  return (
-    <section className="commerce-page">
-      <div className="commerce-heading">
-        <p className="eyebrow">Shopping Bag</p>
-        <h3>Your Manosi Bag</h3>
-      </div>
-      <div className="commerce-layout">
-        <div className="cart-list">
-          {cartItems.length === 0 && <p className="empty-state">Your bag is empty. Add a lightweight diamond piece to begin.</p>}
-          {cartItems.map((item) => (
-            <article key={item.product.id}>
-              <img src={imageUrl(item.product.image)} alt={item.product.name} onError={(event) => setImageFallback(event, imageFallbackFor(item.product))} />
-              <div>
-                <p>{item.product.category}</p>
-                <h4>{item.product.name}</h4>
-                <strong>{item.product.price}</strong>
-                <div className="quantity-control">
-                  <button onClick={() => updateCartQuantity(item.product.id, item.quantity - 1)}>-</button>
-                  <span>{item.quantity}</span>
-                  <button onClick={() => updateCartQuantity(item.product.id, item.quantity + 1)}>+</button>
-                  <button onClick={() => removeFromCart(item.product.id)}>Remove</button>
-                </div>
-              </div>
+        {instagramCaptions.slice(0, 5).map(([title], index) => {
+          const product = products[index] || products[0];
+          if (!product) return null;
+          return (
+            <article key={title}>
+              <img src={imageUrl(product.lifestyle || product.image)} alt={title} onError={(event) => setImageFallback(event, imageFallbackFor(product, true))} />
             </article>
-          ))}
-        </div>
-        <aside className="order-summary">
-          <h4>Order Summary</h4>
-          <p><span>Subtotal</span><strong>₹{subtotal.toLocaleString("en-IN")}</strong></p>
-          <p><span>Estimated GST</span><strong>₹{gst.toLocaleString("en-IN")}</strong></p>
-          <p><span>Shipping</span><strong>Free</strong></p>
-          <div><span>Total</span><strong>₹{total.toLocaleString("en-IN")}</strong></div>
-          <button onClick={() => setPage("checkout")} disabled={!cartItems.length}>Checkout</button>
-        </aside>
+          );
+        })}
       </div>
-    </section>
-  );
-}
-
-function CheckoutPage({ cartItems, setNotice, setPage }) {
-  const subtotal = cartItems.reduce((sum, item) => sum + priceToNumber(item.product.price) * item.quantity, 0);
-
-  function submit(event) {
-    event.preventDefault();
-    setNotice("Checkout request saved. Admin can review this order in the panel.");
-    setPage("admin");
-  }
-
-  return (
-    <section className="checkout-page">
-      <div>
-        <p className="eyebrow">Secure Checkout</p>
-        <h3>Delivery details</h3>
-        <form onSubmit={submit}>
-          <input placeholder="Full name" required />
-          <input placeholder="Mobile number" required />
-          <input placeholder="Email address" type="email" required />
-          <textarea placeholder="Complete Indian shipping address" required />
-          <select defaultValue="UPI">
-            <option>UPI</option>
-            <option>Credit / Debit Card</option>
-            <option>Net Banking</option>
-            <option>Pay in Store</option>
-          </select>
-          <button disabled={!cartItems.length}>Place Order Request</button>
-        </form>
-      </div>
-      <aside className="order-summary">
-        <h4>Bag Total</h4>
-        {cartItems.map((item) => (
-          <p key={item.product.id}><span>{item.product.name} x {item.quantity}</span><strong>{item.product.price}</strong></p>
-        ))}
-        <div><span>Estimated total</span><strong>₹{subtotal.toLocaleString("en-IN")}</strong></div>
-      </aside>
     </section>
   );
 }
@@ -1427,16 +1481,59 @@ function CartPagePro({ cartItems, updateCartQuantity, removeFromCart, setPage })
   );
 }
 
-function CheckoutPagePro({ cartItems, setNotice, setPage }) {
-  const subtotal = cartItems.reduce((sum, item) => sum + priceToNumber(item.product.price) * item.quantity, 0);
-  const gst = Math.round(subtotal * 0.03);
-  const total = subtotal + gst;
+function CheckoutPagePro({ cartItems, setNotice, setPage, clearCart }) {
+  const { settings } = useStore();
   const [paymentMethod, setPaymentMethod] = useState("UPI");
+  const [form, setForm] = useState({ name: "", phone: "", email: "", address: "", city: "", state: "", pincode: "", gstin: "" });
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
 
-  function submit(event) {
+  const tally = settings?.tally || {};
+  const totals = useMemo(() => computeInvoiceTotals({
+    items: cartItems.map((item) => ({
+      sku: item.product.sku || item.product.id,
+      name: item.product.name,
+      quantity: item.quantity,
+      rate: priceToNumber(item.product.salePrice || item.product.price),
+    })),
+    gstRate: Number(settings?.gstGold || 3),
+    sellerState: tally.sellerState,
+    placeOfSupply: form.state,
+    pricesIncludeGst: tally.pricesIncludeGst !== false,
+  }), [cartItems, settings?.gstGold, tally.sellerState, tally.pricesIncludeGst, form.state]);
+
+  const setField = (key) => (event) => setForm((current) => ({ ...current, [key]: event.target.value }));
+
+  async function submit(event) {
     event.preventDefault();
-    setNotice("Checkout request saved. Admin can review this order in the panel.");
-    setPage("admin");
+    setSubmitting(true);
+    setError("");
+    try {
+      const response = await fetch(`${API_BASE}/invoices`, {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          customer: form,
+          paymentMethod,
+          status: "unpaid",
+          items: cartItems.map((item) => ({
+            sku: item.product.sku || item.product.id,
+            name: item.product.name,
+            quantity: item.quantity,
+            rate: priceToNumber(item.product.salePrice || item.product.price),
+          })),
+        }),
+      });
+      if (!response.ok) throw new Error(`Order could not be saved (${response.status})`);
+      const data = await response.json();
+      clearCart?.();
+      setNotice(`Order placed. Invoice ${data.createdInvoice} created and queued for Tally.`);
+      setPage("admin");
+    } catch (requestError) {
+      setError(`${requestError.message}. Please try again or contact us on WhatsApp.`);
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (
@@ -1459,9 +1556,9 @@ function CheckoutPagePro({ cartItems, setNotice, setPage }) {
               </div>
             </div>
             <div className="checkout-field-grid">
-              <label>Full name<input placeholder="Enter full name" required /></label>
-              <label>Mobile number<input placeholder="+91 mobile number" required /></label>
-              <label>Email address<input placeholder="you@example.com" type="email" required /></label>
+              <label>Full name<input placeholder="Enter full name" value={form.name} onChange={setField("name")} required /></label>
+              <label>Mobile number<input placeholder="+91 mobile number" value={form.phone} onChange={setField("phone")} required /></label>
+              <label>Email address<input placeholder="you@example.com" type="email" value={form.email} onChange={setField("email")} required /></label>
             </div>
           </section>
           <section className="checkout-card">
@@ -1472,10 +1569,17 @@ function CheckoutPagePro({ cartItems, setNotice, setPage }) {
                 <p>Insured delivery is available across India.</p>
               </div>
             </div>
-            <textarea placeholder="House / flat, street, city, state, PIN code" required />
+            <textarea placeholder="House / flat, street" value={form.address} onChange={setField("address")} required />
             <div className="checkout-field-grid">
-              <label>City<input placeholder="City" /></label>
-              <label>PIN code<input placeholder="PIN code" inputMode="numeric" /></label>
+              <label>City<input placeholder="City" value={form.city} onChange={setField("city")} required /></label>
+              <label>State
+                <select value={form.state} onChange={setField("state")} required>
+                  <option value="">Select state</option>
+                  {INDIAN_STATES.map((state) => <option key={state}>{state}</option>)}
+                </select>
+              </label>
+              <label>PIN code<input placeholder="PIN code" inputMode="numeric" value={form.pincode} onChange={setField("pincode")} required /></label>
+              <label>GSTIN <small>(optional)</small><input placeholder="For GST input credit" value={form.gstin} onChange={setField("gstin")} /></label>
             </div>
           </section>
           <section className="checkout-card">
@@ -1495,7 +1599,8 @@ function CheckoutPagePro({ cartItems, setNotice, setPage }) {
               ))}
             </div>
           </section>
-          <button disabled={!cartItems.length}>Place Order Request</button>
+          {error && <p className="checkout-error">{error}</p>}
+          <button disabled={!cartItems.length || submitting}>{submitting ? "Placing order..." : "Place Order Request"}</button>
         </form>
       </div>
       <aside className="order-summary ecommerce-summary checkout-review">
@@ -1507,13 +1612,22 @@ function CheckoutPagePro({ cartItems, setNotice, setPage }) {
               <span>{item.product.name}</span>
               <small>Qty {item.quantity}</small>
             </div>
-            <strong>{formatCurrency(priceToNumber(item.product.price) * item.quantity)}</strong>
+            <strong>{formatCurrency(priceToNumber(item.product.salePrice || item.product.price) * item.quantity)}</strong>
           </article>
         ))}
-        <p><span>Subtotal</span><strong>{formatCurrency(subtotal)}</strong></p>
-        <p><span>Estimated GST</span><strong>{formatCurrency(gst)}</strong></p>
+        <p><span>Taxable value</span><strong>{formatAmount(totals.taxableValue)}</strong></p>
+        {totals.interState ? (
+          <p><span>IGST @ {totals.gstRate}%</span><strong>{formatAmount(totals.igst)}</strong></p>
+        ) : (
+          <>
+            <p><span>CGST @ {totals.gstRate / 2}%</span><strong>{formatAmount(totals.cgst)}</strong></p>
+            <p><span>SGST @ {totals.gstRate / 2}%</span><strong>{formatAmount(totals.sgst)}</strong></p>
+          </>
+        )}
         <p><span>Shipping</span><strong>Free</strong></p>
-        <div><span>Estimated total</span><strong>{formatCurrency(total)}</strong></div>
+        {Boolean(totals.roundOff) && <p><span>Round off</span><strong>{formatAmount(totals.roundOff)}</strong></p>}
+        <div><span>Total</span><strong>{formatCurrency(totals.total)}</strong></div>
+        {!form.state && <small className="checkout-hint">Select your state to see the correct GST split.</small>}
         <button onClick={() => setPage("cart")}>Edit Bag</button>
       </aside>
     </section>
@@ -1521,6 +1635,7 @@ function CheckoutPagePro({ cartItems, setNotice, setPage }) {
 }
 
 function WishlistPage({ favorites, toggleFavorite, openProduct }) {
+  const products = useProducts();
   const saved = products.filter((product) => favorites.has(product.id));
 
   return (
@@ -1542,231 +1657,12 @@ function WishlistPage({ favorites, toggleFavorite, openProduct }) {
   );
 }
 
-function LegacyAdminPage({ cartItems, favorites }) {
-  const totalInventory = products.length;
-  const bagValue = cartItems.reduce((sum, item) => sum + priceToNumber(item.product.price) * item.quantity, 0);
-
-  return (
-    <section className="admin-page">
-      <div className="commerce-heading">
-        <p className="eyebrow">Store Manager</p>
-        <h3>Manosi Admin Panel</h3>
-      </div>
-      <div className="admin-metrics">
-        <article><span>{totalInventory}</span><p>Live products</p></article>
-        <article><span>{favorites.size}</span><p>Wishlist saves</p></article>
-        <article><span>{cartItems.length}</span><p>Bag items</p></article>
-        <article><span>₹{bagValue.toLocaleString("en-IN")}</span><p>Current cart value</p></article>
-      </div>
-      <div className="admin-grid">
-        <section>
-          <h4>Product Catalogue</h4>
-          {products.map((product, index) => (
-            <article key={`${product.id}-legacy-${product.sku || index}`}>
-              <img src={imageUrl(product.image)} alt="" />
-              <div><strong>{product.name}</strong><span>{product.category} · {product.price}</span></div>
-              <button>Edit</button>
-            </article>
-          ))}
-        </section>
-        <section>
-          <h4>Store Controls</h4>
-          {["Hero banners", "Collections", "Instagram posts", "Orders", "Customer requests", "Promotions"].map((item) => (
-            <button key={item}>{item}</button>
-          ))}
-        </section>
-      </div>
-      <div className="admin-ops">
-        <section>
-          <h4>Recent Orders</h4>
-          {dummyOrders.map(([id, customer, item, status, city, value]) => (
-            <article key={id}>
-              <strong>{id}</strong>
-              <span>{customer}</span>
-              <span>{item}</span>
-              <span>{city}</span>
-              <span className={`status ${status.toLowerCase()}`}>{status}</span>
-              <b>{value}</b>
-            </article>
-          ))}
-        </section>
-        <section>
-          <h4>Customer CRM</h4>
-          {dummyCustomers.map(([name, city, tag, note]) => (
-            <article key={name}>
-              <strong>{name}</strong>
-              <span>{city}</span>
-              <span>{tag}</span>
-              <b>{note}</b>
-            </article>
-          ))}
-        </section>
-        <section>
-          <h4>Content & Campaigns</h4>
-          {dummyBanners.map(([name, count, status]) => (
-            <article key={name}>
-              <strong>{name}</strong>
-              <span>{count}</span>
-              <b>{status}</b>
-            </article>
-          ))}
-          {dummyPromotions.map(([code, offer, status]) => (
-            <article key={code}>
-              <strong>{code}</strong>
-              <span>{offer}</span>
-              <b>{status}</b>
-            </article>
-          ))}
-        </section>
-      </div>
-    </section>
-  );
-}
-
-function AdminDashboardOld({ cartItems, favorites, setPage }) {
-  const totalInventory = products.length;
-  const pendingOrders = dummyOrders.filter((order) => ["Pending", "Packed"].includes(order[3])).length;
-  const bagValue = cartItems.reduce((sum, item) => sum + priceToNumber(item.product.price) * item.quantity, 0);
-  const revenue = dummyOrders.reduce((sum, order) => sum + priceToNumber(order[5]), 0) + bagValue;
-  const adminNav = [
-    ["dashboard", "Dashboard"],
-    ["inventory_2", "Products"],
-    ["currency_rupee", "Bulk Pricing"],
-    ["shopping_bag", "Orders"],
-    ["home", "Homepage"],
-    ["view_carousel", "Banners"],
-    ["percent", "Offers & coupons"],
-    ["reviews", "Testimonials"],
-    ["edit_square", "Product Reviews"],
-    ["category", "Collections"],
-    ["groups", "Customers"],
-    ["settings", "Settings"],
-  ];
-
-  return (
-    <section className="admin-shell">
-      <aside className="admin-sidebar">
-        <button className="admin-logo" onClick={() => setPage("home")}>
-          <strong>Manosi</strong>
-          <span>Diamonds</span>
-        </button>
-        <p>Admin panel</p>
-        <nav>
-          {adminNav.map(([icon, label], index) => (
-            <button className={index === 0 ? "is-active" : ""} key={label}>
-              <span className="material-symbols-rounded">{icon}</span>
-              {label}
-            </button>
-          ))}
-        </nav>
-      </aside>
-
-      <div className="admin-dashboard">
-        <div className="admin-stat-row">
-          <article><p>Products</p><strong>{totalInventory}</strong></article>
-          <article><p>Orders</p><strong>{dummyOrders.length + cartItems.length}</strong></article>
-          <article><p>Pending fulfillment</p><strong>{pendingOrders}</strong></article>
-          <article><p>Revenue (demo)</p><strong>₹{revenue.toLocaleString("en-IN")}</strong></article>
-        </div>
-
-        <section className="admin-table-card">
-          <div className="admin-section-title">
-            <h4>Recent orders</h4>
-            <button>Create manual order</button>
-          </div>
-          <div className="admin-table">
-            <div className="admin-table-head">
-              <span>Order</span>
-              <span>Customer</span>
-              <span>Item</span>
-              <span>Status</span>
-              <span>Total</span>
-            </div>
-            {dummyOrders.map(([id, customer, item, status, city, value]) => (
-              <article key={id}>
-                <strong>{id}</strong>
-                <span>{customer}<small>{city}</small></span>
-                <span>{item}</span>
-                <span className={`status ${status.toLowerCase()}`}>{status}</span>
-                <b>{value}</b>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <div className="admin-management-grid">
-          <section>
-            <div className="admin-section-title">
-              <h4>Products</h4>
-              <button>Add product</button>
-            </div>
-            {products.slice(0, 5).map((product, index) => (
-              <article key={`${product.id}-manager-${product.sku || index}`}>
-                <img src={imageUrl(product.image)} alt="" />
-                <div><strong>{product.name}</strong><span>{product.category} · {product.price}</span></div>
-                <button>Edit</button>
-              </article>
-            ))}
-          </section>
-
-          <section>
-            <div className="admin-section-title">
-              <h4>Homepage</h4>
-              <button>Update</button>
-            </div>
-            {dummyBanners.map(([name, count, status]) => (
-              <article className="admin-mini-row" key={name}>
-                <strong>{name}</strong>
-                <span>{count}</span>
-                <b>{status}</b>
-              </article>
-            ))}
-          </section>
-
-          <section>
-            <div className="admin-section-title">
-              <h4>Offers & coupons</h4>
-              <button>Create</button>
-            </div>
-            {dummyPromotions.map(([code, offer, status]) => (
-              <article className="admin-mini-row" key={code}>
-                <strong>{code}</strong>
-                <span>{offer}</span>
-                <b>{status}</b>
-              </article>
-            ))}
-          </section>
-
-          <section>
-            <div className="admin-section-title">
-              <h4>Customers</h4>
-              <button>Export</button>
-            </div>
-            {dummyCustomers.map(([name, city, tag, note]) => (
-              <article className="admin-mini-row" key={name}>
-                <strong>{name}</strong>
-                <span>{city} · {tag}</span>
-                <b>{note}</b>
-              </article>
-            ))}
-            <article className="admin-mini-row">
-              <strong>Wishlist saves</strong>
-              <span>Live local session</span>
-              <b>{favorites.size}</b>
-            </article>
-          </section>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function AdminPage({ cartItems, favorites, setPage }) {
   const [activeModule, setActiveModule] = useState("dashboard");
   const [productSearch, setProductSearch] = useState("");
   const [productCategory, setProductCategory] = useState("All categories");
-  const [productMetal, setProductMetal] = useState("All metals");
-  const [productKarat, setProductKarat] = useState("All karats");
+  const [productMetalFilter, setProductMetalFilter] = useState("All metals");
+  const [productKaratFilter, setProductKaratFilter] = useState("All karats");
   const [productStock, setProductStock] = useState("All stock levels");
   const [bulkCategory, setBulkCategory] = useState("All categories");
   const [bulkDirection, setBulkDirection] = useState("increase");
@@ -1774,8 +1670,10 @@ function AdminPage({ cartItems, favorites, setPage }) {
   const [bulkValue, setBulkValue] = useState("");
   const [bulkSearch, setBulkSearch] = useState("");
   const [orderStatusFilter, setOrderStatusFilter] = useState("all");
-  const [orderDateFilter, setOrderDateFilter] = useState("thisMonth");
+  const [orderDateFilter, setOrderDateFilter] = useState("all");
   const [reviewFilter, setReviewFilter] = useState("all");
+  const [invoiceFilter, setInvoiceFilter] = useState("all");
+  const [tallyXmlPreview, setTallyXmlPreview] = useState(null);
   const [customerSearch, setCustomerSearch] = useState("");
   const [productEditor, setProductEditor] = useState(null);
   const [bulkUploadOpen, setBulkUploadOpen] = useState(false);
@@ -1786,12 +1684,12 @@ function AdminPage({ cartItems, favorites, setPage }) {
   const [reelProductSearch, setReelProductSearch] = useState({});
   const [adminData, setAdminData] = useState(null);
   const [adminNotice, setAdminNotice] = useState("");
-  const apiBase = "http://127.0.0.1:5175/api";
   const adminNav = [
     ["dashboard", "dashboard", "Dashboard"],
     ["inventory_2", "products", "Products"],
     ["currency_rupee", "pricing", "Bulk Pricing"],
     ["shopping_bag", "orders", "Orders"],
+    ["receipt_long", "invoices", "Invoices & Tally"],
     ["home", "homepage", "Homepage"],
     ["smart_display", "reels", "Reels"],
     ["view_carousel", "banners", "Banners"],
@@ -1802,122 +1700,17 @@ function AdminPage({ cartItems, favorites, setPage }) {
     ["groups", "customers", "Customers"],
     ["settings", "settings", "Settings"],
   ];
-  const layoutControls = [
-    ["Hero full-screen banner", "1920 x 980 desktop", "1080 x 1440 mobile", "Image-only, auto slide"],
-    ["Collection carousel", "520 x 620 card", "2 cards on mobile", "Infinite smooth loop"],
-    ["Trending product cards", "4 cards desktop", "2 cards mobile", "Modern daily-wear cards"],
-    ["Campaign banner carousel", "1680 x 610 wide", "86vw mobile", "No text overlay"],
-    ["Manosi in Motion", "420 x 650 reel", "Single active reel", "Stacked video style"],
-    ["Instagram grid", "Square/tall mix", "2 columns mobile", "Post preview cards"],
-  ];
-  const reviewRows = [
-    ["Ananya Mehta", "Natural Diamond Daily Ring", "5.0", "Light, office-friendly, perfect finish"],
-    ["Ritika Shah", "Lightweight Diamond Necklace", "4.8", "Looks premium with kurtas and shirts"],
-    ["Kavya Iyer", "Slim Diamond Bracelet", "5.0", "Easy to layer with watch"],
-  ];
-  const adminOrders = [
-    {
-      id: "ORD-178419250789",
-      status: "Pending payment",
-      statusKey: "pending",
-      customer: "ghghghgh",
-      phone: "+91 21321",
-      address: "nvcgcd, bh, j - 3244, India",
-      item: "Rose Gold Diamond Earrings",
-      quantity: 1,
-      total: "₹18,003",
-      date: "15 Jul 2026, 06:10 pm",
-      dateISO: "2026-07-15",
-    },
-    {
-      id: "ORD-1783862406916",
-      status: "Pending payment",
-      statusKey: "pending",
-      customer: "Test",
-      phone: "+91 81405 16517",
-      address: "Bsj, near Jsjs, Jsjesjsj, Jej - Jsjs, India",
-      item: "Rose Gold Diamond Earrings",
-      quantity: 1,
-      total: "₹17,803",
-      date: "12 Jul 2026, 06:50 pm",
-      dateISO: "2026-07-12",
-    },
-    {
-      id: "ORD-1783029108842",
-      status: "Paid",
-      statusKey: "paid",
-      customer: "Priya Sharma",
-      phone: "+91 98765 43210",
-      address: "Bandra West, Mumbai - 400050, India",
-      item: "Yellow Gold Diamond Bracelet",
-      quantity: 1,
-      total: "₹34,819",
-      date: "10 Jul 2026, 02:25 pm",
-      dateISO: "2026-07-10",
-    },
-    {
-      id: "ORD-1782965401288",
-      status: "Pending payment",
-      statusKey: "pending",
-      customer: "Nisha Rao",
-      phone: "+91 99887 77665",
-      address: "Indiranagar, Bengaluru - 560038, India",
-      item: "Rose Gold Diamond Bracelet",
-      quantity: 1,
-      total: "₹27,181",
-      date: "09 Jul 2026, 11:40 am",
-      dateISO: "2026-07-09",
-    },
-    {
-      id: "ORD-1782119085120",
-      status: "Paid",
-      statusKey: "paid",
-      customer: "Kavya Iyer",
-      phone: "+91 90909 12345",
-      address: "T Nagar, Chennai - 600017, India",
-      item: "Natural Diamond Nosepin",
-      quantity: 1,
-      total: "₹28,500",
-      date: "06 Jul 2026, 08:18 pm",
-      dateISO: "2026-07-06",
-    },
-    {
-      id: "ORD-1781849921124",
-      status: "Pending payment",
-      statusKey: "pending",
-      customer: "Aarohi Shah",
-      phone: "+91 98222 44110",
-      address: "Satellite, Ahmedabad - 380015, India",
-      item: "Everyday Diamond Pendant",
-      quantity: 1,
-      total: "₹82,000",
-      date: "04 Jul 2026, 05:04 pm",
-      dateISO: "2026-07-04",
-    },
-    {
-      id: "ORD-1781023304501",
-      status: "Pending payment",
-      statusKey: "pending",
-      customer: "Ritika Shah",
-      phone: "+91 91234 56780",
-      address: "Koregaon Park, Pune - 411001, India",
-      item: "Lightweight Diamond Necklace",
-      quantity: 1,
-      total: "₹64,000",
-      date: "01 Jul 2026, 01:12 pm",
-      dateISO: "2026-07-01",
-    },
-  ];
-  const adminProducts = (adminData?.products?.length ? adminData.products : products).map(withCloudinaryImages);
-  const liveOrders = adminData?.orders || adminOrders;
-  const liveCoupons = adminData?.coupons || [];
-  const liveHomepageSections = adminData?.homepageSections || [];
+  const adminProducts = (adminData?.products?.length ? adminData.products : catalogFallbackProducts).map(withCloudinaryImages);
+  const liveOrders = adminData?.orders || seedOrders;
+  const liveCoupons = adminData?.coupons?.length ? adminData.coupons : seedCoupons;
+  const liveHomepageSections = adminData?.homepageSections?.length ? adminData.homepageSections : seedHomepageSections;
   const liveHomepageProducts = adminData?.homepageProducts || { trending: [], arrivals: [], featured: [] };
   const liveReels = adminData?.reels || [];
-  const liveTestimonials = adminData?.testimonials || [];
-  const liveReviews = adminData?.reviews || [];
-  const liveBanners = adminData?.banners || [];
-  const liveCollections = adminData?.collections || [];
+  const liveTestimonials = adminData?.testimonials?.length ? adminData.testimonials : seedTestimonials;
+  const liveReviews = adminData?.reviews?.length ? adminData.reviews : seedReviews;
+  const liveBanners = adminData?.banners?.length ? adminData.banners : seedBanners;
+  const liveCollections = adminData?.collections?.length ? adminData.collections : seedCollections;
+  const liveInvoices = adminData?.invoices || [];
   const derivedCustomers = Object.values(liveOrders.reduce((acc, order) => {
     const key = order.phone || order.customer;
     const current = acc[key] || { name: order.customer, phone: order.phone, orders: 0, totalSpent: 0, lastOrder: order.date };
@@ -1931,6 +1724,7 @@ function AdminPage({ cartItems, favorites, setPage }) {
   const liveSettings = adminData?.settings || {};
   const totalInventory = adminProducts.length;
   const orderCount = liveOrders.length;
+  const recentOrders = liveOrders.slice(0, 5);
   const pendingOrders = liveOrders.filter((order) => order.statusKey === "pending").length;
   const revenue = liveOrders.filter((order) => order.statusKey === "paid").reduce((sum, order) => sum + priceToNumber(order.total), 0);
   const adminCategoryLabel = (category) => ({
@@ -1946,8 +1740,8 @@ function AdminPage({ cartItems, favorites, setPage }) {
     const query = productSearch.trim().toLowerCase();
     const matchesSearch = !query || product.name.toLowerCase().includes(query) || product.sku?.toLowerCase().includes(query);
     const matchesCategory = productCategory === "All categories" || product.category === productCategory;
-    const matchesMetal = productMetal === "All metals" || product.goldColour === productMetal;
-    const matchesKarat = productKarat === "All karats" || product.goldKarat === productKarat;
+    const matchesMetal = productMetalFilter === "All metals" || product.goldColour === productMetalFilter;
+    const matchesKarat = productKaratFilter === "All karats" || product.goldKarat === productKaratFilter;
     const matchesStock = productStock === "All stock levels" || (productStock === "In stock" ? product.inStock : !product.inStock);
     return matchesSearch && matchesCategory && matchesMetal && matchesKarat && matchesStock;
   });
@@ -1964,7 +1758,7 @@ function AdminPage({ cartItems, favorites, setPage }) {
   }, []);
 
   async function adminRequest(path, options) {
-    const response = await fetch(`${apiBase}${path}`, {
+    const response = await fetch(`${API_BASE}${path}`, {
       headers: { "content-type": "application/json" },
       ...options,
     });
@@ -1989,6 +1783,40 @@ function AdminPage({ cartItems, favorites, setPage }) {
       setAdminNotice("Saved");
     } catch {
       setAdminNotice("Save failed: start backend API");
+    }
+  }
+
+  async function sendInvoiceToTally(invoice) {
+    setAdminNotice(`Sending ${invoice.number} to Tally...`);
+    try {
+      const data = await adminRequest(`/invoices/${invoice.id}/tally-sync`, { method: "POST" });
+      const result = data.tallySync || {};
+      setAdminNotice(result.ok ? `${invoice.number} posted to Tally` : `${invoice.number} failed: ${result.message}`);
+    } catch {
+      setAdminNotice("Could not reach the store API");
+    }
+  }
+
+  async function syncPendingInvoices() {
+    setAdminNotice("Syncing pending invoices to Tally...");
+    try {
+      const data = await adminRequest("/tally/sync-pending", { method: "POST" });
+      const summary = data.tallyBatch?.summary;
+      setAdminNotice(summary
+        ? `Tally sync done: ${summary.synced} posted, ${summary.failed} failed of ${summary.attempted}`
+        : "Nothing pending");
+    } catch {
+      setAdminNotice("Could not reach the store API");
+    }
+  }
+
+  async function previewTallyXml(invoice) {
+    try {
+      const response = await fetch(`${API_BASE}/invoices/${invoice.id}/tally-xml`);
+      if (!response.ok) throw new Error("preview failed");
+      setTallyXmlPreview(await response.json());
+    } catch {
+      setAdminNotice("Could not build the Tally XML preview");
     }
   }
 
@@ -2255,28 +2083,6 @@ function AdminPage({ cartItems, favorites, setPage }) {
     if (window.confirm(`Delete ${product.name}?`)) saveAdmin(`/products/${product.id}`, undefined, "DELETE");
   }
 
-  function ProductRows() {
-    return adminProducts.map((product, index) => (
-      <article key={`${product.id}-row-${product.sku || index}`}>
-        <img src={imageUrl(product.image)} alt="" />
-        <div><strong>{product.name}</strong><span>{product.category} · {product.price}</span></div>
-        <button>Edit</button>
-      </article>
-    ));
-  }
-
-  function ControlCard({ title, children, action = "Save" }) {
-    return (
-      <section className="admin-control-card">
-        <div className="admin-section-title">
-          <h4>{title}</h4>
-          <button>{action}</button>
-        </div>
-        {children}
-      </section>
-    );
-  }
-
   function AdminProductEditorModal() {
     if (!productEditor) return null;
     const draftImage = productEditor.image || categoryFallbackImages[productEditor.category] || "/src/assets/real-products/ring.webp";
@@ -2445,10 +2251,10 @@ function AdminPage({ cartItems, favorites, setPage }) {
           <select value={productCategory} onChange={(event) => setProductCategory(event.target.value)}>
             {categoryOptions.map((option) => <option key={option}>{option}</option>)}
           </select>
-          <select value={productMetal} onChange={(event) => setProductMetal(event.target.value)}>
+          <select value={productMetalFilter} onChange={(event) => setProductMetalFilter(event.target.value)}>
             {metalOptions.map((option) => <option key={option}>{option}</option>)}
           </select>
-          <select value={productKarat} onChange={(event) => setProductKarat(event.target.value)}>
+          <select value={productKaratFilter} onChange={(event) => setProductKaratFilter(event.target.value)}>
             {karatOptions.map((option) => <option key={option}>{option}</option>)}
           </select>
           <select defaultValue="All diamond types">
@@ -2565,29 +2371,33 @@ function AdminPage({ cartItems, favorites, setPage }) {
   }
 
   function AdminOrdersPanel() {
-    const today = new Date("2026-07-15T00:00:00");
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const isoMonth = (date) => `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}`;
+    const lastMonthDate = new Date(today.getFullYear(), today.getMonth() - 1, 1);
+    const todayISO = `${isoMonth(today)}-${String(today.getDate()).padStart(2, "0")}`;
     const dateFilters = [
       ["today", "Today"],
       ["7days", "7 days"],
       ["30days", "30 days"],
       ["thisMonth", "This month"],
       ["lastMonth", "Last month"],
+      ["all", "All time"],
     ];
-    const isInDateFilter = (order) => {
+    const withinDays = (order, days) => {
       const orderDate = new Date(`${order.dateISO}T00:00:00`);
-      if (orderDateFilter === "today") return order.dateISO === "2026-07-15";
-      if (orderDateFilter === "7days") {
-        const start = new Date(today);
-        start.setDate(start.getDate() - 6);
-        return orderDate >= start && orderDate <= today;
-      }
-      if (orderDateFilter === "30days") {
-        const start = new Date(today);
-        start.setDate(start.getDate() - 29);
-        return orderDate >= start && orderDate <= today;
-      }
-      if (orderDateFilter === "thisMonth") return order.dateISO.startsWith("2026-07");
-      if (orderDateFilter === "lastMonth") return order.dateISO.startsWith("2026-06");
+      if (Number.isNaN(orderDate.getTime())) return false;
+      const start = new Date(today);
+      start.setDate(start.getDate() - (days - 1));
+      return orderDate >= start && orderDate <= today;
+    };
+    const isInDateFilter = (order) => {
+      if (!order.dateISO) return orderDateFilter === "all";
+      if (orderDateFilter === "today") return order.dateISO === todayISO;
+      if (orderDateFilter === "7days") return withinDays(order, 7);
+      if (orderDateFilter === "30days") return withinDays(order, 30);
+      if (orderDateFilter === "thisMonth") return order.dateISO.startsWith(isoMonth(today));
+      if (orderDateFilter === "lastMonth") return order.dateISO.startsWith(isoMonth(lastMonthDate));
       return true;
     };
     const dateFilteredOrders = liveOrders.filter(isInDateFilter);
@@ -2648,23 +2458,111 @@ function AdminPage({ cartItems, favorites, setPage }) {
     );
   }
 
-  function TogglePill({ on = true }) {
-    return <span className={`admin-toggle-pill ${on ? "is-on" : ""}`} />;
+  function AdminInvoicesPanel() {
+    const tally = liveSettings.tally || {};
+    const counts = liveInvoices.reduce((acc, invoice) => {
+      const status = invoice.tally?.status || "pending";
+      acc[status] = (acc[status] || 0) + 1;
+      return acc;
+    }, {});
+    const visible = liveInvoices.filter((invoice) => invoiceFilter === "all" || (invoice.tally?.status || "pending") === invoiceFilter);
+    const statusLabel = { pending: "Waiting", synced: "In Tally", failed: "Failed", blocked: "Not configured" };
+
+    return (
+      <section className="admin-invoices-panel">
+        <div className={`tally-status-bar ${tally.enabled ? "is-live" : ""}`}>
+          <div>
+            <strong>{tally.enabled ? "Tally sync is ON" : "Tally sync is OFF"}</strong>
+            <span>
+              {tally.enabled
+                ? `Posting to ${tally.endpoint || "(no endpoint set)"} - company "${tally.companyName || "(not set)"}"`
+                : "Invoices are being queued. Turn sync on in Settings once your Tally endpoint is ready."}
+            </span>
+          </div>
+          <div className="tally-status-actions">
+            <button className="admin-secondary-action" onClick={() => setActiveModule("settings")}>Tally settings</button>
+            <button className="admin-primary-action" onClick={syncPendingInvoices}>Sync pending ({counts.pending || 0})</button>
+          </div>
+        </div>
+
+        <div className="admin-review-tabs">
+          {[["all", `All (${liveInvoices.length})`], ["pending", `Waiting (${counts.pending || 0})`], ["synced", `In Tally (${counts.synced || 0})`], ["failed", `Failed (${(counts.failed || 0) + (counts.blocked || 0)})`]]
+            .map(([key, label]) => (
+              <button key={key} className={invoiceFilter === key ? "is-active" : ""} onClick={() => setInvoiceFilter(key)}>{label}</button>
+            ))}
+        </div>
+
+        {visible.length === 0 ? (
+          <p className="admin-large-empty">No invoices here yet. They are created automatically when a customer completes checkout.</p>
+        ) : (
+          <div className="admin-invoice-list">
+            {visible.map((invoice) => {
+              const state = invoice.tally || {};
+              const status = state.status || "pending";
+              return (
+                <article className="admin-invoice-card" key={invoice.id}>
+                  <div className="admin-invoice-head">
+                    <div>
+                      <strong>{invoice.number}</strong>
+                      <span>{invoice.date} · {invoice.customer?.name} · {invoice.placeOfSupply || "State not set"}</span>
+                    </div>
+                    <div className="admin-invoice-total">
+                      <strong>{formatAmount(invoice.totals?.total)}</strong>
+                      <span className={`tally-badge ${status}`}>{statusLabel[status] || status}</span>
+                    </div>
+                  </div>
+
+                  <div className="admin-invoice-breakup">
+                    <span>Taxable <b>{formatAmount(invoice.totals?.taxableValue)}</b></span>
+                    {invoice.totals?.interState
+                      ? <span>IGST <b>{formatAmount(invoice.totals?.igst)}</b></span>
+                      : <><span>CGST <b>{formatAmount(invoice.totals?.cgst)}</b></span><span>SGST <b>{formatAmount(invoice.totals?.sgst)}</b></span></>}
+                    <span>{invoice.items?.length || 0} item(s)</span>
+                    {state.voucherId && <span>Tally voucher <b>{state.voucherId}</b></span>}
+                    {state.attempts > 0 && <span>{state.attempts} attempt(s)</span>}
+                  </div>
+
+                  {state.lastError && <p className="admin-invoice-error">{state.lastError}</p>}
+
+                  <div className="admin-invoice-actions">
+                    <button className="admin-primary-action" onClick={() => sendInvoiceToTally(invoice)}>
+                      {status === "synced" ? "Re-send to Tally" : "Send to Tally"}
+                    </button>
+                    <button className="admin-secondary-action" onClick={() => previewTallyXml(invoice)}>View Tally XML</button>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+        )}
+
+        {tallyXmlPreview && (
+          <div className="admin-modal-backdrop" onClick={() => setTallyXmlPreview(null)}>
+            <section className="admin-xml-preview" onClick={(event) => event.stopPropagation()}>
+              <div className="admin-editor-header">
+                <div>
+                  <p className="eyebrow">Tally payload</p>
+                  <h3>{tallyXmlPreview.number}</h3>
+                </div>
+                <button type="button" onClick={() => setTallyXmlPreview(null)} aria-label="Close preview">
+                  <span className="material-symbols-rounded">close</span>
+                </button>
+              </div>
+              <p className="admin-helper-copy">This is exactly what gets POSTed to Tally. Check the ledger names against your company before switching sync on.</p>
+              <pre>{tallyXmlPreview.xml}</pre>
+              <div className="admin-editor-footer">
+                <button className="admin-secondary-action" onClick={() => navigator.clipboard?.writeText(tallyXmlPreview.xml)}>Copy XML</button>
+                <button className="admin-primary-action" onClick={() => setTallyXmlPreview(null)}>Close</button>
+              </div>
+            </section>
+          </div>
+        )}
+      </section>
+    );
   }
 
   function AdminHomePanel() {
-    const fallbackSections = [
-      { id: "hero", title: "Hero Banner Carousel", note: "Full-screen image-only slider", action: "Manage banners >", visible: true },
-      { id: "collections", title: "Collections Carousel", note: "Home collection cards - 1080 x 760 images", action: "Manage collections >", visible: true },
-      { id: "bestsellers", title: "Trending Now Products", note: "Product carousel shown after collections", action: "Choose products >", visible: true },
-      { id: "offer", title: "Campaign Banner Carousel", note: "Wide image-only promotional slider", action: "Manage banners >", visible: true },
-      { id: "arrivals", title: "New Arrivals Products", note: "Fresh drops product carousel", action: "Choose products >", visible: true },
-      { id: "reels", title: "Manosi in Motion Reels", note: "Video carousel with linked products", action: "Manage reels >", visible: true },
-      { id: "badges", title: "Manosi Promises", note: "Trust and service promise icons", action: "Edit promises >", visible: true },
-      { id: "testimonials", title: "Customer Testimonials", note: "Approved customer notes carousel", action: "Manage testimonials >", visible: true },
-      { id: "instagram", title: "Instagram Feed", note: "Social media post preview grid", action: "Manage posts >", visible: true },
-    ];
-    const homeSections = liveHomepageSections.length ? liveHomepageSections : fallbackSections;
+    const homeSections = liveHomepageSections;
     const moveSection = (index, direction) => {
       const next = [...homeSections];
       const target = index + direction;
@@ -2725,12 +2623,7 @@ function AdminPage({ cartItems, favorites, setPage }) {
   }
 
   function AdminOffersPanel() {
-    const fallbackCoupons = [
-      { id: "JB50", code: "JB50", type: "% off", value: "8", minOrder: "No minimum", expires: "2026-12-31", active: true },
-      { id: "DAZZLING20", code: "DAZZLING20", type: "% off", value: "5", minOrder: "No minimum", expires: "2026-12-31", active: true },
-      { id: "WELCOME20", code: "WELCOME20", type: `Flat ${String.fromCharCode(8377)} off`, value: "200", minOrder: `${String.fromCharCode(8377)}5,000`, expires: "2026-09-30", active: false },
-    ];
-    const coupons = liveCoupons.length ? liveCoupons : fallbackCoupons;
+    const coupons = liveCoupons;
     const updateCoupon = (coupon, patch) => {
       const id = coupon.id || coupon.code;
       saveAdmin("/coupons", coupons.map((item) => (item.id || item.code) === id ? { ...item, ...patch, id: patch.code || item.id || item.code } : item));
@@ -2761,11 +2654,7 @@ function AdminPage({ cartItems, favorites, setPage }) {
   }
 
   function AdminTestimonialsPanel() {
-    const rows = liveTestimonials.length ? liveTestimonials : [
-      { id: "aarohi", name: "Aarohi Mehta", rating: 5, status: "Approved", featured: true, quote: "The ring exceeded my expectations - the craftsmanship is stunning and it arrived beautifully packaged. Customer service was wonderful throughout." },
-      { id: "priya", name: "Priya Nair", rating: 4, status: "Approved", featured: false, quote: "Gorgeous earrings, exactly like the pictures. Delivery was quick and the return policy gave me peace of mind." },
-      { id: "kavya", name: "Kavya Reddy", rating: 5, status: "Approved", featured: false, quote: "Bought this necklace for my anniversary and it is even more beautiful in person. The hallmark certification made me trust the purchase completely." },
-    ];
+    const rows = liveTestimonials;
     const addTestimonial = () => saveAdmin("/testimonials", [{ id: `testimonial-${Date.now()}`, name: "New Customer", rating: 5, status: "Pending", featured: false, quote: "Add customer testimonial here." }, ...rows]);
     const updateTestimonial = (row, patch) => saveAdmin("/testimonials", rows.map((item) => item.id === row.id ? { ...item, ...patch } : item));
     return (
@@ -2774,7 +2663,7 @@ function AdminPage({ cartItems, favorites, setPage }) {
         <div className="admin-review-tabs"><button className="is-active">All</button><button>Pending</button><button>Approved</button><button>Rejected</button></div>
         <div className="admin-review-list">
           {rows.map((row, index) => {
-            const stars = "?".repeat(row.rating || 5) + "?".repeat(Math.max(0, 5 - (row.rating || 5)));
+            const stars = ratingStars(row.rating);
             return (
             <article key={row.id || row.name}>
               <img src={imageUrl(row.avatar || `https://i.pravatar.cc/96?img=${index + 32}`)} alt="" />
@@ -2796,11 +2685,7 @@ function AdminPage({ cartItems, favorites, setPage }) {
   }
 
   function AdminProductReviewsPanel() {
-    const fallbackReviews = [
-      { id: "review-1", customer: "Aarohi Mehta", product: "Natural Diamond Daily Ring", rating: 5, status: "pending", text: "Lightweight and beautifully finished." },
-      { id: "review-2", customer: "Priya Nair", product: "Natural Diamond Earrings", rating: 4, status: "approved", text: "Looks premium and arrived safely." },
-    ];
-    const rows = liveReviews.length ? liveReviews : fallbackReviews;
+    const rows = liveReviews;
     const visibleRows = rows.filter((row) => reviewFilter === "all" || row.status === reviewFilter);
     const updateReview = (row, patch) => saveAdmin("/reviews", rows.map((item) => item.id === row.id ? { ...item, ...patch } : item));
     const tabs = ["all", "pending", "approved", "rejected"];
@@ -2811,7 +2696,7 @@ function AdminPage({ cartItems, favorites, setPage }) {
           {visibleRows.map((row) => <article key={row.id}>
             <img src={imageUrl(row.avatar || "https://i.pravatar.cc/96?img=45")} alt="" />
             <div>
-              <div className="admin-review-meta"><strong>{row.customer}</strong><span>{"?".repeat(row.rating || 5)}</span><b>{row.status}</b><b className="soft">{row.product}</b></div>
+              <div className="admin-review-meta"><strong>{row.customer}</strong><span>{ratingStars(row.rating)}</span><b>{row.status}</b><b className="soft">{row.product}</b></div>
               <textarea defaultValue={row.text} onBlur={(event) => updateReview(row, { text: event.target.value })} />
               <div className="admin-text-actions"><button onClick={() => updateReview(row, { status: "rejected" })}>Reject</button><button onClick={() => updateReview(row, { status: "approved" })}>Approve</button><button onClick={() => saveAdmin("/reviews", rows.filter((item) => item.id !== row.id))}>Delete</button></div>
             </div>
@@ -2822,12 +2707,7 @@ function AdminPage({ cartItems, favorites, setPage }) {
   }
 
   function AdminCollectionsPanel() {
-    const collectionRows = liveCollections.length ? liveCollections : [
-      { id: "rings", name: "Love Forever", subtitle: "Rings Collection", category: "Rings", count: "8 products", image: "/src/assets/real-products/ring.webp", tone: "cocoa", visible: true },
-      { id: "earrings", name: "Mini Me", subtitle: "Earrings Collection", category: "Earrings", count: "8 products", image: "/src/assets/real-products/earrings.webp", tone: "emerald", visible: true },
-      { id: "necklace", name: "Everyday Line", subtitle: "Necklace Collection", category: "Necklace", count: "8 products", image: "/src/assets/real-products/necklace.webp", tone: "sand", visible: true },
-      { id: "pendant", name: "Petals", subtitle: "Pendant Collection", category: "Pendant", count: "8 products", image: "/src/assets/real-products/pendant.webp", tone: "blush", visible: true },
-    ];
+    const collectionRows = liveCollections;
     const addCollection = () => saveAdmin("/collections", [{ id: `collection-${Date.now()}`, name: "New Collection", subtitle: "Rings Collection", category: "Rings", count: "0 products", image: "/src/assets/real-products/ring.webp", tone: "cocoa", visible: true }, ...collectionRows]);
     const updateCollection = (collection, patch) => saveAdmin("/collections", collectionRows.map((item) => item.id === collection.id ? { ...item, ...patch } : item));
     return (
@@ -2870,34 +2750,8 @@ function AdminPage({ cartItems, favorites, setPage }) {
     );
   }
 
-  function AdminSettingsPanel() {
-    const [draftSettings, setDraftSettings] = useState(liveSettings);
-    useEffect(() => setDraftSettings(liveSettings), [adminData]);
-    const paymentRows = [
-      ["upi", "UPI"],
-      ["card", "Credit / Debit card"],
-      ["netbanking", "Net banking"],
-      ["cod", "Cash on delivery"],
-    ];
-    const setSetting = (key, value) => setDraftSettings((current) => ({ ...current, [key]: value }));
-    const setPayment = (key) => setDraftSettings((current) => ({ ...current, payments: { ...current.payments, [key]: !current.payments?.[key] } }));
-    return (
-      <section className="admin-settings-panel">
-        <button className="admin-primary-action" onClick={() => saveAdmin("/settings", draftSettings)}>Save settings</button>
-        <div className="admin-settings-grid">
-          <article><h4>Gold rate</h4><div className="admin-review-tabs"><button className={draftSettings.goldMode !== "Manual" ? "is-active" : ""} onClick={() => setSetting("goldMode", "Auto (Live)")}>Auto (Live)</button><button className={draftSettings.goldMode === "Manual" ? "is-active" : ""} onClick={() => setSetting("goldMode", "Manual")}>Manual</button></div><label>Rate per gram (22kt)<span><b>₹</b><input value={draftSettings.goldRate || ""} onChange={(event) => setSetting("goldRate", event.target.value)} /><b>/ g</b></span></label><p>Live rate (auto-fetched): ₹0/g</p><button className="settings-line" onClick={() => setSetting("showGoldRate", !draftSettings.showGoldRate)}><span>Show gold rate in top bar</span><TogglePill on={draftSettings.showGoldRate} /></button></article>
-          <article><h4>Announcement bar</h4><textarea value={draftSettings.announcement || ""} onChange={(event) => setSetting("announcement", event.target.value)} /><p>Shown in the dark strip at the very top of every page.</p></article>
-          <article><h4>UPI Payment</h4><label>Your UPI ID<input value={draftSettings.upi || ""} onChange={(event) => setSetting("upi", event.target.value)} /></label><p>Customers will see a QR code + UPI link at checkout to pay directly to you.</p></article>
-          <article><h4>Shipping</h4><label>Free shipping threshold<span><b>₹</b><input value={draftSettings.freeShippingThreshold || ""} onChange={(event) => setSetting("freeShippingThreshold", event.target.value)} /></span></label><p>Orders above this amount ship free; below it, a flat fee applies.</p></article>
-          <article><h4>Payments & tax</h4>{paymentRows.map(([key, label]) => <button className="settings-line" key={key} onClick={() => setPayment(key)}><span>{label}</span><TogglePill on={draftSettings.payments?.[key]} /></button>)}<label>GST on gold<span><input value={draftSettings.gstGold || ""} onChange={(event) => setSetting("gstGold", event.target.value)} /><b>%</b></span></label></article>
-        </div>
-      </section>
-    );
-  }
-
   function AdminBannersPanel() {
-    const fallbackBanners = layoutControls.slice(0, 4).map(([title, desktop, mobile, note], index) => ({ id: `banner-${index}`, title, desktop, mobile, note, image: ["/src/assets/real-products/ring-lifestyle.webp", "/src/assets/real-products/earrings-lifestyle.webp", "/src/assets/real-products/necklace-lifestyle.webp", "/src/assets/real-products/bracelet-lifestyle.webp"][index], active: true }));
-    const banners = liveBanners.length ? liveBanners : fallbackBanners;
+    const banners = liveBanners;
     const categoryBannerKeys = ["All", ...menuCategories];
     const categoryBanners = liveSettings.categoryBanners || {};
     const updateBanner = (banner, patch) => saveAdmin("/banners", banners.map((item) => item.id === banner.id ? { ...item, ...patch } : item));
@@ -2919,7 +2773,7 @@ function AdminPage({ cartItems, favorites, setPage }) {
         </div>
         <div className="admin-image-board admin-category-banner-grid">
           {categoryBannerKeys.map((category) => {
-            const image = shopBannerImage(category, categoryBanners);
+            const image = shopBannerImage(category, categoryBanners, adminProducts);
             return (
               <article key={category}>
                 <img src={imageUrl(image)} alt="" />
@@ -3010,6 +2864,7 @@ function AdminPage({ cartItems, favorites, setPage }) {
     products: "Products",
     pricing: "Bulk Pricing",
     orders: "Orders",
+    invoices: "Invoices & Tally",
     homepage: "Homepage",
     reels: "Reels",
     banners: "Banners",
@@ -3060,72 +2915,49 @@ function AdminPage({ cartItems, favorites, setPage }) {
         )}
 
         {activeModule === "dashboard" && (
-          <>
-            <section className="admin-table-card">
-              <div className="admin-section-title">
-                <h4>Recent orders</h4>
-                <button>Create manual order</button>
+          <section className="admin-table-card">
+            <div className="admin-section-title">
+              <h4>Recent orders</h4>
+              <button onClick={() => setActiveModule("orders")}>Manage orders</button>
+            </div>
+            <div className="admin-table">
+              <div className="admin-table-head">
+                <span>Order</span><span>Customer</span><span>Status</span><span>Total</span>
               </div>
-              <div className="admin-table">
-                <div className="admin-table-head">
-                  <span>Order</span><span>Customer</span><span>Status</span><span>Total</span>
-                </div>
-                <p className="admin-empty-row">No orders yet.</p>
-              </div>
-            </section>
-          </>
+              {recentOrders.map((order) => (
+                <article key={order.id}>
+                  <strong>{order.id}</strong>
+                  <span>{order.customer}<small>{order.phone}</small></span>
+                  <span className={`status ${order.statusKey}`}>{order.status}</span>
+                  <b>{order.total}</b>
+                </article>
+              ))}
+              {recentOrders.length === 0 && <p className="admin-empty-row">No orders yet.</p>}
+            </div>
+          </section>
         )}
 
-        {activeModule === "products" && (
-          <AdminProductsPanel />
-        )}
-
-        {activeModule === "pricing" && (
-          <AdminBulkPricingPanel />
-        )}
-
-        {activeModule === "orders" && (
-          <AdminOrdersPanel />
-        )}
-
-        {activeModule === "homepage" && (
-          <AdminHomePanel />
-        )}
-
-        {activeModule === "reels" && (
-          <AdminReelsPanel />
-        )}
-
-        {activeModule === "banners" && (
-          <AdminBannersPanel />
-        )}
-
-        {activeModule === "offers" && (
-          <AdminOffersPanel />
-        )}
-
-        {activeModule === "testimonials" && (
-          <AdminTestimonialsPanel />
-        )}
-
-        {activeModule === "reviews" && (
-          <AdminProductReviewsPanel />
-        )}
-
-        {activeModule === "collections" && (
-          <AdminCollectionsPanel />
-        )}
-
-        {activeModule === "customers" && (
-          <AdminCustomersPanel />
-        )}
-
+        {/* Panels are invoked as functions rather than rendered as <Panel />: they are
+            defined inside AdminPage, so as elements they would get a fresh component
+            type on every render and remount (losing input focus and draft state). */}
+        {activeModule === "products" && AdminProductsPanel()}
+        {activeModule === "pricing" && AdminBulkPricingPanel()}
+        {activeModule === "orders" && AdminOrdersPanel()}
+        {activeModule === "invoices" && AdminInvoicesPanel()}
+        {activeModule === "homepage" && AdminHomePanel()}
+        {activeModule === "reels" && AdminReelsPanel()}
+        {activeModule === "banners" && AdminBannersPanel()}
+        {activeModule === "offers" && AdminOffersPanel()}
+        {activeModule === "testimonials" && AdminTestimonialsPanel()}
+        {activeModule === "reviews" && AdminProductReviewsPanel()}
+        {activeModule === "collections" && AdminCollectionsPanel()}
+        {activeModule === "customers" && AdminCustomersPanel()}
         {activeModule === "settings" && (
-          <AdminSettingsPanel />
+          <AdminSettingsPanel liveSettings={liveSettings} adminData={adminData} saveAdmin={saveAdmin} />
         )}
       </div>
-      <AdminProductEditorModal />
-      <AdminHomeProductPickerModal />
+      {AdminProductEditorModal()}
+      {AdminHomeProductPickerModal()}
     </section>
   );
 }
@@ -3216,7 +3048,7 @@ function Footer({ setPage, openCategory }) {
 
 export function App() {
   const [page, setPageState] = useState("home");
-  const [selected, setSelected] = useState(products[0]);
+  const [selected, setSelected] = useState(catalogFallbackProducts[0]);
   const [collectionCategory, setCollectionCategory] = useState("All");
   const [favorites, setFavorites] = useState(new Set());
   const [searchOpen, setSearchOpen] = useState(false);
@@ -3226,19 +3058,30 @@ export function App() {
   const [notice, setNotice] = useState("");
   const [storeConfig, setStoreConfig] = useState(null);
 
+  // Products published by the admin panel win; the bundled catalogue is the fallback.
+  const products = useMemo(
+    () => (storeConfig?.products?.length ? storeConfig.products.map(withCloudinaryImages) : catalogFallbackProducts),
+    [storeConfig],
+  );
+  const settings = storeConfig?.settings || seedSettings;
+  const store = useMemo(() => ({ products, settings, config: storeConfig }), [products, settings, storeConfig]);
+
   const filtered = useMemo(() => {
-    const q = query.toLowerCase();
-    return products.filter((item) => item.name.toLowerCase().includes(q) || item.category.toLowerCase().includes(q));
-  }, [query]);
+    const q = query.trim().toLowerCase();
+    if (!q) return products;
+    return products.filter((item) => item.name?.toLowerCase().includes(q) || item.category?.toLowerCase().includes(q));
+  }, [products, query]);
 
   const visibleProducts = filtered.length ? filtered : products;
 
   useEffect(() => {
-    fetch("http://127.0.0.1:5175/api/admin")
-      .then((response) => response.ok ? response.json() : null)
-      .then((data) => setStoreConfig(data))
+    const controller = new AbortController();
+    fetch(`${API_BASE}/admin`, { signal: controller.signal })
+      .then((response) => (response.ok ? response.json() : null))
+      .then((data) => data && setStoreConfig(data))
       .catch(() => {});
-  }, [page]);
+    return () => controller.abort();
+  }, []);
 
   useEffect(() => {
     const validPages = new Set(["home", "collections", "product", "new-arrivals", "education", "bespoke", "concierge", "cart", "checkout", "wishlist", "admin"]);
@@ -3273,6 +3116,11 @@ export function App() {
     setPage("product");
   }
 
+  // Keep the open product in sync with admin edits (price, stock, images).
+  useEffect(() => {
+    setSelected((current) => products.find((item) => item.id === current?.id) || products[0] || current);
+  }, [products]);
+
   function toggleFavorite(id) {
     setFavorites((current) => {
       const next = new Set(current);
@@ -3293,6 +3141,15 @@ export function App() {
     setPage("cart");
   }
 
+  function buyNow(product) {
+    setCartItems((current) => {
+      const existing = current.find((item) => item.product.id === product.id);
+      if (existing) return current;
+      return [...current, { product, quantity: 1 }];
+    });
+    setPage("checkout");
+  }
+
   function updateCartQuantity(id, quantity) {
     setCartItems((current) => current
       .map((item) => item.product.id === id ? { ...item, quantity: Math.max(1, quantity) } : item)
@@ -3303,8 +3160,19 @@ export function App() {
     setCartItems((current) => current.filter((item) => item.product.id !== id));
   }
 
+  function clearCart() {
+    setCartItems([]);
+  }
+
   return (
+    <StoreContext.Provider value={store}>
     <main>
+      {page !== "admin" && (settings.announcement || settings.showGoldRate) && (
+        <div className="announcement-bar">
+          {settings.announcement && <span>{settings.announcement}</span>}
+          {settings.showGoldRate && settings.goldRate ? <span>Gold rate: ₹{settings.goldRate}/g</span> : null}
+        </div>
+      )}
       {page !== "admin" && <header className="site-header">
         <nav className={`nav-left ${menuOpen ? "is-open" : ""}`}>
           <button className="menu-button" onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu">
@@ -3328,13 +3196,13 @@ export function App() {
 
       {page === "home" && <HomePage setPage={setPage} openProduct={openProduct} openCategory={openCategory} homepageProducts={storeConfig?.homepageProducts} homepageReels={storeConfig?.reels} homepageCollections={storeConfig?.collections} />}
       {page === "collections" && <CollectionsPage favorites={favorites} toggleFavorite={toggleFavorite} openProduct={openProduct} initialCategory={collectionCategory} categoryBanners={storeConfig?.settings?.categoryBanners} />}
-      {page === "product" && <ProductPage product={selected} favorites={favorites} toggleFavorite={toggleFavorite} addToCart={addToCart} openProduct={openProduct} />}
+      {page === "product" && selected && <ProductPage product={selected} favorites={favorites} toggleFavorite={toggleFavorite} addToCart={addToCart} buyNow={buyNow} openProduct={openProduct} />}
       {page === "new-arrivals" && <NewArrivalsPage openProduct={openProduct} />}
       {page === "education" && <EducationPage />}
       {page === "bespoke" && <BespokePage setCartOpen={() => setPage("cart")} />}
       {page === "concierge" && <ConciergePage notice={notice} setNotice={setNotice} />}
       {page === "cart" && <CartPagePro cartItems={cartItems} updateCartQuantity={updateCartQuantity} removeFromCart={removeFromCart} setPage={setPage} />}
-      {page === "checkout" && <CheckoutPagePro cartItems={cartItems} setNotice={setNotice} setPage={setPage} />}
+      {page === "checkout" && <CheckoutPagePro cartItems={cartItems} setNotice={setNotice} setPage={setPage} clearCart={clearCart} />}
       {page === "wishlist" && <WishlistPage favorites={favorites} toggleFavorite={toggleFavorite} openProduct={openProduct} />}
       {page === "admin" && <AdminPage cartItems={cartItems} favorites={favorites} setPage={setPage} />}
 
@@ -3359,5 +3227,6 @@ export function App() {
       )}
 
     </main>
+    </StoreContext.Provider>
   );
 }

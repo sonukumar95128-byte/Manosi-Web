@@ -223,6 +223,20 @@ h4 {
   font-weight: 600;
 }
 
+.announcement-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 28px;
+  padding: 9px 20px;
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 12px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
 .site-header {
   position: sticky;
   top: 0;
@@ -6338,3 +6352,127 @@ h3 {
     margin-left: 0;
   }
 }
+
+/* ---- Invoices & Tally ---------------------------------------------------- */
+
+.checkout-error {
+  margin: 12px 0 0;
+  padding: 12px 16px;
+  border-radius: 10px;
+  background: rgba(180, 40, 40, 0.09);
+  color: #a12b2b;
+  font-size: 14px;
+}
+
+.checkout-hint {
+  display: block;
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.tally-status-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 22px;
+  border: 1px solid var(--line);
+  border-left: 4px solid #b98b3a;
+  border-radius: 14px;
+  background: #fffaf2;
+}
+
+.tally-status-bar.is-live {
+  border-left-color: #2f7d4f;
+  background: rgba(47, 125, 79, 0.06);
+}
+
+.tally-status-bar strong { display: block; font-size: 15px; }
+.tally-status-bar span { color: var(--muted); font-size: 13px; }
+.tally-status-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+
+.admin-invoice-list { display: grid; gap: 14px; margin-top: 18px; }
+
+.admin-invoice-card {
+  padding: 18px 20px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #fff;
+}
+
+.admin-invoice-head {
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.admin-invoice-head strong { font-size: 16px; }
+.admin-invoice-head span { display: block; color: var(--muted); font-size: 13px; }
+.admin-invoice-total { text-align: right; }
+
+.tally-badge {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 3px 12px;
+  border-radius: 999px;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.tally-badge.synced { background: rgba(47, 125, 79, 0.14); color: #226039; }
+.tally-badge.pending { background: rgba(185, 139, 58, 0.16); color: #8a6420; }
+.tally-badge.failed { background: rgba(180, 40, 40, 0.13); color: #a12b2b; }
+.tally-badge.blocked { background: rgba(17, 17, 17, 0.08); color: var(--muted); }
+
+.admin-invoice-breakup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.admin-invoice-breakup b { color: var(--ink); font-weight: 600; }
+
+.admin-invoice-error {
+  margin: 12px 0 0;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: rgba(180, 40, 40, 0.08);
+  color: #a12b2b;
+  font-size: 13px;
+}
+
+.admin-invoice-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+
+.admin-xml-preview {
+  width: min(900px, 94vw);
+  max-height: 88vh;
+  overflow: auto;
+  padding: 24px;
+  border-radius: 16px;
+  background: #fff;
+}
+
+.admin-xml-preview pre {
+  max-height: 52vh;
+  overflow: auto;
+  padding: 16px;
+  border-radius: 10px;
+  background: #14110d;
+  color: #e9dcc4;
+  font-size: 12px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.tally-settings-grid article p { color: var(--muted); font-size: 12px; }

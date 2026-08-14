@@ -11,13 +11,19 @@ export function cloudinaryFetchImage(url, width = 1200) {
   return `https://res.cloudinary.com/${CLOUDINARY_CLOUD_NAME}/image/fetch/f_auto,q_auto,w_${width}/${encodedUrl}`;
 }
 
+// Idempotent: the raw source URLs are kept alongside the transformed ones, so
+// re-mapping an already-mapped product does not wrap a Cloudinary URL in itself.
 export function withCloudinaryImages(product) {
-  const images = (product.images || []).map((image, index) => cloudinaryFetchImage(image, index === 0 ? 1200 : 1600));
+  const originalImages = product.originalImages?.length ? product.originalImages : product.images || [];
+  const originalImage = product.originalImage || product.image;
+  const originalLifestyle = product.originalLifestyle || product.lifestyle || originalImage;
   return {
     ...product,
-    image: cloudinaryFetchImage(product.image, 1200),
-    lifestyle: cloudinaryFetchImage(product.lifestyle || product.image, 1600),
-    images,
-    originalImages: product.images || [],
+    originalImage,
+    originalLifestyle,
+    originalImages,
+    image: cloudinaryFetchImage(originalImage, 1200),
+    lifestyle: cloudinaryFetchImage(originalLifestyle, 1600),
+    images: originalImages.map((image, index) => cloudinaryFetchImage(image, index === 0 ? 1200 : 1600)),
   };
 }
