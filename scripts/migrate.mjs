@@ -49,11 +49,9 @@ async function main() {
   const defaults = storeDefaults();
   let written = 0;
   for (const [key, value] of Object.entries(defaults)) {
-    const current = await db.readStore(key, undefined);
-    if (current === undefined) {
-      await db.writeStore(key, value);
-      written += 1;
-    }
+    if (await db.hasStoreKey(key)) continue;
+    await db.writeStore(key, value);
+    written += 1;
   }
   console.log(`Store documents seeded: ${written} written, ${Object.keys(defaults).length - written} already present.`);
 

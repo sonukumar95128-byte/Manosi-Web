@@ -55,6 +55,16 @@ export async function writeStore(key, value) {
   return value;
 }
 
+/**
+ * True when the key has a row, regardless of its value.
+ * readStore() cannot answer this: passing `undefined` as its fallback triggers
+ * the default parameter, so a missing row is indistinguishable from a stored null.
+ */
+export async function hasStoreKey(key) {
+  const rows = await sql()`SELECT 1 FROM store WHERE key = ${key} LIMIT 1`;
+  return rows.length > 0;
+}
+
 export async function readStoreMany(keys) {
   const rows = await sql()`SELECT key, value FROM store WHERE key = ANY(${keys})`;
   return Object.fromEntries(rows.map((row) => [row.key, row.value]));
