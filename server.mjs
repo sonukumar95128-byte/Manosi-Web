@@ -16,9 +16,10 @@ async function bodyJson(req) {
   return raw ? JSON.parse(raw) : {};
 }
 
-function send(res, status, data, { origin = "", cookie = "" } = {}) {
+function send(res, status, data, { origin = "", cookie = "", cacheControl = "" } = {}) {
   const headers = {
     "content-type": "application/json; charset=utf-8",
+    "cache-control": cacheControl || "private, no-store, max-age=0",
     // The dev frontend runs on a different port, so echo its origin rather than
     // using "*" - browsers refuse to send cookies to a wildcard origin.
     "access-control-allow-origin": origin || "*",
@@ -49,7 +50,7 @@ createServer(async (req, res) => {
     if (result.setSession) cookie = sessionCookie(result.setSession, { secure: false });
     if (result.clearSession) cookie = clearedCookie({ secure: false });
 
-    return send(res, result.status, result.data, { origin, cookie });
+    return send(res, result.status, result.data, { origin, cookie, cacheControl: result.cacheControl });
   } catch (error) {
     console.error("[api]", error);
     return send(res, 500, { error: error.message }, { origin });

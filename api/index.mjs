@@ -42,6 +42,10 @@ export default async function handler(req, res) {
     if (result.setSession) res.setHeader("set-cookie", sessionCookie(result.setSession));
     if (result.clearSession) res.setHeader("set-cookie", clearedCookie());
 
+    // Only routes that opt in are cacheable. Everything else stays uncached so
+    // no signed-in response is ever served to another visitor.
+    res.setHeader("cache-control", result.cacheControl || "private, no-store, max-age=0");
+
     return res.status(result.status).json(result.data);
   } catch (error) {
     console.error("[api]", error);

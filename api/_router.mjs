@@ -245,7 +245,15 @@ export async function handleApiRequest({ method, pathname, body = {}, cookies = 
 
   if (method === "GET" && pathname === "/api/storefront") {
     if (!db.hasDatabase()) return noDatabase;
-    return { status: 200, data: await loadStorefrontPayload() };
+    return {
+      status: 200,
+      data: await loadStorefrontPayload(),
+      // Every page view hit this route, so one database query was running per
+      // visitor. s-maxage lets Vercel's CDN answer instead; stale-while-
+      // revalidate keeps it instant while the refresh happens in the background.
+      // Admin edits therefore take up to a minute to appear on the storefront.
+      cacheControl: "public, s-maxage=60, stale-while-revalidate=300",
+    };
   }
 
   // Customers place orders without logging in; everything below this line is
