@@ -201,6 +201,8 @@ function orderFromInvoice(invoice) {
       .filter(Boolean).join(", "),
     item: item ? item.name : "",
     quantity: invoice.items.reduce((sum, line) => sum + line.quantity, 0),
+    // Full line list so the admin can see every piece, with SKUs to look them up.
+    items: invoice.items.map((line) => ({ sku: line.sku, name: line.name, quantity: line.quantity })),
     total: `${rupee}${Math.round(invoice.totals.total).toLocaleString("en-IN")}`,
     date: invoice.date,
     dateISO: invoice.dateISO,

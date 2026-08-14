@@ -1744,6 +1744,28 @@ function AdminPage({ cartItems, favorites, setPage }) {
     Pendant: "Pendants",
     Nosepins: "Nose Pins",
   }[category] || category);
+
+  /**
+   * Order lines with the matching catalogue product attached, so the card can
+   * show a photo and SKU. Orders placed before line items were recorded only
+   * carry a product name, so those fall back to a name lookup.
+   */
+  const orderLines = (order) => {
+    const findProduct = ({ sku, name }) => adminProducts.find((product) =>
+      (sku && (product.sku === sku || product.id === sku))
+      || (name && product.name?.toLowerCase() === String(name).toLowerCase()));
+
+    if (order.items?.length) {
+      return order.items.map((line) => ({ ...line, product: findProduct(line) }));
+    }
+    return [{
+      sku: "",
+      name: order.item || "Item",
+      quantity: order.quantity || 1,
+      product: findProduct({ name: order.item }),
+    }];
+  };
+
   const categoryOptions = ["All categories", ...new Set(adminProducts.map((product) => product.category).filter(Boolean))];
   const metalOptions = ["All metals", ...new Set(adminProducts.map((product) => product.goldColour).filter(Boolean))];
   const karatOptions = ["All karats", ...new Set(adminProducts.map((product) => product.goldKarat).filter(Boolean))];
@@ -2498,7 +2520,23 @@ function AdminPage({ cartItems, favorites, setPage }) {
                 </div>
               </div>
               <div className="admin-order-items">
-                <span>{order.item} × {order.quantity}</span>
+                {orderLines(order).map((line, index) => (
+                  <article className="admin-order-line" key={`${order.id}-line-${line.sku || index}`}>
+                    <img
+                      src={imageUrl(line.product?.image || categoryFallbackImages[line.product?.category] || categoryFallbackImages.Rings)}
+                      alt=""
+                      onError={(event) => setImageFallback(event, imageFallbackFor(line.product))}
+                    />
+                    <div>
+                      <strong>{line.name}</strong>
+                      <span>
+                        {line.sku ? <b>{line.sku}</b> : <i>SKU not recorded</i>}
+                        {line.product?.category ? ` · ${adminCategoryLabel(line.product.category)}` : ""}
+                      </span>
+                    </div>
+                    <span className="admin-order-qty">× {line.quantity}</span>
+                  </article>
+                ))}
               </div>
               <div className="admin-order-actions">
                 <button className="mark-paid" onClick={() => saveAdmin(`/orders/${order.id}`, { status: "Paid", statusKey: "paid" }, "PATCH")}>✓ Mark as Paid</button>
