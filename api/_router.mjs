@@ -18,6 +18,7 @@ import { computeInvoiceTotals, toAmount } from "../src/invoiceMath.js";
 import { buildSalesVoucherXml } from "../tally/voucherXml.mjs";
 import { newTallyState, syncInvoice, syncPendingInvoices, tallyConfig } from "../tally/sync.mjs";
 import * as db from "../db/client.mjs";
+import { authConfigured, createSessionToken, isAuthenticated, verifyPassword } from "./auth.mjs";
 
 const rupee = String.fromCharCode(8377);
 
@@ -99,6 +100,45 @@ async function settings() {
   return stored || seedSettings;
 }
 
+/**
+ * Everything the public storefront needs, and nothing else.
+ * Orders, invoices and customers are omitted entirely; settings are reduced to
+ * the handful of fields the shop renders, so the Tally endpoint and token never
+ * leave the server.
+ */
+async function loadStorefrontPayload() {
+  const defaults = storeDefaults();
+  const [stored, products] = await Promise.all([
+    db.readStoreMany(["settings", "collections", "reels", "testimonials", "banners", "homepageProducts"]),
+    db.listProducts(),
+  ]);
+
+  const pick = (key) => (stored[key] === undefined ? defaults[key] : stored[key]);
+  const full = pick("settings") || {};
+  const tally = full.tally || {};
+
+  return {
+    products,
+    collections: pick("collections"),
+    reels: pick("reels"),
+    testimonials: (pick("testimonials") || []).filter((item) => item.status === "Approved"),
+    banners: pick("banners"),
+    homepageProducts: pick("homepageProducts"),
+    settings: {
+      announcement: full.announcement || "",
+      showGoldRate: Boolean(full.showGoldRate),
+      goldRate: full.goldRate || "",
+      freeShippingThreshold: full.freeShippingThreshold || "",
+      gstGold: full.gstGold || "3",
+      upi: full.upi || "",
+      whatsapp: full.whatsapp || "",
+      categoryBanners: full.categoryBanners || {},
+      // Only the two fields checkout needs to show the right GST split.
+      tally: { sellerState: tally.sellerState || "", pricesIncludeGst: tally.pricesIncludeGst !== false },
+    },
+  };
+}
+
 async function buildInvoice(payload, date = new Date()) {
   const config = tallyConfig(await settings());
   const storeSettings = await settings();
@@ -173,13 +213,51 @@ function orderFromInvoice(invoice) {
  * @param {{method:string, pathname:string, body:object}} request
  * @returns {Promise<{status:number, data:object}>}
  */
-export async function handleApiRequest({ method, pathname, body = {} }) {
+export async function handleApiRequest({ method, pathname, body = {}, cookies = "" }) {
   if (method === "OPTIONS") return { status: 200, data: { ok: true } };
   if (!pathname.startsWith("/api")) return { status: 404, data: { error: "Not found" } };
 
-  if (!db.hasDatabase()) {
-    return { status: 503, data: { error: "DATABASE_URL is not configured for this deployment." } };
+  // ---- Auth (no database needed) --------------------------------------------
+
+  if (pathname === "/api/auth/session") {
+    return { status: 200, data: { authenticated: isAuthenticated(cookies), configured: authConfigured() } };
   }
+
+  if (method === "POST" && pathname === "/api/auth/login") {
+    if (!authConfigured()) {
+      return { status: 503, data: { error: "Admin login is not set up. Run: npm run auth:set-password" } };
+    }
+    if (!verifyPassword(body.password || "", process.env.ADMIN_PASSWORD_HASH)) {
+      return { status: 401, data: { error: "Incorrect password" } };
+    }
+    return { status: 200, data: { ok: true }, setSession: createSessionToken() };
+  }
+
+  if (method === "POST" && pathname === "/api/auth/logout") {
+    return { status: 200, data: { ok: true }, clearSession: true };
+  }
+
+  const noDatabase = { status: 503, data: { error: "DATABASE_URL is not configured for this deployment." } };
+
+  // ---- Public storefront data ------------------------------------------------
+
+  if (method === "GET" && pathname === "/api/storefront") {
+    if (!db.hasDatabase()) return noDatabase;
+    return { status: 200, data: await loadStorefrontPayload() };
+  }
+
+  // Customers place orders without logging in; everything below this line is
+  // admin-only. The guard runs before the database check so an unauthenticated
+  // caller learns nothing about how the deployment is configured.
+  const isPublicWrite = method === "POST" && pathname === "/api/invoices";
+  if (!isPublicWrite && !isAuthenticated(cookies)) {
+    return {
+      status: 401,
+      data: { error: authConfigured() ? "Not signed in" : "Admin login is not set up on this deployment." },
+    };
+  }
+
+  if (!db.hasDatabase()) return noDatabase;
 
   if (method === "GET" && pathname === "/api/admin") {
     return { status: 200, data: await loadAdminPayload() };
@@ -206,7 +284,17 @@ export async function handleApiRequest({ method, pathname, body = {} }) {
       tallySync = synced.result;
     }
 
-    return { status: 200, data: { ...(await loadAdminPayload()), createdInvoice: invoice.number, tallySync } };
+    // This route is reachable without a session, so the reply carries only the
+    // customer's own order details - never the admin payload.
+    return {
+      status: 200,
+      data: {
+        createdInvoice: invoice.number,
+        orderId: order.id,
+        total: invoice.totals.total,
+        tallySync: { ok: tallySync.ok, message: tallySync.message },
+      },
+    };
   }
 
   if (method === "POST" && pathname.startsWith("/api/invoices/") && pathname.endsWith("/tally-sync")) {

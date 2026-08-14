@@ -1689,6 +1689,12 @@ function AdminPage({ cartItems, favorites, setPage }) {
   const [reelProductSearch, setReelProductSearch] = useState({});
   const [adminData, setAdminData] = useState(null);
   const [adminNotice, setAdminNotice] = useState("");
+  const [signedIn, setSignedIn] = useState(false);
+  const [authReady, setAuthReady] = useState(false);
+  const [authConfigured, setAuthConfigured] = useState(true);
+  const [password, setPassword] = useState("");
+  const [loginError, setLoginError] = useState("");
+  const [loginBusy, setLoginBusy] = useState(false);
   const adminNav = [
     ["dashboard", "dashboard", "Dashboard"],
     ["inventory_2", "products", "Products"],
@@ -1765,8 +1771,13 @@ function AdminPage({ cartItems, favorites, setPage }) {
   async function adminRequest(path, options) {
     const response = await fetch(`${API_BASE}${path}`, {
       headers: { "content-type": "application/json" },
+      credentials: "include",
       ...options,
     });
+    if (response.status === 401) {
+      setSignedIn(false);
+      throw new Error("Not signed in");
+    }
     if (!response.ok) throw new Error(`Admin API failed: ${response.status}`);
     const nextData = await response.json();
     setAdminData(nextData);
@@ -1775,11 +1786,49 @@ function AdminPage({ cartItems, favorites, setPage }) {
 
   async function loadAdminData() {
     try {
+      const session = await fetch(`${API_BASE}/auth/session`, { credentials: "include" }).then((r) => r.json());
+      setAuthReady(true);
+      setAuthConfigured(session.configured);
+      if (!session.authenticated) {
+        setSignedIn(false);
+        return;
+      }
+      setSignedIn(true);
       await adminRequest("/admin");
       setAdminNotice("Backend connected");
     } catch {
+      setAuthReady(true);
       setAdminNotice("Backend offline: demo mode");
     }
+  }
+
+  async function signIn(event) {
+    event.preventDefault();
+    setLoginError("");
+    setLoginBusy(true);
+    try {
+      const response = await fetch(`${API_BASE}/auth/login`, {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify({ password }),
+      });
+      const result = await response.json();
+      if (!response.ok) throw new Error(result.error || "Sign in failed");
+      setPassword("");
+      setSignedIn(true);
+      await loadAdminData();
+    } catch (error) {
+      setLoginError(error.message);
+    } finally {
+      setLoginBusy(false);
+    }
+  }
+
+  async function signOut() {
+    await fetch(`${API_BASE}/auth/logout`, { method: "POST", credentials: "include" }).catch(() => {});
+    setSignedIn(false);
+    setAdminData(null);
   }
 
   async function saveAdmin(path, data, method = "PUT") {
@@ -2881,6 +2930,45 @@ function AdminPage({ cartItems, favorites, setPage }) {
     settings: "Settings",
   };
 
+  if (authReady && !signedIn) {
+    return (
+      <section className="admin-login-screen">
+        <form className="admin-login-card" onSubmit={signIn}>
+          <div className="admin-login-brand">
+            <strong>Manosi</strong>
+            <span>Diamonds</span>
+          </div>
+          <h3>Admin sign in</h3>
+          {authConfigured ? (
+            <>
+              <label>
+                Password
+                <input
+                  type="password"
+                  autoFocus
+                  value={password}
+                  onChange={(event) => setPassword(event.target.value)}
+                  placeholder="Enter admin password"
+                  required
+                />
+              </label>
+              {loginError && <p className="admin-login-error">{loginError}</p>}
+              <button className="admin-primary-action" disabled={loginBusy}>
+                {loginBusy ? "Signing in..." : "Sign in"}
+              </button>
+            </>
+          ) : (
+            <p className="admin-login-error">
+              Admin login is not set up on this deployment. Run <code>npm run auth:set-password</code> and add
+              ADMIN_PASSWORD_HASH and SESSION_SECRET to the environment.
+            </p>
+          )}
+          <button type="button" className="admin-login-back" onClick={() => setPage("home")}>Back to store</button>
+        </form>
+      </section>
+    );
+  }
+
   return (
     <section className="admin-shell admin-v2">
       <aside className="admin-sidebar">
@@ -2897,7 +2985,7 @@ function AdminPage({ cartItems, favorites, setPage }) {
             </button>
           ))}
         </nav>
-        <button className="admin-logout" onClick={() => setPage("home")}>Log out</button>
+        <button className="admin-logout" onClick={signOut}>Log out</button>
       </aside>
 
       <div className="admin-dashboard">
@@ -3081,7 +3169,8 @@ export function App() {
 
   useEffect(() => {
     const controller = new AbortController();
-    fetch(`${API_BASE}/admin`, { signal: controller.signal })
+    // Public endpoint: products and shop settings only, no orders or secrets.
+    fetch(`${API_BASE}/storefront`, { signal: controller.signal })
       .then((response) => (response.ok ? response.json() : null))
       .then((data) => data && setStoreConfig(data))
       .catch(() => {});

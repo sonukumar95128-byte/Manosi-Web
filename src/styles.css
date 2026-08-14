@@ -6476,3 +6476,68 @@ h3 {
 }
 
 .tally-settings-grid article p { color: var(--muted); font-size: 12px; }
+
+/* ---- Admin login --------------------------------------------------------- */
+
+.admin-login-screen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 24px;
+  background: var(--ivory);
+}
+
+.admin-login-card {
+  width: min(400px, 100%);
+  display: grid;
+  gap: 16px;
+  padding: 34px 32px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: var(--shadow);
+}
+
+.admin-login-brand { text-align: center; line-height: 1.2; }
+.admin-login-brand strong { display: block; font-family: "Playfair Display", serif; font-size: 26px; }
+.admin-login-brand span { font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--muted); }
+
+.admin-login-card h3 { margin: 0; text-align: center; font-size: 17px; font-weight: 600; }
+.admin-login-card label { display: grid; gap: 6px; font-size: 13px; color: var(--muted); }
+
+.admin-login-card input {
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  font-size: 15px;
+  background: #fff;
+}
+
+.admin-login-card input:focus { outline: 2px solid var(--gold); outline-offset: 1px; }
+.admin-login-card button { padding: 12px 16px; border-radius: 9px; cursor: pointer; }
+
+.admin-login-error {
+  margin: 0;
+  padding: 10px 13px;
+  border-radius: 8px;
+  background: rgba(180, 40, 40, 0.09);
+  color: #a12b2b;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.admin-login-error code {
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: rgba(17, 17, 17, 0.07);
+  font-size: 12px;
+}
+
+.admin-login-back {
+  border: none;
+  background: none;
+  color: var(--muted);
+  font-size: 13px;
+  text-decoration: underline;
+}

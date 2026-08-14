@@ -9,7 +9,8 @@
     "api": "node server.mjs",
     "build": "vite build",
     "preview": "vite preview",
-    "db:migrate": "node scripts/migrate.mjs"
+    "db:migrate": "node scripts/migrate.mjs",
+    "auth:set-password": "node scripts/setPassword.mjs"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.1.0",
