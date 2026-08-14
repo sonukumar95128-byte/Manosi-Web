@@ -18,7 +18,7 @@ import { computeInvoiceTotals, toAmount } from "../src/invoiceMath.js";
 import { buildSalesVoucherXml } from "../tally/voucherXml.mjs";
 import { newTallyState, syncInvoice, syncPendingInvoices, tallyConfig } from "../tally/sync.mjs";
 import * as db from "../db/client.mjs";
-import { authConfigured, createSessionToken, isAuthenticated, verifyPassword } from "./auth.mjs";
+import { authConfigured, createSessionToken, isAuthenticated, passwordHashValid, verifyPassword } from "./auth.mjs";
 
 const rupee = String.fromCharCode(8377);
 
@@ -226,6 +226,12 @@ export async function handleApiRequest({ method, pathname, body = {}, cookies = 
   if (method === "POST" && pathname === "/api/auth/login") {
     if (!authConfigured()) {
       return { status: 503, data: { error: "Admin login is not set up. Run: npm run auth:set-password" } };
+    }
+    if (!passwordHashValid()) {
+      return {
+        status: 503,
+        data: { error: "ADMIN_PASSWORD_HASH is not a valid hash - it looks like a password was pasted in. Run: npm run auth:set-password" },
+      };
     }
     if (!verifyPassword(body.password || "", process.env.ADMIN_PASSWORD_HASH)) {
       return { status: 401, data: { error: "Incorrect password" } };

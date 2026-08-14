@@ -15,6 +15,16 @@ export function authConfigured() {
   return Boolean(process.env.ADMIN_PASSWORD_HASH && process.env.SESSION_SECRET);
 }
 
+/**
+ * True only for a real scrypt hash. Pasting the plain password into
+ * ADMIN_PASSWORD_HASH is an easy mistake and otherwise shows up as an endless
+ * "Incorrect password", so callers surface this as its own error.
+ */
+export function passwordHashValid(stored = process.env.ADMIN_PASSWORD_HASH) {
+  const parts = String(stored || "").split(":");
+  return parts.length === 3 && parts[0] === "scrypt" && parts[1].length === 32 && parts[2].length === 128;
+}
+
 // ---- password ---------------------------------------------------------------
 
 export function hashPassword(password, salt = randomBytes(16).toString("hex")) {
