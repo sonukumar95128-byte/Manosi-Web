@@ -12,7 +12,37 @@ export const SESSION_COOKIE = "manosi_session";
 const SESSION_TTL_MS = 12 * 60 * 60 * 1000; // 12 hours
 
 export function authConfigured() {
-  return Boolean(process.env.ADMIN_PASSWORD_HASH && process.env.SESSION_SECRET);
+  return Boolean((process.env.ADMIN_PASSWORD_HASH || process.env.ADMIN_PASSWORD) && process.env.SESSION_SECRET);
+}
+
+function constantTimeEquals(a, b) {
+  const left = Buffer.from(String(a));
+  const right = Buffer.from(String(b));
+  if (left.length !== right.length) return false;
+  return timingSafeEqual(left, right);
+}
+
+/**
+ * Accepts the password either as a scrypt hash (preferred) or in plain text.
+ *
+ * ADMIN_PASSWORD_HASH is checked first. If its value is not actually a hash -
+ * which happens when the password itself gets pasted into it - it is treated as
+ * a plain password rather than failing every login with no explanation.
+ * ADMIN_PASSWORD works the same way, for setups that prefer that name.
+ */
+export function verifyAdminPassword(input) {
+  const stored = process.env.ADMIN_PASSWORD_HASH || "";
+  if (stored && passwordHashValid(stored)) return verifyPassword(input, stored);
+  if (stored) return constantTimeEquals(input, stored);
+  if (process.env.ADMIN_PASSWORD) return constantTimeEquals(input, process.env.ADMIN_PASSWORD);
+  return false;
+}
+
+/** True when the password is stored in plain text rather than hashed. */
+export function usingPlaintextPassword() {
+  const stored = process.env.ADMIN_PASSWORD_HASH || "";
+  if (stored) return !passwordHashValid(stored);
+  return Boolean(process.env.ADMIN_PASSWORD);
 }
 
 /**
