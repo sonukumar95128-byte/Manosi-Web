@@ -89,7 +89,8 @@ async function loadAdminPayload() {
     db.listInvoices(),
   ]);
 
-  const payload = { products, orders, invoices };
+  // Surfaced so the admin can warn about uploads before someone tries one.
+  const payload = { products, orders, invoices, uploadsReady: uploadsConfigured() };
   for (const key of Object.keys(STORE_KEYS)) {
     payload[key] = stored[key] === undefined ? defaults[key] : stored[key];
   }

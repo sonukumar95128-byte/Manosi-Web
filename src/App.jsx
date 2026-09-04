@@ -2998,6 +2998,9 @@ function AdminPage({ cartItems, favorites, setPage }) {
 
     return (
       <section className="admin-banners-panel">
+        {adminData && adminData.uploadsReady === false && (
+          <p className="admin-invoice-error">Image uploads are switched off on this deployment: CLOUDINARY_URL is not set in the Vercel environment. Everything else works, but choosing a file will fail.</p>
+        )}
         <div className={`admin-save-bar ${dirty ? "is-dirty" : ""}`}>
           <div>
             <strong>{dirty ? "You have unsaved banner changes" : "All banner changes saved"}</strong>
