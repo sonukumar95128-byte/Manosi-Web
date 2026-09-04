@@ -19,6 +19,7 @@ import { buildSalesVoucherXml } from "../tally/voucherXml.mjs";
 import { newTallyState, syncInvoice, syncPendingInvoices, tallyConfig } from "../tally/sync.mjs";
 import * as db from "../db/client.mjs";
 import { authConfigured, createSessionToken, isAuthenticated, verifyAdminPassword } from "./auth.mjs";
+import { uploadImage, uploadsConfigured } from "./cloudinaryUpload.mjs";
 
 const rupee = String.fromCharCode(8377);
 
@@ -357,6 +358,21 @@ export async function handleApiRequest({ method, pathname, body = {}, cookies = 
 
     const payload = await loadAdminPayload();
     return { status: 200, data: tallySync ? { ...payload, tallySync } : payload };
+  }
+
+  // ---- Image uploads ---------------------------------------------------------
+
+  if (method === "POST" && pathname === "/api/uploads") {
+    if (!uploadsConfigured()) {
+      return { status: 503, data: { error: "CLOUDINARY_URL is not set on this deployment, so images cannot be uploaded." } };
+    }
+    if (!body.image) return { status: 400, data: { error: "No image supplied" } };
+    try {
+      const result = await uploadImage(body.image, { folder: body.folder || "manosi", resourceType: body.resourceType });
+      return { status: 200, data: result };
+    } catch (error) {
+      return { status: 502, data: { error: error.message } };
+    }
   }
 
   // ---- Products -------------------------------------------------------------

@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { catalogProducts } from "./catalogData";
-import { publicAssetUrl, withCloudinaryImages } from "./cloudinary";
+import { cloudinaryFetchImage, withCloudinaryImages } from "./cloudinary";
 import { computeInvoiceTotals, formatAmount, INDIAN_STATES } from "./invoiceMath";
 import {
   seedBanners,
@@ -151,8 +151,10 @@ function setImageFallback(event, fallback) {
   event.currentTarget.src = imageUrl(fallback);
 }
 
-function imageUrl(url) {
-  return publicAssetUrl(url);
+// Accepts a bundled path, a data: URI from a fresh upload, an external URL, or a
+// bare Cloudinary public_id - banners and collections store the last of these.
+function imageUrl(url, width = 1600) {
+  return cloudinaryFetchImage(url, width);
 }
 
 const pages = [
@@ -1743,6 +1745,8 @@ function AdminPage({ cartItems, favorites, setPage }) {
   const [orderDateFilter, setOrderDateFilter] = useState("all");
   const [reviewFilter, setReviewFilter] = useState("all");
   const [invoiceFilter, setInvoiceFilter] = useState("all");
+  // null means "in sync with the server"; an array means there are unsaved edits.
+  const [bannerDraft, setBannerDraft] = useState(null);
   const [tallyXmlPreview, setTallyXmlPreview] = useState(null);
   const [customerSearch, setCustomerSearch] = useState("");
   const [productEditor, setProductEditor] = useState(null);
@@ -2001,26 +2005,56 @@ function AdminPage({ cartItems, favorites, setPage }) {
     setProductEditor((current) => ({ ...current, [field]: value }));
   }
 
-  function readImageFile(file, onReady) {
-    if (!file) return;
-    if (!file.type.startsWith("image/")) {
-      setAdminNotice("Please upload an image file");
-      return;
-    }
-    const reader = new FileReader();
-    reader.onload = () => onReady(reader.result);
-    reader.readAsDataURL(file);
+  // Uploads go to Cloudinary and only the public_id is stored. Keeping the
+  // base64 in the database put a 2.6 MB banner inside every storefront response.
+  async function uploadToCloudinary(file, { kind = "image", folder = "manosi" }) {
+    const dataUri = await new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = () => reject(new Error("Could not read that file"));
+      reader.readAsDataURL(file);
+    });
+    const response = await fetch(`${API_BASE}/uploads`, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      credentials: "include",
+      body: JSON.stringify({ image: dataUri, folder, resourceType: kind }),
+    });
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok) throw new Error(result.error || `Upload failed (${response.status})`);
+    return result;
   }
 
-  function readVideoFile(file, onReady) {
+  async function readImageFile(file, onReady, folder = "manosi") {
     if (!file) return;
-    if (!file.type.startsWith("video/")) {
-      setAdminNotice("Please upload a video file");
+    if (!file.type.startsWith("image/")) {
+      setAdminNotice("Please choose an image file");
       return;
     }
-    const reader = new FileReader();
-    reader.onload = () => onReady(reader.result);
-    reader.readAsDataURL(file);
+    setAdminNotice(`Uploading ${file.name}...`);
+    try {
+      const result = await uploadToCloudinary(file, { kind: "image", folder });
+      setAdminNotice(`Uploaded ${file.name} (${Math.round(result.bytes / 1024)} KB)`);
+      onReady(result.publicId);
+    } catch (error) {
+      setAdminNotice(`Upload failed: ${error.message}`);
+    }
+  }
+
+  async function readVideoFile(file, onReady) {
+    if (!file) return;
+    if (!file.type.startsWith("video/")) {
+      setAdminNotice("Please choose a video file");
+      return;
+    }
+    setAdminNotice(`Uploading ${file.name}... this can take a minute`);
+    try {
+      const result = await uploadToCloudinary(file, { kind: "video", folder: "manosi/reels" });
+      setAdminNotice(`Uploaded ${file.name} (${Math.round(result.bytes / 1024)} KB)`);
+      onReady(result.url);
+    } catch (error) {
+      setAdminNotice(`Upload failed: ${error.message}`);
+    }
   }
 
   function parseCsv(text) {
@@ -2908,13 +2942,20 @@ function AdminPage({ cartItems, favorites, setPage }) {
   }
 
   function AdminBannersPanel() {
-    const banners = liveBanners;
+    // Edits collect in a draft so nothing is written until Save is pressed.
+    const banners = bannerDraft ?? liveBanners;
+    const dirty = bannerDraft !== null;
     const categoryBannerKeys = ["All", ...menuCategories];
     const categoryBanners = liveSettings.categoryBanners || {};
-    const updateBanner = (banner, patch) => saveAdmin("/banners", banners.map((item) => item.id === banner.id ? { ...item, ...patch } : item));
-    const removeBanner = (banner) => saveAdmin("/banners", banners.filter((item) => item.id !== banner.id));
+    const updateBanner = (banner, patch) => setBannerDraft(banners.map((item) => item.id === banner.id ? { ...item, ...patch } : item));
+    const removeBanner = (banner) => setBannerDraft(banners.filter((item) => item.id !== banner.id));
+    const saveBanners = async () => {
+      await saveAdmin("/banners", banners);
+      setBannerDraft(null);
+    };
+    // Category banners live in settings and stay immediate - one image, one click.
     const updateCategoryBanner = (category, image) => saveAdmin("/settings", { ...liveSettings, categoryBanners: { ...categoryBanners, [category]: image } });
-    const addBanner = (section) => saveAdmin("/banners", [{
+    const addBanner = (section) => setBannerDraft([{
       id: `${section}-${Date.now()}`,
       section,
       title: section === "hero" ? "New hero slide" : "New campaign slide",
@@ -2934,10 +2975,10 @@ function AdminPage({ cartItems, favorites, setPage }) {
       <article key={banner.id}>
         <img src={imageUrl(banner.image)} alt="" onError={(event) => setImageFallback(event, BANNER_SECTIONS[section]?.sample || categoryFallbackImages.Rings)} />
         <input defaultValue={banner.title} onBlur={(event) => updateBanner(banner, { title: event.target.value })} placeholder="Slide name (internal only)" />
-        <label className="admin-upload-control">Upload {BANNER_SECTIONS[section]?.desktop} px<input type="file" accept="image/*" onChange={(event) => readImageFile(event.target.files?.[0], (image) => updateBanner(banner, { image }))} /></label>
+        <label className="admin-upload-control">Upload {BANNER_SECTIONS[section]?.desktop} px<input type="file" accept="image/*" onChange={(event) => readImageFile(event.target.files?.[0], (image) => updateBanner(banner, { image }), "manosi/banners")} /></label>
         <button onClick={() => { const image = window.prompt("Image path or URL", banner.image); if (image) updateBanner(banner, { image }); }}>Change image URL</button>
         {section === "hero" && (
-          <label className="admin-upload-control">Upload mobile {BANNER_SECTIONS.hero.mobile} px<input type="file" accept="image/*" onChange={(event) => readImageFile(event.target.files?.[0], (mobileImage) => updateBanner(banner, { mobileImage }))} /></label>
+          <label className="admin-upload-control">Upload mobile {BANNER_SECTIONS.hero.mobile} px<input type="file" accept="image/*" onChange={(event) => readImageFile(event.target.files?.[0], (mobileImage) => updateBanner(banner, { mobileImage }), "manosi/banners")} /></label>
         )}
         {section === "hero" && <span>{banner.mobileImage ? "Mobile image set" : "No mobile image - desktop one will be cropped"}</span>}
         {section === "campaign" && (
@@ -2957,6 +2998,16 @@ function AdminPage({ cartItems, favorites, setPage }) {
 
     return (
       <section className="admin-banners-panel">
+        <div className={`admin-save-bar ${dirty ? "is-dirty" : ""}`}>
+          <div>
+            <strong>{dirty ? "You have unsaved banner changes" : "All banner changes saved"}</strong>
+            <span>{dirty ? "Nothing is live until you press Save." : "Edits here are saved only when you press Save."}</span>
+          </div>
+          <div className="admin-save-bar-actions">
+            <button className="admin-secondary-action" disabled={!dirty} onClick={() => setBannerDraft(null)}>Discard</button>
+            <button className="admin-primary-action" disabled={!dirty} onClick={saveBanners}>Save banners</button>
+          </div>
+        </div>
         {Object.entries(BANNER_SECTIONS).map(([section, meta]) => (
           <div key={section}>
             <div className="admin-panel-heading">

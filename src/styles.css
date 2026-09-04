@@ -6610,3 +6610,35 @@ h3 {
   color: #746962;
   font-size: 13px;
 }
+
+/* ---- Save bar (explicit save, so it is clear when changes go live) -------- */
+
+.admin-save-bar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
+  padding: 14px 20px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fffaf2;
+}
+
+.admin-save-bar.is-dirty {
+  border-color: #d9a441;
+  background: rgba(215, 168, 79, 0.12);
+}
+
+.admin-save-bar strong { display: block; font-size: 14px; }
+.admin-save-bar span { color: var(--muted); font-size: 12.5px; }
+.admin-save-bar-actions { display: flex; gap: 10px; }
+
+.admin-save-bar-actions button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
