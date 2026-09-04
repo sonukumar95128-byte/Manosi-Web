@@ -7,12 +7,12 @@ export const catalogProducts = [
     "price": "₹34,819",
     "regularPrice": "₹38,589",
     "salePrice": "₹34,819",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00230-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00230-2.webp",
+    "image": "ALB00230-1",
+    "lifestyle": "ALB00230-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00230-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00230-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00230-3.webp"
+      "ALB00230-1",
+      "ALB00230-2",
+      "ALB00230-3"
     ],
     "detail": "14KT Yellow Gold | Gold: 1.96g | Diamonds: 7pcs 0.07ct (H-I, VS-SI) | IGI | 10MM×6.5INCH",
     "description": "Style Code: ALB00230 Jewel Code: 103846 Gold: 14KT Yellow Gold (1.96g) Diamonds: 7 pcs, 0.07ct | H-I | VS-SI | IGI Size: 10MM × 6.5INCH",
@@ -48,12 +48,12 @@ export const catalogProducts = [
     "price": "₹27,181",
     "regularPrice": "₹30,291",
     "salePrice": "₹27,181",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00232-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00232-2.webp",
+    "image": "ALB00232-1",
+    "lifestyle": "ALB00232-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00232-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00232-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00232-3.webp"
+      "ALB00232-1",
+      "ALB00232-2",
+      "ALB00232-3"
     ],
     "detail": "14KT Rose Gold | Gold: 1.25g | Diamonds: 5pcs 0.1ct (H-I, VS-SI) | IGI | 4MM×6INCH",
     "description": "Style Code: ALB00232 Jewel Code: 103848 Gold: 14KT Rose Gold (1.25g) Diamonds: 5 pcs, 0.1ct | H-I | VS-SI | IGI Size: 4MM × 6INCH",
@@ -89,12 +89,12 @@ export const catalogProducts = [
     "price": "₹27,009",
     "regularPrice": "₹30,257",
     "salePrice": "₹27,009",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00233-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00233-2.webp",
+    "image": "ALB00233-1",
+    "lifestyle": "ALB00233-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00233-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00233-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00233-3.webp"
+      "ALB00233-1",
+      "ALB00233-2",
+      "ALB00233-3"
     ],
     "detail": "14KT Rose Gold | Gold: 1.41g | Diamonds: 5pcs 0.06ct (H-I, VS-SI) | IGI | 4MM×6.25INCH",
     "description": "Style Code: ALB00233 Jewel Code: 103849 Gold: 14KT Rose Gold (1.41g) Diamonds: 5 pcs, 0.06ct | H-I | VS-SI | IGI Size: 4MM × 6.25INCH",
@@ -130,12 +130,12 @@ export const catalogProducts = [
     "price": "₹34,934",
     "regularPrice": "₹38,837",
     "salePrice": "₹34,934",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00234-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00234-2.webp",
+    "image": "ALB00234-1",
+    "lifestyle": "ALB00234-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00234-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00234-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00234-3.webp"
+      "ALB00234-1",
+      "ALB00234-2",
+      "ALB00234-3"
     ],
     "detail": "14KT Rose Gold | Gold: 1.98g | Diamonds: 4pcs 0.08ct (H-I, VS-SI) | IGI | 8MM×6.5INCH",
     "description": "Style Code: ALB00234 Jewel Code: 103850 Gold: 14KT Rose Gold (1.98g) Diamonds: 4 pcs, 0.08ct | H-I | VS-SI | IGI Size: 8MM × 6.5INCH",
@@ -171,12 +171,12 @@ export const catalogProducts = [
     "price": "₹34,917",
     "regularPrice": "₹38,694",
     "salePrice": "₹34,917",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00235-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00235-2.webp",
+    "image": "ALB00235-1",
+    "lifestyle": "ALB00235-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00235-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00235-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00235-3.webp"
+      "ALB00235-1",
+      "ALB00235-2",
+      "ALB00235-3"
     ],
     "detail": "14KT Rose Gold | Gold: 1.85g | Diamonds: 25pcs 0.1ct (H-I, VS-SI) | IGI | 10MM×6.25INCH",
     "description": "Style Code: ALB00235 Jewel Code: 103851 Gold: 14KT Rose Gold (1.85g) Diamonds: 25 pcs, 0.1ct | H-I | VS-SI | IGI Size: 10MM × 6.25INCH",
@@ -212,12 +212,12 @@ export const catalogProducts = [
     "price": "₹34,876",
     "regularPrice": "₹38,833",
     "salePrice": "₹34,876",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00236-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00236-2.webp",
+    "image": "ALB00236-1",
+    "lifestyle": "ALB00236-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00236-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00236-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00236-3.webp"
+      "ALB00236-1",
+      "ALB00236-2",
+      "ALB00236-3"
     ],
     "detail": "14KT Yellow Gold | Gold: 1.57g | Diamonds: 7pcs 0.07ct (H-I, VS-SI) | IGI | 10MM×6.5INCH",
     "description": "Style Code: ALB00236 Jewel Code: 103852 Gold: 14KT Yellow Gold (1.57g) Diamonds: 7 pcs, 0.07ct | H-I | VS-SI | IGI Size: 10MM × 6.5INCH",
@@ -253,12 +253,12 @@ export const catalogProducts = [
     "price": "₹27,199",
     "regularPrice": "₹30,267",
     "salePrice": "₹27,199",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00237-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00237-2.webp",
+    "image": "ALB00237-1",
+    "lifestyle": "ALB00237-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00237-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00237-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00237-3.webp"
+      "ALB00237-1",
+      "ALB00237-2",
+      "ALB00237-3"
     ],
     "detail": "14KT Rose Gold | Gold: 1.32g | Diamonds: 15pcs 0.07ct (H-I, VS-SI) | IGI | 5MM×6.10INCH",
     "description": "Style Code: ALB00237 Jewel Code: 103853 Gold: 14KT Rose Gold (1.32g) Diamonds: 15 pcs, 0.07ct | H-I | VS-SI | IGI Size: 5MM × 6.10INCH",
@@ -294,12 +294,12 @@ export const catalogProducts = [
     "price": "₹34,793",
     "regularPrice": "₹38,883",
     "salePrice": "₹34,793",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00239-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00239-2.webp",
+    "image": "ALB00239-1",
+    "lifestyle": "ALB00239-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00239-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00239-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00239-3.webp"
+      "ALB00239-1",
+      "ALB00239-2",
+      "ALB00239-3"
     ],
     "detail": "14KT Yellow Gold | Gold: 1.85g | Diamonds: 12pcs 0.06ct (H-I, VS-SI) | IGI | 10MM×6.5INCH",
     "description": "Style Code: ALB00239 Jewel Code: 103939 Gold: 14KT Yellow Gold (1.85g) Diamonds: 12 pcs, 0.06ct | H-I | VS-SI | IGI Size: 10MM × 6.5INCH",
@@ -335,12 +335,12 @@ export const catalogProducts = [
     "price": "₹27,117",
     "regularPrice": "₹30,208",
     "salePrice": "₹27,117",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00240-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00240-2.webp",
+    "image": "ALB00240-1",
+    "lifestyle": "ALB00240-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00240-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00240-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00240-3.webp"
+      "ALB00240-1",
+      "ALB00240-2",
+      "ALB00240-3"
     ],
     "detail": "14KT Rose Gold | Gold: 1.32g | Diamonds: 5pcs 0.08ct (H-I, VS-SI) | IGI | 6MM×6.25INCH",
     "description": "Style Code: ALB00240 Jewel Code: 103940 Gold: 14KT Rose Gold (1.32g) Diamonds: 5 pcs, 0.08ct | H-I | VS-SI | IGI Size: 6MM × 6.25INCH",
@@ -376,12 +376,12 @@ export const catalogProducts = [
     "price": "₹26,965",
     "regularPrice": "₹30,203",
     "salePrice": "₹26,965",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00241-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00241-2.webp",
+    "image": "ALB00241-1",
+    "lifestyle": "ALB00241-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00241-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00241-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00241-3.webp"
+      "ALB00241-1",
+      "ALB00241-2",
+      "ALB00241-3"
     ],
     "detail": "14KT Rose Gold | Gold: 1.25g | Diamonds: 5pcs 0.09ct (H-I, VS-SI) | IGI | 5MM×6.25INCH",
     "description": "Style Code: ALB00241 Jewel Code: 103941 Gold: 14KT Rose Gold (1.25g) Diamonds: 5 pcs, 0.09ct | H-I | VS-SI | IGI Size: 5MM × 6.25INCH",
@@ -417,12 +417,12 @@ export const catalogProducts = [
     "price": "₹27,025",
     "regularPrice": "₹30,042",
     "salePrice": "₹27,025",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00242-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00242-2.webp",
+    "image": "ALB00242-1",
+    "lifestyle": "ALB00242-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00242-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00242-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00242-3.webp"
+      "ALB00242-1",
+      "ALB00242-2",
+      "ALB00242-3"
     ],
     "detail": "14KT Rose Gold | Gold: 1.4g | Diamonds: 5pcs 0.08ct (H-I, VS-SI) | IGI | 5MM×6INCH",
     "description": "Style Code: ALB00242 Jewel Code: 103942 Gold: 14KT Rose Gold (1.4g) Diamonds: 5 pcs, 0.08ct | H-I | VS-SI | IGI Size: 5MM × 6INCH",
@@ -458,12 +458,12 @@ export const catalogProducts = [
     "price": "₹34,828",
     "regularPrice": "₹38,622",
     "salePrice": "₹34,828",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00243-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00243-2.webp",
+    "image": "ALB00243-1",
+    "lifestyle": "ALB00243-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00243-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00243-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00243-3.webp"
+      "ALB00243-1",
+      "ALB00243-2",
+      ""
     ],
     "detail": "14KT Yellow Gold | Gold: 2.31g | Diamonds: 20pcs 0.1ct (H-I, VS-SI) | IGI | 10MM×6.25INCH",
     "description": "Style Code: ALB00243 Jewel Code: 103943 Gold: 14KT Yellow Gold (2.31g) Diamonds: 20 pcs, 0.1ct | H-I | VS-SI | IGI Size: 10MM × 6.25INCH",
@@ -499,12 +499,12 @@ export const catalogProducts = [
     "price": "₹34,997",
     "regularPrice": "₹38,836",
     "salePrice": "₹34,997",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00244-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00244-2.webp",
+    "image": "ALB00244-1",
+    "lifestyle": "ALB00244-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00244-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00244-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00244-3.webp"
+      "ALB00244-1",
+      "ALB00244-2",
+      "ALB00244-3"
     ],
     "detail": "14KT Yellow Gold | Gold: 1.76g | Diamonds: 4pcs 0.08ct (H-I, VS-SI) | IGI | 10MM×6.5INCH",
     "description": "Style Code: ALB00244 Jewel Code: 103944 Gold: 14KT Yellow Gold (1.76g) Diamonds: 4 pcs, 0.08ct | H-I | VS-SI | IGI Size: 10MM × 6.5INCH",
@@ -540,12 +540,12 @@ export const catalogProducts = [
     "price": "₹34,840",
     "regularPrice": "₹38,662",
     "salePrice": "₹34,840",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00245-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00245-2.webp",
+    "image": "ALB00245-1",
+    "lifestyle": "ALB00245-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00245-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00245-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00245-3.webp"
+      "ALB00245-1",
+      "ALB00245-2",
+      "ALB00245-3"
     ],
     "detail": "14KT Rose Gold | Gold: 2.11g | Diamonds: 4pcs 0.04ct (H-I, VS-SI) | IGI | 10MM×6.5INCH",
     "description": "Style Code: ALB00245 Jewel Code: 103945 Gold: 14KT Rose Gold (2.11g) Diamonds: 4 pcs, 0.04ct | H-I | VS-SI | IGI Size: 10MM × 6.5INCH",
@@ -581,12 +581,12 @@ export const catalogProducts = [
     "price": "₹54,339",
     "regularPrice": "₹60,501",
     "salePrice": "₹54,339",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00249-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00249-2.webp",
+    "image": "ALB00249-1",
+    "lifestyle": "ALB00249-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00249-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00249-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALB00249-3.webp"
+      "ALB00249-1",
+      "ALB00249-2",
+      ""
     ],
     "detail": "14KT Rose Gold | Gold: 3.08g | Diamonds: 30pcs 0.02ct (H-I, VS-SI) | IGI | 20MM×25MM",
     "description": "Style Code: ALB00249 Jewel Code: 103946 Gold: 14KT Rose Gold (3.08g) Diamonds: 30 pcs, 0.02ct | H-I | VS-SI | IGI Size: 20MM × 25MM",
@@ -622,12 +622,12 @@ export const catalogProducts = [
     "price": "₹19,227",
     "regularPrice": "₹21,272",
     "salePrice": "₹19,227",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00390-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00390-2.webp",
+    "image": "ALR00390-1",
+    "lifestyle": "ALR00390-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00390-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00390-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00390-3.webp"
+      "ALR00390-1",
+      "ALR00390-2",
+      "ALR00390-3"
     ],
     "detail": "14KT Rose Gold | Gold: 0.93g | Diamonds: 6pcs 0.07ct (H-I, VS-SI) | IGI | 15MM×8MM",
     "description": "Style Code: ALR00390 Jewel Code: 104106 Gold: 14KT Rose Gold (0.93g) Diamonds: 6 pcs, 0.07ct | H-I | VS-SI | IGI Size: 15MM × 8MM",
@@ -663,12 +663,12 @@ export const catalogProducts = [
     "price": "₹67,376",
     "regularPrice": "₹74,991",
     "salePrice": "₹67,376",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00801-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00801-2.webp",
+    "image": "ALR00801-1",
+    "lifestyle": "ALR00801-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00801-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00801-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00801-3.webp"
+      "ALR00801-1",
+      "ALR00801-2",
+      "ALR00801-3"
     ],
     "detail": "14KT Yellow Gold | Gold: 3.23g | Diamonds: 15pcs 0.25ct (E-F, VVS-VS) | DGLA | 20MM×20MM",
     "description": "Style Code: ALR00801 Jewel Code: 103690 Gold: 14KT Yellow Gold (3.23g) Diamonds: 15 pcs, 0.25ct | E-F | VVS-VS | DGLA Size: 20MM × 20MM",
@@ -704,12 +704,12 @@ export const catalogProducts = [
     "price": "₹19,122",
     "regularPrice": "₹21,059",
     "salePrice": "₹19,122",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00803-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00803-2.webp",
+    "image": "ALR00803-1",
+    "lifestyle": "ALR00803-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00803-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00803-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00803-3.webp"
+      "ALR00803-1",
+      "ALR00803-2",
+      "ALR00803-3"
     ],
     "detail": "14KT Rose Gold | Gold: 0.87g | Diamonds: 7pcs 0.05ct (H-I, VS-SI) | IGI | 8MM×8MM",
     "description": "Style Code: ALR00803 Jewel Code: 103693 Gold: 14KT Rose Gold (0.87g) Diamonds: 7 pcs, 0.05ct | H-I | VS-SI | IGI Size: 8MM × 8MM",
@@ -745,12 +745,12 @@ export const catalogProducts = [
     "price": "₹19,294",
     "regularPrice": "₹21,393",
     "salePrice": "₹19,294",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00804-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00804-2.webp",
+    "image": "ALR00804-1",
+    "lifestyle": "ALR00804-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00804-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00804-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00804-3.webp"
+      "ALR00804-1",
+      "ALR00804-2",
+      "ALR00804-3"
     ],
     "detail": "14KT Rose Gold | Gold: 0.91g | Diamonds: 7pcs 0.04ct (H-I, VS-SI) | IGI | 15MM×10MM",
     "description": "Style Code: ALR00804 Jewel Code: 103694 Gold: 14KT Rose Gold (0.91g) Diamonds: 7 pcs, 0.04ct | H-I | VS-SI | IGI Size: 15MM × 10MM",
@@ -786,12 +786,12 @@ export const catalogProducts = [
     "price": "₹19,311",
     "regularPrice": "₹21,065",
     "salePrice": "₹19,311",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00805-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00805-2.webp",
+    "image": "ALR00805-1",
+    "lifestyle": "ALR00805-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00805-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00805-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00805-3.webp"
+      "ALR00805-1",
+      "ALR00805-2",
+      "ALR00805-3"
     ],
     "detail": "14KT Rose Gold | Gold: 0.94g | Diamonds: 12pcs 0.08ct (H-I, VS-SI) | IGI | 8MM×8MM",
     "description": "Style Code: ALR00805 Jewel Code: 103695 Gold: 14KT Rose Gold (0.94g) Diamonds: 12 pcs, 0.08ct | H-I | VS-SI | IGI Size: 8MM × 8MM",
@@ -827,12 +827,12 @@ export const catalogProducts = [
     "price": "₹19,267",
     "regularPrice": "₹21,275",
     "salePrice": "₹19,267",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00806-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00806-2.webp",
+    "image": "ALR00806-1",
+    "lifestyle": "ALR00806-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00806-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00806-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00806-3.webp"
+      "ALR00806-1",
+      "ALR00806-2",
+      "ALR00806-3"
     ],
     "detail": "14KT Rose Gold | Gold: 0.93g | Diamonds: 12pcs 0.07ct (H-I, VS-SI) | IGI | 5MM×8MM",
     "description": "Style Code: ALR00806 Jewel Code: 103696 Gold: 14KT Rose Gold (0.93g) Diamonds: 12 pcs, 0.07ct | H-I | VS-SI | IGI Size: 5MM × 8MM",
@@ -868,12 +868,12 @@ export const catalogProducts = [
     "price": "₹19,297",
     "regularPrice": "₹21,197",
     "salePrice": "₹19,297",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00807-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00807-2.webp",
+    "image": "ALR00807-1",
+    "lifestyle": "ALR00807-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00807-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00807-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00807-3.webp"
+      "ALR00807-1",
+      "ALR00807-2",
+      "ALR00807-3"
     ],
     "detail": "14KT Rose Gold | Gold: 1.04g | Diamonds: 14pcs 0.08ct (H-I, VS-SI) | IGI | 10MM×15MM",
     "description": "Style Code: ALR00807 Jewel Code: 103697 Gold: 14KT Rose Gold (1.04g) Diamonds: 14 pcs, 0.08ct | H-I | VS-SI | IGI Size: 10MM × 15MM",
@@ -909,12 +909,12 @@ export const catalogProducts = [
     "price": "₹19,036",
     "regularPrice": "₹21,174",
     "salePrice": "₹19,036",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00808-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00808-2.webp",
+    "image": "ALR00808-1",
+    "lifestyle": "ALR00808-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00808-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00808-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00808-3.webp"
+      "ALR00808-1",
+      "ALR00808-2",
+      "ALR00808-3"
     ],
     "detail": "14KT Yellow Gold | Gold: 0.97g | Diamonds: 3pcs 0.07ct (H-I, VS-SI) | IGI | 15MM×3MM",
     "description": "Style Code: ALR00808 Jewel Code: 103698 Gold: 14KT Yellow Gold (0.97g) Diamonds: 3 pcs, 0.07ct | H-I | VS-SI | IGI Size: 15MM × 3MM",
@@ -950,12 +950,12 @@ export const catalogProducts = [
     "price": "₹19,112",
     "regularPrice": "₹21,257",
     "salePrice": "₹19,112",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00809-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00809-2.webp",
+    "image": "ALR00809-1",
+    "lifestyle": "ALR00809-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00809-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00809-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00809-3.webp"
+      "ALR00809-1",
+      "ALR00809-2",
+      "ALR00809-3"
     ],
     "detail": "14KT Rose Gold | Gold: 0.99g | Diamonds: 15pcs 0.05ct (H-I, VS-SI) | IGI | 10MM×18MM",
     "description": "Style Code: ALR00809 Jewel Code: 103699 Gold: 14KT Rose Gold (0.99g) Diamonds: 15 pcs, 0.05ct | H-I | VS-SI | IGI Size: 10MM × 18MM",
@@ -991,12 +991,12 @@ export const catalogProducts = [
     "price": "₹19,238",
     "regularPrice": "₹21,365",
     "salePrice": "₹19,238",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00810-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00810-2.webp",
+    "image": "ALR00810-1",
+    "lifestyle": "ALR00810-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00810-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00810-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00810-3.webp"
+      "ALR00810-1",
+      "ALR00810-2",
+      "ALR00810-3"
     ],
     "detail": "14KT Rose Gold | Gold: 1.02g | Diamonds: 4pcs 0.07ct (H-I, VS-SI) | IGI | 4MM×6MM",
     "description": "Style Code: ALR00810 Jewel Code: 103700 Gold: 14KT Rose Gold (1.02g) Diamonds: 4 pcs, 0.07ct | H-I | VS-SI | IGI Size: 4MM × 6MM",
@@ -1032,12 +1032,12 @@ export const catalogProducts = [
     "price": "₹19,022",
     "regularPrice": "₹21,269",
     "salePrice": "₹19,022",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00811-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00811-2.webp",
+    "image": "ALR00811-1",
+    "lifestyle": "ALR00811-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00811-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00811-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00811-3.webp"
+      "ALR00811-1",
+      "ALR00811-2",
+      "ALR00811-3"
     ],
     "detail": "14KT Yellow Gold | Gold: 0.87g | Diamonds: 17pcs 0.08ct (H-I, VS-SI) | IGI | 20MM×20MM",
     "description": "Style Code: ALR00811 Jewel Code: 103701 Gold: 14KT Yellow Gold (0.87g) Diamonds: 17 pcs, 0.08ct | H-I | VS-SI | IGI Size: 20MM × 20MM",
@@ -1073,12 +1073,12 @@ export const catalogProducts = [
     "price": "₹19,210",
     "regularPrice": "₹21,302",
     "salePrice": "₹19,210",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00813-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00813-2.webp",
+    "image": "ALR00813-1",
+    "lifestyle": "ALR00813-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00813-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00813-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00813-3.webp"
+      "ALR00813-1",
+      "ALR00813-2",
+      "ALR00813-3"
     ],
     "detail": "14KT Rose Gold | Gold: 0.85g | Diamonds: 8pcs 0.06ct (H-I, VS-SI) | IGI | 10MM×10MM",
     "description": "Style Code: ALR00813 Jewel Code: 103703 Gold: 14KT Rose Gold (0.85g) Diamonds: 8 pcs, 0.06ct | H-I | VS-SI | IGI Size: 10MM × 10MM",
@@ -1114,12 +1114,12 @@ export const catalogProducts = [
     "price": "₹19,094",
     "regularPrice": "₹21,429",
     "salePrice": "₹19,094",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00814-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00814-2.webp",
+    "image": "ALR00814-1",
+    "lifestyle": "ALR00814-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00814-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00814-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00814-3.webp"
+      "ALR00814-1",
+      "ALR00814-2",
+      "ALR00814-3"
     ],
     "detail": "14KT Rose Gold | Gold: 1.08g | Diamonds: 7pcs 0.07ct (H-I, VS-SI) | IGI | 5MM×5MM",
     "description": "Style Code: ALR00814 Jewel Code: 103704 Gold: 14KT Rose Gold (1.08g) Diamonds: 7 pcs, 0.07ct | H-I | VS-SI | IGI Size: 5MM × 5MM",
@@ -1155,12 +1155,12 @@ export const catalogProducts = [
     "price": "₹18,998",
     "regularPrice": "₹21,083",
     "salePrice": "₹18,998",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00815-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00815-2.webp",
+    "image": "ALR00815-1",
+    "lifestyle": "ALR00815-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00815-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00815-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00815-3.webp"
+      "ALR00815-1",
+      "ALR00815-2",
+      "ALR00815-3"
     ],
     "detail": "14KT Rose Gold | Gold: 1.18g | Diamonds: 14pcs 0.05ct (H-I, VS-SI) | IGI | 10MM×8MM",
     "description": "Style Code: ALR00815 Jewel Code: 103705 Gold: 14KT Rose Gold (1.18g) Diamonds: 14 pcs, 0.05ct | H-I | VS-SI | IGI Size: 10MM × 8MM",
@@ -1196,11 +1196,11 @@ export const catalogProducts = [
     "price": "₹19,260",
     "regularPrice": "₹21,354",
     "salePrice": "₹19,260",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00816-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00816-2.webp",
+    "image": "ALR00816-1",
+    "lifestyle": "",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00816-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00816-2.webp"
+      "ALR00816-1",
+      ""
     ],
     "detail": "14KT Rose Gold | Gold: 1.1g | Diamonds: 7pcs 0.06ct (H-I, VS-SI) | IGI | 5MM×10MM",
     "description": "Style Code: ALR00816 Jewel Code: 103706 Gold: 14KT Rose Gold (1.1g) Diamonds: 7 pcs, 0.06ct | H-I | VS-SI | IGI Size: 5MM × 10MM",
@@ -1236,12 +1236,12 @@ export const catalogProducts = [
     "price": "₹19,065",
     "regularPrice": "₹21,279",
     "salePrice": "₹19,065",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00817-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00817-2.webp",
+    "image": "ALR00817-1",
+    "lifestyle": "ALR00817-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00817-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00817-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00817-3.webp"
+      "ALR00817-1",
+      "ALR00817-2",
+      "ALR00817-3"
     ],
     "detail": "14KT Rose Gold | Gold: 1.06g | Diamonds: 7pcs 0.08ct (H-I, VS-SI) | IGI | 8MM×10MM",
     "description": "Style Code: ALR00817 Jewel Code: 103707 Gold: 14KT Rose Gold (1.06g) Diamonds: 7 pcs, 0.08ct | H-I | VS-SI | IGI Size: 8MM × 10MM",
@@ -1277,12 +1277,12 @@ export const catalogProducts = [
     "price": "₹19,231",
     "regularPrice": "₹21,443",
     "salePrice": "₹19,231",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00818-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00818-2.webp",
+    "image": "ALR00818-1",
+    "lifestyle": "ALR00818-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00818-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00818-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00818-3.webp"
+      "ALR00818-1",
+      "ALR00818-2",
+      "ALR00818-3"
     ],
     "detail": "14KT Rose Gold | Gold: 0.91g | Diamonds: 13pcs 0.06ct (H-I, VS-SI) | IGI | 16MM×10MM",
     "description": "Style Code: ALR00818 Jewel Code: 103708 Gold: 14KT Rose Gold (0.91g) Diamonds: 13 pcs, 0.06ct | H-I | VS-SI | IGI Size: 16MM × 10MM",
@@ -1318,12 +1318,12 @@ export const catalogProducts = [
     "price": "₹19,026",
     "regularPrice": "₹21,292",
     "salePrice": "₹19,026",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00819-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00819-2.webp",
+    "image": "ALR00819-1",
+    "lifestyle": "ALR00819-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00819-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00819-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00819-3.webp"
+      "ALR00819-1",
+      "ALR00819-2",
+      "ALR00819-3"
     ],
     "detail": "14KT Rose Gold | Gold: 0.77g | Diamonds: 1pcs 0.06ct (H-I, SI) | IGI | 6MM×6MM",
     "description": "Style Code: ALR00819 Jewel Code: 103709 Gold: 14KT Rose Gold (0.77g) Diamonds: 1 pcs, 0.06ct | H-I | SI | IGI Size: 6MM × 6MM",
@@ -1359,12 +1359,12 @@ export const catalogProducts = [
     "price": "₹19,024",
     "regularPrice": "₹21,386",
     "salePrice": "₹19,024",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00821-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00821-2.webp",
+    "image": "ALR00821-1",
+    "lifestyle": "ALR00821-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00821-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00821-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00821-3.webp"
+      "ALR00821-1",
+      "ALR00821-2",
+      "ALR00821-3"
     ],
     "detail": "14KT Rose Gold | Gold: 0.81g | Diamonds: 6pcs 0.06ct (H-I, VS-SI) | IGI | 5MM×4MM",
     "description": "Style Code: ALR00821 Jewel Code: 103711 Gold: 14KT Rose Gold (0.81g) Diamonds: 6 pcs, 0.06ct | H-I | VS-SI | IGI Size: 5MM × 4MM",
@@ -1400,11 +1400,11 @@ export const catalogProducts = [
     "price": "₹18,974",
     "regularPrice": "₹21,212",
     "salePrice": "₹18,974",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00822-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00822-2.webp",
+    "image": "ALR00822-1",
+    "lifestyle": "ALR00822-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00822-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00822-2.webp"
+      "ALR00822-1",
+      "ALR00822-2"
     ],
     "detail": "14KT Rose Gold | Gold: 1.2g | Diamonds: 18pcs 0.07ct (H-I, VS-SI) | IGI | 9MM×10MM",
     "description": "Style Code: ALR00822 Jewel Code: 103721 Gold: 14KT Rose Gold (1.2g) Diamonds: 18 pcs, 0.07ct | H-I | VS-SI | IGI Size: 9MM × 10MM",
@@ -1440,12 +1440,12 @@ export const catalogProducts = [
     "price": "₹18,952",
     "regularPrice": "₹21,162",
     "salePrice": "₹18,952",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00823-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00823-2.webp",
+    "image": "ALR00823-1",
+    "lifestyle": "ALR00823-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00823-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00823-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00823-3.webp"
+      "ALR00823-1",
+      "ALR00823-2",
+      "ALR00823-3"
     ],
     "detail": "14KT Rose Gold | Gold: 0.89g | Diamonds: 7pcs 0.06ct (H-I, VS-SI) | IGI | 12MM×15MM",
     "description": "Style Code: ALR00823 Jewel Code: 103713 Gold: 14KT Rose Gold (0.89g) Diamonds: 7 pcs, 0.06ct | H-I | VS-SI | IGI Size: 12MM × 15MM",
@@ -1481,12 +1481,12 @@ export const catalogProducts = [
     "price": "₹28,936",
     "regularPrice": "₹32,017",
     "salePrice": "₹28,936",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00849-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00849-2.webp",
+    "image": "ALR00849-1",
+    "lifestyle": "ALR00849-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00849-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00849-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00849-3.webp"
+      "ALR00849-1",
+      "ALR00849-2",
+      "ALR00849-3"
     ],
     "detail": "14KT Rose Gold | Gold: 1.3g | Diamonds: 23pcs 0.1ct (H-I, VS-SI) | IGI | 10MM×8MM",
     "description": "Style Code: ALR00849 Jewel Code: 103787 Gold: 14KT Rose Gold (1.3g) Diamonds: 23 pcs, 0.1ct | H-I | VS-SI | IGI Size: 10MM × 8MM",
@@ -1522,12 +1522,12 @@ export const catalogProducts = [
     "price": "₹19,142",
     "regularPrice": "₹21,284",
     "salePrice": "₹19,142",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00850-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00850-2.webp",
+    "image": "ALR00850-1",
+    "lifestyle": "ALR00850-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00850-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00850-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00850-3.webp"
+      "ALR00850-1",
+      "ALR00850-2",
+      "ALR00850-3"
     ],
     "detail": "14KT Yellow Gold | Gold: 0.95g | Diamonds: 9pcs 0.07ct (H-I, VS-SI) | IGI | 15MM×15MM",
     "description": "Style Code: ALR00850 Jewel Code: 103788 Gold: 14KT Yellow Gold (0.95g) Diamonds: 9 pcs, 0.07ct | H-I | VS-SI | IGI Size: 15MM × 15MM",
@@ -1563,12 +1563,12 @@ export const catalogProducts = [
     "price": "₹18,956",
     "regularPrice": "₹21,352",
     "salePrice": "₹18,956",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00851-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00851-2.webp",
+    "image": "ALR00851-1",
+    "lifestyle": "ALR00851-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00851-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00851-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00851-3.webp"
+      "ALR00851-1",
+      "ALR00851-2",
+      "ALR00851-3"
     ],
     "detail": "14KT Yellow Gold | Gold: 1.02g | Diamonds: 6pcs 0.07ct (H-I, VS-SI) | IGI | 10MM×5MM",
     "description": "Style Code: ALR00851 Jewel Code: 103789 Gold: 14KT Yellow Gold (1.02g) Diamonds: 6 pcs, 0.07ct | H-I | VS-SI | IGI Size: 10MM × 5MM",
@@ -1604,12 +1604,12 @@ export const catalogProducts = [
     "price": "₹19,223",
     "regularPrice": "₹21,406",
     "salePrice": "₹19,223",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00852-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00852-2.webp",
+    "image": "ALR00852-1",
+    "lifestyle": "ALR00852-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00852-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00852-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00852-3.webp"
+      "ALR00852-1",
+      "ALR00852-2",
+      "ALR00852-3"
     ],
     "detail": "14KT Yellow Gold | Gold: 0.89g | Diamonds: 8pcs 0.07ct (H-I, VS-SI) | IGI | 10MM×8MM",
     "description": "Style Code: ALR00852 Jewel Code: 103790 Gold: 14KT Yellow Gold (0.89g) Diamonds: 8 pcs, 0.07ct | H-I | VS-SI | IGI Size: 10MM × 8MM",
@@ -1645,12 +1645,12 @@ export const catalogProducts = [
     "price": "₹17,193",
     "regularPrice": "₹19,432",
     "salePrice": "₹17,193",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00853-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00853-2.webp",
+    "image": "ALR00853-1",
+    "lifestyle": "ALR00853-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00853-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00853-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00853-3.webp"
+      "ALR00853-1",
+      "ALR00853-2",
+      "ALR00853-3"
     ],
     "detail": "14KT Yellow Gold | Gold: 0.79g | Diamonds: 17pcs 0.06ct (H-I, VS-SI) | IGI | 4MM×4MM",
     "description": "Style Code: ALR00853 Jewel Code: 103791 Gold: 14KT Yellow Gold (0.79g) Diamonds: 17 pcs, 0.06ct | H-I | VS-SI | IGI Size: 4MM × 4MM",
@@ -1686,12 +1686,12 @@ export const catalogProducts = [
     "price": "₹18,967",
     "regularPrice": "₹21,245",
     "salePrice": "₹18,967",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00862-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00862-2.webp",
+    "image": "ALR00862-1",
+    "lifestyle": "ALR00862-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00862-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00862-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00862-3.webp"
+      "ALR00862-1",
+      "ALR00862-2",
+      "ALR00862-3"
     ],
     "detail": "14KT Rose Gold | Gold: 1.09g | Diamonds: 6pcs 0.07ct (H-I, VS-SI) | IGI | 15MM×10MM",
     "description": "Style Code: ALR00862 Jewel Code: 103920 Gold: 14KT Rose Gold (1.09g) Diamonds: 6 pcs, 0.07ct | H-I | VS-SI | IGI Size: 15MM × 10MM",
@@ -1727,12 +1727,12 @@ export const catalogProducts = [
     "price": "₹19,159",
     "regularPrice": "₹21,363",
     "salePrice": "₹19,159",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00863-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00863-2.webp",
+    "image": "ALR00863-1",
+    "lifestyle": "ALR00863-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00863-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00863-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00863-3.webp"
+      "ALR00863-1",
+      "ALR00863-2",
+      "ALR00863-3"
     ],
     "detail": "14KT Yellow Gold | Gold: 0.83g | Diamonds: 16pcs 0.08ct (H-I, VS-SI) | IGI | 3MM×10MM",
     "description": "Style Code: ALR00863 Jewel Code: 103921 Gold: 14KT Yellow Gold (0.83g) Diamonds: 16 pcs, 0.08ct | H-I | VS-SI | IGI Size: 3MM × 10MM",
@@ -1768,12 +1768,12 @@ export const catalogProducts = [
     "price": "₹19,041",
     "regularPrice": "₹21,183",
     "salePrice": "₹19,041",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00864-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00864-2.webp",
+    "image": "ALR00864-1",
+    "lifestyle": "ALR00864-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00864-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00864-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00864-3.webp"
+      "ALR00864-1",
+      "ALR00864-2",
+      "ALR00864-3"
     ],
     "detail": "14KT Yellow Gold | Gold: 1.07g | Diamonds: 7pcs 0.06ct (H-I, VS-SI) | IGI | 6MM×10MM",
     "description": "Style Code: ALR00864 Jewel Code: 103922 Gold: 14KT Yellow Gold (1.07g) Diamonds: 7 pcs, 0.06ct | H-I | VS-SI | IGI Size: 6MM × 10MM",
@@ -1809,12 +1809,12 @@ export const catalogProducts = [
     "price": "₹19,241",
     "regularPrice": "₹21,406",
     "salePrice": "₹19,241",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00865-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00865-2.webp",
+    "image": "ALR00865-1",
+    "lifestyle": "ALR00865-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00865-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00865-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00865-3.webp"
+      "ALR00865-1",
+      "ALR00865-2",
+      "ALR00865-3"
     ],
     "detail": "14KT Rose Gold | Gold: 0.89g | Diamonds: 7pcs 0.06ct (H-I, VS-SI) | IGI | 10MM×6MM",
     "description": "Style Code: ALR00865 Jewel Code: 103923 Gold: 14KT Rose Gold (0.89g) Diamonds: 7 pcs, 0.06ct | H-I | VS-SI | IGI Size: 10MM × 6MM",
@@ -1850,12 +1850,12 @@ export const catalogProducts = [
     "price": "₹18,958",
     "regularPrice": "₹21,431",
     "salePrice": "₹18,958",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00866-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00866-2.webp",
+    "image": "ALR00866-1",
+    "lifestyle": "ALR00866-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00866-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00866-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00866-3.webp"
+      "ALR00866-1",
+      "ALR00866-2",
+      "ALR00866-3"
     ],
     "detail": "14KT Yellow Gold | Gold: 0.94g | Diamonds: 6pcs 0.07ct (H-I, VS-SI) | IGI | 12MM×15MM",
     "description": "Style Code: ALR00866 Jewel Code: 103924 Gold: 14KT Yellow Gold (0.94g) Diamonds: 6 pcs, 0.07ct | H-I | VS-SI | IGI Size: 12MM × 15MM",
@@ -1891,12 +1891,12 @@ export const catalogProducts = [
     "price": "₹19,192",
     "regularPrice": "₹21,129",
     "salePrice": "₹19,192",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00867-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00867-2.webp",
+    "image": "ALR00867-1",
+    "lifestyle": "ALR00867-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00867-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00867-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00867-3.webp"
+      "ALR00867-1",
+      "ALR00867-2",
+      "ALR00867-3"
     ],
     "detail": "14KT Rose Gold | Gold: 0.77g | Diamonds: 7pcs 0.07ct (H-I, VS-SI) | IGI | 10MM×10MM",
     "description": "Style Code: ALR00867 Jewel Code: 103925 Gold: 14KT Rose Gold (0.77g) Diamonds: 7 pcs, 0.07ct | H-I | VS-SI | IGI Size: 10MM × 10MM",
@@ -1932,12 +1932,12 @@ export const catalogProducts = [
     "price": "₹18,969",
     "regularPrice": "₹21,375",
     "salePrice": "₹18,969",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00868-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00868-2.webp",
+    "image": "ALR00868-1",
+    "lifestyle": "ALR00868-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00868-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00868-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00868-3.webp"
+      "ALR00868-1",
+      "ALR00868-2",
+      "ALR00868-3"
     ],
     "detail": "14KT Yellow Gold | Gold: 0.88g | Diamonds: 10pcs 0.06ct (H-I, VS-SI) | IGI | 12MM×15MM",
     "description": "Style Code: ALR00868 Jewel Code: 103926 Gold: 14KT Yellow Gold (0.88g) Diamonds: 10 pcs, 0.06ct | H-I | VS-SI | IGI Size: 12MM × 15MM",
@@ -1973,12 +1973,12 @@ export const catalogProducts = [
     "price": "₹19,321",
     "regularPrice": "₹21,124",
     "salePrice": "₹19,321",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00869-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00869-2.webp",
+    "image": "ALR00869-1",
+    "lifestyle": "ALR00869-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00869-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00869-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00869-3.webp"
+      "ALR00869-1",
+      "ALR00869-2",
+      "ALR00869-3"
     ],
     "detail": "14KT Rose Gold | Gold: 1.12g | Diamonds: 6pcs 0.09ct (H-I, VS-SI) | IGI | 10MM×15MM",
     "description": "Style Code: ALR00869 Jewel Code: 103927 Gold: 14KT Rose Gold (1.12g) Diamonds: 6 pcs, 0.09ct | H-I | VS-SI | IGI Size: 10MM × 15MM",
@@ -2014,12 +2014,12 @@ export const catalogProducts = [
     "price": "₹19,239",
     "regularPrice": "₹21,125",
     "salePrice": "₹19,239",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00870-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00870-2.webp",
+    "image": "ALR00870-1",
+    "lifestyle": "ALR00870-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00870-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00870-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00870-3.webp"
+      "ALR00870-1",
+      "ALR00870-2",
+      "ALR00870-3"
     ],
     "detail": "14KT Rose Gold | Gold: 0.91g | Diamonds: 16pcs 0.07ct (H-I, VS-SI) | IGI | 10MM×5MM",
     "description": "Style Code: ALR00870 Jewel Code: 103928 Gold: 14KT Rose Gold (0.91g) Diamonds: 16 pcs, 0.07ct | H-I | VS-SI | IGI Size: 10MM × 5MM",
@@ -2055,12 +2055,12 @@ export const catalogProducts = [
     "price": "₹19,313",
     "regularPrice": "₹21,220",
     "salePrice": "₹19,313",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00871-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00871-2.webp",
+    "image": "ALR00871-1",
+    "lifestyle": "ALR00871-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00871-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00871-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00871-3.webp"
+      "ALR00871-1",
+      "ALR00871-2",
+      "ALR00871-3"
     ],
     "detail": "14KT Rose Gold | Gold: 0.9g | Diamonds: 20pcs 0.08ct (H-I, VS-SI) | IGI | 7MM×8MM",
     "description": "Style Code: ALR00871 Jewel Code: 103929 Gold: 14KT Rose Gold (0.9g) Diamonds: 20 pcs, 0.08ct | H-I | VS-SI | IGI Size: 7MM × 8MM",
@@ -2096,12 +2096,12 @@ export const catalogProducts = [
     "price": "₹19,095",
     "regularPrice": "₹21,127",
     "salePrice": "₹19,095",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00872-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00872-2.webp",
+    "image": "ALR00872-1",
+    "lifestyle": "ALR00872-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00872-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00872-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00872-3.webp"
+      "ALR00872-1",
+      "ALR00872-2",
+      "ALR00872-3"
     ],
     "detail": "14KT Rose Gold | Gold: 0.79g | Diamonds: 9pcs 0.07ct (H-I, VS-SI) | IGI | 6MM×6MM",
     "description": "Style Code: ALR00872 Jewel Code: 103930 Gold: 14KT Rose Gold (0.79g) Diamonds: 9 pcs, 0.07ct | H-I | VS-SI | IGI Size: 6MM × 6MM",
@@ -2137,12 +2137,12 @@ export const catalogProducts = [
     "price": "₹18,981",
     "regularPrice": "₹21,187",
     "salePrice": "₹18,981",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00873-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00873-2.webp",
+    "image": "ALR00873-1",
+    "lifestyle": "ALR00873-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00873-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00873-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00873-3.webp"
+      "ALR00873-1",
+      "ALR00873-2",
+      "ALR00873-3"
     ],
     "detail": "14KT Rose Gold | Gold: 0.76g | Diamonds: 21pcs 0.08ct (H-I, VS-SI) | IGI | 12MM×8MM",
     "description": "Style Code: ALR00873 Jewel Code: 103931 Gold: 14KT Rose Gold (0.76g) Diamonds: 21 pcs, 0.08ct | H-I | VS-SI | IGI Size: 12MM × 8MM",
@@ -2178,12 +2178,12 @@ export const catalogProducts = [
     "price": "₹18,932",
     "regularPrice": "₹21,379",
     "salePrice": "₹18,932",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00874-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00874-2.webp",
+    "image": "ALR00874-1",
+    "lifestyle": "ALR00874-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00874-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00874-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00874-3.webp"
+      "ALR00874-1",
+      "ALR00874-2",
+      "ALR00874-3"
     ],
     "detail": "14KT Rose Gold | Gold: 1.11g | Diamonds: 12pcs 0.05ct (H-I, VS-SI) | IGI | 10MM×12MM",
     "description": "Style Code: ALR00874 Jewel Code: 103932 Gold: 14KT Rose Gold (1.11g) Diamonds: 12 pcs, 0.05ct | H-I | VS-SI | IGI Size: 10MM × 12MM",
@@ -2219,12 +2219,12 @@ export const catalogProducts = [
     "price": "₹18,974",
     "regularPrice": "₹21,122",
     "salePrice": "₹18,974",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00894-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00894-2.webp",
+    "image": "ALR00894-1",
+    "lifestyle": "ALR00894-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00894-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00894-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00894-3.webp"
+      "ALR00894-1",
+      "ALR00894-2",
+      "ALR00894-3"
     ],
     "detail": "14KT Rose Gold | Gold: 0.86g | Diamonds: 21pcs 0.08ct (H-I, VS-SI) | IGI | 10MM×10MM",
     "description": "Style Code: ALR00894 Jewel Code: 104226 Gold: 14KT Rose Gold (0.86g) Diamonds: 21 pcs, 0.08ct | H-I | VS-SI | IGI Size: 10MM × 10MM",
@@ -2260,12 +2260,12 @@ export const catalogProducts = [
     "price": "₹19,239",
     "regularPrice": "₹21,358",
     "salePrice": "₹19,239",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00919-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00919-2.webp",
+    "image": "ALR00919-1",
+    "lifestyle": "ALR00919-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00919-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00919-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00919-3.webp"
+      "ALR00919-1",
+      "ALR00919-2",
+      "ALR00919-3"
     ],
     "detail": "14KT Rose Gold | Gold: 0.92g | Diamonds: 9pcs 0.06ct (H-I, VS-SI) | IGI | 10MM×10MM",
     "description": "Style Code: ALR00919 Jewel Code: 104095 Gold: 14KT Rose Gold (0.92g) Diamonds: 9 pcs, 0.06ct | H-I | VS-SI | IGI Size: 10MM × 10MM",
@@ -2301,12 +2301,12 @@ export const catalogProducts = [
     "price": "₹19,072",
     "regularPrice": "₹21,275",
     "salePrice": "₹19,072",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00920-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00920-2.webp",
+    "image": "ALR00920-1",
+    "lifestyle": "ALR00920-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00920-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00920-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00920-3.webp"
+      "ALR00920-1",
+      "ALR00920-2",
+      "ALR00920-3"
     ],
     "detail": "14KT Rose Gold | Gold: 0.79g | Diamonds: 21pcs 0.08ct (H-I, VS-SI) | IGI | 10MM×10MM",
     "description": "Style Code: ALR00920 Jewel Code: 104096 Gold: 14KT Rose Gold (0.79g) Diamonds: 21 pcs, 0.08ct | H-I | VS-SI | IGI Size: 10MM × 10MM",
@@ -2342,12 +2342,12 @@ export const catalogProducts = [
     "price": "₹18,982",
     "regularPrice": "₹21,234",
     "salePrice": "₹18,982",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00932-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00932-2.webp",
+    "image": "ALR00932-1",
+    "lifestyle": "ALR00932-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00932-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00932-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00932-3.webp"
+      "ALR00932-1",
+      "ALR00932-2",
+      "ALR00932-3"
     ],
     "detail": "14KT Rose Gold | Gold: 0.93g | Diamonds: 6pcs 0.07ct (H-I, VS-SI) | IGI | 8MM×8MM",
     "description": "Style Code: ALR00932 Jewel Code: 104108 Gold: 14KT Rose Gold (0.93g) Diamonds: 6 pcs, 0.07ct | H-I | VS-SI | IGI Size: 8MM × 8MM",
@@ -2383,12 +2383,12 @@ export const catalogProducts = [
     "price": "₹19,001",
     "regularPrice": "₹21,148",
     "salePrice": "₹19,001",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00938-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00938-2.webp",
+    "image": "ALR00938-1",
+    "lifestyle": "ALR00938-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00938-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00938-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00938-3.webp"
+      "ALR00938-1",
+      "ALR00938-2",
+      "ALR00938-3"
     ],
     "detail": "14KT Rose Gold | Gold: 0.97g | Diamonds: 12pcs 0.07ct (H-I, VS-SI) | IGI | 10MM×10MM",
     "description": "Style Code: ALR00938 Jewel Code: 104114 Gold: 14KT Rose Gold (0.97g) Diamonds: 12 pcs, 0.07ct | H-I | VS-SI | IGI Size: 10MM × 10MM",
@@ -2424,12 +2424,12 @@ export const catalogProducts = [
     "price": "₹19,081",
     "regularPrice": "₹21,066",
     "salePrice": "₹19,081",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00954-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00954-2.webp",
+    "image": "ALR00954-1",
+    "lifestyle": "ALR00954-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00954-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00954-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ALR00954-3.webp"
+      "ALR00954-1",
+      "ALR00954-2",
+      "ALR00954-3"
     ],
     "detail": "14KT Rose Gold | Gold: 0.91g | Diamonds: 7pcs 0.07ct (H-I, VS-SI) | IGI | 10MM×10MM",
     "description": "Style Code: ALR00954 Jewel Code: 104130 Gold: 14KT Rose Gold (0.91g) Diamonds: 7 pcs, 0.07ct | H-I | VS-SI | IGI Size: 10MM × 10MM",
@@ -2465,12 +2465,12 @@ export const catalogProducts = [
     "price": "₹36,392",
     "regularPrice": "₹40,180",
     "salePrice": "₹36,392",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/AMS00143-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/AMS00143-2.webp",
+    "image": "AMS00143-1",
+    "lifestyle": "AMS00143-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/AMS00143-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/AMS00143-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/AMS00143-3.webp"
+      "AMS00143-1",
+      "AMS00143-2",
+      "AMS00143-3"
     ],
     "detail": "14KT Yellow Gold | Gold: 2.55g | Diamonds: 34pcs 0.11ct (H-I, VS-SI) | IGI | 25MM×18MM",
     "description": "Style Code: AMS00143 Jewel Code: 103718 Gold: 14KT Yellow Gold (2.55g) Diamonds: 34 pcs, 0.11ct | H-I | VS-SI | IGI Size: 25MM × 18MM",
@@ -2506,12 +2506,12 @@ export const catalogProducts = [
     "price": "₹38,914",
     "regularPrice": "₹43,231",
     "salePrice": "₹38,914",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/AMS00144-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/AMS00144-2.webp",
+    "image": "AMS00144-1",
+    "lifestyle": "AMS00144-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/AMS00144-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/AMS00144-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/AMS00144-3.webp"
+      "AMS00144-1",
+      "AMS00144-2",
+      "AMS00144-3"
     ],
     "detail": "14KT Rose Gold | Gold: 2.7g | Diamonds: 5pcs 0.11ct (H-I, VS-SI) | IGI | 8MM×8MM",
     "description": "Style Code: AMS00144 Jewel Code: 103725 Gold: 14KT Rose Gold (2.7g) Diamonds: 5 pcs, 0.11ct | H-I | VS-SI | IGI Size: 8MM × 8MM",
@@ -2547,12 +2547,12 @@ export const catalogProducts = [
     "price": "₹38,943",
     "regularPrice": "₹42,990",
     "salePrice": "₹38,943",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/AMS00145-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/AMS00145-2.webp",
+    "image": "AMS00145-1",
+    "lifestyle": "AMS00145-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/AMS00145-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/AMS00145-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/AMS00145-3.webp"
+      "AMS00145-1",
+      "AMS00145-2",
+      "AMS00145-3"
     ],
     "detail": "14KT Yellow Gold | Gold: 2.74g | Diamonds: 5pcs 0.07ct (H-I, VS-SI) | IGI | 8MM×8MM",
     "description": "Style Code: AMS00145 Jewel Code: 103795 Gold: 14KT Yellow Gold (2.74g) Diamonds: 5 pcs, 0.07ct | H-I | VS-SI | IGI Size: 8MM × 8MM",
@@ -2588,12 +2588,12 @@ export const catalogProducts = [
     "price": "₹38,722",
     "regularPrice": "₹43,122",
     "salePrice": "₹38,722",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/AMS00146-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/AMS00146-2.webp",
+    "image": "AMS00146-1",
+    "lifestyle": "AMS00146-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/AMS00146-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/AMS00146-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/AMS00146-3.webp"
+      "AMS00146-1",
+      "AMS00146-2",
+      "AMS00146-3"
     ],
     "detail": "14KT Rose Gold | Gold: 1.94g | Diamonds: 20pcs 0.08ct (H-I, VS-SI) | IGI | 8MM×8MM",
     "description": "Style Code: AMS00146 Jewel Code: 103796 Gold: 14KT Rose Gold (1.94g) Diamonds: 20 pcs, 0.08ct | H-I | VS-SI | IGI Size: 8MM × 8MM",
@@ -2629,12 +2629,12 @@ export const catalogProducts = [
     "price": "₹28,511",
     "regularPrice": "₹31,744",
     "salePrice": "₹28,511",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/AMS00147-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/AMS00147-2.webp",
+    "image": "AMS00147-1",
+    "lifestyle": "AMS00147-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/AMS00147-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/AMS00147-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/AMS00147-3.webp"
+      "AMS00147-1",
+      "AMS00147-2",
+      "AMS00147-3"
     ],
     "detail": "14KT Rose Gold | Gold: 1.9g | Diamonds: 21pcs 0.13ct (H-I, VS-SI) | IGI | 20MM×20MM",
     "description": "Style Code: AMS00147 Jewel Code: 103797 Gold: 14KT Rose Gold (1.9g) Diamonds: 21 pcs, 0.13ct | H-I | VS-SI | IGI Size: 20MM × 20MM",
@@ -2670,12 +2670,12 @@ export const catalogProducts = [
     "price": "₹38,929",
     "regularPrice": "₹42,922",
     "salePrice": "₹38,929",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/AMS00148-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/AMS00148-2.webp",
+    "image": "AMS00148-1",
+    "lifestyle": "AMS00148-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/AMS00148-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/AMS00148-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/AMS00148-3.webp"
+      "AMS00148-1",
+      "AMS00148-2",
+      "AMS00148-3"
     ],
     "detail": "14KT Yellow Gold | Gold: 2.3g | Diamonds: 5pcs 0.11ct (H-I, VS-SI) | IGI | 9MM×12MM",
     "description": "Style Code: AMS00148 Jewel Code: 103798 Gold: 14KT Yellow Gold (2.3g) Diamonds: 5 pcs, 0.11ct | H-I | VS-SI | IGI Size: 9MM × 12MM",
@@ -2711,12 +2711,12 @@ export const catalogProducts = [
     "price": "₹35,184",
     "regularPrice": "₹39,115",
     "salePrice": "₹35,184",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/AMS00149-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/AMS00149-2.webp",
+    "image": "AMS00149-1",
+    "lifestyle": "AMS00149-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/AMS00149-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/AMS00149-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/AMS00149-3.webp"
+      "AMS00149-1",
+      "AMS00149-2",
+      "AMS00149-3"
     ],
     "detail": "9KT Yellow Gold | Gold: 2.09g | Diamonds: 9pcs 0.18ct (H-I, VS-SI) | IGI | 10MM×5MM",
     "description": "Style Code: AMS00149 Jewel Code: 103947 Gold: 9KT Yellow Gold (2.09g) Diamonds: 9 pcs, 0.18ct | H-I | VS-SI | IGI Size: 10MM × 5MM",
@@ -2752,12 +2752,12 @@ export const catalogProducts = [
     "price": "₹32,938",
     "regularPrice": "₹36,666",
     "salePrice": "₹32,938",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/AMS00150-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/AMS00150-2.webp",
+    "image": "AMS00150-1",
+    "lifestyle": "AMS00150-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/AMS00150-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/AMS00150-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/AMS00150-3.webp"
+      "AMS00150-1",
+      "AMS00150-2",
+      "AMS00150-3"
     ],
     "detail": "9KT Yellow Gold | Gold: 2.04g | Diamonds: 22pcs 0.12ct (H-I, VS-SI) | IGI | 15MM×20MM",
     "description": "Style Code: AMS00150 Jewel Code: 103948 Gold: 9KT Yellow Gold (2.04g) Diamonds: 22 pcs, 0.12ct | H-I | VS-SI | IGI Size: 15MM × 20MM",
@@ -2793,12 +2793,12 @@ export const catalogProducts = [
     "price": "₹32,695",
     "regularPrice": "₹36,057",
     "salePrice": "₹32,695",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/AMS00151-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/AMS00151-2.webp",
+    "image": "AMS00151-1",
+    "lifestyle": "AMS00151-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/AMS00151-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/AMS00151-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/AMS00151-3.webp"
+      "AMS00151-1",
+      "AMS00151-2",
+      "AMS00151-3"
     ],
     "detail": "9KT Yellow Gold | Gold: 2.12g | Diamonds: 6pcs 0.12ct (H-I, VS-SI) | IGI | 10MM×30MM",
     "description": "Style Code: AMS00151 Jewel Code: 103949 Gold: 9KT Yellow Gold (2.12g) Diamonds: 6 pcs, 0.12ct | H-I | VS-SI | IGI Size: 10MM × 30MM",
@@ -2834,12 +2834,12 @@ export const catalogProducts = [
     "price": "₹42,741",
     "regularPrice": "₹47,472",
     "salePrice": "₹42,741",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/AMS00181-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/AMS00181-2.webp",
+    "image": "AMS00181-1",
+    "lifestyle": "AMS00181-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/AMS00181-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/AMS00181-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/AMS00181-3.webp"
+      "AMS00181-1",
+      "AMS00181-2",
+      "AMS00181-3"
     ],
     "detail": "14KT Rose Gold | Gold: 2.17g | Diamonds: 21pcs 0.14ct (H-I, VS-SI) | IGI | 4MM×16INCH",
     "description": "Style Code: AMS00181 Jewel Code: 103933 Gold: 14KT Rose Gold (2.17g) Diamonds: 21 pcs, 0.14ct | H-I | VS-SI | IGI Size: 4MM × 16INCH",
@@ -2875,12 +2875,12 @@ export const catalogProducts = [
     "price": "₹42,625",
     "regularPrice": "₹47,431",
     "salePrice": "₹42,625",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/AMS00183-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/AMS00183-2.webp",
+    "image": "AMS00183-1",
+    "lifestyle": "AMS00183-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/AMS00183-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/AMS00183-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/AMS00183-3.webp"
+      "AMS00183-1",
+      "AMS00183-2",
+      "AMS00183-3"
     ],
     "detail": "14KT Rose Gold | Gold: 2.17g | Diamonds: 21pcs 0.09ct (H-I, VS-SI) | IGI | 4MM×16INCH",
     "description": "Style Code: AMS00183 Jewel Code: 103935 Gold: 14KT Rose Gold (2.17g) Diamonds: 21 pcs, 0.09ct | H-I | VS-SI | IGI Size: 4MM × 16INCH",
@@ -2916,11 +2916,11 @@ export const catalogProducts = [
     "price": "₹10,488",
     "regularPrice": "₹11,646",
     "salePrice": "₹10,488",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANP000061-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANP000061-2.webp",
+    "image": "ANP000061-1",
+    "lifestyle": "ANP000061-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANP000061-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANP000061-2.webp"
+      "ANP000061-1",
+      "ANP000061-2"
     ],
     "detail": "18KT Yellow Gold | Gold: 0.28g | Diamonds: 9pcs 0.04ct (H-I, VS-SI) | IGI | 3MM×3MM",
     "description": "Style Code: ANP000061 Jewel Code: 103722 Gold: 18KT Yellow Gold (0.28g) Diamonds: 9 pcs, 0.04ct | H-I | VS-SI | IGI Size: 3MM × 3MM",
@@ -2956,11 +2956,11 @@ export const catalogProducts = [
     "price": "₹8,120",
     "regularPrice": "₹9,404",
     "salePrice": "₹8,120",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANP00055-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANP00055-2.webp",
+    "image": "ANP00055-1",
+    "lifestyle": "ANP00055-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANP00055-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANP00055-2.webp"
+      "ANP00055-1",
+      "ANP00055-2"
     ],
     "detail": "18KT Yellow Gold | Gold: 0.19g | Diamonds: 4pcs 0.04ct (H-I, VS-SI) | IGI | 2MM×2MM",
     "description": "Style Code: ANP00055 Jewel Code: 103714 Gold: 18KT Yellow Gold (0.19g) Diamonds: 4 pcs, 0.04ct | H-I | VS-SI | IGI Size: 2MM × 2MM",
@@ -2996,11 +2996,11 @@ export const catalogProducts = [
     "price": "₹7,983",
     "regularPrice": "₹9,018",
     "salePrice": "₹7,983",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANP00056-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANP00056-2.webp",
+    "image": "ANP00056-1",
+    "lifestyle": "ANP00056-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANP00056-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANP00056-2.webp"
+      "ANP00056-1",
+      "ANP00056-2"
     ],
     "detail": "18KT Yellow Gold | Gold: 0.14g | Diamonds: 1pcs 0.05ct (H-I, VS-SI) | IGI | 2MM×2MM",
     "description": "Style Code: ANP00056 Jewel Code: 103715 Gold: 18KT Yellow Gold (0.14g) Diamonds: 1 pcs, 0.05ct | H-I | VS-SI | IGI Size: 2MM × 2MM",
@@ -3036,11 +3036,11 @@ export const catalogProducts = [
     "price": "₹6,554",
     "regularPrice": "₹7,115",
     "salePrice": "₹6,554",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANP00057-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANP00057-2.webp",
+    "image": "ANP00057-1",
+    "lifestyle": "ANP00057-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANP00057-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANP00057-2.webp"
+      "ANP00057-1",
+      "ANP00057-2"
     ],
     "detail": "18KT Yellow Gold | Gold: 0.12g | Diamonds: 7pcs 0.03ct (H-I, VS-SI) | IGI | 2MM×2MM",
     "description": "Style Code: ANP00057 Jewel Code: 103716 Gold: 18KT Yellow Gold (0.12g) Diamonds: 7 pcs, 0.03ct | H-I | VS-SI | IGI Size: 2MM × 2MM",
@@ -3076,11 +3076,11 @@ export const catalogProducts = [
     "price": "₹9,626",
     "regularPrice": "₹10,970",
     "salePrice": "₹9,626",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANP00058-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANP00058-2.webp",
+    "image": "ANP00058-1",
+    "lifestyle": "ANP00058-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANP00058-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANP00058-2.webp"
+      "ANP00058-1",
+      "ANP00058-2"
     ],
     "detail": "18KT Yellow Gold | Gold: 0.27g | Diamonds: 4pcs 0.05ct (H-I, VS-SI) | IGI | 2MM×2MM",
     "description": "Style Code: ANP00058 Jewel Code: 103717 Gold: 18KT Yellow Gold (0.27g) Diamonds: 4 pcs, 0.05ct | H-I | VS-SI | IGI Size: 2MM × 2MM",
@@ -3116,11 +3116,11 @@ export const catalogProducts = [
     "price": "₹9,416",
     "regularPrice": "₹10,772",
     "salePrice": "₹9,416",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANP00060-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANP00060-2.webp",
+    "image": "ANP00060-1",
+    "lifestyle": "ANP00060-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANP00060-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANP00060-2.webp"
+      "ANP00060-1",
+      "ANP00060-2"
     ],
     "detail": "18KT Yellow Gold | Gold: 0.24g | Diamonds: 3pcs 0.04ct (H-I, VS-SI) | IGI | 1MM×1MM",
     "description": "Style Code: ANP00060 Jewel Code: 103721 Gold: 18KT Yellow Gold (0.24g) Diamonds: 3 pcs, 0.04ct | H-I | VS-SI | IGI Size: 1MM × 1MM",
@@ -3156,11 +3156,11 @@ export const catalogProducts = [
     "price": "₹9,497",
     "regularPrice": "₹10,682",
     "salePrice": "₹9,497",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANP00062-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANP00062-2.webp",
+    "image": "ANP00062-1",
+    "lifestyle": "ANP00062-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANP00062-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANP00062-2.webp"
+      "ANP00062-1",
+      "ANP00062-2"
     ],
     "detail": "18KT Yellow Gold | Gold: 0.22g | Diamonds: 9pcs 0.05ct (H-I, VS-SI) | IGI | 2MM×3MM",
     "description": "Style Code: ANP00062 Jewel Code: 103723 Gold: 18KT Yellow Gold (0.22g) Diamonds: 9 pcs, 0.05ct | H-I | VS-SI | IGI Size: 2MM × 3MM",
@@ -3196,12 +3196,12 @@ export const catalogProducts = [
     "price": "₹10,411",
     "regularPrice": "₹11,465",
     "salePrice": "₹10,411",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANP00063-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANP00063-2.webp",
+    "image": "ANP00063-1",
+    "lifestyle": "ANP00063-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANP00063-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANP00063-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANP00063-3.webp"
+      "ANP00063-1",
+      "ANP00063-2",
+      ""
     ],
     "detail": "18KT Yellow Gold | Gold: 0.28g | Diamonds: 6pcs 0.04ct (H-I, VS-SI) | IGI | 1MM×8MM",
     "description": "Style Code: ANP00063 Jewel Code: 103724 Gold: 18KT Yellow Gold (0.28g) Diamonds: 6 pcs, 0.04ct | H-I | VS-SI | IGI Size: 1MM × 8MM",
@@ -3237,12 +3237,12 @@ export const catalogProducts = [
     "price": "₹42,709",
     "regularPrice": "₹47,584",
     "salePrice": "₹42,709",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANS00174-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANS00174-2.webp",
+    "image": "ANS00174-1",
+    "lifestyle": "ANS00174-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANS00174-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANS00174-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANS00174-3.webp"
+      "ANS00174-1",
+      "ANS00174-2",
+      "ANS00174-3"
     ],
     "detail": "14KT Yellow Gold | Gold: 2.1g | Diamonds: 7pcs 0.13ct (H-I, VS-SI) | IGI | 2MM×16INCH",
     "description": "Style Code: ANS00174 Jewel Code: 103792 Gold: 14KT Yellow Gold (2.1g) Diamonds: 7 pcs, 0.13ct | H-I | VS-SI | IGI Size: 2MM × 16INCH",
@@ -3278,12 +3278,12 @@ export const catalogProducts = [
     "price": "₹42,801",
     "regularPrice": "₹47,362",
     "salePrice": "₹42,801",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANS00175-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANS00175-2.webp",
+    "image": "ANS00175-1",
+    "lifestyle": "ANS00175-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANS00175-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANS00175-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANS00175-3.webp"
+      "ANS00175-1",
+      "ANS00175-2",
+      "ANS00175-3"
     ],
     "detail": "14KT Rose Gold | Gold: 2.03g | Diamonds: 7pcs 0.15ct (H-I, VS-SI) | IGI | 2MM×16INCH",
     "description": "Style Code: ANS00175 Jewel Code: 103793 Gold: 14KT Rose Gold (2.03g) Diamonds: 7 pcs, 0.15ct | H-I | VS-SI | IGI Size: 2MM × 16INCH",
@@ -3319,12 +3319,12 @@ export const catalogProducts = [
     "price": "₹42,548",
     "regularPrice": "₹47,226",
     "salePrice": "₹42,548",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANS00176-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANS00176-2.webp",
+    "image": "ANS00176-1",
+    "lifestyle": "ANS00176-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANS00176-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANS00176-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANS00176-3.webp"
+      "ANS00176-1",
+      "ANS00176-2",
+      "ANS00176-3"
     ],
     "detail": "14KT Yellow Gold | Gold: 2.16g | Diamonds: 9pcs 0.14ct (H-I, VS-SI) | IGI | 4MM×16INCH",
     "description": "Style Code: ANS00176 Jewel Code: 103794 Gold: 14KT Yellow Gold (2.16g) Diamonds: 9 pcs, 0.14ct | H-I | VS-SI | IGI Size: 4MM × 16INCH",
@@ -3360,12 +3360,12 @@ export const catalogProducts = [
     "price": "₹42,691",
     "regularPrice": "₹47,358",
     "salePrice": "₹42,691",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANS00182-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANS00182-2.webp",
+    "image": "ANS00182-1",
+    "lifestyle": "ANS00182-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANS00182-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANS00182-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANS00182-3.webp"
+      "ANS00182-1",
+      "ANS00182-2",
+      "ANS00182-3"
     ],
     "detail": "14KT Rose Gold | Gold: 2.18g | Diamonds: 7pcs 0.14ct (H-I, VS-SI) | IGI | 3MM×16INCH",
     "description": "Style Code: ANS00182 Jewel Code: 103934 Gold: 14KT Rose Gold (2.18g) Diamonds: 7 pcs, 0.14ct | H-I | VS-SI | IGI Size: 3MM × 16INCH",
@@ -3401,12 +3401,12 @@ export const catalogProducts = [
     "price": "₹42,840",
     "regularPrice": "₹47,450",
     "salePrice": "₹42,840",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANS00184-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANS00184-2.webp",
+    "image": "ANS00184-1",
+    "lifestyle": "ANS00184-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANS00184-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANS00184-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANS00184-3.webp"
+      "ANS00184-1",
+      "ANS00184-2",
+      "ANS00184-3"
     ],
     "detail": "14KT Rose Gold | Gold: 2.28g | Diamonds: 7pcs 0.14ct (H-I, VS-SI) | IGI | 3MM×16INCH",
     "description": "Style Code: ANS00184 Jewel Code: 103936 Gold: 14KT Rose Gold (2.28g) Diamonds: 7 pcs, 0.14ct | H-I | VS-SI | IGI Size: 3MM × 16INCH",
@@ -3442,12 +3442,12 @@ export const catalogProducts = [
     "price": "₹42,540",
     "regularPrice": "₹47,609",
     "salePrice": "₹42,540",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANS00185-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANS00185-2.webp",
+    "image": "ANS00185-1",
+    "lifestyle": "ANS00185-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANS00185-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANS00185-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANS00185-3.webp"
+      "ANS00185-1",
+      "ANS00185-2",
+      "ANS00185-3"
     ],
     "detail": "14KT Rose Gold | Gold: 2.04g | Diamonds: 7pcs 0.14ct (H-I, VS-SI) | IGI | 3MM×16INCH",
     "description": "Style Code: ANS00185 Jewel Code: 103937 Gold: 14KT Rose Gold (2.04g) Diamonds: 7 pcs, 0.14ct | H-I | VS-SI | IGI Size: 3MM × 16INCH",
@@ -3483,12 +3483,12 @@ export const catalogProducts = [
     "price": "₹42,605",
     "regularPrice": "₹47,279",
     "salePrice": "₹42,605",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANS00186-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANS00186-2.webp",
+    "image": "ANS00186-1",
+    "lifestyle": "ANS00186-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANS00186-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANS00186-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANS00186-3.webp"
+      "ANS00186-1",
+      "ANS00186-2",
+      "ANS00186-3"
     ],
     "detail": "14KT Rose Gold | Gold: 2.09g | Diamonds: 7pcs 0.12ct (H-I, VS-SI) | IGI | 3MM×16INCH",
     "description": "Style Code: ANS00186 Jewel Code: 103938 Gold: 14KT Rose Gold (2.09g) Diamonds: 7 pcs, 0.12ct | H-I | VS-SI | IGI Size: 3MM × 16INCH",
@@ -3524,12 +3524,12 @@ export const catalogProducts = [
     "price": "₹36,501",
     "regularPrice": "₹40,799",
     "salePrice": "₹36,501",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANT00082-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANT00082-2.webp",
+    "image": "ANT00082-1",
+    "lifestyle": "ANT00082-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANT00082-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANT00082-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/ANT00082-3.webp"
+      "ANT00082-1",
+      "ANT00082-2",
+      "ANT00082-3"
     ],
     "detail": "14KT Yellow Gold | Gold: 1.1g | Diamonds: 13pcs 0.3ct (E-F, VVS-VS) | DGLA | 25MM×25MM",
     "description": "Style Code: ANT00082 Jewel Code: 103658 Gold: 14KT Yellow Gold (1.1g) Diamonds: 13 pcs, 0.3ct | E-F | VVS-VS | DGLA Size: 25MM × 25MM",
@@ -3565,12 +3565,12 @@ export const catalogProducts = [
     "price": "₹19,255",
     "regularPrice": "₹21,345",
     "salePrice": "₹19,255",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00217E-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00217E-2.webp",
+    "image": "APS00217E-1",
+    "lifestyle": "APS00217E-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00217E-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00217E-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00217E-3.webp"
+      "APS00217E-1",
+      "APS00217E-2",
+      "APS00217E-3"
     ],
     "detail": "14KT Rose Gold | Gold: 0.98g | Diamonds: 14pcs 0.07ct (H-I, VS-SI) | IGI | 8MM×10MM",
     "description": "Style Code: APS00217E Jewel Code: 103671 Gold: 14KT Rose Gold (0.98g) Diamonds: 14 pcs, 0.07ct | H-I | VS-SI | IGI Size: 8MM × 10MM",
@@ -3606,13 +3606,13 @@ export const catalogProducts = [
     "price": "₹49,021",
     "regularPrice": "₹54,883",
     "salePrice": "₹49,021",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00264.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00264-N-1.webp",
+    "image": "APS00264",
+    "lifestyle": "APS00264-N-1",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00264.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00264-N-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00264-N-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00264-N-3.webp"
+      "APS00264",
+      "APS00264-N-1",
+      "APS00264-N-2",
+      "APS00264-N-3"
     ],
     "detail": "14KT Rose Gold | Gold: 2.8g | Diamonds: 16pcs 0.25ct (E-F, VVS-VS) | DGLA | 15MM×15MM",
     "description": "Style Code: APS00264 Jewel Code: 103655 Gold: 14KT Rose Gold (2.8g) Diamonds: 16 pcs, 0.25ct | E-F | VVS-VS | DGLA Size: 15MM × 15MM",
@@ -3648,14 +3648,14 @@ export const catalogProducts = [
     "price": "₹49,177",
     "regularPrice": "₹54,732",
     "salePrice": "₹49,177",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/AS00264.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/AS00264-N-1.webp",
+    "image": "",
+    "lifestyle": "",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/AS00264.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/AS00264-N-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/AS00264-N-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/AS00264-N-3.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/AS00264.webp"
+      "",
+      "",
+      "",
+      "",
+      ""
     ],
     "detail": "14KT Rose Gold | Gold: 3.0g | Diamonds: 13pcs 0.25ct (E-F, VVS-VS) | DGLA | 15MM×10MM",
     "description": "Style Code: APS00264 Jewel Code: 103655 Gold: 14KT Rose Gold (3.0g) Diamonds: 13 pcs, 0.25ct | E-F | VVS-VS | DGLA Size: 15MM × 10MM",
@@ -3691,13 +3691,13 @@ export const catalogProducts = [
     "price": "₹49,043",
     "regularPrice": "₹54,503",
     "salePrice": "₹49,043",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00265-N-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00265-N-2.webp",
+    "image": "APS00265-N-1",
+    "lifestyle": "APS00265-N-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00265-N-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00265-N-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00265-N-3.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00265-N-4.webp"
+      "APS00265-N-1",
+      "APS00265-N-2",
+      "APS00265-N-3",
+      "APS00265-N-4"
     ],
     "detail": "14KT Yellow Gold | Gold: 2.7g | Diamonds: 26pcs 0.25ct (E-F, VVS-VS) | DGLA | 12MM×12MM",
     "description": "Style Code: APS00265 Jewel Code: 103656 Gold: 14KT Yellow Gold (2.7g) Diamonds: 26 pcs, 0.25ct | E-F | VVS-VS | DGLA Size: 12MM × 12MM",
@@ -3733,13 +3733,13 @@ export const catalogProducts = [
     "price": "₹49,315",
     "regularPrice": "₹54,660",
     "salePrice": "₹49,315",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/AS00265-N-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/AS00265-N-2.webp",
+    "image": "",
+    "lifestyle": "",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/AS00265-N-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/AS00265-N-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/AS00265-N-3.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/AS00265-N-4.webp"
+      "",
+      "",
+      "",
+      ""
     ],
     "detail": "14KT Yellow Gold | Gold: 3.0g | Diamonds: 16pcs 0.25ct (E-F, VVS-VS) | DGLA | 15MM×15MM",
     "description": "Style Code: APS00265 Jewel Code: 103656 Gold: 14KT Yellow Gold (3.0g) Diamonds: 16 pcs, 0.25ct | E-F | VVS-VS | DGLA Size: 15MM × 15MM",
@@ -3775,13 +3775,13 @@ export const catalogProducts = [
     "price": "₹19,322",
     "regularPrice": "₹21,121",
     "salePrice": "₹19,322",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00268-N-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00268-N-2.webp",
+    "image": "APS00268-N-1",
+    "lifestyle": "APS00268-N-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00268-N-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00268-N-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00268-N-3.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00268-N-4.webp"
+      "APS00268-N-1",
+      "APS00268-N-2",
+      "APS00268-N-3",
+      "APS00268-N-4"
     ],
     "detail": "14KT Yellow Gold | Gold: 1.09g | Diamonds: 11pcs 0.07ct (H-I, VS-SI) | IGI | 25MM×20MM",
     "description": "Style Code: APS00268 Jewel Code: 103664 Gold: 14KT Yellow Gold (1.09g) Diamonds: 11 pcs, 0.07ct | H-I | VS-SI | IGI Size: 25MM × 20MM",
@@ -3817,12 +3817,12 @@ export const catalogProducts = [
     "price": "₹19,314",
     "regularPrice": "₹21,291",
     "salePrice": "₹19,314",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00268E-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00268E-2.webp",
+    "image": "APS00268E-1",
+    "lifestyle": "APS00268E-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00268E-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00268E-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00268E-3.webp"
+      "APS00268E-1",
+      "APS00268E-2",
+      "APS00268E-3"
     ],
     "detail": "14KT Yellow Gold | Gold: 1.12g | Diamonds: 16pcs 0.07ct (H-I, VS-SI) | IGI | 12MM×12MM",
     "description": "Style Code: APS00268E Jewel Code: 103665 Gold: 14KT Yellow Gold (1.12g) Diamonds: 16 pcs, 0.07ct | H-I | VS-SI | IGI Size: 12MM × 12MM",
@@ -3858,13 +3858,13 @@ export const catalogProducts = [
     "price": "₹19,016",
     "regularPrice": "₹21,205",
     "salePrice": "₹19,016",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00270-N-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00270-N-2.webp",
+    "image": "APS00270-N-1",
+    "lifestyle": "APS00270-N-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00270-N-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00270-N-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00270-N-3.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00270-N-4.webp"
+      "APS00270-N-1",
+      "APS00270-N-2",
+      "APS00270-N-3",
+      "APS00270-N-4"
     ],
     "detail": "14KT Rose Gold | Gold: 1.02g | Diamonds: 20pcs 0.07ct (H-I, VS-SI) | IGI | 30MM×25MM",
     "description": "Style Code: APS00270 Jewel Code: 103668 Gold: 14KT Rose Gold (1.02g) Diamonds: 20 pcs, 0.07ct | H-I | VS-SI | IGI Size: 30MM × 25MM",
@@ -3900,12 +3900,12 @@ export const catalogProducts = [
     "price": "₹19,319",
     "regularPrice": "₹21,070",
     "salePrice": "₹19,319",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00270E-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00270E-2.webp",
+    "image": "APS00270E-1",
+    "lifestyle": "APS00270E-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00270E-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00270E-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00270E-3.webp"
+      "APS00270E-1",
+      "APS00270E-2",
+      "APS00270E-3"
     ],
     "detail": "14KT Rose Gold | Gold: 1.23g | Diamonds: 24pcs 0.08ct (H-I, VS-SI) | IGI | 10MM×10MM",
     "description": "Style Code: APS00270E Jewel Code: 103669 Gold: 14KT Rose Gold (1.23g) Diamonds: 24 pcs, 0.08ct | H-I | VS-SI | IGI Size: 10MM × 10MM",
@@ -3941,13 +3941,13 @@ export const catalogProducts = [
     "price": "₹19,148",
     "regularPrice": "₹21,157",
     "salePrice": "₹19,148",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00271-N-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00271-N-2.webp",
+    "image": "APS00271-N-1",
+    "lifestyle": "APS00271-N-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00271-N-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00271-N-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00271-N-3.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00271-N-4.webp"
+      "APS00271-N-1",
+      "APS00271-N-2",
+      "APS00271-N-3",
+      "APS00271-N-4"
     ],
     "detail": "14KT Rose Gold | Gold: 1.01g | Diamonds: 13pcs 0.06ct (H-I, VS-SI) | IGI | 30MM×25MM",
     "description": "Style Code: APS00271 Jewel Code: 103670 Gold: 14KT Rose Gold (1.01g) Diamonds: 13 pcs, 0.06ct | H-I | VS-SI | IGI Size: 30MM × 25MM",
@@ -3983,13 +3983,13 @@ export const catalogProducts = [
     "price": "₹19,221",
     "regularPrice": "₹21,305",
     "salePrice": "₹19,221",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00272-N-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00272-N-2.webp",
+    "image": "APS00272-N-1",
+    "lifestyle": "APS00272-N-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00272-N-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00272-N-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00272-N-3.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00272-N-4.webp"
+      "APS00272-N-1",
+      "APS00272-N-2",
+      "APS00272-N-3",
+      "APS00272-N-4"
     ],
     "detail": "14KT Yellow Gold | Gold: 1.0g | Diamonds: 18pcs 0.06ct (H-I, VS-SI) | IGI | 25MM×9MM",
     "description": "Style Code: APS00272 Jewel Code: 103672 Gold: 14KT Yellow Gold (1.0g) Diamonds: 18 pcs, 0.06ct | H-I | VS-SI | IGI Size: 25MM × 9MM",
@@ -4025,12 +4025,12 @@ export const catalogProducts = [
     "price": "₹19,118",
     "regularPrice": "₹21,370",
     "salePrice": "₹19,118",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00272E-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00272E-2.webp",
+    "image": "APS00272E-1",
+    "lifestyle": "APS00272E-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00272E-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00272E-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00272E-3.webp"
+      "APS00272E-1",
+      "APS00272E-2",
+      "APS00272E-3"
     ],
     "detail": "14KT Yellow Gold | Gold: 0.97g | Diamonds: 16pcs 0.09ct (H-I, VS-SI) | IGI | 9MM×9MM",
     "description": "Style Code: APS00272E Jewel Code: 103673 Gold: 14KT Yellow Gold (0.97g) Diamonds: 16 pcs, 0.09ct | H-I | VS-SI | IGI Size: 9MM × 9MM",
@@ -4066,13 +4066,13 @@ export const catalogProducts = [
     "price": "₹19,086",
     "regularPrice": "₹21,169",
     "salePrice": "₹19,086",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00273-N-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00273-N-2.webp",
+    "image": "APS00273-N-1",
+    "lifestyle": "APS00273-N-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00273-N-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00273-N-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00273-N-3.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00273-N-4.webp"
+      "APS00273-N-1",
+      "APS00273-N-2",
+      "APS00273-N-3",
+      "APS00273-N-4"
     ],
     "detail": "14KT Rose Gold | Gold: 0.92g | Diamonds: 14pcs 0.06ct (H-I, VS-SI) | IGI | 26MM×20MM",
     "description": "Style Code: APS00273 Jewel Code: 103674 Gold: 14KT Rose Gold (0.92g) Diamonds: 14 pcs, 0.06ct | H-I | VS-SI | IGI Size: 26MM × 20MM",
@@ -4108,12 +4108,12 @@ export const catalogProducts = [
     "price": "₹19,178",
     "regularPrice": "₹21,423",
     "salePrice": "₹19,178",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00273E-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00273E-2.webp",
+    "image": "APS00273E-1",
+    "lifestyle": "APS00273E-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00273E-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00273E-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00273E-3.webp"
+      "APS00273E-1",
+      "APS00273E-2",
+      "APS00273E-3"
     ],
     "detail": "14KT Rose Gold | Gold: 0.97g | Diamonds: 18pcs 0.06ct (H-I, VS-SI) | IGI | 10MM×10MM",
     "description": "Style Code: APS00273E Jewel Code: 103675 Gold: 14KT Rose Gold (0.97g) Diamonds: 18 pcs, 0.06ct | H-I | VS-SI | IGI Size: 10MM × 10MM",
@@ -4149,13 +4149,13 @@ export const catalogProducts = [
     "price": "₹19,137",
     "regularPrice": "₹21,111",
     "salePrice": "₹19,137",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00274-N-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00274-N-2.webp",
+    "image": "APS00274-N-1",
+    "lifestyle": "APS00274-N-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00274-N-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00274-N-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00274-N-3.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00274-N-4.webp"
+      "APS00274-N-1",
+      "APS00274-N-2",
+      "APS00274-N-3",
+      "APS00274-N-4"
     ],
     "detail": "14KT Rose Gold | Gold: 0.94g | Diamonds: 15pcs 0.06ct (H-I, VS-SI) | IGI | 28MM×20MM",
     "description": "Style Code: APS00274 Jewel Code: 103676 Gold: 14KT Rose Gold (0.94g) Diamonds: 15 pcs, 0.06ct | H-I | VS-SI | IGI Size: 28MM × 20MM",
@@ -4191,12 +4191,12 @@ export const catalogProducts = [
     "price": "₹19,205",
     "regularPrice": "₹21,070",
     "salePrice": "₹19,205",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00274E-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00274E-2.webp",
+    "image": "APS00274E-1",
+    "lifestyle": "APS00274E-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00274E-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00274E-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00274E-3.webp"
+      "APS00274E-1",
+      "APS00274E-2",
+      "APS00274E-3"
     ],
     "detail": "14KT Rose Gold | Gold: 1.05g | Diamonds: 18pcs 0.06ct (H-I, VS-SI) | IGI | 8MM×8MM",
     "description": "Style Code: APS00274E Jewel Code: 103677 Gold: 14KT Rose Gold (1.05g) Diamonds: 18 pcs, 0.06ct | H-I | VS-SI | IGI Size: 8MM × 8MM",
@@ -4232,13 +4232,13 @@ export const catalogProducts = [
     "price": "₹19,114",
     "regularPrice": "₹21,146",
     "salePrice": "₹19,114",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00275-N-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00275-N-2.webp",
+    "image": "APS00275-N-1",
+    "lifestyle": "APS00275-N-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00275-N-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00275-N-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00275-N-3.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00275-N-4.webp"
+      "APS00275-N-1",
+      "APS00275-N-2",
+      "APS00275-N-3",
+      "APS00275-N-4"
     ],
     "detail": "14KT Rose Gold | Gold: 0.97g | Diamonds: 17pcs 0.09ct (H-I, VS-SI) | IGI | 30MM×9MM",
     "description": "Style Code: APS00275 Jewel Code: 103678 Gold: 14KT Rose Gold (0.97g) Diamonds: 17 pcs, 0.09ct | H-I | VS-SI | IGI Size: 30MM × 9MM",
@@ -4274,12 +4274,12 @@ export const catalogProducts = [
     "price": "₹19,003",
     "regularPrice": "₹21,142",
     "salePrice": "₹19,003",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00275E-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00275E-2.webp",
+    "image": "APS00275E-1",
+    "lifestyle": "APS00275E-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00275E-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00275E-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00275E-3.webp"
+      "APS00275E-1",
+      "APS00275E-2",
+      "APS00275E-3"
     ],
     "detail": "14KT Rose Gold | Gold: 1.05g | Diamonds: 16pcs 0.08ct (H-I, VS-SI) | IGI | 12MM×12MM",
     "description": "Style Code: APS00275E Jewel Code: 103679 Gold: 14KT Rose Gold (1.05g) Diamonds: 16 pcs, 0.08ct | H-I | VS-SI | IGI Size: 12MM × 12MM",
@@ -4315,13 +4315,13 @@ export const catalogProducts = [
     "price": "₹19,029",
     "regularPrice": "₹21,299",
     "salePrice": "₹19,029",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00276-N-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00276-N-2.webp",
+    "image": "APS00276-N-1",
+    "lifestyle": "APS00276-N-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00276-N-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00276-N-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00276-N-3.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00276-N-4.webp"
+      "APS00276-N-1",
+      "APS00276-N-2",
+      "APS00276-N-3",
+      "APS00276-N-4"
     ],
     "detail": "14KT Rose Gold | Gold: 1.0g | Diamonds: 16pcs 0.08ct (H-I, VS-SI) | IGI | 15MM×16MM",
     "description": "Style Code: APS00276 Jewel Code: 103680 Gold: 14KT Rose Gold (1.0g) Diamonds: 16 pcs, 0.08ct | H-I | VS-SI | IGI Size: 15MM × 16MM",
@@ -4357,12 +4357,12 @@ export const catalogProducts = [
     "price": "₹18,991",
     "regularPrice": "₹21,152",
     "salePrice": "₹18,991",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00276E-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00276E-2.webp",
+    "image": "APS00276E-1",
+    "lifestyle": "APS00276E-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00276E-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00276E-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00276E-3.webp"
+      "APS00276E-1",
+      "APS00276E-2",
+      "APS00276E-3"
     ],
     "detail": "14KT Rose Gold | Gold: 1.04g | Diamonds: 18pcs 0.06ct (H-I, VS-SI) | IGI | 10MM×10MM",
     "description": "Style Code: APS00276E Jewel Code: 103681 Gold: 14KT Rose Gold (1.04g) Diamonds: 18 pcs, 0.06ct | H-I | VS-SI | IGI Size: 10MM × 10MM",
@@ -4398,13 +4398,13 @@ export const catalogProducts = [
     "price": "₹19,208",
     "regularPrice": "₹21,304",
     "salePrice": "₹19,208",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00277-N-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00277-N-2.webp",
+    "image": "APS00277-N-1",
+    "lifestyle": "APS00277-N-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00277-N-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00277-N-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00277-N-3.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00277-N-4.webp"
+      "APS00277-N-1",
+      "APS00277-N-2",
+      "APS00277-N-3",
+      "APS00277-N-4"
     ],
     "detail": "14KT Rose Gold | Gold: 0.85g | Diamonds: 11pcs 0.09ct (H-I, VS-SI) | IGI | 16MM×15MM",
     "description": "Style Code: APS00277 Jewel Code: 103682 Gold: 14KT Rose Gold (0.85g) Diamonds: 11 pcs, 0.09ct | H-I | VS-SI | IGI Size: 16MM × 15MM",
@@ -4440,12 +4440,12 @@ export const catalogProducts = [
     "price": "₹19,010",
     "regularPrice": "₹21,443",
     "salePrice": "₹19,010",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00277E-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00277E-2.webp",
+    "image": "APS00277E-1",
+    "lifestyle": "APS00277E-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00277E-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00277E-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00277E-3.webp"
+      "APS00277E-1",
+      "APS00277E-2",
+      "APS00277E-3"
     ],
     "detail": "14KT Rose Gold | Gold: 1.02g | Diamonds: 16pcs 0.07ct (H-I, VS-SI) | IGI | 15MM×15MM",
     "description": "Style Code: APS00277E Jewel Code: 103683 Gold: 14KT Rose Gold (1.02g) Diamonds: 16 pcs, 0.07ct | H-I | VS-SI | IGI Size: 15MM × 15MM",
@@ -4481,13 +4481,13 @@ export const catalogProducts = [
     "price": "₹18,931",
     "regularPrice": "₹21,342",
     "salePrice": "₹18,931",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00278-N-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00278-N-2.webp",
+    "image": "APS00278-N-1",
+    "lifestyle": "APS00278-N-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00278-N-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00278-N-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00278-N-3.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00278-N-4.webp"
+      "APS00278-N-1",
+      "APS00278-N-2",
+      "APS00278-N-3",
+      "APS00278-N-4"
     ],
     "detail": "14KT Rose Gold | Gold: 1.17g | Diamonds: 10pcs 0.07ct (H-I, VS-SI) | IGI | 15MM×15MM",
     "description": "Style Code: APS00278 Jewel Code: 103684 Gold: 14KT Rose Gold (1.17g) Diamonds: 10 pcs, 0.07ct | H-I | VS-SI | IGI Size: 15MM × 15MM",
@@ -4523,12 +4523,12 @@ export const catalogProducts = [
     "price": "₹19,203",
     "regularPrice": "₹21,239",
     "salePrice": "₹19,203",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00278E-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00278E-2.webp",
+    "image": "APS00278E-1",
+    "lifestyle": "APS00278E-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00278E-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00278E-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00278E-3.webp"
+      "APS00278E-1",
+      "APS00278E-2",
+      "APS00278E-3"
     ],
     "detail": "14KT Rose Gold | Gold: 0.98g | Diamonds: 20pcs 0.07ct (H-I, VS-SI) | IGI | 15MM×15MM",
     "description": "Style Code: APS00278E Jewel Code: 103685 Gold: 14KT Rose Gold (0.98g) Diamonds: 20 pcs, 0.07ct | H-I | VS-SI | IGI Size: 15MM × 15MM",
@@ -4564,13 +4564,13 @@ export const catalogProducts = [
     "price": "₹19,300",
     "regularPrice": "₹21,322",
     "salePrice": "₹19,300",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00279-N-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00279-N-2.webp",
+    "image": "APS00279-N-1",
+    "lifestyle": "APS00279-N-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00279-N-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00279-N-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00279-N-3.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00279-N-4.webp"
+      "APS00279-N-1",
+      "APS00279-N-2",
+      "APS00279-N-3",
+      "APS00279-N-4"
     ],
     "detail": "14KT Rose Gold | Gold: 0.98g | Diamonds: 3pcs 0.07ct (H-I, VS-SI) | IGI | 15MM×15MM",
     "description": "Style Code: APS00279 Jewel Code: 103686 Gold: 14KT Rose Gold (0.98g) Diamonds: 3 pcs, 0.07ct | H-I | VS-SI | IGI Size: 15MM × 15MM",
@@ -4606,12 +4606,12 @@ export const catalogProducts = [
     "price": "₹19,162",
     "regularPrice": "₹21,383",
     "salePrice": "₹19,162",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00279E-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00279E-2.webp",
+    "image": "APS00279E-1",
+    "lifestyle": "APS00279E-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00279E-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00279E-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00279E-3.webp"
+      "APS00279E-1",
+      "APS00279E-2",
+      "APS00279E-3"
     ],
     "detail": "14KT Rose Gold | Gold: 0.98g | Diamonds: 4pcs 0.09ct (H-I, VS-SI) | IGI | 12MM×12MM",
     "description": "Style Code: APS00279E Jewel Code: 103687 Gold: 14KT Rose Gold (0.98g) Diamonds: 4 pcs, 0.09ct | H-I | VS-SI | IGI Size: 12MM × 12MM",
@@ -4647,13 +4647,13 @@ export const catalogProducts = [
     "price": "₹19,112",
     "regularPrice": "₹21,318",
     "salePrice": "₹19,112",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00280-N-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00280-N-2.webp",
+    "image": "APS00280-N-1",
+    "lifestyle": "APS00280-N-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00280-N-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00280-N-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00280-N-3.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00280-N-4.webp"
+      "APS00280-N-1",
+      "APS00280-N-2",
+      "APS00280-N-3",
+      "APS00280-N-4"
     ],
     "detail": "14KT Rose Gold | Gold: 1.07g | Diamonds: 16pcs 0.07ct (H-I, VS-SI) | IGI | 14MM×10MM",
     "description": "Style Code: APS00280 Jewel Code: 103688 Gold: 14KT Rose Gold (1.07g) Diamonds: 16 pcs, 0.07ct | H-I | VS-SI | IGI Size: 14MM × 10MM",
@@ -4689,12 +4689,12 @@ export const catalogProducts = [
     "price": "₹19,168",
     "regularPrice": "₹21,400",
     "salePrice": "₹19,168",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00280E-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00280E-2.webp",
+    "image": "APS00280E-1",
+    "lifestyle": "APS00280E-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00280E-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00280E-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00280E-3.webp"
+      "APS00280E-1",
+      "APS00280E-2",
+      "APS00280E-3"
     ],
     "detail": "14KT Rose Gold | Gold: 1.0g | Diamonds: 16pcs 0.07ct (H-I, VS-SI) | IGI | 12MM×12MM",
     "description": "Style Code: APS00280E Jewel Code: 103689 Gold: 14KT Rose Gold (1.0g) Diamonds: 16 pcs, 0.07ct | H-I | VS-SI | IGI Size: 12MM × 12MM",
@@ -4730,13 +4730,13 @@ export const catalogProducts = [
     "price": "₹19,272",
     "regularPrice": "₹21,358",
     "salePrice": "₹19,272",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00295-N-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00295-N-2.webp",
+    "image": "APS00295-N-1",
+    "lifestyle": "APS00295-N-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00295-N-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00295-N-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00295-N-3.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00295-N-4.webp"
+      "APS00295-N-1",
+      "APS00295-N-2",
+      "APS00295-N-3",
+      "APS00295-N-4"
     ],
     "detail": "14KT Yellow Gold | Gold: 0.87g | Diamonds: 15pcs 0.08ct (H-I, VS-SI) | IGI | 30MM×16MM",
     "description": "Style Code: APS00295 Jewel Code: 103809 Gold: 14KT Yellow Gold (0.87g) Diamonds: 15 pcs, 0.08ct | H-I | VS-SI | IGI Size: 30MM × 16MM",
@@ -4772,12 +4772,12 @@ export const catalogProducts = [
     "price": "₹19,310",
     "regularPrice": "₹21,089",
     "salePrice": "₹19,310",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00295E-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00295E-2.webp",
+    "image": "APS00295E-1",
+    "lifestyle": "APS00295E-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00295E-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00295E-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00295E-3.webp"
+      "APS00295E-1",
+      "APS00295E-2",
+      "APS00295E-3"
     ],
     "detail": "14KT Yellow Gold | Gold: 1.03g | Diamonds: 10pcs 0.07ct (H-I, VS-SI) | IGI | 10MM×8MM",
     "description": "Style Code: APS00295E Jewel Code: 103810 Gold: 14KT Yellow Gold (1.03g) Diamonds: 10 pcs, 0.07ct | H-I | VS-SI | IGI Size: 10MM × 8MM",
@@ -4813,13 +4813,13 @@ export const catalogProducts = [
     "price": "₹18,967",
     "regularPrice": "₹21,371",
     "salePrice": "₹18,967",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00296-N-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00296-N-2.webp",
+    "image": "APS00296-N-1",
+    "lifestyle": "APS00296-N-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00296-N-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00296-N-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00296-N-3.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00296-N-4.webp"
+      "APS00296-N-1",
+      "APS00296-N-2",
+      "APS00296-N-3",
+      "APS00296-N-4"
     ],
     "detail": "14KT Yellow Gold | Gold: 0.99g | Diamonds: 20pcs 0.07ct (H-I, VS-SI) | IGI | 25MM×20MM",
     "description": "Style Code: APS00296 Jewel Code: 103811 Gold: 14KT Yellow Gold (0.99g) Diamonds: 20 pcs, 0.07ct | H-I | VS-SI | IGI Size: 25MM × 20MM",
@@ -4855,12 +4855,12 @@ export const catalogProducts = [
     "price": "₹18,999",
     "regularPrice": "₹21,131",
     "salePrice": "₹18,999",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00296E-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00296E-2.webp",
+    "image": "APS00296E-1",
+    "lifestyle": "APS00296E-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00296E-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00296E-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00296E-3.webp"
+      "APS00296E-1",
+      "APS00296E-2",
+      "APS00296E-3"
     ],
     "detail": "14KT Yellow Gold | Gold: 1.1g | Diamonds: 24pcs 0.08ct (H-I, VS-SI) | IGI | 20MM×20MM",
     "description": "Style Code: APS00296E Jewel Code: 103812 Gold: 14KT Yellow Gold (1.1g) Diamonds: 24 pcs, 0.08ct | H-I | VS-SI | IGI Size: 20MM × 20MM",
@@ -4896,13 +4896,13 @@ export const catalogProducts = [
     "price": "₹18,934",
     "regularPrice": "₹21,199",
     "salePrice": "₹18,934",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00297-N-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00297-N-2.webp",
+    "image": "APS00297-N-1",
+    "lifestyle": "APS00297-N-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00297-N-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00297-N-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00297-N-3.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00297-N-4.webp"
+      "APS00297-N-1",
+      "APS00297-N-2",
+      "APS00297-N-3",
+      "APS00297-N-4"
     ],
     "detail": "14KT Rose Gold | Gold: 0.76g | Diamonds: 17pcs 0.08ct (H-I, VS-SI) | IGI | 10MM×10MM",
     "description": "Style Code: APS00297 Jewel Code: 103813 Gold: 14KT Rose Gold (0.76g) Diamonds: 17 pcs, 0.08ct | H-I | VS-SI | IGI Size: 10MM × 10MM",
@@ -4938,12 +4938,12 @@ export const catalogProducts = [
     "price": "₹19,166",
     "regularPrice": "₹21,440",
     "salePrice": "₹19,166",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00297E-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00297E-2.webp",
+    "image": "APS00297E-1",
+    "lifestyle": "APS00297E-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00297E-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00297E-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00297E-3.webp"
+      "APS00297E-1",
+      "APS00297E-2",
+      "APS00297E-3"
     ],
     "detail": "14KT Rose Gold | Gold: 0.96g | Diamonds: 18pcs 0.08ct (H-I, VS-SI) | IGI | 10MM×10MM",
     "description": "Style Code: APS00297E Jewel Code: 103814 Gold: 14KT Rose Gold (0.96g) Diamonds: 18 pcs, 0.08ct | H-I | VS-SI | IGI Size: 10MM × 10MM",
@@ -4979,13 +4979,13 @@ export const catalogProducts = [
     "price": "₹18,999",
     "regularPrice": "₹21,411",
     "salePrice": "₹18,999",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00298-N-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00298-N-2.webp",
+    "image": "APS00298-N-1",
+    "lifestyle": "APS00298-N-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00298-N-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00298-N-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00298-N-3.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00298-N-4.webp"
+      "APS00298-N-1",
+      "APS00298-N-2",
+      "APS00298-N-3",
+      "APS00298-N-4"
     ],
     "detail": "14KT Rose Gold | Gold: 1.08g | Diamonds: 10pcs 0.07ct (H-I, VS-SI) | IGI | 36MM×9MM",
     "description": "Style Code: APS00298 Jewel Code: 103815 Gold: 14KT Rose Gold (1.08g) Diamonds: 10 pcs, 0.07ct | H-I | VS-SI | IGI Size: 36MM × 9MM",
@@ -5021,12 +5021,12 @@ export const catalogProducts = [
     "price": "₹18,934",
     "regularPrice": "₹21,389",
     "salePrice": "₹18,934",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00298E-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00298E-2.webp",
+    "image": "APS00298E-1",
+    "lifestyle": "APS00298E-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00298E-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00298E-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00298E-3.webp"
+      "APS00298E-1",
+      "APS00298E-2",
+      "APS00298E-3"
     ],
     "detail": "14KT Rose Gold | Gold: 1.34g | Diamonds: 12pcs 0.06ct (H-I, VS-SI) | IGI | 30MM×8MM",
     "description": "Style Code: APS00298E Jewel Code: 103816 Gold: 14KT Rose Gold (1.34g) Diamonds: 12 pcs, 0.06ct | H-I | VS-SI | IGI Size: 30MM × 8MM",
@@ -5062,13 +5062,13 @@ export const catalogProducts = [
     "price": "₹19,325",
     "regularPrice": "₹21,181",
     "salePrice": "₹19,325",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00299-N-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00299-N-2.webp",
+    "image": "APS00299-N-1",
+    "lifestyle": "APS00299-N-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00299-N-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00299-N-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00299-N-3.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00299-N-4.webp"
+      "APS00299-N-1",
+      "APS00299-N-2",
+      "APS00299-N-3",
+      "APS00299-N-4"
     ],
     "detail": "14KT Yellow Gold | Gold: 1.07g | Diamonds: 11pcs 0.07ct (H-I, VS-SI) | IGI | 30MM×20MM",
     "description": "Style Code: APS00299 Jewel Code: 103817 Gold: 14KT Yellow Gold (1.07g) Diamonds: 11 pcs, 0.07ct | H-I | VS-SI | IGI Size: 30MM × 20MM",
@@ -5104,12 +5104,12 @@ export const catalogProducts = [
     "price": "₹19,182",
     "regularPrice": "₹21,220",
     "salePrice": "₹19,182",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00299E-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00299E-2.webp",
+    "image": "APS00299E-1",
+    "lifestyle": "APS00299E-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00299E-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00299E-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00299E-3.webp"
+      "APS00299E-1",
+      "APS00299E-2",
+      "APS00299E-3"
     ],
     "detail": "14KT Yellow Gold | Gold: 1.14g | Diamonds: 14pcs 0.08ct (H-I, VS-SI) | IGI | 20MM×8MM",
     "description": "Style Code: APS00299E Jewel Code: 103818 Gold: 14KT Yellow Gold (1.14g) Diamonds: 14 pcs, 0.08ct | H-I | VS-SI | IGI Size: 20MM × 8MM",
@@ -5145,13 +5145,13 @@ export const catalogProducts = [
     "price": "₹19,071",
     "regularPrice": "₹21,383",
     "salePrice": "₹19,071",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00300-N-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00300-N-2.webp",
+    "image": "APS00300-N-1",
+    "lifestyle": "APS00300-N-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00300-N-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00300-N-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00300-N-3.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00300-N-4.webp"
+      "APS00300-N-1",
+      "APS00300-N-2",
+      "APS00300-N-3",
+      "APS00300-N-4"
     ],
     "detail": "14KT Yellow Gold | Gold: 1.06g | Diamonds: 16pcs 0.07ct (H-I, VS-SI) | IGI | 30MM×18MM",
     "description": "Style Code: APS00300 Jewel Code: 103819 Gold: 14KT Yellow Gold (1.06g) Diamonds: 16 pcs, 0.07ct | H-I | VS-SI | IGI Size: 30MM × 18MM",
@@ -5187,12 +5187,12 @@ export const catalogProducts = [
     "price": "₹19,213",
     "regularPrice": "₹21,389",
     "salePrice": "₹19,213",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00300E-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00300E-2.webp",
+    "image": "APS00300E-1",
+    "lifestyle": "APS00300E-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00300E-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00300E-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00300E-3.webp"
+      "APS00300E-1",
+      "APS00300E-2",
+      "APS00300E-3"
     ],
     "detail": "14KT Yellow Gold | Gold: 1.03g | Diamonds: 16pcs 0.07ct (H-I, VS-SI) | IGI | 8MM×8MM",
     "description": "Style Code: APS00300E Jewel Code: 103820 Gold: 14KT Yellow Gold (1.03g) Diamonds: 16 pcs, 0.07ct | H-I | VS-SI | IGI Size: 8MM × 8MM",
@@ -5228,13 +5228,13 @@ export const catalogProducts = [
     "price": "₹19,297",
     "regularPrice": "₹21,098",
     "salePrice": "₹19,297",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00301-N-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00301-N-2.webp",
+    "image": "APS00301-N-1",
+    "lifestyle": "APS00301-N-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00301-N-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00301-N-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00301-N-3.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00301-N-4.webp"
+      "APS00301-N-1",
+      "APS00301-N-2",
+      "APS00301-N-3",
+      "APS00301-N-4"
     ],
     "detail": "14KT Yellow Gold | Gold: 1.15g | Diamonds: 10pcs 0.06ct (H-I, VS-SI) | IGI | 20MM×20MM",
     "description": "Style Code: APS00301 Jewel Code: 103821 Gold: 14KT Yellow Gold (1.15g) Diamonds: 10 pcs, 0.06ct | H-I | VS-SI | IGI Size: 20MM × 20MM",
@@ -5270,12 +5270,12 @@ export const catalogProducts = [
     "price": "₹19,093",
     "regularPrice": "₹21,400",
     "salePrice": "₹19,093",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00301E-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00301E-2.webp",
+    "image": "APS00301E-1",
+    "lifestyle": "APS00301E-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00301E-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00301E-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00301E-3.webp"
+      "APS00301E-1",
+      "APS00301E-2",
+      "APS00301E-3"
     ],
     "detail": "14KT Yellow Gold | Gold: 1.2g | Diamonds: 14pcs 0.07ct (H-I, VS-SI) | IGI | 9MM×8MM",
     "description": "Style Code: APS00301E Jewel Code: 103822 Gold: 14KT Yellow Gold (1.2g) Diamonds: 14 pcs, 0.07ct | H-I | VS-SI | IGI Size: 9MM × 8MM",
@@ -5311,13 +5311,13 @@ export const catalogProducts = [
     "price": "₹19,182",
     "regularPrice": "₹21,333",
     "salePrice": "₹19,182",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00302-N-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00302-N-2.webp",
+    "image": "APS00302-N-1",
+    "lifestyle": "APS00302-N-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00302-N-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00302-N-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00302-N-3.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00302-N-4.webp"
+      "APS00302-N-1",
+      "APS00302-N-2",
+      "APS00302-N-3",
+      "APS00302-N-4"
     ],
     "detail": "14KT Rose Gold | Gold: 0.9g | Diamonds: 10pcs 0.07ct (H-I, VS-SI) | IGI | 30MM×10MM",
     "description": "Style Code: APS00302 Jewel Code: 103823 Gold: 14KT Rose Gold (0.9g) Diamonds: 10 pcs, 0.07ct | H-I | VS-SI | IGI Size: 30MM × 10MM",
@@ -5353,12 +5353,12 @@ export const catalogProducts = [
     "price": "₹19,197",
     "regularPrice": "₹21,081",
     "salePrice": "₹19,197",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00302E-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00302E-2.webp",
+    "image": "APS00302E-1",
+    "lifestyle": "APS00302E-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00302E-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00302E-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00302E-3.webp"
+      "APS00302E-1",
+      "APS00302E-2",
+      "APS00302E-3"
     ],
     "detail": "14KT Rose Gold | Gold: 0.98g | Diamonds: 14pcs 0.08ct (H-I, VS-SI) | IGI | 15MM×10MM",
     "description": "Style Code: APS00302E Jewel Code: 103824 Gold: 14KT Rose Gold (0.98g) Diamonds: 14 pcs, 0.08ct | H-I | VS-SI | IGI Size: 15MM × 10MM",
@@ -5394,13 +5394,13 @@ export const catalogProducts = [
     "price": "₹19,014",
     "regularPrice": "₹21,381",
     "salePrice": "₹19,014",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00303-N-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00303-N-2.webp",
+    "image": "APS00303-N-1",
+    "lifestyle": "APS00303-N-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00303-N-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00303-N-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00303-N-3.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00303-N-4.webp"
+      "APS00303-N-1",
+      "APS00303-N-2",
+      "APS00303-N-3",
+      "APS00303-N-4"
     ],
     "detail": "14KT Rose Gold | Gold: 0.91g | Diamonds: 9pcs 0.09ct (H-I, VS-SI) | IGI | 28MM×20MM",
     "description": "Style Code: APS00303 Jewel Code: 103825 Gold: 14KT Rose Gold (0.91g) Diamonds: 9 pcs, 0.09ct | H-I | VS-SI | IGI Size: 28MM × 20MM",
@@ -5436,12 +5436,12 @@ export const catalogProducts = [
     "price": "₹18,949",
     "regularPrice": "₹21,406",
     "salePrice": "₹18,949",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00303E-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00303E-2.webp",
+    "image": "APS00303E-1",
+    "lifestyle": "APS00303E-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00303E-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00303E-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00303E-3.webp"
+      "APS00303E-1",
+      "APS00303E-2",
+      "APS00303E-3"
     ],
     "detail": "14KT Rose Gold | Gold: 1.01g | Diamonds: 12pcs 0.07ct (H-I, VS-SI) | IGI | 18MM×12MM",
     "description": "Style Code: APS00303E Jewel Code: 103826 Gold: 14KT Rose Gold (1.01g) Diamonds: 12 pcs, 0.07ct | H-I | VS-SI | IGI Size: 18MM × 12MM",
@@ -5477,13 +5477,13 @@ export const catalogProducts = [
     "price": "₹19,180",
     "regularPrice": "₹21,133",
     "salePrice": "₹19,180",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00312-N-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00312-N-2.webp",
+    "image": "APS00312-N-1",
+    "lifestyle": "APS00312-N-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00312-N-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00312-N-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00312-N-3.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00312-N-4.webp"
+      "APS00312-N-1",
+      "APS00312-N-2",
+      "APS00312-N-3",
+      ""
     ],
     "detail": "14KT Rose Gold | Gold: 1.06g | Diamonds: 22pcs 0.1ct (H-I, VS-SI) | IGI | 30MM×20MM",
     "description": "Style Code: APS00312 Jewel Code: 103862 Gold: 14KT Rose Gold (1.06g) Diamonds: 22 pcs, 0.1ct | H-I | VS-SI | IGI Size: 30MM × 20MM",
@@ -5519,12 +5519,12 @@ export const catalogProducts = [
     "price": "₹19,181",
     "regularPrice": "₹21,276",
     "salePrice": "₹19,181",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00312-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00312-2.webp",
+    "image": "APS00312-1",
+    "lifestyle": "APS00312-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00312-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00312-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00312-3.webp"
+      "APS00312-1",
+      "APS00312-2",
+      "APS00312-3"
     ],
     "detail": "14KT Rose Gold | Gold: 1.09g | Diamonds: 22pcs 0.09ct (H-I, VS-SI) | IGI | 9MM×9MM",
     "description": "Style Code: APS00312E Jewel Code: 103863 Gold: 14KT Rose Gold (1.09g) Diamonds: 22 pcs, 0.09ct | H-I | VS-SI | IGI Size: 9MM × 9MM",
@@ -5560,13 +5560,13 @@ export const catalogProducts = [
     "price": "₹19,265",
     "regularPrice": "₹21,346",
     "salePrice": "₹19,265",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00315-N-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00315-N-2.webp",
+    "image": "APS00315-N-1",
+    "lifestyle": "APS00315-N-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00315-N-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00315-N-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00315-N-3.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00315-N-4.webp"
+      "APS00315-N-1",
+      "APS00315-N-2",
+      "APS00315-N-3",
+      "APS00315-N-4"
     ],
     "detail": "14KT Rose Gold | Gold: 0.94g | Diamonds: 22pcs 0.08ct (H-I, VS-SI) | IGI | 25MM×20MM",
     "description": "Style Code: APS00315 Jewel Code: 103886 Gold: 14KT Rose Gold (0.94g) Diamonds: 22 pcs, 0.08ct | H-I | VS-SI | IGI Size: 25MM × 20MM",
@@ -5602,12 +5602,12 @@ export const catalogProducts = [
     "price": "₹19,184",
     "regularPrice": "₹21,404",
     "salePrice": "₹19,184",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00315E-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00315E-2.webp",
+    "image": "APS00315E-1",
+    "lifestyle": "APS00315E-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00315E-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00315E-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00315E-3.webp"
+      "APS00315E-1",
+      "APS00315E-2",
+      "APS00315E-3"
     ],
     "detail": "14KT Rose Gold | Gold: 1.11g | Diamonds: 20pcs 0.08ct (H-I, VS-SI) | IGI | 8MM×8MM",
     "description": "Style Code: APS00315E Jewel Code: 103887 Gold: 14KT Rose Gold (1.11g) Diamonds: 20 pcs, 0.08ct | H-I | VS-SI | IGI Size: 8MM × 8MM",
@@ -5643,13 +5643,13 @@ export const catalogProducts = [
     "price": "₹19,256",
     "regularPrice": "₹21,347",
     "salePrice": "₹19,256",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00316-N-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00316-N-2.webp",
+    "image": "APS00316-N-1",
+    "lifestyle": "APS00316-N-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00316-N-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00316-N-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00316-N-3.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00316-N-4.webp"
+      "APS00316-N-1",
+      "APS00316-N-2",
+      "APS00316-N-3",
+      "APS00316-N-4"
     ],
     "detail": "14KT Rose Gold | Gold: 0.87g | Diamonds: 13pcs 0.08ct (H-I, VS-SI) | IGI | 28MM×18MM",
     "description": "Style Code: APS00316 Jewel Code: 103888 Gold: 14KT Rose Gold (0.87g) Diamonds: 13 pcs, 0.08ct | H-I | VS-SI | IGI Size: 28MM × 18MM",
@@ -5685,12 +5685,12 @@ export const catalogProducts = [
     "price": "₹19,071",
     "regularPrice": "₹21,288",
     "salePrice": "₹19,071",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00316E-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00316E-2.webp",
+    "image": "APS00316E-1",
+    "lifestyle": "APS00316E-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00316E-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00316E-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00316E-3.webp"
+      "APS00316E-1",
+      "APS00316E-2",
+      "APS00316E-3"
     ],
     "detail": "14KT Rose Gold | Gold: 1.05g | Diamonds: 20pcs 0.07ct (H-I, VS-SI) | IGI | 8MM×8MM",
     "description": "Style Code: APS00316E Jewel Code: 103889 Gold: 14KT Rose Gold (1.05g) Diamonds: 20 pcs, 0.07ct | H-I | VS-SI | IGI Size: 8MM × 8MM",
@@ -5726,13 +5726,13 @@ export const catalogProducts = [
     "price": "₹19,077",
     "regularPrice": "₹21,438",
     "salePrice": "₹19,077",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00317-N-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00317-N-2.webp",
+    "image": "APS00317-N-1",
+    "lifestyle": "APS00317-N-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00317-N-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00317-N-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00317-N-3.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00317-N-4.webp"
+      "APS00317-N-1",
+      "APS00317-N-2",
+      "APS00317-N-3",
+      "APS00317-N-4"
     ],
     "detail": "14KT Yellow Gold | Gold: 1.05g | Diamonds: 4pcs 0.05ct (H-I, VS-SI) | IGI | 30MM×8MM",
     "description": "Style Code: APS00317 Jewel Code: 103890 Gold: 14KT Yellow Gold (1.05g) Diamonds: 4 pcs, 0.05ct | H-I | VS-SI | IGI Size: 30MM × 8MM",
@@ -5768,12 +5768,12 @@ export const catalogProducts = [
     "price": "₹18,957",
     "regularPrice": "₹21,116",
     "salePrice": "₹18,957",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00317E-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00317E-2.webp",
+    "image": "APS00317E-1",
+    "lifestyle": "APS00317E-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00317E-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00317E-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00317E-3.webp"
+      "APS00317E-1",
+      "APS00317E-2",
+      "APS00317E-3"
     ],
     "detail": "14KT Yellow Gold | Gold: 1.28g | Diamonds: 8pcs 0.06ct (H-I, VS-SI) | IGI | 28MM×8MM",
     "description": "Style Code: APS00317E Jewel Code: 103891 Gold: 14KT Yellow Gold (1.28g) Diamonds: 8 pcs, 0.06ct | H-I | VS-SI | IGI Size: 28MM × 8MM",
@@ -5809,13 +5809,13 @@ export const catalogProducts = [
     "price": "₹19,286",
     "regularPrice": "₹21,213",
     "salePrice": "₹19,286",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00318-N-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00318-N-2.webp",
+    "image": "APS00318-N-1",
+    "lifestyle": "APS00318-N-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00318-N-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00318-N-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00318-N-3.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00318-N-4.webp"
+      "APS00318-N-1",
+      "APS00318-N-2",
+      "APS00318-N-3",
+      "APS00318-N-4"
     ],
     "detail": "14KT Yellow Gold | Gold: 1.08g | Diamonds: 9pcs 0.06ct (H-I, VS-SI) | IGI | 28MM×15MM",
     "description": "Style Code: APS00318 Jewel Code: 103892 Gold: 14KT Yellow Gold (1.08g) Diamonds: 9 pcs, 0.06ct | H-I | VS-SI | IGI Size: 28MM × 15MM",
@@ -5851,12 +5851,12 @@ export const catalogProducts = [
     "price": "₹19,032",
     "regularPrice": "₹21,057",
     "salePrice": "₹19,032",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00318E-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00318E-2.webp",
+    "image": "APS00318E-1",
+    "lifestyle": "APS00318E-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00318E-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00318E-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00318E-3.webp"
+      "APS00318E-1",
+      "APS00318E-2",
+      "APS00318E-3"
     ],
     "detail": "14KT Yellow Gold | Gold: 1.02g | Diamonds: 12pcs 0.07ct (H-I, VS-SI) | IGI | 8MM×6MM",
     "description": "Style Code: APS00318E Jewel Code: 103893 Gold: 14KT Yellow Gold (1.02g) Diamonds: 12 pcs, 0.07ct | H-I | VS-SI | IGI Size: 8MM × 6MM",
@@ -5892,13 +5892,13 @@ export const catalogProducts = [
     "price": "₹19,041",
     "regularPrice": "₹21,164",
     "salePrice": "₹19,041",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00319-N-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00319-N-2.webp",
+    "image": "APS00319-N-1",
+    "lifestyle": "APS00319-N-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00319-N-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00319-N-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00319-N-3.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00319-N-4.webp"
+      "APS00319-N-1",
+      "APS00319-N-2",
+      "APS00319-N-3",
+      "APS00319-N-4"
     ],
     "detail": "14KT Rose Gold | Gold: 0.79g | Diamonds: 13pcs 0.09ct (H-I, VS-SI) | IGI | 25MM×18MM",
     "description": "Style Code: APS00319 Jewel Code: 103894 Gold: 14KT Rose Gold (0.79g) Diamonds: 13 pcs, 0.09ct | H-I | VS-SI | IGI Size: 25MM × 18MM",
@@ -5934,12 +5934,12 @@ export const catalogProducts = [
     "price": "₹19,005",
     "regularPrice": "₹21,115",
     "salePrice": "₹19,005",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00319E-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00319E-2.webp",
+    "image": "APS00319E-1",
+    "lifestyle": "APS00319E-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00319E-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00319E-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00319E-3.webp"
+      "APS00319E-1",
+      "APS00319E-2",
+      "APS00319E-3"
     ],
     "detail": "14KT Rose Gold | Gold: 0.89g | Diamonds: 26pcs 0.09ct (H-I, VS-SI) | IGI | 8MM×8MM",
     "description": "Style Code: APS00319E Jewel Code: 103895 Gold: 14KT Rose Gold (0.89g) Diamonds: 26 pcs, 0.09ct | H-I | VS-SI | IGI Size: 8MM × 8MM",
@@ -5975,13 +5975,13 @@ export const catalogProducts = [
     "price": "₹19,067",
     "regularPrice": "₹21,078",
     "salePrice": "₹19,067",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00320-N-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00320-N-2.webp",
+    "image": "APS00320-N-1",
+    "lifestyle": "APS00320-N-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00320-N-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00320-N-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00320-N-3.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00320-N-4.webp"
+      "APS00320-N-1",
+      "APS00320-N-2",
+      "APS00320-N-3",
+      "APS00320-N-4"
     ],
     "detail": "14KT Rose Gold | Gold: 1.04g | Diamonds: 16pcs 0.07ct (H-I, VS-SI) | IGI | 30MM×20MM",
     "description": "Style Code: APS00320 Jewel Code: 103896 Gold: 14KT Rose Gold (1.04g) Diamonds: 16 pcs, 0.07ct | H-I | VS-SI | IGI Size: 30MM × 20MM",
@@ -6017,12 +6017,12 @@ export const catalogProducts = [
     "price": "₹19,112",
     "regularPrice": "₹21,422",
     "salePrice": "₹19,112",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00320E-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00320E-2.webp",
+    "image": "APS00320E-1",
+    "lifestyle": "APS00320E-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00320E-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00320E-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00320E-3.webp"
+      "APS00320E-1",
+      "APS00320E-2",
+      "APS00320E-3"
     ],
     "detail": "14KT Rose Gold | Gold: 0.97g | Diamonds: 10pcs 0.06ct (H-I, VS-SI) | IGI | 8MM×8MM",
     "description": "Style Code: APS00320E Jewel Code: 103897 Gold: 14KT Rose Gold (0.97g) Diamonds: 10 pcs, 0.06ct | H-I | VS-SI | IGI Size: 8MM × 8MM",
@@ -6058,13 +6058,13 @@ export const catalogProducts = [
     "price": "₹19,097",
     "regularPrice": "₹21,070",
     "salePrice": "₹19,097",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00321-N-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00321-N-2.webp",
+    "image": "APS00321-N-1",
+    "lifestyle": "APS00321-N-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00321-N-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00321-N-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00321-N-3.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00321-N-4.webp"
+      "APS00321-N-1",
+      "APS00321-N-2",
+      "APS00321-N-3",
+      "APS00321-N-4"
     ],
     "detail": "14KT Rose Gold | Gold: 0.89g | Diamonds: 16pcs 0.09ct (H-I, VS-SI) | IGI | 25MM×15MM",
     "description": "Style Code: APS00321 Jewel Code: 103898 Gold: 14KT Rose Gold (0.89g) Diamonds: 16 pcs, 0.09ct | H-I | VS-SI | IGI Size: 25MM × 15MM",
@@ -6100,12 +6100,12 @@ export const catalogProducts = [
     "price": "₹19,172",
     "regularPrice": "₹21,320",
     "salePrice": "₹19,172",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00321E-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00321E-2.webp",
+    "image": "APS00321E-1",
+    "lifestyle": "APS00321E-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00321E-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00321E-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00321E-3.webp"
+      "APS00321E-1",
+      "APS00321E-2",
+      "APS00321E-3"
     ],
     "detail": "14KT Rose Gold | Gold: 1.06g | Diamonds: 16pcs 0.08ct (H-I, VS-SI) | IGI | 10MM×8MM",
     "description": "Style Code: APS00321E Jewel Code: 103899 Gold: 14KT Rose Gold (1.06g) Diamonds: 16 pcs, 0.08ct | H-I | VS-SI | IGI Size: 10MM × 8MM",
@@ -6141,13 +6141,13 @@ export const catalogProducts = [
     "price": "₹19,323",
     "regularPrice": "₹21,382",
     "salePrice": "₹19,323",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00322-N-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00322-N-2.webp",
+    "image": "APS00322-N-1",
+    "lifestyle": "APS00322-N-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00322-N-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00322-N-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00322-N-3.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00322-N-4.webp"
+      "APS00322-N-1",
+      "APS00322-N-2",
+      "APS00322-N-3",
+      "APS00322-N-4"
     ],
     "detail": "14KT Rose Gold | Gold: 1.1g | Diamonds: 17pcs 0.08ct (H-I, VS-SI) | IGI | 30MM×8MM",
     "description": "Style Code: APS00322 Jewel Code: 103900 Gold: 14KT Rose Gold (1.1g) Diamonds: 17 pcs, 0.08ct | H-I | VS-SI | IGI Size: 30MM × 8MM",
@@ -6183,12 +6183,12 @@ export const catalogProducts = [
     "price": "₹19,161",
     "regularPrice": "₹21,179",
     "salePrice": "₹19,161",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00322E-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00322E-2.webp",
+    "image": "APS00322E-1",
+    "lifestyle": "APS00322E-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00322E-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00322E-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00322E-3.webp"
+      "APS00322E-1",
+      "APS00322E-2",
+      "APS00322E-3"
     ],
     "detail": "14KT Rose Gold | Gold: 1.08g | Diamonds: 18pcs 0.05ct (H-I, VS-SI) | IGI | 8MM×8MM",
     "description": "Style Code: APS00322E Jewel Code: 103901 Gold: 14KT Rose Gold (1.08g) Diamonds: 18 pcs, 0.05ct | H-I | VS-SI | IGI Size: 8MM × 8MM",
@@ -6224,13 +6224,13 @@ export const catalogProducts = [
     "price": "₹19,325",
     "regularPrice": "₹21,204",
     "salePrice": "₹19,325",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00324-N-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00324-N-2.webp",
+    "image": "APS00324-N-1",
+    "lifestyle": "APS00324-N-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00324-N-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00324-N-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00324-N-3.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00324-N-4.webp"
+      "APS00324-N-1",
+      "APS00324-N-2",
+      "APS00324-N-3",
+      "APS00324-N-4"
     ],
     "detail": "14KT Yellow Gold | Gold: 1.14g | Diamonds: 11pcs 0.07ct (H-I, VS-SI) | IGI | 30MM×18MM",
     "description": "Style Code: APS00324 Jewel Code: 103904 Gold: 14KT Yellow Gold (1.14g) Diamonds: 11 pcs, 0.07ct | H-I | VS-SI | IGI Size: 30MM × 18MM",
@@ -6266,11 +6266,11 @@ export const catalogProducts = [
     "price": "₹18,970",
     "regularPrice": "₹21,114",
     "salePrice": "₹18,970",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00324E-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00324E-2.webp",
+    "image": "APS00324E-1",
+    "lifestyle": "APS00324E-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00324E-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00324E-2.webp"
+      "APS00324E-1",
+      "APS00324E-2"
     ],
     "detail": "14KT Yellow Gold | Gold: 1.13g | Diamonds: 14pcs 0.08ct (H-I, VS-SI) | IGI | 8MM×8MM",
     "description": "Style Code: APS00324E Jewel Code: 103905 Gold: 14KT Yellow Gold (1.13g) Diamonds: 14 pcs, 0.08ct | H-I | VS-SI | IGI Size: 8MM × 8MM",
@@ -6306,13 +6306,13 @@ export const catalogProducts = [
     "price": "₹19,149",
     "regularPrice": "₹21,053",
     "salePrice": "₹19,149",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00325-N-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00325-N-2.webp",
+    "image": "APS00325-N-1",
+    "lifestyle": "APS00325-N-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00325-N-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00325-N-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00325-N-3.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00325-N-4.webp"
+      "APS00325-N-1",
+      "APS00325-N-2",
+      "APS00325-N-3",
+      "APS00325-N-4"
     ],
     "detail": "14KT Rose Gold | Gold: 1.09g | Diamonds: 14pcs 0.08ct (H-I, VS-SI) | IGI | 30MM×18MM",
     "description": "Style Code: APS00325 Jewel Code: 103906 Gold: 14KT Rose Gold (1.09g) Diamonds: 14 pcs, 0.08ct | H-I | VS-SI | IGI Size: 30MM × 18MM",
@@ -6348,12 +6348,12 @@ export const catalogProducts = [
     "price": "₹19,030",
     "regularPrice": "₹21,239",
     "salePrice": "₹19,030",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00325E-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00325E-2.webp",
+    "image": "APS00325E-1",
+    "lifestyle": "APS00325E-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00325E-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00325E-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00325E-3.webp"
+      "APS00325E-1",
+      "APS00325E-2",
+      "APS00325E-3"
     ],
     "detail": "14KT Rose Gold | Gold: 1.31g | Diamonds: 18pcs 0.08ct (H-I, VS-SI) | IGI | 8MM×8MM",
     "description": "Style Code: APS00325E Jewel Code: 103907 Gold: 14KT Rose Gold (1.31g) Diamonds: 18 pcs, 0.08ct | H-I | VS-SI | IGI Size: 8MM × 8MM",
@@ -6389,13 +6389,13 @@ export const catalogProducts = [
     "price": "₹18,968",
     "regularPrice": "₹21,269",
     "salePrice": "₹18,968",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00326-N-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00326-N-2.webp",
+    "image": "APS00326-N-1",
+    "lifestyle": "APS00326-N-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00326-N-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00326-N-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00326-N-3.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00326-N-4.webp"
+      "APS00326-N-1",
+      "APS00326-N-2",
+      "APS00326-N-3",
+      "APS00326-N-4"
     ],
     "detail": "14KT Rose Gold | Gold: 0.85g | Diamonds: 13pcs 0.06ct (H-I, VS-SI) | IGI | 30MM×20MM",
     "description": "Style Code: APS00326 Jewel Code: 103908 Gold: 14KT Rose Gold (0.85g) Diamonds: 13 pcs, 0.06ct | H-I | VS-SI | IGI Size: 30MM × 20MM",
@@ -6431,12 +6431,12 @@ export const catalogProducts = [
     "price": "₹19,212",
     "regularPrice": "₹21,156",
     "salePrice": "₹19,212",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00326E-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00326E-2.webp",
+    "image": "APS00326E-1",
+    "lifestyle": "APS00326E-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00326E-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00326E-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00326E-3.webp"
+      "APS00326E-1",
+      "APS00326E-2",
+      "APS00326E-3"
     ],
     "detail": "14KT Rose Gold | Gold: 1.07g | Diamonds: 18pcs 0.07ct (H-I, VS-SI) | IGI | 10MM×10MM",
     "description": "Style Code: APS00326E Jewel Code: 103909 Gold: 14KT Rose Gold (1.07g) Diamonds: 18 pcs, 0.07ct | H-I | VS-SI | IGI Size: 10MM × 10MM",
@@ -6472,13 +6472,13 @@ export const catalogProducts = [
     "price": "₹18,983",
     "regularPrice": "₹21,417",
     "salePrice": "₹18,983",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00327-N-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00327-N-2.webp",
+    "image": "APS00327-N-1",
+    "lifestyle": "APS00327-N-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00327-N-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00327-N-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00327-N-3.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00327-N-4.webp"
+      "APS00327-N-1",
+      "APS00327-N-2",
+      "APS00327-N-3",
+      "APS00327-N-4"
     ],
     "detail": "14KT Rose Gold | Gold: 0.81g | Diamonds: 15pcs 0.07ct (H-I, VS-SI) | IGI | 20MM×18MM",
     "description": "Style Code: APS00327 Jewel Code: 103910 Gold: 14KT Rose Gold (0.81g) Diamonds: 15 pcs, 0.07ct | H-I | VS-SI | IGI Size: 20MM × 18MM",
@@ -6514,12 +6514,12 @@ export const catalogProducts = [
     "price": "₹19,056",
     "regularPrice": "₹21,389",
     "salePrice": "₹19,056",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00327E-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00327E-2.webp",
+    "image": "APS00327E-1",
+    "lifestyle": "APS00327E-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00327E-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00327E-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00327E-3.webp"
+      "APS00327E-1",
+      "APS00327E-2",
+      "APS00327E-3"
     ],
     "detail": "14KT Rose Gold | Gold: 1.1g | Diamonds: 20pcs 1.1ct (H-I, VS-SI) | IGI | 9MM×9MM",
     "description": "Style Code: APS00327E Jewel Code: 103911 Gold: 14KT Rose Gold (1.1g) Diamonds: 20 pcs, 1.1ct | H-I | VS-SI | IGI Size: 9MM × 9MM",
@@ -6555,13 +6555,13 @@ export const catalogProducts = [
     "price": "₹19,223",
     "regularPrice": "₹21,248",
     "salePrice": "₹19,223",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00328-N-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00328-N-2.webp",
+    "image": "APS00328-N-1",
+    "lifestyle": "APS00328-N-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00328-N-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00328-N-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00328-N-3.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00328-N-4.webp"
+      "APS00328-N-1",
+      "APS00328-N-2",
+      "APS00328-N-3",
+      "APS00328-N-4"
     ],
     "detail": "14KT Rose Gold | Gold: 0.98g | Diamonds: 15pcs 0.09ct (H-I, VS-SI) | IGI | 30MM×15MM",
     "description": "Style Code: APS00328 Jewel Code: 103912 Gold: 14KT Rose Gold (0.98g) Diamonds: 15 pcs, 0.09ct | H-I | VS-SI | IGI Size: 30MM × 15MM",
@@ -6597,12 +6597,12 @@ export const catalogProducts = [
     "price": "₹19,059",
     "regularPrice": "₹21,257",
     "salePrice": "₹19,059",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00328E-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00328E-2.webp",
+    "image": "APS00328E-1",
+    "lifestyle": "APS00328E-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00328E-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00328E-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00328E-3.webp"
+      "APS00328E-1",
+      "APS00328E-2",
+      "APS00328E-3"
     ],
     "detail": "14KT Rose Gold | Gold: 1.06g | Diamonds: 18pcs 0.07ct (H-I, VS-SI) | IGI | 9MM×9MM",
     "description": "Style Code: APS00328E Jewel Code: 103913 Gold: 14KT Rose Gold (1.06g) Diamonds: 18 pcs, 0.07ct | H-I | VS-SI | IGI Size: 9MM × 9MM",
@@ -6638,13 +6638,13 @@ export const catalogProducts = [
     "price": "₹19,116",
     "regularPrice": "₹21,209",
     "salePrice": "₹19,116",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00329-N-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00329-N-2.webp",
+    "image": "APS00329-N-1",
+    "lifestyle": "APS00329-N-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00329-N-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00329-N-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00329-N-3.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00329-N-4.webp"
+      "APS00329-N-1",
+      "APS00329-N-2",
+      "APS00329-N-3",
+      "APS00329-N-4"
     ],
     "detail": "14KT Rose Gold | Gold: 1.12g | Diamonds: 5pcs 0.07ct (H-I, VS-SI) | IGI | 30MM×20MM",
     "description": "Style Code: APS00329 Jewel Code: 103914 Gold: 14KT Rose Gold (1.12g) Diamonds: 5 pcs, 0.07ct | H-I | VS-SI | IGI Size: 30MM × 20MM",
@@ -6680,12 +6680,12 @@ export const catalogProducts = [
     "price": "₹19,157",
     "regularPrice": "₹21,270",
     "salePrice": "₹19,157",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00329E-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00329E-2.webp",
+    "image": "APS00329E-1",
+    "lifestyle": "APS00329E-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00329E-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00329E-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00329E-3.webp"
+      "APS00329E-1",
+      "APS00329E-2",
+      "APS00329E-3"
     ],
     "detail": "14KT Rose Gold | Gold: 1.31g | Diamonds: 10pcs 0.07ct (H-I, VS-SI) | IGI | 20MM×6MM",
     "description": "Style Code: APS00329E Jewel Code: 103915 Gold: 14KT Rose Gold (1.31g) Diamonds: 10 pcs, 0.07ct | H-I | VS-SI | IGI Size: 20MM × 6MM",
@@ -6721,13 +6721,13 @@ export const catalogProducts = [
     "price": "₹19,152",
     "regularPrice": "₹21,340",
     "salePrice": "₹19,152",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00332-N-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00332-N-2.webp",
+    "image": "APS00332-N-1",
+    "lifestyle": "APS00332-N-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00332-N-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00332-N-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00332-N-3.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00332-N-4.webp"
+      "APS00332-N-1",
+      "APS00332-N-2",
+      "APS00332-N-3",
+      "APS00332-N-4"
     ],
     "detail": "14KT Yellow Gold | Gold: 0.74g | Diamonds: 3pcs 0.06ct (H-I, VS-SI) | IGI | 10MM×10MM",
     "description": "Style Code: APS00332 Jewel Code: 103967 Gold: 14KT Yellow Gold (0.74g) Diamonds: 3 pcs, 0.06ct | H-I | VS-SI | IGI Size: 10MM × 10MM",
@@ -6763,12 +6763,12 @@ export const catalogProducts = [
     "price": "₹18,996",
     "regularPrice": "₹21,398",
     "salePrice": "₹18,996",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00332E-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00332E-2.webp",
+    "image": "APS00332E-1",
+    "lifestyle": "APS00332E-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00332E-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00332E-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00332E-3.webp"
+      "APS00332E-1",
+      "APS00332E-2",
+      "APS00332E-3"
     ],
     "detail": "14KT Yellow Gold | Gold: 0.88g | Diamonds: 6pcs 0.07ct (H-I, VS-SI) | IGI | 8MM×8MM",
     "description": "Style Code: APS00332E Jewel Code: 103968 Gold: 14KT Yellow Gold (0.88g) Diamonds: 6 pcs, 0.07ct | H-I | VS-SI | IGI Size: 8MM × 8MM",
@@ -6804,13 +6804,13 @@ export const catalogProducts = [
     "price": "₹19,074",
     "regularPrice": "₹21,400",
     "salePrice": "₹19,074",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00334-N-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00334-N-2.webp",
+    "image": "APS00334-N-1",
+    "lifestyle": "APS00334-N-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00334-N-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00334-N-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00334-N-3.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00334-N-4.webp"
+      "APS00334-N-1",
+      "APS00334-N-2",
+      "APS00334-N-3",
+      "APS00334-N-4"
     ],
     "detail": "14KT Rose Gold | Gold: 0.81g | Diamonds: 16pcs 0.09ct (H-I, VS-SI) | IGI | 15MM×10MM",
     "description": "Style Code: APS00334 Jewel Code: 103973 Gold: 14KT Rose Gold (0.81g) Diamonds: 16 pcs, 0.09ct | H-I | VS-SI | IGI Size: 15MM × 10MM",
@@ -6846,12 +6846,12 @@ export const catalogProducts = [
     "price": "₹19,120",
     "regularPrice": "₹21,187",
     "salePrice": "₹19,120",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00334E-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00334E-2.webp",
+    "image": "APS00334E-1",
+    "lifestyle": "APS00334E-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00334E-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00334E-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00334E-3.webp"
+      "APS00334E-1",
+      "APS00334E-2",
+      "APS00334E-3"
     ],
     "detail": "14KT Rose Gold | Gold: 1.0g | Diamonds: 22pcs 0.08ct (H-I, VS-SI) | IGI | 10MM×10MM",
     "description": "Style Code: APS00334E Jewel Code: 104094 Gold: 14KT Rose Gold (1.0g) Diamonds: 22 pcs, 0.08ct | H-I | VS-SI | IGI Size: 10MM × 10MM",
@@ -6887,13 +6887,13 @@ export const catalogProducts = [
     "price": "₹19,050",
     "regularPrice": "₹21,271",
     "salePrice": "₹19,050",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00357-N-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00357-N-2.webp",
+    "image": "APS00357-N-1",
+    "lifestyle": "APS00357-N-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00357-N-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00357-N-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00357-N-3.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00357-N-4.webp"
+      "APS00357-N-1",
+      "APS00357-N-2",
+      "APS00357-N-3",
+      "APS00357-N-4"
     ],
     "detail": "14KT Rose Gold | Gold: 0.87g | Diamonds: 21pcs 0.07ct (H-I, VS-SI) | IGI | 20MM×20MM",
     "description": "Style Code: APS00357 Jewel Code: 104060 Gold: 14KT Rose Gold (0.87g) Diamonds: 21 pcs, 0.07ct | H-I | VS-SI | IGI Size: 20MM × 20MM",
@@ -6929,12 +6929,12 @@ export const catalogProducts = [
     "price": "₹18,951",
     "regularPrice": "₹21,348",
     "salePrice": "₹18,951",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00357E-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00357E-2.webp",
+    "image": "APS00357E-1",
+    "lifestyle": "APS00357E-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00357E-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00357E-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00357E-3.webp"
+      "APS00357E-1",
+      "APS00357E-2",
+      "APS00357E-3"
     ],
     "detail": "14KT Rose Gold | Gold: 0.84g | Diamonds: 24pcs 0.08ct (H-I, VS-SI) | IGI | 10MM×10MM",
     "description": "Style Code: APS00357E Jewel Code: 104061 Gold: 14KT Rose Gold (0.84g) Diamonds: 24 pcs, 0.08ct | H-I | VS-SI | IGI Size: 10MM × 10MM",
@@ -6970,13 +6970,13 @@ export const catalogProducts = [
     "price": "₹19,135",
     "regularPrice": "₹21,096",
     "salePrice": "₹19,135",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00359-N-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00359-N-2.webp",
+    "image": "APS00359-N-1",
+    "lifestyle": "APS00359-N-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00359-N-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00359-N-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00359-N-3.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00359-N-4.webp"
+      "APS00359-N-1",
+      "APS00359-N-2",
+      "APS00359-N-3",
+      "APS00359-N-4"
     ],
     "detail": "14KT Rose Gold | Gold: 0.84g | Diamonds: 15pcs 0.07ct (H-I, VS-SI) | IGI | 25MM×20MM",
     "description": "Style Code: APS00359 Jewel Code: 104064 Gold: 14KT Rose Gold (0.84g) Diamonds: 15 pcs, 0.07ct | H-I | VS-SI | IGI Size: 25MM × 20MM",
@@ -7012,12 +7012,12 @@ export const catalogProducts = [
     "price": "₹19,110",
     "regularPrice": "₹21,184",
     "salePrice": "₹19,110",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00359E-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00359E-2.webp",
+    "image": "APS00359E-1",
+    "lifestyle": "APS00359E-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00359E-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00359E-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00359E-3.webp"
+      "APS00359E-1",
+      "APS00359E-2",
+      "APS00359E-3"
     ],
     "detail": "14KT Rose Gold | Gold: 0.93g | Diamonds: 18pcs 0.08ct (H-I, VS-SI) | IGI | 15MM×15MM",
     "description": "Style Code: APS00359E Jewel Code: 104065 Gold: 14KT Rose Gold (0.93g) Diamonds: 18 pcs, 0.08ct | H-I | VS-SI | IGI Size: 15MM × 15MM",
@@ -7053,13 +7053,13 @@ export const catalogProducts = [
     "price": "₹19,179",
     "regularPrice": "₹21,298",
     "salePrice": "₹19,179",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00360-N-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00360-N-2.webp",
+    "image": "APS00360-N-1",
+    "lifestyle": "APS00360-N-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00360-N-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00360-N-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00360-N-3.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00360-N-4.webp"
+      "APS00360-N-1",
+      "APS00360-N-2",
+      "APS00360-N-3",
+      "APS00360-N-4"
     ],
     "detail": "14KT Yellow Gold | Gold: 0.87g | Diamonds: 7pcs 0.07ct (H-I, VS-SI) | IGI | 12MM×10MM",
     "description": "Style Code: APS00360 Jewel Code: 104066 Gold: 14KT Yellow Gold (0.87g) Diamonds: 7 pcs, 0.07ct | H-I | VS-SI | IGI Size: 12MM × 10MM",
@@ -7095,12 +7095,12 @@ export const catalogProducts = [
     "price": "₹19,181",
     "regularPrice": "₹21,116",
     "salePrice": "₹19,181",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00360E-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00360E-2.webp",
+    "image": "APS00360E-1",
+    "lifestyle": "APS00360E-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00360E-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00360E-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00360E-3.webp"
+      "APS00360E-1",
+      "APS00360E-2",
+      "APS00360E-3"
     ],
     "detail": "14KT Rose Gold | Gold: 0.96g | Diamonds: 14pcs 0.07ct (H-I, VS-SI) | IGI | 10MM×10MM",
     "description": "Style Code: APS00360E Jewel Code: 104067 Gold: 14KT Rose Gold (0.96g) Diamonds: 14 pcs, 0.07ct | H-I | VS-SI | IGI Size: 10MM × 10MM",
@@ -7136,13 +7136,13 @@ export const catalogProducts = [
     "price": "₹19,268",
     "regularPrice": "₹21,149",
     "salePrice": "₹19,268",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00361-N-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00361-N-2.webp",
+    "image": "APS00361-N-1",
+    "lifestyle": "APS00361-N-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00361-N-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00361-N-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00361-N-3.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00361-N-4.webp"
+      "APS00361-N-1",
+      "APS00361-N-2",
+      "APS00361-N-3",
+      "APS00361-N-4"
     ],
     "detail": "14KT Yellow Gold | Gold: 0.93g | Diamonds: 7pcs 0.06ct (H-I, VS-SI) | IGI | 30MM×15MM",
     "description": "Style Code: APS00361 Jewel Code: 104068 Gold: 14KT Yellow Gold (0.93g) Diamonds: 7 pcs, 0.06ct | H-I | VS-SI | IGI Size: 30MM × 15MM",
@@ -7178,12 +7178,12 @@ export const catalogProducts = [
     "price": "₹19,148",
     "regularPrice": "₹21,445",
     "salePrice": "₹19,148",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00361E-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00361E-2.webp",
+    "image": "APS00361E-1",
+    "lifestyle": "APS00361E-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00361E-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00361E-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00361E-3.webp"
+      "APS00361E-1",
+      "APS00361E-2",
+      "APS00361E-3"
     ],
     "detail": "14KT Yellow Gold | Gold: 1.06g | Diamonds: 10pcs 0.07ct (H-I, VS-SI) | IGI | 20MM×10MM",
     "description": "Style Code: APS00361E Jewel Code: 104069 Gold: 14KT Yellow Gold (1.06g) Diamonds: 10 pcs, 0.07ct | H-I | VS-SI | IGI Size: 20MM × 10MM",
@@ -7219,13 +7219,13 @@ export const catalogProducts = [
     "price": "₹18,965",
     "regularPrice": "₹21,436",
     "salePrice": "₹18,965",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00362-N-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00362-N-2.webp",
+    "image": "APS00362-N-1",
+    "lifestyle": "APS00362-N-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00362-N-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00362-N-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00362-N-3.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00362-N-4.webp"
+      "APS00362-N-1",
+      "APS00362-N-2",
+      "APS00362-N-3",
+      "APS00362-N-4"
     ],
     "detail": "14KT Yellow Gold | Gold: 0.74g | Diamonds: 15pcs 0.07ct (H-I, VS-SI) | IGI | 30MM×20MM",
     "description": "Style Code: APS00362 Jewel Code: 104070 Gold: 14KT Yellow Gold (0.74g) Diamonds: 15 pcs, 0.07ct | H-I | VS-SI | IGI Size: 30MM × 20MM",
@@ -7261,12 +7261,12 @@ export const catalogProducts = [
     "price": "₹19,197",
     "regularPrice": "₹21,192",
     "salePrice": "₹19,197",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00362E-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00362E-2.webp",
+    "image": "APS00362E-1",
+    "lifestyle": "APS00362E-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00362E-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00362E-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00362E-3.webp"
+      "APS00362E-1",
+      "APS00362E-2",
+      "APS00362E-3"
     ],
     "detail": "14KT Yellow Gold | Gold: 1.1g | Diamonds: 12pcs 0.06ct (H-I, VS-SI) | IGI | 10MM×10MM",
     "description": "Style Code: APS00362E Jewel Code: 104071 Gold: 14KT Yellow Gold (1.1g) Diamonds: 12 pcs, 0.06ct | H-I | VS-SI | IGI Size: 10MM × 10MM",
@@ -7302,13 +7302,13 @@ export const catalogProducts = [
     "price": "₹18,968",
     "regularPrice": "₹21,401",
     "salePrice": "₹18,968",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00363-N-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00363-N-2.webp",
+    "image": "APS00363-N-1",
+    "lifestyle": "APS00363-N-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00363-N-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00363-N-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00363-N-3.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00363-N-4.webp"
+      "APS00363-N-1",
+      "APS00363-N-2",
+      "APS00363-N-3",
+      "APS00363-N-4"
     ],
     "detail": "14KT Yellow Gold | Gold: 1.01g | Diamonds: 14pcs 0.07ct (H-I, VS-SI) | IGI | 15MM×10MM",
     "description": "Style Code: APS00363 Jewel Code: 104072 Gold: 14KT Yellow Gold (1.01g) Diamonds: 14 pcs, 0.07ct | H-I | VS-SI | IGI Size: 15MM × 10MM",
@@ -7344,13 +7344,13 @@ export const catalogProducts = [
     "price": "₹19,040",
     "regularPrice": "₹21,127",
     "salePrice": "₹19,040",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/AS00363-N-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/AS00363-N-2.webp",
+    "image": "",
+    "lifestyle": "",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/AS00363-N-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/AS00363-N-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/AS00363-N-3.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/AS00363-N-4.webp"
+      "",
+      "",
+      "",
+      ""
     ],
     "detail": "14KT Yellow Gold | Gold: 0.85g | Diamonds: 15pcs 0.07ct (H-I, VS-SI) | IGI | 33MM×15MM",
     "description": "Style Code: APS00363 Jewel Code: 104072 Gold: 14KT Yellow Gold (0.85g) Diamonds: 15 pcs, 0.07ct | H-I | VS-SI | IGI Size: 33MM × 15MM",
@@ -7386,13 +7386,13 @@ export const catalogProducts = [
     "price": "₹18,965",
     "regularPrice": "₹21,279",
     "salePrice": "₹18,965",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00364-N-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00364-N-2.webp",
+    "image": "APS00364-N-1",
+    "lifestyle": "APS00364-N-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00364-N-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00364-N-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00364-N-3.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00364-N-4.webp"
+      "APS00364-N-1",
+      "APS00364-N-2",
+      "APS00364-N-3",
+      "APS00364-N-4"
     ],
     "detail": "14KT Rose Gold | Gold: 0.92g | Diamonds: 16pcs 0.08ct (H-I, VS-SI) | IGI | 15MM×15MM",
     "description": "Style Code: APS00364 Jewel Code: 104074 Gold: 14KT Rose Gold (0.92g) Diamonds: 16 pcs, 0.08ct | H-I | VS-SI | IGI Size: 15MM × 15MM",
@@ -7428,12 +7428,12 @@ export const catalogProducts = [
     "price": "₹18,983",
     "regularPrice": "₹21,062",
     "salePrice": "₹18,983",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00364E-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00364E-2.webp",
+    "image": "APS00364E-1",
+    "lifestyle": "APS00364E-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00364E-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00364E-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00364E-3.webp"
+      "APS00364E-1",
+      "APS00364E-2",
+      "APS00364E-3"
     ],
     "detail": "14KT Rose Gold | Gold: 1.03g | Diamonds: 24pcs 0.08ct (H-I, VS-SI) | IGI | 15MM×15MM",
     "description": "Style Code: APS00364E Jewel Code: 104075 Gold: 14KT Rose Gold (1.03g) Diamonds: 24 pcs, 0.08ct | H-I | VS-SI | IGI Size: 15MM × 15MM",
@@ -7469,13 +7469,13 @@ export const catalogProducts = [
     "price": "₹19,121",
     "regularPrice": "₹21,228",
     "salePrice": "₹19,121",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00365-N-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00365-N-2.webp",
+    "image": "APS00365-N-1",
+    "lifestyle": "APS00365-N-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00365-N-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00365-N-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00365-N-3.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00365-N-4.webp"
+      "APS00365-N-1",
+      "APS00365-N-2",
+      "APS00365-N-3",
+      "APS00365-N-4"
     ],
     "detail": "14KT Rose Gold | Gold: 1.014g | Diamonds: 10pcs 0.06ct (H-I, VS-SI) | IGI | 20MM×30MM",
     "description": "Style Code: APS00365 Jewel Code: 104076 Gold: 14KT Rose Gold (1.014g) Diamonds: 10 pcs, 0.06ct | H-I | VS-SI | IGI Size: 20MM × 30MM",
@@ -7511,12 +7511,12 @@ export const catalogProducts = [
     "price": "₹19,306",
     "regularPrice": "₹21,286",
     "salePrice": "₹19,306",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00365E-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00365E-2.webp",
+    "image": "APS00365E-1",
+    "lifestyle": "APS00365E-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00365E-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00365E-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00365E-3.webp"
+      "APS00365E-1",
+      "APS00365E-2",
+      "APS00365E-3"
     ],
     "detail": "14KT Rose Gold | Gold: 0.99g | Diamonds: 10pcs 0.07ct (H-I, VS-SI) | IGI | 10MM×10MM",
     "description": "Style Code: APS00365E Jewel Code: 104077 Gold: 14KT Rose Gold (0.99g) Diamonds: 10 pcs, 0.07ct | H-I | VS-SI | IGI Size: 10MM × 10MM",
@@ -7552,13 +7552,13 @@ export const catalogProducts = [
     "price": "₹19,199",
     "regularPrice": "₹21,317",
     "salePrice": "₹19,199",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00366-N-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00366-N-2.webp",
+    "image": "APS00366-N-1",
+    "lifestyle": "APS00366-N-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00366-N-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00366-N-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00366-N-3.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00366-N-4.webp"
+      "APS00366-N-1",
+      "APS00366-N-2",
+      "APS00366-N-3",
+      "APS00366-N-4"
     ],
     "detail": "14KT Rose Gold | Gold: 0.84g | Diamonds: 16pcs 0.06ct (H-I, VS-SI) | IGI | 25MM×15MM",
     "description": "Style Code: APS00366 Jewel Code: 104078 Gold: 14KT Rose Gold (0.84g) Diamonds: 16 pcs, 0.06ct | H-I | VS-SI | IGI Size: 25MM × 15MM",
@@ -7594,12 +7594,12 @@ export const catalogProducts = [
     "price": "₹19,180",
     "regularPrice": "₹21,307",
     "salePrice": "₹19,180",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00366E-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00366E-2.webp",
+    "image": "APS00366E-1",
+    "lifestyle": "APS00366E-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00366E-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00366E-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00366E-3.webp"
+      "APS00366E-1",
+      "APS00366E-2",
+      "APS00366E-3"
     ],
     "detail": "14KT Rose Gold | Gold: 1.08g | Diamonds: 14pcs 0.07ct (H-I, VS-SI) | IGI | 10MM×10MM",
     "description": "Style Code: APS00366E Jewel Code: 104079 Gold: 14KT Rose Gold (1.08g) Diamonds: 14 pcs, 0.07ct | H-I | VS-SI | IGI Size: 10MM × 10MM",
@@ -7635,13 +7635,13 @@ export const catalogProducts = [
     "price": "₹18,976",
     "regularPrice": "₹21,349",
     "salePrice": "₹18,976",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00367-N-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00367-N-2.webp",
+    "image": "APS00367-N-1",
+    "lifestyle": "APS00367-N-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00367-N-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00367-N-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00367-N-3.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00367-N-4.webp"
+      "APS00367-N-1",
+      "APS00367-N-2",
+      "APS00367-N-3",
+      "APS00367-N-4"
     ],
     "detail": "14KT Rose Gold | Gold: 0.83g | Diamonds: 12pcs 0.07ct (H-I, VS-SI) | IGI | 15MM×10MM",
     "description": "Style Code: APS00367 Jewel Code: 104080 Gold: 14KT Rose Gold (0.83g) Diamonds: 12 pcs, 0.07ct | H-I | VS-SI | IGI Size: 15MM × 10MM",
@@ -7677,12 +7677,12 @@ export const catalogProducts = [
     "price": "₹19,105",
     "regularPrice": "₹21,330",
     "salePrice": "₹19,105",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00367E-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00367E-2.webp",
+    "image": "APS00367E-1",
+    "lifestyle": "APS00367E-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00367E-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00367E-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00367E-3.webp"
+      "APS00367E-1",
+      "APS00367E-2",
+      "APS00367E-3"
     ],
     "detail": "14KT Rose Gold | Gold: 0.96g | Diamonds: 24pcs 0.08ct (H-I, VS-SI) | IGI | 10MM×10MM",
     "description": "Style Code: APS00367E Jewel Code: 104081 Gold: 14KT Rose Gold (0.96g) Diamonds: 24 pcs, 0.08ct | H-I | VS-SI | IGI Size: 10MM × 10MM",
@@ -7718,13 +7718,13 @@ export const catalogProducts = [
     "price": "₹18,978",
     "regularPrice": "₹21,409",
     "salePrice": "₹18,978",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00368-N-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00368-N-2.webp",
+    "image": "APS00368-N-1",
+    "lifestyle": "APS00368-N-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00368-N-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00368-N-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00368-N-3.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00368-N-4.webp"
+      "APS00368-N-1",
+      "APS00368-N-2",
+      "APS00368-N-3",
+      "APS00368-N-4"
     ],
     "detail": "14KT Yellow Gold | Gold: 0.61g | Diamonds: 16pcs 0.07ct (H-I, VS-SI) | IGI | 20MM×15MM",
     "description": "Style Code: APS00368 Jewel Code: 104082 Gold: 14KT Yellow Gold (0.61g) Diamonds: 16 pcs, 0.07ct | H-I | VS-SI | IGI Size: 20MM × 15MM",
@@ -7760,12 +7760,12 @@ export const catalogProducts = [
     "price": "₹19,038",
     "regularPrice": "₹21,144",
     "salePrice": "₹19,038",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00368E-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00368E-2.webp",
+    "image": "APS00368E-1",
+    "lifestyle": "APS00368E-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00368E-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00368E-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00368E-3.webp"
+      "APS00368E-1",
+      "APS00368E-2",
+      "APS00368E-3"
     ],
     "detail": "14KT Yellow Gold | Gold: 0.98g | Diamonds: 28pcs 0.12ct (H-I, VS-SI) | IGI | 10MM×10MM",
     "description": "Style Code: APS00368E Jewel Code: 104083 Gold: 14KT Yellow Gold (0.98g) Diamonds: 28 pcs, 0.12ct | H-I | VS-SI | IGI Size: 10MM × 10MM",
@@ -7801,13 +7801,13 @@ export const catalogProducts = [
     "price": "₹19,195",
     "regularPrice": "₹21,283",
     "salePrice": "₹19,195",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00370-N-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00370-N-2.webp",
+    "image": "APS00370-N-1",
+    "lifestyle": "APS00370-N-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00370-N-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00370-N-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00370-N-3.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00370-N-4.webp"
+      "APS00370-N-1",
+      "APS00370-N-2",
+      "APS00370-N-3",
+      "APS00370-N-4"
     ],
     "detail": "14KT Yellow Gold | Gold: 0.81g | Diamonds: 16pcs 0.08ct (H-I, VS-SI) | IGI | 20MM×10MM",
     "description": "Style Code: APS00370 Jewel Code: 104086 Gold: 14KT Yellow Gold (0.81g) Diamonds: 16 pcs, 0.08ct | H-I | VS-SI | IGI Size: 20MM × 10MM",
@@ -7843,12 +7843,12 @@ export const catalogProducts = [
     "price": "₹19,283",
     "regularPrice": "₹21,238",
     "salePrice": "₹19,283",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00370E-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00370E-2.webp",
+    "image": "APS00370E-1",
+    "lifestyle": "APS00370E-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00370E-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00370E-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00370E-3.webp"
+      "APS00370E-1",
+      "APS00370E-2",
+      "APS00370E-3"
     ],
     "detail": "14KT Yellow Gold | Gold: 1.01g | Diamonds: 14pcs 0.07ct (H-I, VS-SI) | IGI | 10MM×10MM",
     "description": "Style Code: APS00370E Jewel Code: 104087 Gold: 14KT Yellow Gold (1.01g) Diamonds: 14 pcs, 0.07ct | H-I | VS-SI | IGI Size: 10MM × 10MM",
@@ -7884,13 +7884,13 @@ export const catalogProducts = [
     "price": "₹19,001",
     "regularPrice": "₹21,210",
     "salePrice": "₹19,001",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00399-N-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00399-N-2.webp",
+    "image": "APS00399-N-1",
+    "lifestyle": "APS00399-N-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00399-N-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00399-N-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00399-N-3.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00399-N-4.webp"
+      "APS00399-N-1",
+      "APS00399-N-2",
+      "APS00399-N-3",
+      "APS00399-N-4"
     ],
     "detail": "14KT Yellow Gold | Gold: 0.91g | Diamonds: 12pcs 0.06ct (H-I, VS-SI) | IGI | 15MM×10MM",
     "description": "Style Code: APS00399 Jewel Code: 104281 Gold: 14KT Yellow Gold (0.91g) Diamonds: 12 pcs, 0.06ct | H-I | VS-SI | IGI Size: 15MM × 10MM",
@@ -7926,12 +7926,12 @@ export const catalogProducts = [
     "price": "₹19,252",
     "regularPrice": "₹21,179",
     "salePrice": "₹19,252",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00399E-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00399E-2.webp",
+    "image": "APS00399E-1",
+    "lifestyle": "APS00399E-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00399E-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00399E-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00399E-3.webp"
+      "APS00399E-1",
+      "APS00399E-2",
+      "APS00399E-3"
     ],
     "detail": "14KT Yellow Gold | Gold: 1.152g | Diamonds: 18pcs 0.06ct (H-I, VS-SI) | IGI | 10MM×10MM",
     "description": "Style Code: APS00399E Jewel Code: 104282 Gold: 14KT Yellow Gold (1.152g) Diamonds: 18 pcs, 0.06ct | H-I | VS-SI | IGI Size: 10MM × 10MM",
@@ -7967,13 +7967,13 @@ export const catalogProducts = [
     "price": "₹19,135",
     "regularPrice": "₹21,357",
     "salePrice": "₹19,135",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00426-N-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00426-N-2.webp",
+    "image": "APS00426-N-1",
+    "lifestyle": "APS00426-N-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00426-N-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00426-N-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00426-N-3.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00426-N-4.webp"
+      "APS00426-N-1",
+      "APS00426-N-2",
+      "APS00426-N-3",
+      "APS00426-N-4"
     ],
     "detail": "14KT Yellow Gold | Gold: 0.97g | Diamonds: 8pcs 0.07ct (H-I, VS-SI) | IGI | 10MM×10MM",
     "description": "Style Code: APS00426 Jewel Code: 104464 Gold: 14KT Yellow Gold (0.97g) Diamonds: 8 pcs, 0.07ct | H-I | VS-SI | IGI Size: 10MM × 10MM",
@@ -8009,12 +8009,12 @@ export const catalogProducts = [
     "price": "₹19,291",
     "regularPrice": "₹21,371",
     "salePrice": "₹19,291",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00426E-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00426E-2.webp",
+    "image": "APS00426E-1",
+    "lifestyle": "APS00426E-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00426E-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00426E-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00426E-3.webp"
+      "APS00426E-1",
+      "APS00426E-2",
+      "APS00426E-3"
     ],
     "detail": "14KT Yellow Gold | Gold: 1.05g | Diamonds: 14pcs 0.06ct (H-I, VS-SI) | IGI | 8MM×8MM",
     "description": "Style Code: APS00426E Jewel Code: 104465 Gold: 14KT Yellow Gold (1.05g) Diamonds: 14 pcs, 0.06ct | H-I | VS-SI | IGI Size: 8MM × 8MM",
@@ -8050,12 +8050,12 @@ export const catalogProducts = [
     "price": "₹19,181",
     "regularPrice": "₹21,283",
     "salePrice": "₹19,181",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00427E-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00427E-2.webp",
+    "image": "APS00427E-1",
+    "lifestyle": "APS00427E-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00427E-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00427E-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00427E-3.webp"
+      "APS00427E-1",
+      "APS00427E-2",
+      "APS00427E-3"
     ],
     "detail": "14KT Rose Gold | Gold: 1.016g | Diamonds: 10pcs 0.08ct (H-I, VS-SI) | IGI | 10MM×10MM",
     "description": "Style Code: APS00427E Jewel Code: 104467 Gold: 14KT Rose Gold (1.016g) Diamonds: 10 pcs, 0.08ct | H-I | VS-SI | IGI Size: 10MM × 10MM",
@@ -8091,12 +8091,12 @@ export const catalogProducts = [
     "price": "₹19,040",
     "regularPrice": "₹21,186",
     "salePrice": "₹19,040",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00427E-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00427E-2.webp",
+    "image": "APS00427E-1",
+    "lifestyle": "APS00427E-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00427E-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00427E-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00427E-3.webp"
+      "APS00427E-1",
+      "APS00427E-2",
+      "APS00427E-3"
     ],
     "detail": "14KT Rose Gold | Gold: 0.92g | Diamonds: 7pcs 0.05ct (H-I, VS-SI) | IGI | 20MM×20MM",
     "description": "Style Code: APS00427E Jewel Code: 104466 Gold: 14KT Rose Gold (0.92g) Diamonds: 7 pcs, 0.05ct | H-I | VS-SI | IGI Size: 20MM × 20MM",
@@ -8132,13 +8132,13 @@ export const catalogProducts = [
     "price": "₹18,973",
     "regularPrice": "₹21,068",
     "salePrice": "₹18,973",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00428-N-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00428-N-2.webp",
+    "image": "APS00428-N-1",
+    "lifestyle": "APS00428-N-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00428-N-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00428-N-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00428-N-3.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00428-N-4.webp"
+      "APS00428-N-1",
+      "APS00428-N-2",
+      "APS00428-N-3",
+      "APS00428-N-4"
     ],
     "detail": "14KT Yellow Gold | Gold: 1.07g | Diamonds: 11pcs 0.06ct (H-I, VS-SI) | IGI | 10MM×10MM",
     "description": "Style Code: APS00428 Jewel Code: 104468 Gold: 14KT Yellow Gold (1.07g) Diamonds: 11 pcs, 0.06ct | H-I | VS-SI | IGI Size: 10MM × 10MM",
@@ -8174,12 +8174,12 @@ export const catalogProducts = [
     "price": "₹19,182",
     "regularPrice": "₹21,383",
     "salePrice": "₹19,182",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00428E-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00428E-2.webp",
+    "image": "APS00428E-1",
+    "lifestyle": "APS00428E-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00428E-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00428E-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APS00428E-3.webp"
+      "APS00428E-1",
+      "APS00428E-2",
+      "APS00428E-3"
     ],
     "detail": "14KT Yellow Gold | Gold: 0.916g | Diamonds: 10pcs 0.05ct (H-I, VS-SI) | IGI | 5MM×5MM",
     "description": "Style Code: APS00428E Jewel Code: 104469 Gold: 14KT Yellow Gold (0.916g) Diamonds: 10 pcs, 0.05ct | H-I | VS-SI | IGI Size: 5MM × 5MM",
@@ -8215,12 +8215,12 @@ export const catalogProducts = [
     "price": "₹19,174",
     "regularPrice": "₹21,382",
     "salePrice": "₹19,174",
-    "image": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APT00605-1.webp",
-    "lifestyle": "https://oorvidiamonds.com//wp-content/uploads/2026/04/APT00605-N-2.webp",
+    "image": "APT00605-1",
+    "lifestyle": "APT00605-N-2",
     "images": [
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APT00605-1.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APT00605-N-2.webp",
-      "https://oorvidiamonds.com//wp-content/uploads/2026/04/APT00605-N-3.webp"
+      "APT00605-1",
+      "APT00605-N-2",
+      "APT00605-N-3"
     ],
     "detail": "14KT Yellow Gold | Gold: 0.68g | Diamonds: 6pcs 0.03ct (H-I, VS-SI) | IGI | 28MM×20MM",
     "description": "Style Code: APT00605 Jewel Code: 103875 Gold: 14KT Yellow Gold (0.68g) Diamonds: 6 pcs, 0.03ct | H-I | VS-SI | IGI Size: 28MM × 20MM",

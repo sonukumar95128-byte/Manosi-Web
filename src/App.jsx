@@ -124,6 +124,22 @@ const categoryLifestyleFallbackImages = {
   Nosepins: "/src/assets/real-products/nosepin-lifestyle.webp",
 };
 
+// Products fall back to this rather than to a category photo: showing one ring
+// on every ring listing tells the customer they are buying something they are
+// not. Decorative slots (hero, collections, campaign) keep the category images.
+const PRODUCT_PLACEHOLDER = `data:image/svg+xml,${encodeURIComponent(
+  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">'
+  + '<rect width="400" height="400" fill="#f3ece1"/>'
+  + '<g fill="none" stroke="#c9b28a" stroke-width="5" stroke-linejoin="round">'
+  + '<path d="M200 148l42 36-42 68-42-68z"/><path d="M158 184h84"/></g>'
+  + '<text x="200" y="272" text-anchor="middle" font-family="Manrope,Arial,sans-serif"'
+  + ' font-size="20" fill="#8d8375">Photo coming soon</text></svg>',
+)}`;
+
+function productImage(product) {
+  return product?.image || PRODUCT_PLACEHOLDER;
+}
+
 function imageFallbackFor(product, lifestyle = false) {
   const category = product?.category || "Rings";
   return (lifestyle ? categoryLifestyleFallbackImages[category] : categoryFallbackImages[category]) || categoryFallbackImages.Rings;
@@ -399,7 +415,7 @@ function ProductCard({ product, favorite, onFavorite, onOpen }) {
       </button>
       <span className="product-badge">{deliveryText(product)}</span>
       <button className="product-image-button" onClick={() => onOpen(product)}>
-        <img src={imageUrl(product.image)} alt={product.name} onError={(event) => setImageFallback(event, imageFallbackFor(product))} />
+        <img src={imageUrl(productImage(product))} alt={product.name} onError={(event) => setImageFallback(event, PRODUCT_PLACEHOLDER)} />
       </button>
       <p>{product.category} · {productMetal(product)}</p>
       <h4>{product.name}</h4>
@@ -1067,7 +1083,7 @@ function ProductPage({ product, favorites, toggleFavorite, addToCart, buyNow, op
   const [goldColour, setGoldColour] = useState(productMetal(product));
   const [purity, setPurity] = useState(productKarat(product).replace("KT", "K"));
   const [length, setLength] = useState(product.category === "Necklace" ? "16 inch" : "Standard size");
-  const activeImage = galleryImages[activeIndex] || galleryImages[0] || imageFallbackFor(product);
+  const activeImage = galleryImages[activeIndex] || galleryImages[0] || PRODUCT_PLACEHOLDER;
   const salePrice = cleanPrice(product.salePrice || product.price);
   const regularPrice = product.regularPrice ? cleanPrice(product.regularPrice) : "";
   const category = product.category || "Jewellery";
@@ -1095,7 +1111,7 @@ function ProductPage({ product, favorites, toggleFavorite, addToCart, buyNow, op
       <section className="product-page">
         <div className="product-gallery">
           <div className="product-main-image">
-            <img src={imageUrl(activeImage)} alt={product.name} onError={(event) => setImageFallback(event, imageFallbackFor(product, true))} />
+            <img src={imageUrl(activeImage)} alt={product.name} onError={(event) => setImageFallback(event, PRODUCT_PLACEHOLDER)} />
             <span>{Math.min(activeIndex + 1, galleryImages.length || 1)} / {galleryImages.length || 1}</span>
             <a className="gallery-zoom" href={imageUrl(activeImage)} target="_blank" rel="noreferrer" aria-label="Open full-size image">
               <span className="material-symbols-rounded">search</span>
@@ -1104,7 +1120,7 @@ function ProductPage({ product, favorites, toggleFavorite, addToCart, buyNow, op
           <div className="product-thumbnails">
             {galleryImages.map((image, index) => (
               <button className={activeIndex === index ? "is-active" : ""} key={`${image}-${index}`} onClick={() => setActiveIndex(index)} aria-label={`View image ${index + 1}`}>
-                <img src={imageUrl(image)} alt="" onError={(event) => setImageFallback(event, imageFallbackFor(product, index === 1))} />
+                <img src={imageUrl(image)} alt="" onError={(event) => setImageFallback(event, PRODUCT_PLACEHOLDER)} />
               </button>
             ))}
           </div>
@@ -1225,7 +1241,7 @@ function NewArrivalsPage({ openProduct }) {
       <section className="arrival-feature">
         {products.slice(2, 6).map((product, index) => (
           <article key={`${product.id}-arrival-page-${product.sku || index}`}>
-            <img src={imageUrl(product.image)} alt={product.name} onError={(event) => setImageFallback(event, imageFallbackFor(product))} />
+            <img src={imageUrl(productImage(product))} alt={product.name} onError={(event) => setImageFallback(event, PRODUCT_PLACEHOLDER)} />
             <div>
               <p className="eyebrow">{product.category}</p>
               <h3>{product.name}</h3>
@@ -1490,7 +1506,7 @@ function CartPagePro({ cartItems, updateCartQuantity, removeFromCart, setPage })
             {cartItems.map((item) => (
               <article key={item.product.id}>
                 <button className="cart-product-image" onClick={() => setPage("product")} aria-label={`View ${item.product.name}`}>
-                  <img src={imageUrl(item.product.image)} alt={item.product.name} onError={(event) => setImageFallback(event, imageFallbackFor(item.product))} />
+                  <img src={imageUrl(productImage(item.product))} alt={item.product.name} onError={(event) => setImageFallback(event, PRODUCT_PLACEHOLDER)} />
                 </button>
                 <div className="cart-product-info">
                   <div>
@@ -1661,7 +1677,7 @@ function CheckoutPagePro({ cartItems, setNotice, setPage, clearCart }) {
         <h4>Bag Total</h4>
         {cartItems.map((item) => (
           <article key={item.product.id}>
-            <img src={imageUrl(item.product.image)} alt="" onError={(event) => setImageFallback(event, imageFallbackFor(item.product))} />
+            <img src={imageUrl(productImage(item.product))} alt="" onError={(event) => setImageFallback(event, PRODUCT_PLACEHOLDER)} />
             <div>
               <span>{item.product.name}</span>
               <small>Qty {item.quantity}</small>
@@ -2355,7 +2371,7 @@ function AdminPage({ cartItems, favorites, setPage }) {
                 <div className="admin-bulk-upload-preview">
                   {bulkUploadRows.slice(0, 5).map((product) => (
                     <article key={`${product.sku}-bulk-preview`}>
-                      <img src={imageUrl(product.image)} alt="" />
+                      <img src={imageUrl(productImage(product))} alt="" onError={(event) => setImageFallback(event, PRODUCT_PLACEHOLDER)} />
                       <span>{product.name}</span>
                       <b>{product.sku}</b>
                       <small>{product.price}</small>
@@ -2574,7 +2590,7 @@ function AdminPage({ cartItems, favorites, setPage }) {
                     <img
                       src={imageUrl(line.product?.image || categoryFallbackImages[line.product?.category] || categoryFallbackImages.Rings)}
                       alt=""
-                      onError={(event) => setImageFallback(event, imageFallbackFor(line.product))}
+                      onError={(event) => setImageFallback(event, PRODUCT_PLACEHOLDER)}
                     />
                     <div>
                       <strong>{line.name}</strong>
@@ -3463,7 +3479,7 @@ export function App() {
           <div className="drawer-list">
             {visibleProducts.map((product, index) => (
               <button key={`${product.id}-search-${product.sku || index}`} onClick={() => openProduct(product)}>
-                <img src={imageUrl(product.image)} alt="" />
+                <img src={imageUrl(productImage(product))} alt="" onError={(event) => setImageFallback(event, PRODUCT_PLACEHOLDER)} />
                 <span>{product.name}</span>
               </button>
             ))}
