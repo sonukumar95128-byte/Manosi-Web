@@ -41,10 +41,15 @@ export const seedReviews = [
   { id: "review-2", customer: "Priya Nair", product: "Natural Diamond Earrings", rating: 4, status: "approved", text: "Looks premium and arrived safely." },
 ];
 
+// section says which homepage carousel a banner feeds. Without it an upload has
+// nowhere to go, which is why these used to be decorative.
 export const seedBanners = [
-  { id: "hero-main", title: "Hero full-screen banner", desktop: "1920 x 980 desktop", mobile: "1080 x 1440 mobile", note: "Image-only, auto slide", image: "/src/assets/real-products/ring-lifestyle.webp", active: true },
-  { id: "collection-strip", title: "Collection carousel", desktop: "520 x 620 card", mobile: "2 cards on mobile", note: "Infinite smooth loop", image: "/src/assets/real-products/earrings-lifestyle.webp", active: true },
-  { id: "campaign-wide", title: "Campaign banner carousel", desktop: "1680 x 610 wide", mobile: "86vw mobile", note: "No text overlay", image: "/src/assets/real-products/necklace-lifestyle.webp", active: true },
+  { id: "hero-1", section: "hero", title: "Hero slide 1", image: "/src/assets/real-products/ring-lifestyle.webp", mobileImage: "", active: true },
+  { id: "hero-2", section: "hero", title: "Hero slide 2", image: "/src/assets/real-products/necklace-lifestyle.webp", mobileImage: "", active: true },
+  { id: "hero-3", section: "hero", title: "Hero slide 3", image: "/src/assets/real-products/bracelet-lifestyle.webp", mobileImage: "", active: true },
+  { id: "campaign-1", section: "campaign", title: "Floral Bloom", category: "Pendant", image: "/src/assets/real-products/pendant-lifestyle.webp", active: true },
+  { id: "campaign-2", section: "campaign", title: "Office to Evening", category: "Rings", image: "/src/assets/real-products/ring-lifestyle.webp", active: true },
+  { id: "campaign-3", section: "campaign", title: "Modern Indian Wear", category: "Necklace", image: "/src/assets/real-products/necklace-lifestyle.webp", active: true },
 ];
 
 export const seedCollections = [

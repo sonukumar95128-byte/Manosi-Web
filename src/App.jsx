@@ -152,6 +152,37 @@ const categories = ["All", "Rings", "Earrings", "Necklace", "Pendant", "Bracelet
 
 const menuCategories = ["Rings", "Earrings", "Necklace", "Pendant", "Bracelet", "Nosepins"];
 
+// Each homepage carousel crops differently, so a banner belongs to exactly one
+// of them. Older records predate the field, so fall back to reading the id.
+const BANNER_SECTIONS = {
+  hero: {
+    label: "Hero carousel",
+    where: "Full screen, top of the home page",
+    desktop: "1920 x 980",
+    mobile: "1080 x 1440",
+    sample: "/src/assets/real-products/ring-lifestyle.webp",
+  },
+  campaign: {
+    label: "Campaign carousel",
+    where: "Wide strip below Trending Now",
+    desktop: "1680 x 610",
+    mobile: "86vw crop",
+    sample: "/src/assets/real-products/necklace-lifestyle.webp",
+  },
+};
+
+function bannerSection(banner) {
+  if (BANNER_SECTIONS[banner?.section]) return banner.section;
+  const hint = `${banner?.id || ""} ${banner?.title || ""}`.toLowerCase();
+  if (hint.includes("hero")) return "hero";
+  if (hint.includes("campaign") || hint.includes("promo")) return "campaign";
+  return "unlinked";
+}
+
+function bannersForSection(banners, section) {
+  return (banners || []).filter((banner) => bannerSection(banner) === section && banner.active !== false);
+}
+
 function defaultShopBannerImage(category, list) {
   const lookupCategory = category === "All" ? "Necklace" : category;
   return imageFallbackFor(categoryFeature(lookupCategory, 2, list), true);
@@ -391,7 +422,7 @@ function pickProductsByIds(ids, fallbackProducts, list = catalogFallbackProducts
   return selected.length ? selected : fallbackProducts;
 }
 
-function HomePage({ setPage, openProduct, openCategory, homepageProducts, homepageReels, homepageCollections }) {
+function HomePage({ setPage, openProduct, openCategory, homepageProducts, homepageReels, homepageCollections, homepageBanners }) {
   const products = useProducts();
   const ringFeature = categoryFeature("Rings", 0, products);
   const earringFeature = categoryFeature("Earrings", 1, products);
@@ -399,11 +430,17 @@ function HomePage({ setPage, openProduct, openCategory, homepageProducts, homepa
   const pendantFeature = categoryFeature("Pendant", 3, products);
   const braceletFeature = categoryFeature("Bracelet", 4, products);
   const nosepinFeature = categoryFeature("Nosepins", 5, products);
-  const heroSlides = [
-    imageFallbackFor(ringFeature, true),
-    imageFallbackFor(necklaceFeature, true),
-    imageFallbackFor(braceletFeature, true),
-  ];
+  const heroBanners = bannersForSection(homepageBanners, "hero");
+  const heroSlides = heroBanners.length
+    ? heroBanners.map((banner) => ({
+        id: banner.id,
+        image: banner.image,
+        mobileImage: banner.mobileImage || banner.image,
+      }))
+    : [ringFeature, necklaceFeature, braceletFeature].map((feature, index) => {
+        const image = imageFallbackFor(feature, true);
+        return { id: `hero-default-${index}`, image, mobileImage: image };
+      });
   const [activeSlide, setActiveSlide] = useState(0);
   const [motionMuted, setMotionMuted] = useState(true);
 
@@ -501,7 +538,9 @@ function HomePage({ setPage, openProduct, openCategory, homepageProducts, homepa
   const motionReels = configuredMotionReels.length ? configuredMotionReels : fallbackMotionReels;
   const [motionSlide, setMotionSlide] = useState(0);
 
-  const promoSlides = [
+  const campaignBanners = bannersForSection(homepageBanners, "campaign");
+  const promoTones = ["sunset", "ivory", "rose"];
+  const defaultPromoSlides = [
     {
       eyebrow: "MANOSI PRESENTS",
       title: "Floral Bloom",
@@ -527,6 +566,14 @@ function HomePage({ setPage, openProduct, openCategory, homepageProducts, homepa
       tone: "rose",
     },
   ];
+  const promoSlides = campaignBanners.length
+    ? campaignBanners.map((banner, index) => ({
+        title: banner.title || `Campaign ${index + 1}`,
+        category: banner.category || "All",
+        image: banner.image,
+        tone: banner.tone || promoTones[index % promoTones.length],
+      }))
+    : defaultPromoSlides;
   const [promoSlide, setPromoSlide] = useState(promoSlides.length);
   const [promoSnap, setPromoSnap] = useState(false);
   const promoLoopSlides = [...promoSlides, ...promoSlides, ...promoSlides];
@@ -613,14 +660,16 @@ function HomePage({ setPage, openProduct, openCategory, homepageProducts, homepa
     <>
       <section className="hero hero-banner" aria-label="Featured Manosi banner carousel">
         {heroSlides.map((slide, index) => (
-          <img
-            className={`hero-slide ${activeSlide === index ? "is-active" : ""}`}
-            key={slide}
-            src={imageUrl(slide)}
-            alt=""
-            aria-hidden={activeSlide !== index}
-            onError={(event) => setImageFallback(event, imageFallbackFor(ringFeature, true))}
-          />
+          <picture key={slide.id}>
+            <source media="(max-width: 760px)" srcSet={imageUrl(slide.mobileImage)} />
+            <img
+              className={`hero-slide ${activeSlide === index ? "is-active" : ""}`}
+              src={imageUrl(slide.image)}
+              alt=""
+              aria-hidden={activeSlide !== index}
+              onError={(event) => setImageFallback(event, imageFallbackFor(ringFeature, true))}
+            />
+          </picture>
         ))}
         <div className="hero-carousel-controls" aria-label="Banner controls">
           <button onClick={() => changeSlide(-1)} aria-label="Previous banner">
@@ -630,7 +679,7 @@ function HomePage({ setPage, openProduct, openCategory, homepageProducts, homepa
             {heroSlides.map((slide, index) => (
               <button
                 className={activeSlide === index ? "is-active" : ""}
-                key={slide}
+                key={slide.id}
                 onClick={() => setActiveSlide(index)}
                 aria-label={`Show banner ${index + 1}`}
               />
@@ -733,7 +782,7 @@ function HomePage({ setPage, openProduct, openCategory, homepageProducts, homepa
           {promoSlides.map((slide, index) => (
             <button
               className={activePromoDot === index ? "is-active" : ""}
-              key={slide.title}
+              key={`${slide.title}-${index}`}
               onClick={() => setPromoSlide(index + promoSlides.length)}
               aria-label={`Show campaign ${index + 1}`}
             />
@@ -2847,15 +2896,96 @@ function AdminPage({ cartItems, favorites, setPage }) {
     const categoryBannerKeys = ["All", ...menuCategories];
     const categoryBanners = liveSettings.categoryBanners || {};
     const updateBanner = (banner, patch) => saveAdmin("/banners", banners.map((item) => item.id === banner.id ? { ...item, ...patch } : item));
+    const removeBanner = (banner) => saveAdmin("/banners", banners.filter((item) => item.id !== banner.id));
     const updateCategoryBanner = (category, image) => saveAdmin("/settings", { ...liveSettings, categoryBanners: { ...categoryBanners, [category]: image } });
-    const addBanner = () => saveAdmin("/banners", [{ id: `banner-${Date.now()}`, title: "New banner", desktop: "1920 x 980 desktop", mobile: "1080 x 1440 mobile", note: "Image-only", image: "/src/assets/real-products/ring-lifestyle.webp", active: true }, ...banners]);
+    const addBanner = (section) => saveAdmin("/banners", [{
+      id: `${section}-${Date.now()}`,
+      section,
+      title: section === "hero" ? "New hero slide" : "New campaign slide",
+      image: BANNER_SECTIONS[section].sample,
+      mobileImage: "",
+      category: section === "campaign" ? "All" : undefined,
+      active: true,
+    }, ...banners]);
+
+    const grouped = banners.reduce((acc, banner) => {
+      const key = bannerSection(banner);
+      (acc[key] = acc[key] || []).push(banner);
+      return acc;
+    }, {});
+
+    const bannerCard = (banner, section) => (
+      <article key={banner.id}>
+        <img src={imageUrl(banner.image)} alt="" onError={(event) => setImageFallback(event, BANNER_SECTIONS[section]?.sample || categoryFallbackImages.Rings)} />
+        <input defaultValue={banner.title} onBlur={(event) => updateBanner(banner, { title: event.target.value })} placeholder="Slide name (internal only)" />
+        <label className="admin-upload-control">Upload {BANNER_SECTIONS[section]?.desktop} px<input type="file" accept="image/*" onChange={(event) => readImageFile(event.target.files?.[0], (image) => updateBanner(banner, { image }))} /></label>
+        <button onClick={() => { const image = window.prompt("Image path or URL", banner.image); if (image) updateBanner(banner, { image }); }}>Change image URL</button>
+        {section === "hero" && (
+          <label className="admin-upload-control">Upload mobile {BANNER_SECTIONS.hero.mobile} px<input type="file" accept="image/*" onChange={(event) => readImageFile(event.target.files?.[0], (mobileImage) => updateBanner(banner, { mobileImage }))} /></label>
+        )}
+        {section === "hero" && <span>{banner.mobileImage ? "Mobile image set" : "No mobile image - desktop one will be cropped"}</span>}
+        {section === "campaign" && (
+          <label>Opens category
+            <select defaultValue={banner.category || "All"} onChange={(event) => updateBanner(banner, { category: event.target.value })}>
+              <option>All</option>
+              {menuCategories.map((category) => <option key={category}>{category}</option>)}
+            </select>
+          </label>
+        )}
+        <div>
+          <button className="admin-toggle-button" onClick={() => updateBanner(banner, { active: !banner.active })}><TogglePill on={banner.active} /></button>
+          <button onClick={() => removeBanner(banner)}>Delete</button>
+        </div>
+      </article>
+    );
+
     return (
       <section className="admin-banners-panel">
-        <button className="admin-primary-action" onClick={addBanner}>+ Add banner</button>
-        <p className="admin-helper-copy">
-          Hero banner: 1920 x 980 px desktop, 1080 x 1440 px mobile. Collection card: 1080 x 760 px.
-          <button onClick={() => setActiveModule("collections")}>Open collections</button>
-        </p>
+        {Object.entries(BANNER_SECTIONS).map(([section, meta]) => (
+          <div key={section}>
+            <div className="admin-panel-heading">
+              <div>
+                <p className="eyebrow">Home page</p>
+                <h4>{meta.label}</h4>
+                <p>{meta.where} · Upload {meta.desktop} px{section === "hero" ? `, mobile ${meta.mobile} px` : ""} · Image only, no text</p>
+              </div>
+              <button className="admin-primary-action" onClick={() => addBanner(section)}>+ Add slide</button>
+            </div>
+            <div className="admin-image-board admin-banner-grid">
+              {(grouped[section] || []).map((banner) => bannerCard(banner, section))}
+            </div>
+            {!(grouped[section] || []).length && <p className="admin-helper-copy">No slides yet - the site is showing its built-in images for this carousel.</p>}
+          </div>
+        ))}
+
+        {Boolean(grouped.unlinked?.length) && (
+          <>
+            <div className="admin-panel-heading">
+              <div>
+                <p className="eyebrow">Not on the site</p>
+                <h4>Unlinked banners</h4>
+                <p>These belong to no carousel, so they are never shown. Collection cards are managed in Collections.</p>
+              </div>
+              <button className="admin-secondary-action" onClick={() => setActiveModule("collections")}>Open collections</button>
+            </div>
+            <div className="admin-image-board admin-banner-grid">
+              {grouped.unlinked.map((banner) => (
+                <article key={banner.id}>
+                  <img src={imageUrl(banner.image)} alt="" />
+                  <strong>{banner.title}</strong>
+                  <label>Move to section
+                    <select defaultValue="" onChange={(event) => event.target.value && updateBanner(banner, { section: event.target.value })}>
+                      <option value="">Choose...</option>
+                      {Object.entries(BANNER_SECTIONS).map(([key, meta]) => <option key={key} value={key}>{meta.label}</option>)}
+                    </select>
+                  </label>
+                  <div><button onClick={() => removeBanner(banner)}>Delete</button></div>
+                </article>
+              ))}
+            </div>
+          </>
+        )}
+
         <div className="admin-panel-heading">
           <div>
             <p className="eyebrow">Shop page</p>
@@ -2875,23 +3005,6 @@ function AdminPage({ cartItems, favorites, setPage }) {
               </article>
             );
           })}
-        </div>
-        <div className="admin-panel-heading">
-          <div>
-            <p className="eyebrow">Home banners</p>
-            <h4>Homepage banner images</h4>
-          </div>
-        </div>
-        <div className="admin-image-board admin-banner-grid">
-          {banners.map((banner) => <article key={banner.id}>
-            <img src={imageUrl(banner.image)} alt="" />
-            <input defaultValue={banner.title} onBlur={(event) => updateBanner(banner, { title: event.target.value })} />
-            <span>{banner.desktop}</span><span>{banner.mobile}</span>
-            <textarea defaultValue={banner.note} onBlur={(event) => updateBanner(banner, { note: event.target.value })} />
-            <label className="admin-upload-control">Upload banner image<input type="file" accept="image/*" onChange={(event) => readImageFile(event.target.files?.[0], (image) => updateBanner(banner, { image }))} /></label>
-            <button onClick={() => { const image = window.prompt("Image path or URL", banner.image); if (image) updateBanner(banner, { image }); }}>Change image</button>
-            <div><button className="admin-toggle-button" onClick={() => updateBanner(banner, { active: !banner.active })}><TogglePill on={banner.active} /></button><button onClick={() => saveAdmin("/banners", banners.filter((item) => item.id !== banner.id))}>Delete</button></div>
-          </article>)}
         </div>
       </section>
     );
@@ -3326,7 +3439,7 @@ export function App() {
         </nav>
       </header>}
 
-      {page === "home" && <HomePage setPage={setPage} openProduct={openProduct} openCategory={openCategory} homepageProducts={storeConfig?.homepageProducts} homepageReels={storeConfig?.reels} homepageCollections={storeConfig?.collections} />}
+      {page === "home" && <HomePage setPage={setPage} openProduct={openProduct} openCategory={openCategory} homepageProducts={storeConfig?.homepageProducts} homepageReels={storeConfig?.reels} homepageCollections={storeConfig?.collections} homepageBanners={storeConfig?.banners} />}
       {page === "collections" && <CollectionsPage favorites={favorites} toggleFavorite={toggleFavorite} openProduct={openProduct} initialCategory={collectionCategory} categoryBanners={storeConfig?.settings?.categoryBanners} />}
       {page === "product" && selected && <ProductPage product={selected} favorites={favorites} toggleFavorite={toggleFavorite} addToCart={addToCart} buyNow={buyNow} openProduct={openProduct} />}
       {page === "new-arrivals" && <NewArrivalsPage openProduct={openProduct} />}
