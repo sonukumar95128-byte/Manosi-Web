@@ -1926,8 +1926,12 @@ function AdminPage({ cartItems, favorites, setPage }) {
     try {
       await adminRequest(path, { method, body: JSON.stringify(data) });
       setAdminNotice("Saved");
-    } catch {
-      setAdminNotice("Save failed: start backend API");
+      return true;
+    } catch (error) {
+      // Callers keep their unsaved work when this returns false, so the real
+      // reason has to reach the screen rather than a guess about the backend.
+      setAdminNotice(`Save failed: ${error.message}`);
+      return false;
     }
   }
 
@@ -2947,15 +2951,17 @@ function AdminPage({ cartItems, favorites, setPage }) {
     const dirty = bannerDraft !== null;
     const categoryBannerKeys = ["All", ...menuCategories];
     const categoryBanners = liveSettings.categoryBanners || {};
-    const updateBanner = (banner, patch) => setBannerDraft(banners.map((item) => item.id === banner.id ? { ...item, ...patch } : item));
-    const removeBanner = (banner) => setBannerDraft(banners.filter((item) => item.id !== banner.id));
+    const editDraft = (change) => setBannerDraft((current) => change(current ?? liveBanners));
+    const updateBanner = (banner, patch) => editDraft((list) => list.map((item) => item.id === banner.id ? { ...item, ...patch } : item));
+    const removeBanner = (banner) => editDraft((list) => list.filter((item) => item.id !== banner.id));
+    // Every field here is controlled, so the draft already holds what is on
+    // screen by the time Save is clicked - no blur-before-click gap to cover.
     const saveBanners = async () => {
-      await saveAdmin("/banners", banners);
-      setBannerDraft(null);
+      if (await saveAdmin("/banners", banners)) setBannerDraft(null);
     };
     // Category banners live in settings and stay immediate - one image, one click.
     const updateCategoryBanner = (category, image) => saveAdmin("/settings", { ...liveSettings, categoryBanners: { ...categoryBanners, [category]: image } });
-    const addBanner = (section) => setBannerDraft([{
+    const addBanner = (section) => editDraft((list) => [{
       id: `${section}-${Date.now()}`,
       section,
       title: section === "hero" ? "New hero slide" : "New campaign slide",
@@ -2963,7 +2969,7 @@ function AdminPage({ cartItems, favorites, setPage }) {
       mobileImage: "",
       category: section === "campaign" ? "All" : undefined,
       active: true,
-    }, ...banners]);
+    }, ...list]);
 
     const grouped = banners.reduce((acc, banner) => {
       const key = bannerSection(banner);
@@ -2974,7 +2980,7 @@ function AdminPage({ cartItems, favorites, setPage }) {
     const bannerCard = (banner, section) => (
       <article key={banner.id}>
         <img src={imageUrl(banner.image)} alt="" onError={(event) => setImageFallback(event, BANNER_SECTIONS[section]?.sample || categoryFallbackImages.Rings)} />
-        <input defaultValue={banner.title} onBlur={(event) => updateBanner(banner, { title: event.target.value })} placeholder="Slide name (internal only)" />
+        <input value={banner.title || ""} onChange={(event) => updateBanner(banner, { title: event.target.value })} placeholder="Slide name (internal only)" />
         <label className="admin-upload-control">Upload {BANNER_SECTIONS[section]?.desktop} px<input type="file" accept="image/*" onChange={(event) => readImageFile(event.target.files?.[0], (image) => updateBanner(banner, { image }), "manosi/banners")} /></label>
         <button onClick={() => { const image = window.prompt("Image path or URL", banner.image); if (image) updateBanner(banner, { image }); }}>Change image URL</button>
         {section === "hero" && (
@@ -2983,7 +2989,7 @@ function AdminPage({ cartItems, favorites, setPage }) {
         {section === "hero" && <span>{banner.mobileImage ? "Mobile image set" : "No mobile image - desktop one will be cropped"}</span>}
         {section === "campaign" && (
           <label>Opens category
-            <select defaultValue={banner.category || "All"} onChange={(event) => updateBanner(banner, { category: event.target.value })}>
+            <select value={banner.category || "All"} onChange={(event) => updateBanner(banner, { category: event.target.value })}>
               <option>All</option>
               {menuCategories.map((category) => <option key={category}>{category}</option>)}
             </select>
