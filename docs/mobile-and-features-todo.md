@@ -49,8 +49,9 @@ Clicked, not assumed:
 - Carousel dots measure 12px but their tap area is extended to 44px with a
   pseudo-element, which `getBoundingClientRect` does not count.
 
-## Still needs you
+## Deferred
 
-**Mobile hero artwork.** The hero still crops 55% because it is showing the
-desktop landscape banner. Admin → Banners → each hero slide has
-"Upload mobile 1080 × 1440". With that in place nothing is cropped at all.
+**Mobile hero artwork — parked on 2026-09-08 at Sonu's call.** The hero still
+crops 55% because it shows the desktop landscape banner. The slot is ready
+whenever the artwork is: Admin → Banners → each hero slide has
+"Upload mobile 1080 × 1440". No code change will be needed.
