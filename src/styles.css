@@ -7032,3 +7032,70 @@ h3 {
   .compare-tray-items button { width: 40px; height: 40px; }
   .compare-tray-go { padding: 0 16px; font-size: 12px; }
 }
+
+/* ---- Touch targets on phones ---------------------------------------------
+   Audited at 375px: 100 controls on the home page and 103 on the shop page
+   were under 40px in one dimension. Fingers need roughly 44px. */
+
+@media (hover: none), (max-width: 760px) {
+  .product-card .favorite {
+    width: 44px;
+    height: 44px;
+  }
+
+  .product-meta button,
+  .text-link {
+    min-height: 44px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  .footer-main button,
+  .footer-bottom button {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+
+  .footer-social a {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+  }
+
+  .motion-controls button {
+    width: 44px;
+    height: 44px;
+  }
+
+  /* Carousel dots were 9px wide. The dot stays small; the tappable area does not. */
+  .hero-dots button,
+  .promo-dots button,
+  .testimonial-dots button {
+    position: relative;
+    min-width: 12px;
+    min-height: 12px;
+  }
+
+  .hero-dots button::after,
+  .promo-dots button::after,
+  .testimonial-dots button::after {
+    content: "";
+    position: absolute;
+    inset: -16px;
+  }
+
+  .hero-dots,
+  .promo-dots,
+  .testimonial-dots {
+    gap: 18px;
+  }
+}
+
+.cart-tax-note {
+  display: block;
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 12px;
+}

@@ -459,6 +459,33 @@ function ProductCard({ product, favorite, onFavorite, onOpen, compared, onCompar
   );
 }
 
+/**
+ * Lets a carousel be dragged or swiped. The arrows stay, but a phone should not
+ * need to hit a 40px target to move a slider.
+ */
+function useSwipe(onPrevious, onNext, threshold = 45) {
+  const start = { x: 0, y: 0, active: false };
+  return {
+    onTouchStart: (event) => {
+      const touch = event.touches[0];
+      start.x = touch.clientX;
+      start.y = touch.clientY;
+      start.active = true;
+    },
+    onTouchEnd: (event) => {
+      if (!start.active) return;
+      start.active = false;
+      const touch = event.changedTouches[0];
+      const dx = touch.clientX - start.x;
+      const dy = touch.clientY - start.y;
+      // Ignore mostly-vertical movement so page scrolling still works.
+      if (Math.abs(dx) < threshold || Math.abs(dx) < Math.abs(dy)) return;
+      if (dx < 0) onNext();
+      else onPrevious();
+    },
+  };
+}
+
 function pickProductsByIds(ids, fallbackProducts, list = catalogFallbackProducts) {
   const selected = (ids || [])
     .map((id) => list.find((product) => product.id === id || product.sku === id))
@@ -633,21 +660,31 @@ function HomePage({ setPage, openProduct, openCategory, homepageProducts, homepa
     return () => window.clearInterval(timer);
   }, [heroSlides.length]);
 
+  const heroSwipe = useSwipe(() => changeSlide(-1), () => changeSlide(1));
+
   function changeSlide(direction) {
     setActiveSlide((current) => (current + direction + heroSlides.length) % heroSlides.length);
   }
+
+  const collectionSwipe = useSwipe(() => moveCollection(-1), () => moveCollection(1));
 
   function moveCollection(direction) {
     setCollectionSlide((current) => current + direction);
   }
 
+  const trendingSwipe = useSwipe(() => moveTrending(-1), () => moveTrending(1));
+
   function moveTrending(direction) {
     setTrendingSlide((current) => current + direction);
   }
 
+  const arrivalSwipe = useSwipe(() => moveArrival(-1), () => moveArrival(1));
+
   function moveArrival(direction) {
     setArrivalSlide((current) => current + direction);
   }
+
+  const motionSwipe = useSwipe(() => moveMotion(-1), () => moveMotion(1));
 
   function moveMotion(direction) {
     setMotionSlide((current) => (current + direction + motionReels.length) % motionReels.length);
@@ -657,6 +694,8 @@ function HomePage({ setPage, openProduct, openCategory, homepageProducts, homepa
     const video = document.getElementById(videoId);
     if (video?.requestFullscreen) video.requestFullscreen();
   }
+
+  const promoSwipe = useSwipe(() => movePromo(-1), () => movePromo(1));
 
   function movePromo(direction) {
     setPromoSlide((current) => current + direction);
@@ -704,7 +743,7 @@ function HomePage({ setPage, openProduct, openCategory, homepageProducts, homepa
 
   return (
     <>
-      <section className="hero hero-banner" aria-label="Featured Manosi banner carousel">
+      <section className="hero hero-banner" aria-label="Featured Manosi banner carousel" {...heroSwipe}>
         {heroSlides.map((slide, index) => (
           <picture key={slide.id}>
             <source media="(max-width: 760px)" srcSet={imageUrl(slide.mobileImage)} />
@@ -747,7 +786,7 @@ function HomePage({ setPage, openProduct, openCategory, homepageProducts, homepa
           <button className="collection-nav prev" onClick={() => moveCollection(-1)} aria-label="Previous collections">
             <span className="material-symbols-rounded">west</span>
           </button>
-          <div className="collection-window">
+          <div className="collection-window" {...collectionSwipe}>
             <div
               className={`collection-track ${collectionSnap ? "is-snapping" : ""}`}
               style={{ "--collection-index": collectionSlide }}
@@ -796,7 +835,7 @@ function HomePage({ setPage, openProduct, openCategory, homepageProducts, homepa
           <button className="trending-nav prev" onClick={() => moveTrending(-1)} aria-label="Previous trending products">
             <span className="material-symbols-rounded">west</span>
           </button>
-          <div className="trending-window">
+          <div className="trending-window" {...trendingSwipe}>
             <div
               className={`product-grid trending-grid ${trendingSnap ? "is-snapping" : ""}`}
               style={{ "--trending-index": trendingSlide }}
@@ -818,7 +857,7 @@ function HomePage({ setPage, openProduct, openCategory, homepageProducts, homepa
           <button className="promo-nav prev" onClick={() => movePromo(-1)} aria-label="Previous campaign banner">
             <span className="material-symbols-rounded">west</span>
           </button>
-          <div className="promo-window">
+          <div className="promo-window" {...promoSwipe}>
             <div
               className={`promo-track ${promoSnap ? "is-snapping" : ""}`}
               style={{ "--promo-index": promoSlide }}
@@ -861,7 +900,7 @@ function HomePage({ setPage, openProduct, openCategory, homepageProducts, homepa
           <button className="arrival-nav prev" onClick={() => moveArrival(-1)} aria-label="Previous new arrivals">
             <span className="material-symbols-rounded">west</span>
           </button>
-          <div className="arrival-window">
+          <div className="arrival-window" {...arrivalSwipe}>
             <div
               className={`arrival-track ${arrivalSnap ? "is-snapping" : ""}`}
               style={{ "--arrival-index": arrivalSlide }}
@@ -887,7 +926,7 @@ function HomePage({ setPage, openProduct, openCategory, homepageProducts, homepa
           <button className="motion-nav prev" onClick={() => moveMotion(-1)} aria-label="Previous video">
             <span className="material-symbols-rounded">chevron_left</span>
           </button>
-          <div className="motion-stack">
+          <div className="motion-stack" {...motionSwipe}>
             {motionReels.map((reel, index) => {
               const offset = (index - motionSlide + motionReels.length) % motionReels.length;
               const position = offset === 0 ? "is-active" : offset === 1 ? "is-next" : offset === 2 ? "is-far-next" : offset === motionReels.length - 1 ? "is-prev" : "is-far-prev";
@@ -1456,6 +1495,8 @@ function Testimonials() {
     return () => window.clearInterval(timer);
   }, []);
 
+  const testimonialSwipe = useSwipe(() => moveTestimonial(-1), () => moveTestimonial(1));
+
   function moveTestimonial(direction) {
     setActiveTestimonial((current) => current + direction);
   }
@@ -1480,7 +1521,7 @@ function Testimonials() {
         <button className="testimonial-nav prev" onClick={() => moveTestimonial(-1)} aria-label="Previous testimonial">
           <span className="material-symbols-rounded">west</span>
         </button>
-        <div className="testimonial-window">
+        <div className="testimonial-window" {...testimonialSwipe}>
           <div
             className={`testimonial-track ${testimonialSnap ? "is-snapping" : ""}`}
             style={{ "--testimonial-index": activeTestimonial }}
@@ -1543,9 +1584,22 @@ function InstagramSection() {
 }
 
 function CartPagePro({ cartItems, updateCartQuantity, removeFromCart, setPage }) {
-  const subtotal = cartItems.reduce((sum, item) => sum + priceToNumber(item.product.price) * item.quantity, 0);
-  const gst = Math.round(subtotal * 0.03);
-  const total = subtotal + gst;
+  const { settings } = useStore();
+  const tally = settings?.tally || {};
+  // Same calculation the checkout and the invoice use. Adding GST on top of a
+  // GST-inclusive price made the cart disagree with the next screen.
+  const totals = useMemo(() => computeInvoiceTotals({
+    items: cartItems.map((item) => ({
+      sku: item.product.sku || item.product.id,
+      name: item.product.name,
+      quantity: item.quantity,
+      rate: priceToNumber(item.product.salePrice || item.product.price),
+    })),
+    gstRate: Number(settings?.gstGold || 3),
+    sellerState: tally.sellerState,
+    placeOfSupply: "",
+    pricesIncludeGst: tally.pricesIncludeGst !== false,
+  }), [cartItems, settings?.gstGold, tally.sellerState, tally.pricesIncludeGst]);
   const itemCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
@@ -1606,10 +1660,18 @@ function CartPagePro({ cartItems, updateCartQuantity, removeFromCart, setPage })
             <span>Apply offer</span>
             <div><input placeholder="MANOSI10" /><button>Apply</button></div>
           </label>
-          <p><span>Subtotal</span><strong>{formatCurrency(subtotal)}</strong></p>
-          <p><span>Estimated GST</span><strong>{formatCurrency(gst)}</strong></p>
+          <p><span>Taxable value</span><strong>{formatAmount(totals.taxableValue)}</strong></p>
+          {totals.interState ? (
+            <p><span>IGST @ {totals.gstRate}%</span><strong>{formatAmount(totals.igst)}</strong></p>
+          ) : (
+            <>
+              <p><span>CGST @ {totals.gstRate / 2}%</span><strong>{formatAmount(totals.cgst)}</strong></p>
+              <p><span>SGST @ {totals.gstRate / 2}%</span><strong>{formatAmount(totals.sgst)}</strong></p>
+            </>
+          )}
           <p><span>Shipping</span><strong>Free</strong></p>
-          <div><span>Total</span><strong>{formatCurrency(total)}</strong></div>
+          <div><span>Total</span><strong>{formatCurrency(totals.total)}</strong></div>
+          <small className="cart-tax-note">Prices include GST.</small>
           <button onClick={() => setPage("checkout")} disabled={!cartItems.length}>Checkout</button>
           <small>Secure order request. Final confirmation shared on WhatsApp or call.</small>
         </aside>
