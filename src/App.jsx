@@ -113,6 +113,8 @@ const categoryFallbackImages = {
   Pendant: "/src/assets/real-products/pendant.webp",
   Bracelet: "/src/assets/real-products/bracelet.webp",
   Nosepins: "/src/assets/real-products/nosepin.webp",
+  // No mangalsutra photography yet, so it borrows the necklace stand-in.
+  Mangalsutra: "/src/assets/real-products/necklace.webp",
 };
 
 const categoryLifestyleFallbackImages = {
@@ -122,6 +124,7 @@ const categoryLifestyleFallbackImages = {
   Pendant: "/src/assets/real-products/pendant-lifestyle.webp",
   Bracelet: "/src/assets/real-products/bracelet-lifestyle.webp",
   Nosepins: "/src/assets/real-products/nosepin-lifestyle.webp",
+  Mangalsutra: "/src/assets/real-products/necklace-lifestyle.webp",
 };
 
 // Products fall back to this rather than to a category photo: showing one ring
@@ -166,9 +169,9 @@ const pages = [
   ["concierge", "CONCIERGE"],
 ];
 
-const categories = ["All", "Rings", "Earrings", "Necklace", "Pendant", "Bracelet", "Nosepins"];
+const categories = ["All", "Rings", "Earrings", "Necklace", "Pendant", "Mangalsutra", "Bracelet", "Nosepins"];
 
-const menuCategories = ["Rings", "Earrings", "Necklace", "Pendant", "Bracelet", "Nosepins"];
+const menuCategories = ["Rings", "Earrings", "Necklace", "Pendant", "Mangalsutra", "Bracelet", "Nosepins"];
 
 // Each homepage carousel crops differently, so a banner belongs to exactly one
 // of them. Older records predate the field, so fall back to reading the id.
@@ -1868,7 +1871,7 @@ function AdminPage({ cartItems, favorites, setPage }) {
     const matchesSearch = !query || product.name.toLowerCase().includes(query) || product.sku?.toLowerCase().includes(query);
     return matchesCategory && matchesSearch;
   });
-  const bulkCategories = ["All categories", "Bracelets", "Earrings", "Necklaces", "Nose Pins", "Pendants", "Rings"];
+  const bulkCategories = ["All categories", "Bracelets", "Earrings", "Mangalsutra", "Necklaces", "Nose Pins", "Pendants", "Rings"];
 
   useEffect(() => {
     loadAdminData();
