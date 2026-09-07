@@ -407,9 +407,12 @@ function PageHero({ eyebrow, title, copy, image, dark = false }) {
   );
 }
 
-function ProductCard({ product, favorite, onFavorite, onOpen }) {
+function ProductCard({ product, favorite, onFavorite, onOpen, compared, onCompare }) {
+  // The model shot only earns its place if it is a different picture.
+  const lifestyle = product.lifestyle && product.lifestyle !== product.image ? product.lifestyle : "";
+
   return (
-    <article className="product-card">
+    <article className={`product-card ${lifestyle ? "has-lifestyle" : ""}`}>
       <button
         className={`favorite ${favorite ? "is-saved" : ""}`}
         onClick={() => onFavorite(product.id)}
@@ -418,9 +421,29 @@ function ProductCard({ product, favorite, onFavorite, onOpen }) {
       >
         <span className="material-symbols-rounded">{favorite ? "favorite" : "favorite_border"}</span>
       </button>
+      {onCompare && (
+        <button
+          className={`compare-toggle ${compared ? "is-on" : ""}`}
+          onClick={() => onCompare(product)}
+          aria-pressed={Boolean(compared)}
+          aria-label={`${compared ? "Remove" : "Add"} ${product.name} ${compared ? "from" : "to"} compare`}
+        >
+          <span className="material-symbols-rounded">{compared ? "check" : "compare_arrows"}</span>
+        </button>
+      )}
       <span className="product-badge">{deliveryText(product)}</span>
       <button className="product-image-button" onClick={() => onOpen(product)}>
         <img src={imageUrl(productImage(product))} alt={product.name} onError={(event) => setImageFallback(event, PRODUCT_PLACEHOLDER)} />
+        {lifestyle && (
+          <img
+            className="product-lifestyle"
+            src={imageUrl(lifestyle)}
+            alt=""
+            loading="lazy"
+            aria-hidden="true"
+            onError={(event) => { event.currentTarget.style.display = "none"; }}
+          />
+        )}
       </button>
       <p>{product.category} · {productMetal(product)}</p>
       <h4>{product.name}</h4>
@@ -954,16 +977,22 @@ function HomePage({ setPage, openProduct, openCategory, homepageProducts, homepa
   );
 }
 
-function CollectionsPage({ favorites, toggleFavorite, openProduct, initialCategory, categoryBanners }) {
+function CollectionsPage({ favorites, toggleFavorite, openProduct, initialCategory, categoryBanners, compare, toggleCompare }) {
   const products = useProducts();
   const [category, setCategory] = useState(initialCategory || "All");
   const [metal, setMetal] = useState("All metals");
   const [karat, setKarat] = useState("All karats");
   const [maxPrice, setMaxPrice] = useState(125000);
   const [sort, setSort] = useState("Featured");
+  const [filtersOpen, setFiltersOpen] = useState(false);
+  const PAGE_SIZE = 24;
+  const [shown, setShown] = useState(PAGE_SIZE);
   useEffect(() => {
     setCategory(initialCategory || "All");
   }, [initialCategory]);
+  useEffect(() => {
+    setShown(PAGE_SIZE);
+  }, [category, metal, karat, maxPrice, sort]);
   const categoryOptions = categories.filter((item) => item !== "All");
   const metalOptions = [...new Set(products.map(productMetal))];
   const karatOptions = [...new Set(products.map(productKarat))];
@@ -996,8 +1025,17 @@ function CollectionsPage({ favorites, toggleFavorite, openProduct, initialCatego
           onError={(event) => setImageFallback(event, defaultShopBannerImage(category, products))}
         />
       </section>
+      <button
+        className={`filter-toggle ${filtersOpen ? "is-open" : ""}`}
+        onClick={() => setFiltersOpen((open) => !open)}
+        aria-expanded={filtersOpen}
+      >
+        <span className="material-symbols-rounded">tune</span>
+        {filtersOpen ? "Hide filters" : "Filters"}
+        <b>{visible.length}</b>
+      </button>
       <section className="catalog-layout">
-        <aside className="filter-panel">
+        <aside className={`filter-panel ${filtersOpen ? "is-open" : ""}`}>
           <div>
             <p className="eyebrow">Filter</p>
             <h4>Find your piece</h4>
@@ -1062,16 +1100,25 @@ function CollectionsPage({ favorites, toggleFavorite, openProduct, initialCatego
             </label>
           </div>
           <div className="product-grid catalog-grid">
-            {visible.map((product, index) => (
+            {visible.slice(0, shown).map((product, index) => (
               <ProductCard
                 key={`${product.id}-${product.sku || index}`}
                 product={product}
                 favorite={favorites.has(product.id)}
                 onFavorite={toggleFavorite}
                 onOpen={openProduct}
+                compared={compare.has(product.id)}
+                onCompare={toggleCompare}
               />
             ))}
           </div>
+          {shown < visible.length && (
+            <div className="catalog-more">
+              <button onClick={() => setShown((count) => count + PAGE_SIZE)}>
+                Load more · {visible.length - shown} left
+              </button>
+            </div>
+          )}
           {!visible.length && <p className="empty-state">No pieces found in this filter. Try All Jewellery or another budget range.</p>}
         </div>
       </section>
@@ -1724,7 +1771,93 @@ function CheckoutPagePro({ cartItems, setNotice, setPage, clearCart }) {
   );
 }
 
-function WishlistPage({ favorites, toggleFavorite, openProduct }) {
+const COMPARE_LIMIT = 4;
+
+// Rows are the things a customer actually weighs up between two similar pieces.
+const COMPARE_ROWS = [
+  ["Price", (p) => cleanPrice(p.salePrice || p.price)],
+  ["Was", (p) => (p.regularPrice ? cleanPrice(p.regularPrice) : "-")],
+  ["Category", (p) => p.category || "-"],
+  ["Gold colour", (p) => productMetal(p)],
+  ["Gold karat", (p) => productKarat(p)],
+  ["Gold weight", (p) => p.goldWeight || "-"],
+  ["Diamond colour", (p) => p.diamondColour || "-"],
+  ["Diamond clarity", (p) => p.diamondClarity || "-"],
+  ["Certificate", (p) => p.certificate || "-"],
+  ["SKU", (p) => p.sku || p.id],
+  ["Availability", (p) => (p.inStock === false ? "Made to order" : "In stock")],
+];
+
+function ComparePage({ products: chosen, removeCompare, clearCompare, openProduct, addToCart, setPage }) {
+  if (!chosen.length) {
+    return (
+      <section className="products-section">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">Compare</p>
+            <h3>Nothing to compare yet</h3>
+          </div>
+        </div>
+        <p className="empty-state">
+          Tap the compare icon on any piece to line it up against another. You can compare up to {COMPARE_LIMIT}.
+        </p>
+        <div className="catalog-more">
+          <button onClick={() => setPage("collections")}>Browse jewellery</button>
+        </div>
+      </section>
+    );
+  }
+
+  return (
+    <section className="compare-page">
+      <div className="commerce-heading">
+        <p className="eyebrow">Compare</p>
+        <h3>{chosen.length} {chosen.length === 1 ? "piece" : "pieces"} side by side</h3>
+        <button className="compare-clear" onClick={clearCompare}>Clear all</button>
+      </div>
+
+      {/* The table scrolls sideways rather than squeezing columns on a phone. */}
+      <div className="compare-scroll">
+        <table className="compare-table">
+          <thead>
+            <tr>
+              <th scope="row">Piece</th>
+              {chosen.map((product) => (
+                <th key={product.id}>
+                  <button className="compare-cell-remove" onClick={() => removeCompare(product.id)} aria-label={`Remove ${product.name}`}>
+                    <span className="material-symbols-rounded">close</span>
+                  </button>
+                  <button className="compare-cell-image" onClick={() => openProduct(product)}>
+                    <img src={imageUrl(productImage(product))} alt={product.name} onError={(event) => setImageFallback(event, PRODUCT_PLACEHOLDER)} />
+                  </button>
+                  <strong>{product.name}</strong>
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {COMPARE_ROWS.map(([label, read]) => (
+              <tr key={label}>
+                <th scope="row">{label}</th>
+                {chosen.map((product) => <td key={product.id}>{read(product)}</td>)}
+              </tr>
+            ))}
+            <tr>
+              <th scope="row"></th>
+              {chosen.map((product) => (
+                <td key={product.id}>
+                  <button className="compare-add" onClick={() => addToCart(product)}>Add to Cart</button>
+                </td>
+              ))}
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  );
+}
+
+function WishlistPage({ favorites, toggleFavorite, openProduct, compare, toggleCompare }) {
   const products = useProducts();
   const saved = products.filter((product) => favorites.has(product.id));
 
@@ -1739,7 +1872,7 @@ function WishlistPage({ favorites, toggleFavorite, openProduct }) {
       {saved.length === 0 ? <p className="empty-state">No saved pieces yet. Tap the heart on any product.</p> : (
         <div className="product-grid">
           {saved.map((product, index) => (
-            <ProductCard key={`${product.id}-wishlist-${product.sku || index}`} product={product} favorite onFavorite={toggleFavorite} onOpen={openProduct} />
+            <ProductCard key={`${product.id}-wishlist-${product.sku || index}`} product={product} favorite onFavorite={toggleFavorite} onOpen={openProduct} compared={compare?.has(product.id)} onCompare={toggleCompare} />
           ))}
         </div>
       )}
@@ -3397,6 +3530,7 @@ export function App() {
   const [selected, setSelected] = useState(catalogFallbackProducts[0]);
   const [collectionCategory, setCollectionCategory] = useState("All");
   const [favorites, setFavorites] = useState(new Set());
+  const [compare, setCompare] = useState(new Set());
   const [searchOpen, setSearchOpen] = useState(false);
   const [cartItems, setCartItems] = useState([]);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -3431,7 +3565,7 @@ export function App() {
   }, []);
 
   useEffect(() => {
-    const validPages = new Set(["home", "collections", "product", "new-arrivals", "education", "bespoke", "concierge", "cart", "checkout", "wishlist", "admin"]);
+    const validPages = new Set(["home", "collections", "product", "new-arrivals", "education", "bespoke", "concierge", "cart", "checkout", "wishlist", "compare", "admin"]);
     const openHashPage = () => {
       const hashPage = window.location.hash.replace("#", "");
       const pathPage = window.location.pathname.replace(/^\/+/, "").replace(/\/+$/, "");
@@ -3467,6 +3601,21 @@ export function App() {
   useEffect(() => {
     setSelected((current) => products.find((item) => item.id === current?.id) || products[0] || current);
   }, [products]);
+
+  const compareProducts = products.filter((product) => compare.has(product.id));
+
+  function toggleCompare(product) {
+    const id = typeof product === "string" ? product : product.id;
+    setCompare((current) => {
+      const next = new Set(current);
+      if (next.has(id)) next.delete(id);
+      else if (next.size >= COMPARE_LIMIT) {
+        setNotice(`Compare holds ${COMPARE_LIMIT} pieces. Remove one first.`);
+        return current;
+      } else next.add(id);
+      return next;
+    });
+  }
 
   function toggleFavorite(id) {
     setFavorites((current) => {
@@ -3542,7 +3691,7 @@ export function App() {
       </header>}
 
       {page === "home" && <HomePage setPage={setPage} openProduct={openProduct} openCategory={openCategory} homepageProducts={storeConfig?.homepageProducts} homepageReels={storeConfig?.reels} homepageCollections={storeConfig?.collections} homepageBanners={storeConfig?.banners} />}
-      {page === "collections" && <CollectionsPage favorites={favorites} toggleFavorite={toggleFavorite} openProduct={openProduct} initialCategory={collectionCategory} categoryBanners={storeConfig?.settings?.categoryBanners} />}
+      {page === "collections" && <CollectionsPage favorites={favorites} toggleFavorite={toggleFavorite} openProduct={openProduct} initialCategory={collectionCategory} categoryBanners={storeConfig?.settings?.categoryBanners} compare={compare} toggleCompare={toggleCompare} />}
       {page === "product" && selected && <ProductPage product={selected} favorites={favorites} toggleFavorite={toggleFavorite} addToCart={addToCart} buyNow={buyNow} openProduct={openProduct} />}
       {page === "new-arrivals" && <NewArrivalsPage openProduct={openProduct} />}
       {page === "education" && <EducationPage />}
@@ -3550,10 +3699,36 @@ export function App() {
       {page === "concierge" && <ConciergePage notice={notice} setNotice={setNotice} />}
       {page === "cart" && <CartPagePro cartItems={cartItems} updateCartQuantity={updateCartQuantity} removeFromCart={removeFromCart} setPage={setPage} />}
       {page === "checkout" && <CheckoutPagePro cartItems={cartItems} setNotice={setNotice} setPage={setPage} clearCart={clearCart} />}
-      {page === "wishlist" && <WishlistPage favorites={favorites} toggleFavorite={toggleFavorite} openProduct={openProduct} />}
+      {page === "wishlist" && <WishlistPage favorites={favorites} toggleFavorite={toggleFavorite} openProduct={openProduct} compare={compare} toggleCompare={toggleCompare} />}
+      {page === "compare" && (
+        <ComparePage
+          products={compareProducts}
+          removeCompare={(id) => toggleCompare(id)}
+          clearCompare={() => setCompare(new Set())}
+          openProduct={openProduct}
+          addToCart={addToCart}
+          setPage={setPage}
+        />
+      )}
       {page === "admin" && <AdminPage cartItems={cartItems} favorites={favorites} setPage={setPage} />}
 
       {page !== "admin" && <Footer setPage={setPage} openCategory={openCategory} />}
+
+      {page !== "admin" && page !== "compare" && compareProducts.length > 0 && (
+        <div className="compare-tray">
+          <div className="compare-tray-items">
+            {compareProducts.map((product) => (
+              <button key={product.id} onClick={() => toggleCompare(product)} aria-label={`Remove ${product.name} from compare`}>
+                <img src={imageUrl(productImage(product))} alt="" onError={(event) => setImageFallback(event, PRODUCT_PLACEHOLDER)} />
+                <span className="material-symbols-rounded">close</span>
+              </button>
+            ))}
+          </div>
+          <button className="compare-tray-go" onClick={() => setPage("compare")}>
+            Compare {compareProducts.length}
+          </button>
+        </div>
+      )}
 
       {searchOpen && (
         <aside className="drawer">
