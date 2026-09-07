@@ -517,6 +517,8 @@ function HomePage({ setPage, openProduct, openCategory, homepageProducts, homepa
         subtitle: collection.subtitle || `${category === "All" ? collection.name || "Shop" : category} Collection`,
         category,
         image: collection.image || imageFallbackFor(feature),
+        // A full-card design replaces the whole card, text and all.
+        cardImage: collection.cardImage || "",
         tone: collection.tone || collectionToneList[index % collectionToneList.length],
       };
     });
@@ -726,6 +728,18 @@ function HomePage({ setPage, openProduct, openCategory, homepageProducts, homepa
               onTransitionEnd={handleCollectionTransitionEnd}
             >
               {collectionLoopCards.map((card, index) => (
+                card.cardImage ? (
+                  // The artwork already carries the wording and the Shop Now
+                  // panel, so the whole card is the button.
+                  <button
+                    className="collection-card is-artwork"
+                    key={`${card.category}-${index}`}
+                    onClick={() => openCategory(card.category)}
+                    aria-label={`Shop ${card.title}`}
+                  >
+                    <img src={imageUrl(card.cardImage)} alt={card.title} />
+                  </button>
+                ) : (
                 <article className={`collection-card ${card.tone}`} key={`${card.category}-${index}`}>
                   <div className="collection-copy">
                     <h4>{card.title}</h4>
@@ -734,6 +748,7 @@ function HomePage({ setPage, openProduct, openCategory, homepageProducts, homepa
                   <img src={imageUrl(card.image)} alt={card.subtitle} onError={(event) => setImageFallback(event, categoryFallbackImages[card.category] || categoryFallbackImages.Rings)} />
                   <button onClick={() => openCategory(card.category)}>Shop Now</button>
                 </article>
+                )
               ))}
             </div>
           </div>
@@ -2908,12 +2923,20 @@ function AdminPage({ cartItems, favorites, setPage }) {
     return (
       <section className="admin-collections-panel">
         <button className="admin-primary-action" onClick={addCollection}>+ Add collection</button>
-        <p className="admin-helper-copy">Collection card single image size: upload 1080 x 760 px. Display card image area: 460 x 345 px desktop, full-width crop on mobile.</p>
+        <p className="admin-helper-copy">
+          Full card design: upload <b>1080 x 1440 px</b> (3:4). The artwork becomes the whole card - wording,
+          product and Shop Now panel all live inside it, and the card is clickable everywhere.
+          Leave it empty to keep the built-in layout instead, where the site draws the title and button
+          over a <b>1000 x 1000 px transparent PNG</b> cut-out.
+        </p>
         <div className="admin-collection-grid">
           {collectionRows.map((collection) => (
             <article key={collection.id || collection.name}>
-              <img src={imageUrl(collection.image)} alt="" />
-              <label className="admin-upload-control">Upload 1080 x 760 image<input type="file" accept="image/*" onChange={(event) => readImageFile(event.target.files?.[0], (image) => updateCollection(collection, { image }))} /></label>
+              <img src={imageUrl(collection.cardImage || collection.image)} alt="" />
+              <span className="admin-card-mode">{collection.cardImage ? "Full card design" : "Built-in layout + cut-out"}</span>
+              <label className="admin-upload-control">Upload full card design 1080 x 1440<input type="file" accept="image/*" onChange={(event) => readImageFile(event.target.files?.[0], (cardImage) => updateCollection(collection, { cardImage }), "manosi/collections")} /></label>
+              {collection.cardImage && <button onClick={() => updateCollection(collection, { cardImage: "" })}>Remove full card design</button>}
+              <label className="admin-upload-control">Upload cut-out 1000 x 1000 PNG<input type="file" accept="image/*" onChange={(event) => readImageFile(event.target.files?.[0], (image) => updateCollection(collection, { image }), "manosi/collections")} /></label>
               <button onClick={() => { const image = window.prompt("Image path or URL", collection.image); if (image) updateCollection(collection, { image }); }}>Change image</button>
               <input defaultValue={collection.name} onBlur={(event) => updateCollection(collection, { name: event.target.value })} />
               <input defaultValue={collection.subtitle || ""} onBlur={(event) => updateCollection(collection, { subtitle: event.target.value })} placeholder="Rings Collection" />
