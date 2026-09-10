@@ -718,6 +718,35 @@ function HomePage({ setPage, openProduct, openCategory, homepageProducts, homepa
     return () => window.clearInterval(timer);
   }, [heroSlides.length]);
 
+  // Collections, Trending Now, New Arrivals, and the promo strip were
+  // manual-swipe only, so on both mobile and desktop there was nothing to
+  // tell a visitor more slides existed unless they happened to swipe or hit
+  // an arrow. Auto-advancing them (same pattern as the hero banner above and
+  // testimonials below) makes that obvious without anyone touching them.
+  useEffect(() => {
+    if (collectionCards.length <= 1) return;
+    const timer = window.setInterval(() => setCollectionSlide((current) => current + 1), 5000);
+    return () => window.clearInterval(timer);
+  }, [collectionCards.length]);
+
+  useEffect(() => {
+    if (trendingProducts.length <= 1) return;
+    const timer = window.setInterval(() => setTrendingSlide((current) => current + 1), 5500);
+    return () => window.clearInterval(timer);
+  }, [trendingProducts.length]);
+
+  useEffect(() => {
+    if (arrivalProducts.length <= 1) return;
+    const timer = window.setInterval(() => setArrivalSlide((current) => current + 1), 6000);
+    return () => window.clearInterval(timer);
+  }, [arrivalProducts.length]);
+
+  useEffect(() => {
+    if (promoSlides.length <= 1) return;
+    const timer = window.setInterval(() => setPromoSlide((current) => current + 1), 6500);
+    return () => window.clearInterval(timer);
+  }, [promoSlides.length]);
+
   const heroSwipe = useSwipe(() => changeSlide(-1), () => changeSlide(1));
 
   function changeSlide(direction) {
