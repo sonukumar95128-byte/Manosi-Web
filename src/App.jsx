@@ -45,6 +45,27 @@ function writeCachedStoreConfig(data) {
   }
 }
 
+const RECENTLY_VIEWED_KEY = "manosi-recently-viewed-v1";
+const RECENTLY_VIEWED_LIMIT = 10;
+
+function readRecentlyViewedIds() {
+  try {
+    const raw = window.localStorage.getItem(RECENTLY_VIEWED_KEY);
+    const ids = raw ? JSON.parse(raw) : [];
+    return Array.isArray(ids) ? ids : [];
+  } catch {
+    return [];
+  }
+}
+
+function writeRecentlyViewedIds(ids) {
+  try {
+    window.localStorage.setItem(RECENTLY_VIEWED_KEY, JSON.stringify(ids));
+  } catch {
+    // Private browsing or a full quota - recently-viewed is a nice-to-have, not a requirement.
+  }
+}
+
 const sampleProducts = [
   {
     id: "aura",
@@ -1069,27 +1090,7 @@ function HomePage({ setPage, openProduct, openCategory, homepageProducts, homepa
         </div>
       </section>
 
-      <section className="promise-section">
-        <div className="promise-sparkle" aria-hidden="true">
-          <span />
-          <span />
-        </div>
-        <div className="promise-heading">
-          <p>Manosi</p>
-          <h3>Promises</h3>
-        </div>
-        <div className="promise-cloud">
-          {promiseItems.map(([icon, label, copy], index) => (
-            <article className={`promise-item promise-${index + 1}`} key={label}>
-              <div className="promise-icon">
-                <span className="material-symbols-rounded">{icon}</span>
-              </div>
-              <h4>{label}</h4>
-              <p>{copy}</p>
-            </article>
-          ))}
-        </div>
-      </section>
+      <PromiseSection />
 
       <Testimonials />
 
@@ -1282,7 +1283,7 @@ function productSpecs(product) {
   ].filter(Boolean);
 }
 
-function ProductPage({ product, favorites, toggleFavorite, addToCart, buyNow, openProduct }) {
+function ProductPage({ product, favorites, toggleFavorite, addToCart, buyNow, openProduct, recentlyViewed = [] }) {
   const products = useProducts();
   const { settings } = useStore();
   const fallbackIndex = Math.max(0, products.findIndex((item) => item.id === product.id));
@@ -1304,6 +1305,12 @@ function ProductPage({ product, favorites, toggleFavorite, addToCart, buyNow, op
   const specs = productSpecs(product);
   const whatsappNumber = String(settings?.whatsapp || "").replace(/[^0-9]/g, "");
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(`Hi Manosi, I'd like to know more about ${product.name} (${product.sku || product.id}).`)}`;
+  // Same category first; if that category is too small, top up with other
+  // products so the row never looks sparse.
+  const sameCategory = products.filter((item) => item.id !== product.id && item.category === product.category);
+  const otherCategory = products.filter((item) => item.id !== product.id && item.category !== product.category);
+  const similarProducts = [...sameCategory, ...otherCategory].slice(0, 4);
+  const recentlyViewedOthers = recentlyViewed.filter((item) => item.id !== product.id).slice(0, 4);
 
   useEffect(() => {
     setActiveIndex(0);
@@ -1423,19 +1430,41 @@ function ProductPage({ product, favorites, toggleFavorite, addToCart, buyNow, op
           </dl>
         </div>
       </section>
-      <section className="products-section">
-        <div className="section-heading">
-          <div>
-            <p className="eyebrow">Recommended</p>
-            <h3>Pair with</h3>
+      {similarProducts.length > 0 && (
+        <section className="products-section">
+          <div className="section-heading">
+            <div>
+              <p className="eyebrow">You may also like</p>
+              <h3>Similar products</h3>
+            </div>
           </div>
-        </div>
-        <div className="product-grid">
-          {products.filter((item) => item.id !== product.id).slice(0, 3).map((item) => (
-            <ProductCard key={item.id} product={item} favorite={favorites.has(item.id)} onFavorite={toggleFavorite} onOpen={openProduct} />
-          ))}
-        </div>
-      </section>
+          <div className="product-grid">
+            {similarProducts.map((item) => (
+              <ProductCard key={item.id} product={item} favorite={favorites.has(item.id)} onFavorite={toggleFavorite} onOpen={openProduct} />
+            ))}
+          </div>
+        </section>
+      )}
+
+      <PromiseSection />
+
+      <Testimonials />
+
+      {recentlyViewedOthers.length > 0 && (
+        <section className="products-section">
+          <div className="section-heading">
+            <div>
+              <p className="eyebrow">Your browsing</p>
+              <h3>Recently viewed</h3>
+            </div>
+          </div>
+          <div className="product-grid">
+            {recentlyViewedOthers.map((item) => (
+              <ProductCard key={item.id} product={item} favorite={favorites.has(item.id)} onFavorite={toggleFavorite} onOpen={openProduct} />
+            ))}
+          </div>
+        </section>
+      )}
     </>
   );
 }
@@ -1621,6 +1650,32 @@ function ConciergePage({ notice, setNotice }) {
         </div>
       </section>
     </>
+  );
+}
+
+function PromiseSection() {
+  return (
+    <section className="promise-section">
+      <div className="promise-sparkle" aria-hidden="true">
+        <span />
+        <span />
+      </div>
+      <div className="promise-heading">
+        <p>Manosi</p>
+        <h3>Promises</h3>
+      </div>
+      <div className="promise-cloud">
+        {promiseItems.map(([icon, label, copy], index) => (
+          <article className={`promise-item promise-${index + 1}`} key={label}>
+            <div className="promise-icon">
+              <span className="material-symbols-rounded">{icon}</span>
+            </div>
+            <h4>{label}</h4>
+            <p>{copy}</p>
+          </article>
+        ))}
+      </div>
+    </section>
   );
 }
 
@@ -3763,6 +3818,7 @@ export function App() {
   const [query, setQuery] = useState("");
   const [notice, setNotice] = useState("");
   const [storeConfig, setStoreConfig] = useState(readCachedStoreConfig);
+  const [recentlyViewedIds, setRecentlyViewedIds] = useState(readRecentlyViewedIds);
 
   // Products published by the admin panel win; the bundled catalogue is the fallback.
   const products = useMemo(
@@ -3851,6 +3907,11 @@ export function App() {
     setSelected(product);
     setSearchOpen(false);
     setPage("product");
+    setRecentlyViewedIds((current) => {
+      const next = [product.id, ...current.filter((id) => id !== product.id)].slice(0, RECENTLY_VIEWED_LIMIT);
+      writeRecentlyViewedIds(next);
+      return next;
+    });
   }
 
   // Keep the open product in sync with admin edits (price, stock, images).
@@ -3859,6 +3920,9 @@ export function App() {
   }, [products]);
 
   const compareProducts = products.filter((product) => compare.has(product.id));
+  const recentlyViewedProducts = recentlyViewedIds
+    .map((id) => products.find((product) => product.id === id))
+    .filter(Boolean);
 
   function toggleCompare(product) {
     const id = typeof product === "string" ? product : product.id;
@@ -3961,7 +4025,7 @@ export function App() {
 
       {page === "home" && <HomePage setPage={setPage} openProduct={openProduct} openCategory={openCategory} homepageProducts={storeConfig?.homepageProducts} homepageReels={storeConfig?.reels} homepageCollections={storeConfig?.collections} homepageBanners={storeConfig?.banners} bannersLoaded={Boolean(storeConfig)} />}
       {page === "collections" && <CollectionsPage favorites={favorites} toggleFavorite={toggleFavorite} openProduct={openProduct} initialCategory={collectionCategory} categoryBanners={storeConfig?.settings?.categoryBanners} compare={compare} toggleCompare={toggleCompare} />}
-      {page === "product" && selected && <ProductPage product={selected} favorites={favorites} toggleFavorite={toggleFavorite} addToCart={addToCart} buyNow={buyNow} openProduct={openProduct} />}
+      {page === "product" && selected && <ProductPage product={selected} favorites={favorites} toggleFavorite={toggleFavorite} addToCart={addToCart} buyNow={buyNow} openProduct={openProduct} recentlyViewed={recentlyViewedProducts} />}
       {page === "new-arrivals" && <NewArrivalsPage openProduct={openProduct} />}
       {page === "education" && <EducationPage />}
       {page === "bespoke" && <BespokePage setCartOpen={() => setPage("cart")} />}
