@@ -5261,6 +5261,18 @@ h3 {
   grid-template-columns: minmax(340px, 464px) 216px;
   gap: 22px;
   margin-top: 20px;
+  max-width: 100%;
+}
+
+/* Grid items default to min-width: auto, so an input/button can refuse to
+   shrink below its own intrinsic content size and overflow its track - most
+   visible on phones with a larger OS text-size/accessibility setting, which
+   Chrome DevTools' device emulation doesn't reproduce. min-width: 0 lets
+   them actually shrink to fit their column like the rest of the layout. */
+.footer-newsletter input,
+.footer-newsletter button {
+  min-width: 0;
+  max-width: 100%;
 }
 
 .footer-newsletter input {
