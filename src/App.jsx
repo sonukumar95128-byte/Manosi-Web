@@ -3769,7 +3769,12 @@ export function App() {
   // Skipped for anyone who has asked their OS for reduced motion.
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const lenis = new Lenis({ duration: 1.1, smoothWheel: true });
+    // Locked to vertical: the site's own carousels (hero, collections,
+    // trending, promo) read horizontal touch swipes for their own sliding,
+    // and an unlocked Lenis was also treating that same swipe as a page
+    // scroll - dragging the whole page sideways and leaving it stuck there,
+    // which read as content cut off on the right on some phones.
+    const lenis = new Lenis({ duration: 1.1, smoothWheel: true, orientation: "vertical", gestureOrientation: "vertical" });
     let frame;
     function raf(time) {
       lenis.raf(time);
