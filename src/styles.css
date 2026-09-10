@@ -3784,6 +3784,13 @@ h3 {
   background: #ffffff;
 }
 
+/* A full card design is uploaded at 3:4 (matches .collection-card.is-artwork
+   on the storefront) - forcing it into the wider default box above cropped
+   the sides, cutting into the "Shop Now" wording baked into the artwork. */
+.admin-collection-grid img.is-artwork-preview {
+  aspect-ratio: 3 / 4;
+}
+
 .admin-collection-grid article > button {
   border: 0;
   margin: 14px 0;
