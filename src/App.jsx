@@ -2542,7 +2542,7 @@ function AdminPage({ cartItems, favorites, setPage }) {
       stock: product?.stock ?? 10,
       goldColour: product?.goldColour || "Rose Gold",
       goldKarat: product?.goldKarat || "18K",
-      goldWeight: product?.goldWeight || "",
+      goldWeight: String(product?.goldWeight || "").replace(/[^0-9.]/g, ""),
       diamondType: product?.diamondType || "Natural diamonds",
       occasion: product?.occasion || "Daily wear",
       image: product?.originalImages?.[0] || product?.image || categoryFallbackImages[product?.category] || "/src/assets/real-products/ring.webp",
@@ -2871,7 +2871,7 @@ function AdminPage({ cartItems, favorites, setPage }) {
                 <h4>Organisation</h4>
                 <label>Category<select value={productEditor.category} onChange={(event) => changeProductDraft("category", event.target.value)}>{menuCategories.map((category) => <option key={category}>{category}</option>)}</select></label>
                 <label>Gold colour<select value={productEditor.goldColour} onChange={(event) => changeProductDraft("goldColour", event.target.value)}><option>Rose Gold</option><option>Yellow Gold</option><option>White Gold</option><option>Platinum</option></select></label>
-                <label>Gold karat<select value={productEditor.goldKarat} onChange={(event) => changeProductDraft("goldKarat", event.target.value)}><option>9K</option><option>14K</option><option>18K</option><option>22K</option></select></label>
+                <label>Gold karat<select value={String(productEditor.goldKarat || "18K").replace(/KT$/i, "K")} onChange={(event) => changeProductDraft("goldKarat", event.target.value)}><option>9K</option><option>14K</option><option>18K</option><option>22K</option></select></label>
                 <label>Gold weight (grams)<input inputMode="decimal" value={productEditor.goldWeight} onChange={(event) => changeProductDraft("goldWeight", event.target.value.replace(/[^0-9.]/g, ""))} placeholder="1.96" /></label>
                 <p className="admin-field-hint">With this, the karat, and Settings → Gold rate all set, the product page prices 9K/14K/18K for real instead of just switching a label.</p>
                 <label>Diamond type<select value={productEditor.diamondType} onChange={(event) => changeProductDraft("diamondType", event.target.value)}><option>Natural diamonds</option><option>Certified natural diamonds</option><option>Solitaire natural diamond</option></select></label>
@@ -3530,7 +3530,7 @@ function AdminPage({ cartItems, favorites, setPage }) {
       title: section === "hero" ? "New hero slide" : "New campaign slide",
       image: BANNER_SECTIONS[section].sample,
       mobileImage: "",
-      category: section === "campaign" ? "All" : undefined,
+      category: section === "campaign" || section === "hero" ? "All" : undefined,
       active: true,
     }, ...list]);
 
@@ -3550,7 +3550,7 @@ function AdminPage({ cartItems, favorites, setPage }) {
           <label className="admin-upload-control">Upload mobile {BANNER_SECTIONS.hero.mobile} px<input type="file" accept="image/*" onChange={(event) => readImageFile(event.target.files?.[0], (mobileImage) => updateBanner(banner, { mobileImage }), "manosi/banners")} /></label>
         )}
         {section === "hero" && <span>{banner.mobileImage ? "Mobile image set" : "No mobile image - desktop one will be cropped"}</span>}
-        {section === "campaign" && (
+        {(section === "campaign" || section === "hero") && (
           <label>Opens category
             <select value={banner.category || "All"} onChange={(event) => updateBanner(banner, { category: event.target.value })}>
               <option>All</option>
