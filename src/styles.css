@@ -4366,11 +4366,14 @@ h3 {
    1.875:1 on a phone, so no single artwork could suit both. Locking it to the
    6:1 the artwork is drawn at, with a floor and a ceiling, keeps the middle of
    the design visible everywhere. */
+/* 6:1 packed the jewellery into a thin strip. The banner artwork is generated
+   at 3:1, so the box matches that exactly - no max-height cap, or a wide
+   desktop screen would force a crop mismatch right back in, the same problem
+   this fixes. min-height only guards the very smallest phones. */
 .shop-banner {
-  aspect-ratio: 6 / 1;
+  aspect-ratio: 3 / 1;
   height: auto;
-  min-height: 120px;
-  max-height: 260px;
+  min-height: 160px;
   overflow: hidden;
   background: var(--soft-ink);
 }
