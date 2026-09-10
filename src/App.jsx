@@ -231,6 +231,32 @@ function productKarat(product) {
   return product.goldKarat || (product.detail || "").match(/\b(14KT|18KT|22KT|14K|18K|22K)\b/i)?.[0] || "14KT";
 }
 
+// The catalogue is imported one category at a time, so browsing "All
+// Jewellery" in import order shows fifteen bracelets before a single ring
+// appears. Round-robins across categories so the default grid reads as a
+// mixed catalogue instead of a run of one category at a time.
+function interleaveByCategory(list) {
+  const byCategory = new Map();
+  for (const product of list) {
+    if (!byCategory.has(product.category)) byCategory.set(product.category, []);
+    byCategory.get(product.category).push(product);
+  }
+  const categories = [...byCategory.keys()];
+  const result = [];
+  let index = 0;
+  while (result.length < list.length && categories.length) {
+    const category = categories[index % categories.length];
+    const bucket = byCategory.get(category);
+    if (!bucket.length) {
+      categories.splice(index % categories.length, 1);
+      continue;
+    }
+    result.push(bucket.shift());
+    index++;
+  }
+  return result;
+}
+
 function deliveryText(product) {
   return product.inStock === false ? "Made to order" : "Ships in 48 hrs";
 }
@@ -1018,7 +1044,8 @@ function HomePage({ setPage, openProduct, openCategory, homepageProducts, homepa
 }
 
 function CollectionsPage({ favorites, toggleFavorite, openProduct, initialCategory, categoryBanners, compare, toggleCompare }) {
-  const products = useProducts();
+  const rawProducts = useProducts();
+  const products = useMemo(() => interleaveByCategory(rawProducts), [rawProducts]);
   const [category, setCategory] = useState(initialCategory || "All");
   const [metal, setMetal] = useState("All metals");
   const [karat, setKarat] = useState("All karats");
