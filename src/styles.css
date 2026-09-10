@@ -751,6 +751,12 @@ h3 {
   gap: clamp(18px, 2vw, 30px);
 }
 
+/* Similar products / recently viewed read better as one row of four than
+   three-plus-a-lonely-fourth wrapping onto its own row. */
+.product-grid-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
 .trending-carousel {
   position: relative;
 }
@@ -5119,6 +5125,108 @@ h3 {
 
 .product-detail dd {
   margin: 0;
+}
+
+/* ---- Product page: details / price breakup / shipping accordion ---------- */
+
+.product-accordion {
+  margin-top: 28px;
+  border-top: 1px solid var(--line);
+}
+
+.accordion-row {
+  border-bottom: 1px solid var(--line);
+}
+
+.accordion-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 18px 2px;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  font-family: "Manrope", Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.accordion-trigger .material-symbols-rounded {
+  color: var(--gold-deep);
+  font-size: 20px;
+}
+
+.accordion-body {
+  padding: 0 2px 22px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.accordion-body .product-description-text {
+  margin: 0;
+}
+
+.accordion-body dl {
+  margin-top: 0;
+}
+
+.accordion-body p {
+  margin: 0 0 10px;
+}
+
+.accordion-body p:last-child {
+  margin-bottom: 0;
+}
+
+/* Price breakup rows only - a label/amount pair, unlike the plain sentences
+   in the description and shipping panels which need normal text wrapping. */
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.price-breakup-total {
+  padding-top: 10px;
+  border-top: 1px dashed var(--line);
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.product-trust-badges {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.product-trust-badges article {
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  padding: 18px 10px;
+  border-radius: 10px;
+  background: var(--ivory);
+  text-align: center;
+}
+
+.product-trust-badges .material-symbols-rounded {
+  color: var(--gold-deep);
+}
+
+.product-trust-badges p {
+  margin: 0;
+  font-family: "Manrope", Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--soft-ink);
 }
 
 .arrival-feature {

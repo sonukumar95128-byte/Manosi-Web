@@ -1283,6 +1283,18 @@ function productSpecs(product) {
   ].filter(Boolean);
 }
 
+function AccordionRow({ label, open, onToggle, children }) {
+  return (
+    <div className={`accordion-row ${open ? "is-open" : ""}`}>
+      <button type="button" className="accordion-trigger" onClick={onToggle} aria-expanded={open}>
+        <span>{label}</span>
+        <span className="material-symbols-rounded">{open ? "remove" : "add"}</span>
+      </button>
+      {open && <div className="accordion-body">{children}</div>}
+    </div>
+  );
+}
+
 function ProductPage({ product, favorites, toggleFavorite, addToCart, buyNow, openProduct, recentlyViewed = [] }) {
   const products = useProducts();
   const { settings } = useStore();
@@ -1303,6 +1315,7 @@ function ProductPage({ product, favorites, toggleFavorite, addToCart, buyNow, op
   const category = product.category || "Jewellery";
   const collectionLabel = `${category}${category.endsWith("s") ? "" : "s"} Collection`;
   const specs = productSpecs(product);
+  const productDescription = product.description || product.detail || "";
   const whatsappNumber = String(settings?.whatsapp || "").replace(/[^0-9]/g, "");
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(`Hi Manosi, I'd like to know more about ${product.name} (${product.sku || product.id}).`)}`;
   // Same category first; if that category is too small, top up with other
@@ -1311,6 +1324,17 @@ function ProductPage({ product, favorites, toggleFavorite, addToCart, buyNow, op
   const otherCategory = products.filter((item) => item.id !== product.id && item.category !== product.category);
   const similarProducts = [...sameCategory, ...otherCategory].slice(0, 4);
   const recentlyViewedOthers = recentlyViewed.filter((item) => item.id !== product.id).slice(0, 4);
+  const [openSection, setOpenSection] = useState("details");
+  const toggleSection = (section) => setOpenSection((current) => (current === section ? "" : section));
+  const tally = settings?.tally || {};
+  // Same calculation the cart and checkout use, for a single unit of this product.
+  const priceTotals = useMemo(() => computeInvoiceTotals({
+    items: [{ sku: product.sku || product.id, name: product.name, quantity: 1, rate: priceToNumber(product.salePrice || product.price) }],
+    gstRate: Number(settings?.gstGold || 3),
+    sellerState: tally.sellerState,
+    placeOfSupply: "",
+    pricesIncludeGst: tally.pricesIncludeGst !== false,
+  }), [product.id, product.salePrice, product.price, settings?.gstGold, tally.sellerState, tally.pricesIncludeGst]);
 
   useEffect(() => {
     setActiveIndex(0);
@@ -1357,6 +1381,7 @@ function ProductPage({ product, favorites, toggleFavorite, addToCart, buyNow, op
             <small>7 reviews</small>
             <i>{product.inStock === false ? "Made to order" : "In stock"}</i>
             <small>SKU: {product.sku || product.id}</small>
+            {product.jewelCode && <small>Jewel Code: {product.jewelCode}</small>}
           </div>
           <div className="product-price-line">
             <strong>{salePrice}</strong>
@@ -1420,14 +1445,50 @@ function ProductPage({ product, favorites, toggleFavorite, addToCart, buyNow, op
               </a>
             )}
           </div>
-          <dl>
-            {specs.map((spec, index) => (
-              <div key={spec}>
-                <dt>0{index + 1}</dt>
-                <dd>{spec}</dd>
-              </div>
-            ))}
-          </dl>
+          <div className="product-accordion">
+            <AccordionRow label="Product details" open={openSection === "details"} onToggle={() => toggleSection("details")}>
+              <dl>
+                {specs.map((spec, index) => (
+                  <div key={spec}>
+                    <dt>0{index + 1}</dt>
+                    <dd>{spec}</dd>
+                  </div>
+                ))}
+              </dl>
+              {productDescription && <p className="product-description-text">{productDescription}</p>}
+            </AccordionRow>
+            <AccordionRow label="Price breakup" open={openSection === "price"} onToggle={() => toggleSection("price")}>
+              <p className="price-row"><span>Taxable value</span><strong>{formatAmount(priceTotals.taxableValue)}</strong></p>
+              {priceTotals.interState ? (
+                <p className="price-row"><span>IGST @ {priceTotals.gstRate}%</span><strong>{formatAmount(priceTotals.igst)}</strong></p>
+              ) : (
+                <>
+                  <p className="price-row"><span>CGST @ {priceTotals.gstRate / 2}%</span><strong>{formatAmount(priceTotals.cgst)}</strong></p>
+                  <p className="price-row"><span>SGST @ {priceTotals.gstRate / 2}%</span><strong>{formatAmount(priceTotals.sgst)}</strong></p>
+                </>
+              )}
+              <p className="price-row price-breakup-total"><span>Total</span><strong>{formatAmount(priceTotals.total)}</strong></p>
+            </AccordionRow>
+            <AccordionRow label="Shipping & returns" open={openSection === "shipping"} onToggle={() => toggleSection("shipping")}>
+              <p>{product.inStock === false ? "Made to order - crafted and shipped within 7-10 business days." : "In stock - ships within 48 hours of your order."}</p>
+              {settings?.freeShippingThreshold && <p>Free shipping on orders over {formatCurrency(priceToNumber(settings.freeShippingThreshold))}.</p>}
+              <p>30-day returns and a lifetime exchange on every piece - see our <button type="button" className="text-link" onClick={() => { window.location.hash = "return-policy"; }}>Return Policy</button> for details.</p>
+            </AccordionRow>
+          </div>
+          <div className="product-trust-badges">
+            <article>
+              <span className="material-symbols-rounded">verified</span>
+              <p>{(product.certificate || "IGI")} Certified</p>
+            </article>
+            <article>
+              <span className="material-symbols-rounded">workspace_premium</span>
+              <p>BIS Hallmarked</p>
+            </article>
+            <article>
+              <span className="material-symbols-rounded">sync</span>
+              <p>Lifetime Exchange</p>
+            </article>
+          </div>
         </div>
       </section>
       {similarProducts.length > 0 && (
@@ -1438,7 +1499,7 @@ function ProductPage({ product, favorites, toggleFavorite, addToCart, buyNow, op
               <h3>Similar products</h3>
             </div>
           </div>
-          <div className="product-grid">
+          <div className="product-grid product-grid-4">
             {similarProducts.map((item) => (
               <ProductCard key={item.id} product={item} favorite={favorites.has(item.id)} onFavorite={toggleFavorite} onOpen={openProduct} />
             ))}
@@ -1458,7 +1519,7 @@ function ProductPage({ product, favorites, toggleFavorite, addToCart, buyNow, op
               <h3>Recently viewed</h3>
             </div>
           </div>
-          <div className="product-grid">
+          <div className="product-grid product-grid-4">
             {recentlyViewedOthers.map((item) => (
               <ProductCard key={item.id} product={item} favorite={favorites.has(item.id)} onFavorite={toggleFavorite} onOpen={openProduct} />
             ))}
