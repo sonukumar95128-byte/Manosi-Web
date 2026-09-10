@@ -3,7 +3,7 @@ import Lenis from "lenis";
 import { catalogProducts } from "./catalogData";
 import { cloudinaryFetchImage, withCloudinaryImages } from "./cloudinary";
 import { computeInvoiceTotals, formatAmount, INDIAN_STATES } from "./invoiceMath";
-import { footerPages } from "./footerContent";
+import { footerPages as defaultFooterPages } from "./footerContent";
 import {
   seedBanners,
   seedCollections,
@@ -217,6 +217,19 @@ const pages = [
 const categories = ["All", "Rings", "Earrings", "Necklace", "Pendant", "Mangalsutra", "Bracelet", "Nosepins"];
 
 const menuCategories = ["Rings", "Earrings", "Necklace", "Pendant", "Mangalsutra", "Bracelet", "Nosepins"];
+
+const FOOTER_PAGE_LABELS = {
+  faq: "FAQ",
+  shipping: "Shipping",
+  returns: "Returns & Exchange",
+  "store-locator": "Store Locator",
+  certifications: "Certifications",
+  "privacy-policy": "Privacy Policy",
+  terms: "Terms & Conditions",
+  "return-policy": "Return Policy",
+  "shipping-policy": "Shipping Policy",
+  franchise: "Franchise",
+};
 
 // Each homepage carousel crops differently, so a banner belongs to exactly one
 // of them. Older records predate the field, so fall back to reading the id.
@@ -1697,7 +1710,7 @@ function BespokePage({ setCartOpen }) {
   );
 }
 
-function InfoPage({ slug, setPage }) {
+function InfoPage({ slug, setPage, footerPages }) {
   const content = footerPages[slug];
   if (!content) return null;
 
@@ -2299,6 +2312,8 @@ function AdminPage({ cartItems, favorites, setPage }) {
   const [invoiceFilter, setInvoiceFilter] = useState("all");
   // null means "in sync with the server"; an array means there are unsaved edits.
   const [bannerDraft, setBannerDraft] = useState(null);
+  const [footerContentDraft, setFooterContentDraft] = useState(null);
+  const [footerContentSlug, setFooterContentSlug] = useState("faq");
   const [tallyXmlPreview, setTallyXmlPreview] = useState(null);
   const [customerSearch, setCustomerSearch] = useState("");
   const [productEditor, setProductEditor] = useState(null);
@@ -2329,6 +2344,7 @@ function AdminPage({ cartItems, favorites, setPage }) {
     ["reviews", "testimonials", "Testimonials"],
     ["edit_square", "reviews", "Product Reviews"],
     ["category", "collections", "Collections"],
+    ["article", "footerContent", "Footer Content"],
     ["groups", "customers", "Customers"],
     ["settings", "settings", "Settings"],
   ];
@@ -2342,6 +2358,7 @@ function AdminPage({ cartItems, favorites, setPage }) {
   const liveReviews = adminData?.reviews?.length ? adminData.reviews : seedReviews;
   const liveBanners = adminData?.banners?.length ? adminData.banners : seedBanners;
   const liveCollections = adminData?.collections?.length ? adminData.collections : seedCollections;
+  const liveFooterContent = adminData?.footerPages || defaultFooterPages;
   const liveInvoices = adminData?.invoices || [];
   const derivedCustomers = Object.values(liveOrders.reduce((acc, order) => {
     const key = order.phone || order.customer;
@@ -3493,6 +3510,82 @@ function AdminPage({ cartItems, favorites, setPage }) {
     );
   }
 
+  function AdminFooterContentPanel() {
+    // Edits collect in a draft so nothing is written until Save is pressed,
+    // same pattern as the banners editor.
+    const draft = footerContentDraft ?? liveFooterContent;
+    const dirty = footerContentDraft !== null;
+    const slugs = Object.keys(defaultFooterPages);
+    const activeSlug = FOOTER_PAGE_LABELS[footerContentSlug] ? footerContentSlug : slugs[0];
+    const page = draft[activeSlug] || defaultFooterPages[activeSlug];
+    const isQa = Boolean(page.qa);
+
+    const editPage = (patch) => setFooterContentDraft({ ...draft, [activeSlug]: { ...page, ...patch } });
+    const editEntry = (key, index, patch) => {
+      const list = [...(page[key] || [])];
+      list[index] = patch;
+      editPage({ [key]: list });
+    };
+    const addEntry = (key) => editPage({ [key]: [...(page[key] || []), ["", ""]] });
+    const removeEntry = (key, index) => editPage({ [key]: (page[key] || []).filter((_, i) => i !== index) });
+
+    const save = async () => {
+      if (await saveAdmin("/footer-pages", draft)) setFooterContentDraft(null);
+    };
+
+    return (
+      <section className="admin-footer-content-panel">
+        <div className="admin-footer-content-toolbar">
+          <p className="admin-helper-copy">{dirty ? "Unsaved changes" : "All changes saved"} - edits every FAQ, Shipping, Returns, Privacy Policy and other footer page.</p>
+          <div>
+            {dirty && <button onClick={() => setFooterContentDraft(null)}>Discard</button>}
+            <button className="admin-primary-action" disabled={!dirty} onClick={save}>Save footer content</button>
+          </div>
+        </div>
+        <div className="admin-footer-content-layout">
+          <nav className="admin-footer-page-list">
+            {slugs.map((slug) => (
+              <button className={activeSlug === slug ? "is-active" : ""} key={slug} onClick={() => setFooterContentSlug(slug)}>
+                {FOOTER_PAGE_LABELS[slug] || slug}
+              </button>
+            ))}
+          </nav>
+          <div className="admin-footer-page-editor">
+            <label>Eyebrow<input value={page.eyebrow || ""} onChange={(event) => editPage({ eyebrow: event.target.value })} /></label>
+            <label>Title<input value={page.title || ""} onChange={(event) => editPage({ title: event.target.value })} /></label>
+            <label>Intro<textarea value={page.intro || ""} onChange={(event) => editPage({ intro: event.target.value })} /></label>
+
+            {isQa ? (
+              <>
+                <h4>Questions & answers</h4>
+                {(page.qa || []).map(([question, answer], index) => (
+                  <div className="admin-footer-entry" key={index}>
+                    <input value={question} onChange={(event) => editEntry("qa", index, [event.target.value, answer])} placeholder="Question" />
+                    <textarea value={answer} onChange={(event) => editEntry("qa", index, [question, event.target.value])} placeholder="Answer" />
+                    <button onClick={() => removeEntry("qa", index)}>Remove</button>
+                  </div>
+                ))}
+                <button onClick={() => addEntry("qa")}>+ Add question</button>
+              </>
+            ) : (
+              <>
+                <h4>Sections</h4>
+                {(page.sections || []).map(([heading, body], index) => (
+                  <div className="admin-footer-entry" key={index}>
+                    <input value={heading} onChange={(event) => editEntry("sections", index, [event.target.value, body])} placeholder="Heading" />
+                    <textarea value={body} onChange={(event) => editEntry("sections", index, [heading, event.target.value])} placeholder="Body" />
+                    <button onClick={() => removeEntry("sections", index)}>Remove</button>
+                  </div>
+                ))}
+                <button onClick={() => addEntry("sections")}>+ Add section</button>
+              </>
+            )}
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   function AdminCustomersPanel() {
     const query = customerSearch.trim().toLowerCase();
     const customerRows = liveCustomers.filter((customer) => !query || customer.name?.toLowerCase().includes(query) || customer.phone?.toLowerCase().includes(query));
@@ -3716,6 +3809,7 @@ function AdminPage({ cartItems, favorites, setPage }) {
     testimonials: "Testimonials",
     reviews: "Product Reviews",
     collections: "Collections",
+    footerContent: "Footer Content",
     customers: "Customers",
     settings: "Settings",
   };
@@ -3834,6 +3928,7 @@ function AdminPage({ cartItems, favorites, setPage }) {
         {activeModule === "testimonials" && AdminTestimonialsPanel()}
         {activeModule === "reviews" && AdminProductReviewsPanel()}
         {activeModule === "collections" && AdminCollectionsPanel()}
+        {activeModule === "footerContent" && AdminFooterContentPanel()}
         {activeModule === "customers" && AdminCustomersPanel()}
         {activeModule === "settings" && (
           <AdminSettingsPanel liveSettings={liveSettings} adminData={adminData} saveAdmin={saveAdmin} />
@@ -3965,6 +4060,7 @@ export function App() {
     [storeConfig],
   );
   const settings = storeConfig?.settings || seedSettings;
+  const liveFooterPages = storeConfig?.footerPages || defaultFooterPages;
   const store = useMemo(() => ({ products, settings, config: storeConfig }), [products, settings, storeConfig]);
 
   const filtered = useMemo(() => {
@@ -4015,7 +4111,7 @@ export function App() {
     const validPages = new Set([
       "home", "collections", "product", "new-arrivals", "education", "bespoke", "concierge",
       "cart", "checkout", "wishlist", "compare", "admin",
-      ...Object.keys(footerPages),
+      ...Object.keys(defaultFooterPages),
     ]);
     const openHashPage = () => {
       const hashPage = window.location.hash.replace("#", "");
@@ -4169,7 +4265,7 @@ export function App() {
       {page === "education" && <EducationPage />}
       {page === "bespoke" && <BespokePage setCartOpen={() => setPage("cart")} />}
       {page === "concierge" && <ConciergePage notice={notice} setNotice={setNotice} />}
-      {footerPages[page] && <InfoPage slug={page} setPage={setPage} />}
+      {defaultFooterPages[page] && <InfoPage slug={page} setPage={setPage} footerPages={liveFooterPages} />}
       {page === "cart" && <CartPagePro cartItems={cartItems} updateCartQuantity={updateCartQuantity} removeFromCart={removeFromCart} setPage={setPage} />}
       {page === "checkout" && <CheckoutPagePro cartItems={cartItems} setNotice={setNotice} setPage={setPage} clearCart={clearCart} />}
       {page === "wishlist" && <WishlistPage favorites={favorites} toggleFavorite={toggleFavorite} openProduct={openProduct} compare={compare} toggleCompare={toggleCompare} />}

@@ -2,6 +2,7 @@
 // (Vercel) both call handleApiRequest, so production and local behave the same.
 
 import { catalogProducts } from "../src/catalogData.js";
+import { footerPages as seedFooterPages } from "../src/footerContent.js";
 import {
   seedBanners,
   seedCollections,
@@ -35,6 +36,7 @@ const STORE_KEYS = {
   collections: "collections",
   customers: "customers",
   settings: "settings",
+  footerPages: "footerPages",
 };
 
 const ROUTE_TO_STORE = {
@@ -48,6 +50,7 @@ const ROUTE_TO_STORE = {
   "/api/collections": "collections",
   "/api/customers": "customers",
   "/api/settings": "settings",
+  "/api/footer-pages": "footerPages",
 };
 
 export function storeDefaults() {
@@ -62,6 +65,7 @@ export function storeDefaults() {
     collections: seedCollections,
     customers: [],
     settings: seedSettings,
+    footerPages: seedFooterPages,
   };
 }
 
@@ -111,7 +115,7 @@ async function settings() {
 async function loadStorefrontPayload() {
   const defaults = storeDefaults();
   const [stored, products] = await Promise.all([
-    db.readStoreMany(["settings", "collections", "reels", "testimonials", "banners", "homepageProducts"]),
+    db.readStoreMany(["settings", "collections", "reels", "testimonials", "banners", "homepageProducts", "footerPages"]),
     db.listProducts(),
   ]);
 
@@ -126,6 +130,7 @@ async function loadStorefrontPayload() {
     testimonials: (pick("testimonials") || []).filter((item) => item.status === "Approved"),
     banners: pick("banners"),
     homepageProducts: pick("homepageProducts"),
+    footerPages: pick("footerPages"),
     settings: {
       announcement: full.announcement || "",
       showGoldRate: Boolean(full.showGoldRate),
