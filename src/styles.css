@@ -174,8 +174,10 @@
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
+/* Lenis (see App.jsx) drives the eased scroll; CSS scroll-behavior: smooth
+   would animate on top of it and fight its own easing. */
+html.lenis {
+  scroll-behavior: auto !important;
 }
 
 body {

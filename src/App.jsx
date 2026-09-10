@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import Lenis from "lenis";
 import { catalogProducts } from "./catalogData";
 import { cloudinaryFetchImage, withCloudinaryImages } from "./cloudinary";
 import { computeInvoiceTotals, formatAmount, INDIAN_STATES } from "./invoiceMath";
@@ -3709,6 +3710,23 @@ export function App() {
       .then((data) => data && setStoreConfig(data))
       .catch(() => {});
     return () => controller.abort();
+  }, []);
+
+  // Apple-style eased/inertia scrolling instead of the browser's step-scroll.
+  // Skipped for anyone who has asked their OS for reduced motion.
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const lenis = new Lenis({ duration: 1.1, smoothWheel: true });
+    let frame;
+    function raf(time) {
+      lenis.raf(time);
+      frame = requestAnimationFrame(raf);
+    }
+    frame = requestAnimationFrame(raf);
+    return () => {
+      cancelAnimationFrame(frame);
+      lenis.destroy();
+    };
   }, []);
 
   useEffect(() => {
