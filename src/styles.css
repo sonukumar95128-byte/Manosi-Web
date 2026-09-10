@@ -294,6 +294,13 @@ h4 {
   color: var(--gold-deep);
 }
 
+/* Repeats nav-right's categories inside nav-left so the mobile slide-down
+   menu (which only ever renders nav-left) has the full list. Desktop already
+   gets those categories from nav-right, so this copy stays hidden there. */
+.nav-mobile-extra {
+  display: none;
+}
+
 .menu-button,
 .icon-button {
   display: grid;

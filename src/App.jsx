@@ -3847,6 +3847,19 @@ export function App() {
           {menuCategories.slice(0, 3).map((category) => (
             <button className={page === "collections" && collectionCategory === category ? "active-nav" : ""} key={category} onClick={() => openCategory(category)}>{category.toUpperCase()}</button>
           ))}
+          {/* Desktop splits categories either side of the logo (see nav-right below).
+              The mobile slide-down menu only ever renders nav-left, so the second
+              half repeats here, hidden on desktop and shown only when the menu is
+              open (see .nav-mobile-extra in styles.css). */}
+          {menuCategories.slice(3).map((category) => (
+            <button
+              className={`nav-mobile-extra ${page === "collections" && collectionCategory === category ? "active-nav" : ""}`}
+              key={`mobile-${category}`}
+              onClick={() => openCategory(category)}
+            >
+              {category.toUpperCase()}
+            </button>
+          ))}
         </nav>
         <button className="brand" onClick={() => setPage("home")}>Manosi</button>
         <nav className="nav-right">
