@@ -5569,9 +5569,14 @@ h3 {
     transform: translateX(calc(var(--promo-index) * -1 * (88vw + 18px)));
   }
 
+  /* The banner art is a wide ~2.75:1 strip with the offer text baked in. A
+     fixed 420px height forced a ~0.8:1 box, so cover cropped away 70% of the
+     design (the text included). Matching the box to the art's own ratio shows
+     the same desktop banner in full, just scaled down - nothing new to design. */
   .promo-slide {
     flex-basis: 88vw;
-    height: 420px;
+    height: auto;
+    aspect-ratio: 11 / 4;
   }
 
   .section-heading,
@@ -6074,7 +6079,8 @@ h3 {
 
   .promo-slide {
     flex-basis: 86vw;
-    height: 360px;
+    height: auto;
+    aspect-ratio: 11 / 4;
     border-radius: 8px;
   }
 
