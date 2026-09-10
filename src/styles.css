@@ -3776,19 +3776,17 @@ h3 {
   background: rgba(255, 250, 242, 0.92);
 }
 
+/* This preview isn't trying to match either mode's live aspect ratio (3:4
+   full-card design vs 1:1 built-in cutout) - it's just here so an admin can
+   see what they uploaded and swap it, so the whole image always fits with
+   nothing cropped, letterboxed on a neutral background if it doesn't fill
+   the box. */
 .admin-collection-grid img {
   width: 100%;
-  aspect-ratio: 460 / 345;
+  height: 220px;
   border-radius: 8px;
-  object-fit: cover;
-  background: #ffffff;
-}
-
-/* A full card design is uploaded at 3:4 (matches .collection-card.is-artwork
-   on the storefront) - forcing it into the wider default box above cropped
-   the sides, cutting into the "Shop Now" wording baked into the artwork. */
-.admin-collection-grid img.is-artwork-preview {
-  aspect-ratio: 3 / 4;
+  object-fit: contain;
+  background: #f3ede1;
 }
 
 .admin-collection-grid article > button {

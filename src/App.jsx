@@ -3489,7 +3489,7 @@ function AdminPage({ cartItems, favorites, setPage }) {
         <div className="admin-collection-grid">
           {collectionRows.map((collection) => (
             <article key={collection.id || collection.name}>
-              <img className={collection.cardImage ? "is-artwork-preview" : ""} src={imageUrl(collection.cardImage || collection.image)} alt="" />
+              <img src={imageUrl(collection.cardImage || collection.image)} alt="" />
               <span className="admin-card-mode">{collection.cardImage ? "Full card design" : "Built-in layout + cut-out"}</span>
               <label className="admin-upload-control">Upload full card design 1080 x 1440<input type="file" accept="image/*" onChange={(event) => readImageFile(event.target.files?.[0], (cardImage) => updateCollection(collection, { cardImage }), "manosi/collections")} /></label>
               {collection.cardImage && <button onClick={() => updateCollection(collection, { cardImage: "" })}>Remove full card design</button>}
