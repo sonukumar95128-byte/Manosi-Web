@@ -55,3 +55,23 @@ Clicked, not assumed:
 crops 55% because it shows the desktop landscape banner. The slot is ready
 whenever the artwork is: Admin → Banners → each hero slide has
 "Upload mobile 1080 × 1440". No code change will be needed.
+
+## Banner status (2026-09-10)
+
+**Campaign carousel (3 slides)** — the existing desktop artwork stayed
+unchanged; only the mobile CSS box was fixed to match the artwork's own
+~2.75:1 ratio (`aspect-ratio: 11 / 4` instead of a fixed height), so the full
+desktop design shows on mobile too, just scaled down. Verified live:
+323 × 117 box against a 2.749 art ratio - 100% visible.
+
+**Shop category banners (8: All + 7 categories)** — replaced with the
+photography Sonu supplied (from `Manosi banner/category/`), each cropped to
+6:1 and titled in Playfair. No AI extension used - a straight `c_fill`
+center-crop, since the source art already composes the product on the right
+with calm space on the left. Live and verified for both "All" and "Rings".
+
+Note for next time: a same-origin hash-only `navigate` in this environment can
+reuse an already-loaded page without re-running its mount effect, so a
+React app's one-time data fetch can go stale across a whole browsing session.
+Force a real navigation (change the URL, not just the hash) when the data
+should be fresh.
