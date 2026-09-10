@@ -2,6 +2,7 @@ import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { catalogProducts } from "./catalogData";
 import { cloudinaryFetchImage, withCloudinaryImages } from "./cloudinary";
 import { computeInvoiceTotals, formatAmount, INDIAN_STATES } from "./invoiceMath";
+import { footerPages } from "./footerContent";
 import {
   seedBanners,
   seedCollections,
@@ -1420,6 +1421,51 @@ function BespokePage({ setCartOpen }) {
       <section className="bespoke-cta">
         <h3>Build a regular-wear diamond look</h3>
         <button onClick={() => setCartOpen(true)}>Start Designing</button>
+      </section>
+    </>
+  );
+}
+
+function InfoPage({ slug, setPage }) {
+  const products = useProducts();
+  const content = footerPages[slug];
+  if (!content) return null;
+  const heroImage = products[(slug.length * 7) % Math.max(products.length, 1)]?.image;
+
+  return (
+    <>
+      <PageHero eyebrow={content.eyebrow} title={content.title} copy={content.intro} image={heroImage} />
+      <section className="policy-page">
+        {content.qa ? (
+          <div className="guide-page policy-qa">
+            {content.qa.map(([q, a]) => (
+              <article key={q}>
+                <h4>{q}</h4>
+                <p>{a}</p>
+              </article>
+            ))}
+          </div>
+        ) : (
+          <div className="policy-sections">
+            {content.sections.map(([heading, body]) => (
+              <article key={heading}>
+                <h4>{heading}</h4>
+                <p>{body}</p>
+              </article>
+            ))}
+          </div>
+        )}
+        {slug === "franchise" ? (
+          <div className="policy-cta">
+            <p>Tell us about your city and your retail background, and we'll take it from there.</p>
+            <button onClick={() => setPage("concierge")}>Start the conversation</button>
+          </div>
+        ) : (
+          <div className="policy-cta">
+            <p>Didn't find what you needed?</p>
+            <button onClick={() => setPage("concierge")}>Ask Concierge</button>
+          </div>
+        )}
       </section>
     </>
   );
@@ -3512,8 +3558,24 @@ function Footer({ setPage, openCategory }) {
     ["Concierge", () => setPage("concierge")],
     ["Wishlist", () => setPage("wishlist")],
   ];
-  const serviceLinks = ["FAQ", "Shipping", "Returns & Exchange", "Store Locator", "Contact Us", "Certifications"];
-  const policyLinks = ["Privacy Policy", "Terms & Conditions", "Return Policy", "Shipping Policy", "Franchise"];
+  // Each label used to collapse into either Concierge or the Diamond Guide
+  // regardless of which one was clicked - Privacy Policy opened a page about
+  // cut, clarity, colour and carat. Every link now opens its own real page.
+  const serviceLinks = [
+    ["FAQ", "faq"],
+    ["Shipping", "shipping"],
+    ["Returns & Exchange", "returns"],
+    ["Store Locator", "store-locator"],
+    ["Contact Us", "concierge"],
+    ["Certifications", "certifications"],
+  ];
+  const policyLinks = [
+    ["Privacy Policy", "privacy-policy"],
+    ["Terms & Conditions", "terms"],
+    ["Return Policy", "return-policy"],
+    ["Shipping Policy", "shipping-policy"],
+    ["Franchise", "franchise"],
+  ];
 
   return (
     <footer className="site-footer">
@@ -3566,20 +3628,20 @@ function Footer({ setPage, openCategory }) {
 
         <div>
           <h5>Customer Service</h5>
-          {serviceLinks.map((link) => <button key={link} onClick={() => setPage("concierge")}>{link}</button>)}
+          {serviceLinks.map(([label, slug]) => <button key={label} onClick={() => setPage(slug)}>{label}</button>)}
         </div>
 
         <div>
           <h5>Policies</h5>
-          {policyLinks.map((link) => <button key={link} onClick={() => setPage("education")}>{link}</button>)}
+          {policyLinks.map(([label, slug]) => <button key={label} onClick={() => setPage(slug)}>{label}</button>)}
         </div>
       </section>
 
       <section className="footer-bottom">
         <div>
-          <button onClick={() => setPage("education")}>Privacy Policy</button>
+          <button onClick={() => setPage("privacy-policy")}>Privacy Policy</button>
           <span>|</span>
-          <button onClick={() => setPage("education")}>Terms & Conditions</button>
+          <button onClick={() => setPage("terms")}>Terms & Conditions</button>
         </div>
         <p>&copy; 2026 Manosi. All rights reserved. <em>Develop by Diiamond Guru Professiional Service</em></p>
       </section>
@@ -3627,7 +3689,11 @@ export function App() {
   }, []);
 
   useEffect(() => {
-    const validPages = new Set(["home", "collections", "product", "new-arrivals", "education", "bespoke", "concierge", "cart", "checkout", "wishlist", "compare", "admin"]);
+    const validPages = new Set([
+      "home", "collections", "product", "new-arrivals", "education", "bespoke", "concierge",
+      "cart", "checkout", "wishlist", "compare", "admin",
+      ...Object.keys(footerPages),
+    ]);
     const openHashPage = () => {
       const hashPage = window.location.hash.replace("#", "");
       const pathPage = window.location.pathname.replace(/^\/+/, "").replace(/\/+$/, "");
@@ -3759,6 +3825,7 @@ export function App() {
       {page === "education" && <EducationPage />}
       {page === "bespoke" && <BespokePage setCartOpen={() => setPage("cart")} />}
       {page === "concierge" && <ConciergePage notice={notice} setNotice={setNotice} />}
+      {footerPages[page] && <InfoPage slug={page} setPage={setPage} />}
       {page === "cart" && <CartPagePro cartItems={cartItems} updateCartQuantity={updateCartQuantity} removeFromCart={removeFromCart} setPage={setPage} />}
       {page === "checkout" && <CheckoutPagePro cartItems={cartItems} setNotice={setNotice} setPage={setPage} clearCart={clearCart} />}
       {page === "wishlist" && <WishlistPage favorites={favorites} toggleFavorite={toggleFavorite} openProduct={openProduct} compare={compare} toggleCompare={toggleCompare} />}
