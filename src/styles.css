@@ -7106,3 +7106,65 @@ h3 {
   color: var(--muted);
   font-size: 12px;
 }
+
+/* ---- Footer on a phone ----------------------------------------------------
+   Measured at 375px: the footer ran to 2,722px — 3.4 screens — because all five
+   link groups stacked into one column and the headings were sized for desktop
+   (25px serif for a list of links, 34px for the newsletter). */
+
+@media (max-width: 760px) {
+  .footer-newsletter {
+    padding: 34px 20px;
+    gap: 10px;
+  }
+
+  .footer-newsletter h3 {
+    font-size: 24px;
+    line-height: 1.25;
+  }
+
+  .footer-newsletter p {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .footer-newsletter form {
+    gap: 12px;
+    margin-top: 14px;
+  }
+
+  .footer-newsletter input,
+  .footer-newsletter button {
+    min-height: 52px;
+  }
+
+  .footer-main {
+    padding: 40px 20px;
+    gap: 26px 18px;
+  }
+
+  .footer-main h5 {
+    margin: 0 0 10px;
+    font-family: "Manrope", Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+  }
+
+  .footer-bottom {
+    padding: 22px 20px;
+  }
+}
+
+/* Two columns rather than one: the lists are short, and stacking them was what
+   made the footer three screens long. The brand block keeps the full width. */
+@media (max-width: 520px) {
+  .footer-main {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+}
