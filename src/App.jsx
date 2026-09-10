@@ -280,10 +280,6 @@ function interleaveByCategory(list) {
   return result;
 }
 
-function deliveryText(product) {
-  return product.inStock === false ? "Made to order" : "Ships in 48 hrs";
-}
-
 function ratingStars(rating) {
   const filled = Math.max(0, Math.min(5, Math.round(Number(rating) || 5)));
   return "★".repeat(filled) + "☆".repeat(5 - filled);
@@ -481,7 +477,6 @@ function ProductCard({ product, favorite, onFavorite, onOpen, compared, onCompar
           <span className="material-symbols-rounded">{compared ? "check" : "compare_arrows"}</span>
         </button>
       )}
-      <span className="product-badge">{deliveryText(product)}</span>
       <button className="product-image-button" onClick={() => onOpen(product)}>
         <img src={imageUrl(productImage(product))} alt={product.name} onError={(event) => setImageFallback(event, PRODUCT_PLACEHOLDER)} />
         {lifestyle && (

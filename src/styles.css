@@ -889,22 +889,6 @@ h3 {
   color: var(--gold-deep);
 }
 
-.product-badge {
-  position: absolute;
-  top: 18px;
-  left: 18px;
-  z-index: 2;
-  border: 1px solid rgba(215, 168, 79, 0.32);
-  border-radius: 999px;
-  padding: 7px 10px;
-  background: rgba(255, 250, 242, 0.9);
-  color: var(--soft-ink);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
 .product-card > p,
 .product-card h4,
 .product-meta {
@@ -5837,10 +5821,6 @@ h3 {
     font-size: 13px;
   }
 
-  .catalog-grid .product-badge {
-    display: none;
-  }
-
   .trending-grid,
   .arrival-track {
     --trending-gap: 12px;
@@ -6902,9 +6882,11 @@ h3 {
 /* ---- Compare -------------------------------------------------------------- */
 
 .compare-toggle {
+  /* Stacked under the wishlist heart (top-right) rather than top-left, where
+     it used to collide with the "ships in" badge that sat there too. */
   position: absolute;
-  top: 14px;
-  left: 14px;
+  top: 62px;
+  right: 18px;
   z-index: 3;
   display: grid;
   place-items: center;
@@ -7101,6 +7083,12 @@ h3 {
 
 @media (hover: none), (max-width: 760px) {
   .product-card .favorite {
+    width: 44px;
+    height: 44px;
+  }
+
+  .compare-toggle {
+    top: 70px;
     width: 44px;
     height: 44px;
   }
