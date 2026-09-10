@@ -563,11 +563,16 @@ function HomePage({ setPage, openProduct, openCategory, homepageProducts, homepa
         id: banner.id,
         image: banner.image,
         mobileImage: banner.mobileImage || banner.image,
+        category: banner.category || "All",
       }))
     : bannersLoaded
-      ? [ringFeature, necklaceFeature, braceletFeature].map((feature, index) => {
+      ? [
+          { feature: ringFeature, category: "Rings" },
+          { feature: necklaceFeature, category: "Necklace" },
+          { feature: braceletFeature, category: "Bracelet" },
+        ].map(({ feature, category }, index) => {
           const image = imageFallbackFor(feature, true);
-          return { id: `hero-default-${index}`, image, mobileImage: image };
+          return { id: `hero-default-${index}`, image, mobileImage: image, category };
         })
       : [];
   const [activeSlide, setActiveSlide] = useState(0);
@@ -802,18 +807,35 @@ function HomePage({ setPage, openProduct, openCategory, homepageProducts, homepa
   return (
     <>
       <section className="hero hero-banner" aria-label="Featured Manosi banner carousel" {...heroSwipe}>
-        {heroSlides.map((slide, index) => (
-          <picture key={slide.id}>
-            <source media="(max-width: 760px)" srcSet={imageUrl(slide.mobileImage)} />
-            <img
-              className={`hero-slide ${activeSlide === index ? "is-active" : ""}`}
-              src={imageUrl(slide.image)}
-              alt=""
-              aria-hidden={activeSlide !== index}
-              onError={(event) => setImageFallback(event, imageFallbackFor(ringFeature, true))}
-            />
-          </picture>
-        ))}
+        {heroSlides.map((slide, index) => {
+          const isActive = activeSlide === index;
+          const picture = (
+            <picture>
+              <source media="(max-width: 760px)" srcSet={imageUrl(slide.mobileImage)} />
+              <img
+                className={`hero-slide ${isActive ? "is-active" : ""}`}
+                src={imageUrl(slide.image)}
+                alt=""
+                aria-hidden={!isActive}
+                onError={(event) => setImageFallback(event, imageFallbackFor(ringFeature, true))}
+              />
+            </picture>
+          );
+          // Only the visible slide gets a click target - the others sit
+          // beneath it at opacity 0 and would otherwise swallow the click.
+          return isActive ? (
+            <button
+              key={slide.id}
+              className="hero-image-button"
+              onClick={() => openCategory(slide.category)}
+              aria-label={`Shop ${slide.category === "All" ? "All Jewellery" : slide.category}`}
+            >
+              {picture}
+            </button>
+          ) : (
+            <span key={slide.id} aria-hidden="true">{picture}</span>
+          );
+        })}
         {heroSlides.length > 1 && (
           <div className="hero-carousel-controls" aria-label="Banner controls">
             <button onClick={() => changeSlide(-1)} aria-label="Previous banner">
