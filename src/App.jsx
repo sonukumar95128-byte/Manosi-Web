@@ -1306,6 +1306,17 @@ function ProductPage({ product, favorites, toggleFavorite, addToCart, buyNow, op
     products[(fallbackIndex + 1) % Math.max(1, products.length)]?.image,
   ].filter(Boolean).filter((image, index, list) => list.indexOf(image) === index).slice(0, 4);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [zoomActive, setZoomActive] = useState(false);
+  const [zoomPosition, setZoomPosition] = useState({ x: 50, y: 50 });
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+
+  function handleImageMouseMove(event) {
+    const rect = event.currentTarget.getBoundingClientRect();
+    setZoomPosition({
+      x: Math.min(100, Math.max(0, ((event.clientX - rect.left) / rect.width) * 100)),
+      y: Math.min(100, Math.max(0, ((event.clientY - rect.top) / rect.height) * 100)),
+    });
+  }
   const [goldColour, setGoldColour] = useState(productMetal(product));
   const [purity, setPurity] = useState(productKarat(product).replace("KT", "K"));
   const [length, setLength] = useState(product.category === "Necklace" ? "16 inch" : "Standard size");
@@ -1341,6 +1352,8 @@ function ProductPage({ product, favorites, toggleFavorite, addToCart, buyNow, op
     setGoldColour(productMetal(product));
     setPurity(productKarat(product).replace("KT", "K"));
     setLength(product.category === "Necklace" ? "16 inch" : "Standard size");
+    setZoomActive(false);
+    setLightboxOpen(false);
   }, [product.id]);
 
   return (
@@ -1354,13 +1367,36 @@ function ProductPage({ product, favorites, toggleFavorite, addToCart, buyNow, op
       </nav>
       <section className="product-page">
         <div className="product-gallery">
-          <div className="product-main-image">
+          <div
+            className="product-main-image"
+            onMouseEnter={() => setZoomActive(true)}
+            onMouseLeave={() => setZoomActive(false)}
+            onMouseMove={handleImageMouseMove}
+          >
             <img src={imageUrl(activeImage)} alt={product.name} onError={(event) => setImageFallback(event, PRODUCT_PLACEHOLDER)} />
+            {zoomActive && (
+              <div
+                className="product-zoom-lens"
+                aria-hidden="true"
+                style={{
+                  backgroundImage: `url(${imageUrl(activeImage, 2400)})`,
+                  backgroundPosition: `${zoomPosition.x}% ${zoomPosition.y}%`,
+                }}
+              />
+            )}
             <span>{Math.min(activeIndex + 1, galleryImages.length || 1)} / {galleryImages.length || 1}</span>
-            <a className="gallery-zoom" href={imageUrl(activeImage)} target="_blank" rel="noreferrer" aria-label="Open full-size image">
+            <button type="button" className="gallery-zoom" onClick={() => setLightboxOpen(true)} aria-label="Open full-size image">
               <span className="material-symbols-rounded">search</span>
-            </a>
+            </button>
           </div>
+          {lightboxOpen && (
+            <div className="product-lightbox" role="dialog" aria-modal="true" aria-label={`${product.name} full-size image`} onClick={() => setLightboxOpen(false)}>
+              <button type="button" className="product-lightbox-close" onClick={() => setLightboxOpen(false)} aria-label="Close full-size image">
+                <span className="material-symbols-rounded">close</span>
+              </button>
+              <img src={imageUrl(activeImage, 2400)} alt={product.name} onClick={(event) => event.stopPropagation()} />
+            </div>
+          )}
           <div className="product-thumbnails">
             {galleryImages.map((image, index) => (
               <button className={activeIndex === index ? "is-active" : ""} key={`${image}-${index}`} onClick={() => setActiveIndex(index)} aria-label={`View image ${index + 1}`}>

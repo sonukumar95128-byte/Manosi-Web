@@ -4775,6 +4775,7 @@ h3 {
   position: absolute;
   right: 18px;
   bottom: 18px;
+  z-index: 2;
   display: grid;
   width: 36px;
   height: 36px;
@@ -4783,6 +4784,52 @@ h3 {
   border-radius: 999px;
   background: var(--soft-ink);
   color: var(--gold);
+  cursor: pointer;
+}
+
+/* Hover-to-zoom: the image itself is swapped for a bigger render of the same
+   picture, panned to follow the cursor - mouse-only, so it only ever shows
+   up on pointers that can hover (set from JS, not CSS, to match exactly
+   what triggers it: mouseenter/mousemove on the image). */
+.product-zoom-lens {
+  position: absolute;
+  inset: 0;
+  background-repeat: no-repeat;
+  background-size: 220%;
+  cursor: zoom-in;
+}
+
+.product-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: grid;
+  place-items: center;
+  padding: 40px;
+  background: rgba(7, 31, 27, 0.92);
+  cursor: zoom-out;
+}
+
+.product-lightbox img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 8px;
+  cursor: default;
+}
+
+.product-lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  border: 1px solid rgba(255, 240, 207, 0.4);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff0cf;
+  cursor: pointer;
 }
 
 .product-thumbnails {
