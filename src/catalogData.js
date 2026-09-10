@@ -8,7 +8,7 @@ export const catalogProducts = [
     "regularPrice": "₹38,589",
     "salePrice": "₹34,819",
     "image": "ALB00230-1",
-    "lifestyle": "ALB00230-2",
+    "lifestyle": "ALB00230-3",
     "images": [
       "ALB00230-1",
       "ALB00230-2",
@@ -49,7 +49,7 @@ export const catalogProducts = [
     "regularPrice": "₹30,291",
     "salePrice": "₹27,181",
     "image": "ALB00232-1",
-    "lifestyle": "ALB00232-2",
+    "lifestyle": "ALB00232-3",
     "images": [
       "ALB00232-1",
       "ALB00232-2",
@@ -90,7 +90,7 @@ export const catalogProducts = [
     "regularPrice": "₹30,257",
     "salePrice": "₹27,009",
     "image": "ALB00233-1",
-    "lifestyle": "ALB00233-2",
+    "lifestyle": "ALB00233-3",
     "images": [
       "ALB00233-1",
       "ALB00233-2",
@@ -131,7 +131,7 @@ export const catalogProducts = [
     "regularPrice": "₹38,837",
     "salePrice": "₹34,934",
     "image": "ALB00234-1",
-    "lifestyle": "ALB00234-2",
+    "lifestyle": "ALB00234-3",
     "images": [
       "ALB00234-1",
       "ALB00234-2",
@@ -172,7 +172,7 @@ export const catalogProducts = [
     "regularPrice": "₹38,694",
     "salePrice": "₹34,917",
     "image": "ALB00235-1",
-    "lifestyle": "ALB00235-2",
+    "lifestyle": "ALB00235-3",
     "images": [
       "ALB00235-1",
       "ALB00235-2",
@@ -213,7 +213,7 @@ export const catalogProducts = [
     "regularPrice": "₹38,833",
     "salePrice": "₹34,876",
     "image": "ALB00236-1",
-    "lifestyle": "ALB00236-2",
+    "lifestyle": "ALB00236-3",
     "images": [
       "ALB00236-1",
       "ALB00236-2",
@@ -254,7 +254,7 @@ export const catalogProducts = [
     "regularPrice": "₹30,267",
     "salePrice": "₹27,199",
     "image": "ALB00237-1",
-    "lifestyle": "ALB00237-2",
+    "lifestyle": "ALB00237-3",
     "images": [
       "ALB00237-1",
       "ALB00237-2",
@@ -295,7 +295,7 @@ export const catalogProducts = [
     "regularPrice": "₹38,883",
     "salePrice": "₹34,793",
     "image": "ALB00239-1",
-    "lifestyle": "ALB00239-2",
+    "lifestyle": "ALB00239-3",
     "images": [
       "ALB00239-1",
       "ALB00239-2",
@@ -336,7 +336,7 @@ export const catalogProducts = [
     "regularPrice": "₹30,208",
     "salePrice": "₹27,117",
     "image": "ALB00240-1",
-    "lifestyle": "ALB00240-2",
+    "lifestyle": "ALB00240-3",
     "images": [
       "ALB00240-1",
       "ALB00240-2",
@@ -377,7 +377,7 @@ export const catalogProducts = [
     "regularPrice": "₹30,203",
     "salePrice": "₹26,965",
     "image": "ALB00241-1",
-    "lifestyle": "ALB00241-2",
+    "lifestyle": "ALB00241-3",
     "images": [
       "ALB00241-1",
       "ALB00241-2",
@@ -418,7 +418,7 @@ export const catalogProducts = [
     "regularPrice": "₹30,042",
     "salePrice": "₹27,025",
     "image": "ALB00242-1",
-    "lifestyle": "ALB00242-2",
+    "lifestyle": "ALB00242-3",
     "images": [
       "ALB00242-1",
       "ALB00242-2",
@@ -500,7 +500,7 @@ export const catalogProducts = [
     "regularPrice": "₹38,836",
     "salePrice": "₹34,997",
     "image": "ALB00244-1",
-    "lifestyle": "ALB00244-2",
+    "lifestyle": "ALB00244-3",
     "images": [
       "ALB00244-1",
       "ALB00244-2",
@@ -541,7 +541,7 @@ export const catalogProducts = [
     "regularPrice": "₹38,662",
     "salePrice": "₹34,840",
     "image": "ALB00245-1",
-    "lifestyle": "ALB00245-2",
+    "lifestyle": "ALB00245-3",
     "images": [
       "ALB00245-1",
       "ALB00245-2",
@@ -623,7 +623,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,272",
     "salePrice": "₹19,227",
     "image": "ALR00390-1",
-    "lifestyle": "ALR00390-2",
+    "lifestyle": "ALR00390-3",
     "images": [
       "ALR00390-1",
       "ALR00390-2",
@@ -664,7 +664,7 @@ export const catalogProducts = [
     "regularPrice": "₹74,991",
     "salePrice": "₹67,376",
     "image": "ALR00801-1",
-    "lifestyle": "ALR00801-2",
+    "lifestyle": "ALR00801-3",
     "images": [
       "ALR00801-1",
       "ALR00801-2",
@@ -705,7 +705,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,059",
     "salePrice": "₹19,122",
     "image": "ALR00803-1",
-    "lifestyle": "ALR00803-2",
+    "lifestyle": "ALR00803-3",
     "images": [
       "ALR00803-1",
       "ALR00803-2",
@@ -746,7 +746,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,393",
     "salePrice": "₹19,294",
     "image": "ALR00804-1",
-    "lifestyle": "ALR00804-2",
+    "lifestyle": "ALR00804-3",
     "images": [
       "ALR00804-1",
       "ALR00804-2",
@@ -787,7 +787,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,065",
     "salePrice": "₹19,311",
     "image": "ALR00805-1",
-    "lifestyle": "ALR00805-2",
+    "lifestyle": "ALR00805-3",
     "images": [
       "ALR00805-1",
       "ALR00805-2",
@@ -828,7 +828,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,275",
     "salePrice": "₹19,267",
     "image": "ALR00806-1",
-    "lifestyle": "ALR00806-2",
+    "lifestyle": "ALR00806-3",
     "images": [
       "ALR00806-1",
       "ALR00806-2",
@@ -869,7 +869,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,197",
     "salePrice": "₹19,297",
     "image": "ALR00807-1",
-    "lifestyle": "ALR00807-2",
+    "lifestyle": "ALR00807-3",
     "images": [
       "ALR00807-1",
       "ALR00807-2",
@@ -910,7 +910,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,174",
     "salePrice": "₹19,036",
     "image": "ALR00808-1",
-    "lifestyle": "ALR00808-2",
+    "lifestyle": "ALR00808-3",
     "images": [
       "ALR00808-1",
       "ALR00808-2",
@@ -951,7 +951,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,257",
     "salePrice": "₹19,112",
     "image": "ALR00809-1",
-    "lifestyle": "ALR00809-2",
+    "lifestyle": "ALR00809-3",
     "images": [
       "ALR00809-1",
       "ALR00809-2",
@@ -992,7 +992,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,365",
     "salePrice": "₹19,238",
     "image": "ALR00810-1",
-    "lifestyle": "ALR00810-2",
+    "lifestyle": "ALR00810-3",
     "images": [
       "ALR00810-1",
       "ALR00810-2",
@@ -1033,7 +1033,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,269",
     "salePrice": "₹19,022",
     "image": "ALR00811-1",
-    "lifestyle": "ALR00811-2",
+    "lifestyle": "ALR00811-3",
     "images": [
       "ALR00811-1",
       "ALR00811-2",
@@ -1074,7 +1074,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,302",
     "salePrice": "₹19,210",
     "image": "ALR00813-1",
-    "lifestyle": "ALR00813-2",
+    "lifestyle": "ALR00813-3",
     "images": [
       "ALR00813-1",
       "ALR00813-2",
@@ -1115,7 +1115,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,429",
     "salePrice": "₹19,094",
     "image": "ALR00814-1",
-    "lifestyle": "ALR00814-2",
+    "lifestyle": "ALR00814-3",
     "images": [
       "ALR00814-1",
       "ALR00814-2",
@@ -1156,7 +1156,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,083",
     "salePrice": "₹18,998",
     "image": "ALR00815-1",
-    "lifestyle": "ALR00815-2",
+    "lifestyle": "ALR00815-3",
     "images": [
       "ALR00815-1",
       "ALR00815-2",
@@ -1237,7 +1237,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,279",
     "salePrice": "₹19,065",
     "image": "ALR00817-1",
-    "lifestyle": "ALR00817-2",
+    "lifestyle": "ALR00817-3",
     "images": [
       "ALR00817-1",
       "ALR00817-2",
@@ -1278,7 +1278,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,443",
     "salePrice": "₹19,231",
     "image": "ALR00818-1",
-    "lifestyle": "ALR00818-2",
+    "lifestyle": "ALR00818-3",
     "images": [
       "ALR00818-1",
       "ALR00818-2",
@@ -1319,7 +1319,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,292",
     "salePrice": "₹19,026",
     "image": "ALR00819-1",
-    "lifestyle": "ALR00819-2",
+    "lifestyle": "ALR00819-3",
     "images": [
       "ALR00819-1",
       "ALR00819-2",
@@ -1360,7 +1360,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,386",
     "salePrice": "₹19,024",
     "image": "ALR00821-1",
-    "lifestyle": "ALR00821-2",
+    "lifestyle": "ALR00821-3",
     "images": [
       "ALR00821-1",
       "ALR00821-2",
@@ -1441,7 +1441,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,162",
     "salePrice": "₹18,952",
     "image": "ALR00823-1",
-    "lifestyle": "ALR00823-2",
+    "lifestyle": "ALR00823-3",
     "images": [
       "ALR00823-1",
       "ALR00823-2",
@@ -1482,7 +1482,7 @@ export const catalogProducts = [
     "regularPrice": "₹32,017",
     "salePrice": "₹28,936",
     "image": "ALR00849-1",
-    "lifestyle": "ALR00849-2",
+    "lifestyle": "ALR00849-3",
     "images": [
       "ALR00849-1",
       "ALR00849-2",
@@ -1523,7 +1523,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,284",
     "salePrice": "₹19,142",
     "image": "ALR00850-1",
-    "lifestyle": "ALR00850-2",
+    "lifestyle": "ALR00850-3",
     "images": [
       "ALR00850-1",
       "ALR00850-2",
@@ -1564,7 +1564,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,352",
     "salePrice": "₹18,956",
     "image": "ALR00851-1",
-    "lifestyle": "ALR00851-2",
+    "lifestyle": "ALR00851-3",
     "images": [
       "ALR00851-1",
       "ALR00851-2",
@@ -1605,7 +1605,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,406",
     "salePrice": "₹19,223",
     "image": "ALR00852-1",
-    "lifestyle": "ALR00852-2",
+    "lifestyle": "ALR00852-3",
     "images": [
       "ALR00852-1",
       "ALR00852-2",
@@ -1646,7 +1646,7 @@ export const catalogProducts = [
     "regularPrice": "₹19,432",
     "salePrice": "₹17,193",
     "image": "ALR00853-1",
-    "lifestyle": "ALR00853-2",
+    "lifestyle": "ALR00853-3",
     "images": [
       "ALR00853-1",
       "ALR00853-2",
@@ -1687,7 +1687,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,245",
     "salePrice": "₹18,967",
     "image": "ALR00862-1",
-    "lifestyle": "ALR00862-2",
+    "lifestyle": "ALR00862-3",
     "images": [
       "ALR00862-1",
       "ALR00862-2",
@@ -1728,7 +1728,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,363",
     "salePrice": "₹19,159",
     "image": "ALR00863-1",
-    "lifestyle": "ALR00863-2",
+    "lifestyle": "ALR00863-3",
     "images": [
       "ALR00863-1",
       "ALR00863-2",
@@ -1769,7 +1769,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,183",
     "salePrice": "₹19,041",
     "image": "ALR00864-1",
-    "lifestyle": "ALR00864-2",
+    "lifestyle": "ALR00864-3",
     "images": [
       "ALR00864-1",
       "ALR00864-2",
@@ -1810,7 +1810,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,406",
     "salePrice": "₹19,241",
     "image": "ALR00865-1",
-    "lifestyle": "ALR00865-2",
+    "lifestyle": "ALR00865-3",
     "images": [
       "ALR00865-1",
       "ALR00865-2",
@@ -1851,7 +1851,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,431",
     "salePrice": "₹18,958",
     "image": "ALR00866-1",
-    "lifestyle": "ALR00866-2",
+    "lifestyle": "ALR00866-3",
     "images": [
       "ALR00866-1",
       "ALR00866-2",
@@ -1892,7 +1892,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,129",
     "salePrice": "₹19,192",
     "image": "ALR00867-1",
-    "lifestyle": "ALR00867-2",
+    "lifestyle": "ALR00867-3",
     "images": [
       "ALR00867-1",
       "ALR00867-2",
@@ -1933,7 +1933,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,375",
     "salePrice": "₹18,969",
     "image": "ALR00868-1",
-    "lifestyle": "ALR00868-2",
+    "lifestyle": "ALR00868-3",
     "images": [
       "ALR00868-1",
       "ALR00868-2",
@@ -1974,7 +1974,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,124",
     "salePrice": "₹19,321",
     "image": "ALR00869-1",
-    "lifestyle": "ALR00869-2",
+    "lifestyle": "ALR00869-3",
     "images": [
       "ALR00869-1",
       "ALR00869-2",
@@ -2015,7 +2015,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,125",
     "salePrice": "₹19,239",
     "image": "ALR00870-1",
-    "lifestyle": "ALR00870-2",
+    "lifestyle": "ALR00870-3",
     "images": [
       "ALR00870-1",
       "ALR00870-2",
@@ -2056,7 +2056,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,220",
     "salePrice": "₹19,313",
     "image": "ALR00871-1",
-    "lifestyle": "ALR00871-2",
+    "lifestyle": "ALR00871-3",
     "images": [
       "ALR00871-1",
       "ALR00871-2",
@@ -2097,7 +2097,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,127",
     "salePrice": "₹19,095",
     "image": "ALR00872-1",
-    "lifestyle": "ALR00872-2",
+    "lifestyle": "ALR00872-3",
     "images": [
       "ALR00872-1",
       "ALR00872-2",
@@ -2138,7 +2138,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,187",
     "salePrice": "₹18,981",
     "image": "ALR00873-1",
-    "lifestyle": "ALR00873-2",
+    "lifestyle": "ALR00873-3",
     "images": [
       "ALR00873-1",
       "ALR00873-2",
@@ -2179,7 +2179,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,379",
     "salePrice": "₹18,932",
     "image": "ALR00874-1",
-    "lifestyle": "ALR00874-2",
+    "lifestyle": "ALR00874-3",
     "images": [
       "ALR00874-1",
       "ALR00874-2",
@@ -2220,7 +2220,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,122",
     "salePrice": "₹18,974",
     "image": "ALR00894-1",
-    "lifestyle": "ALR00894-2",
+    "lifestyle": "ALR00894-3",
     "images": [
       "ALR00894-1",
       "ALR00894-2",
@@ -2261,7 +2261,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,358",
     "salePrice": "₹19,239",
     "image": "ALR00919-1",
-    "lifestyle": "ALR00919-2",
+    "lifestyle": "ALR00919-3",
     "images": [
       "ALR00919-1",
       "ALR00919-2",
@@ -2302,7 +2302,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,275",
     "salePrice": "₹19,072",
     "image": "ALR00920-1",
-    "lifestyle": "ALR00920-2",
+    "lifestyle": "ALR00920-3",
     "images": [
       "ALR00920-1",
       "ALR00920-2",
@@ -2343,7 +2343,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,234",
     "salePrice": "₹18,982",
     "image": "ALR00932-1",
-    "lifestyle": "ALR00932-2",
+    "lifestyle": "ALR00932-3",
     "images": [
       "ALR00932-1",
       "ALR00932-2",
@@ -2384,7 +2384,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,148",
     "salePrice": "₹19,001",
     "image": "ALR00938-1",
-    "lifestyle": "ALR00938-2",
+    "lifestyle": "ALR00938-3",
     "images": [
       "ALR00938-1",
       "ALR00938-2",
@@ -2425,7 +2425,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,066",
     "salePrice": "₹19,081",
     "image": "ALR00954-1",
-    "lifestyle": "ALR00954-2",
+    "lifestyle": "ALR00954-3",
     "images": [
       "ALR00954-1",
       "ALR00954-2",
@@ -2466,7 +2466,7 @@ export const catalogProducts = [
     "regularPrice": "₹40,180",
     "salePrice": "₹36,392",
     "image": "AMS00143-1",
-    "lifestyle": "AMS00143-2",
+    "lifestyle": "AMS00143-3",
     "images": [
       "AMS00143-1",
       "AMS00143-2",
@@ -2507,7 +2507,7 @@ export const catalogProducts = [
     "regularPrice": "₹43,231",
     "salePrice": "₹38,914",
     "image": "AMS00144-1",
-    "lifestyle": "AMS00144-2",
+    "lifestyle": "AMS00144-3",
     "images": [
       "AMS00144-1",
       "AMS00144-2",
@@ -2548,7 +2548,7 @@ export const catalogProducts = [
     "regularPrice": "₹42,990",
     "salePrice": "₹38,943",
     "image": "AMS00145-1",
-    "lifestyle": "AMS00145-2",
+    "lifestyle": "AMS00145-3",
     "images": [
       "AMS00145-1",
       "AMS00145-2",
@@ -2589,7 +2589,7 @@ export const catalogProducts = [
     "regularPrice": "₹43,122",
     "salePrice": "₹38,722",
     "image": "AMS00146-1",
-    "lifestyle": "AMS00146-2",
+    "lifestyle": "AMS00146-3",
     "images": [
       "AMS00146-1",
       "AMS00146-2",
@@ -2630,7 +2630,7 @@ export const catalogProducts = [
     "regularPrice": "₹31,744",
     "salePrice": "₹28,511",
     "image": "AMS00147-1",
-    "lifestyle": "AMS00147-2",
+    "lifestyle": "AMS00147-3",
     "images": [
       "AMS00147-1",
       "AMS00147-2",
@@ -2671,7 +2671,7 @@ export const catalogProducts = [
     "regularPrice": "₹42,922",
     "salePrice": "₹38,929",
     "image": "AMS00148-1",
-    "lifestyle": "AMS00148-2",
+    "lifestyle": "AMS00148-3",
     "images": [
       "AMS00148-1",
       "AMS00148-2",
@@ -2712,7 +2712,7 @@ export const catalogProducts = [
     "regularPrice": "₹39,115",
     "salePrice": "₹35,184",
     "image": "AMS00149-1",
-    "lifestyle": "AMS00149-2",
+    "lifestyle": "AMS00149-3",
     "images": [
       "AMS00149-1",
       "AMS00149-2",
@@ -2753,7 +2753,7 @@ export const catalogProducts = [
     "regularPrice": "₹36,666",
     "salePrice": "₹32,938",
     "image": "AMS00150-1",
-    "lifestyle": "AMS00150-2",
+    "lifestyle": "AMS00150-3",
     "images": [
       "AMS00150-1",
       "AMS00150-2",
@@ -2794,7 +2794,7 @@ export const catalogProducts = [
     "regularPrice": "₹36,057",
     "salePrice": "₹32,695",
     "image": "AMS00151-1",
-    "lifestyle": "AMS00151-2",
+    "lifestyle": "AMS00151-3",
     "images": [
       "AMS00151-1",
       "AMS00151-2",
@@ -2835,7 +2835,7 @@ export const catalogProducts = [
     "regularPrice": "₹47,472",
     "salePrice": "₹42,741",
     "image": "AMS00181-1",
-    "lifestyle": "AMS00181-2",
+    "lifestyle": "AMS00181-3",
     "images": [
       "AMS00181-1",
       "AMS00181-2",
@@ -2876,7 +2876,7 @@ export const catalogProducts = [
     "regularPrice": "₹47,431",
     "salePrice": "₹42,625",
     "image": "AMS00183-1",
-    "lifestyle": "AMS00183-2",
+    "lifestyle": "AMS00183-3",
     "images": [
       "AMS00183-1",
       "AMS00183-2",
@@ -3238,7 +3238,7 @@ export const catalogProducts = [
     "regularPrice": "₹47,584",
     "salePrice": "₹42,709",
     "image": "ANS00174-1",
-    "lifestyle": "ANS00174-2",
+    "lifestyle": "ANS00174-3",
     "images": [
       "ANS00174-1",
       "ANS00174-2",
@@ -3279,7 +3279,7 @@ export const catalogProducts = [
     "regularPrice": "₹47,362",
     "salePrice": "₹42,801",
     "image": "ANS00175-1",
-    "lifestyle": "ANS00175-2",
+    "lifestyle": "ANS00175-3",
     "images": [
       "ANS00175-1",
       "ANS00175-2",
@@ -3320,7 +3320,7 @@ export const catalogProducts = [
     "regularPrice": "₹47,226",
     "salePrice": "₹42,548",
     "image": "ANS00176-1",
-    "lifestyle": "ANS00176-2",
+    "lifestyle": "ANS00176-3",
     "images": [
       "ANS00176-1",
       "ANS00176-2",
@@ -3361,7 +3361,7 @@ export const catalogProducts = [
     "regularPrice": "₹47,358",
     "salePrice": "₹42,691",
     "image": "ANS00182-1",
-    "lifestyle": "ANS00182-2",
+    "lifestyle": "ANS00182-3",
     "images": [
       "ANS00182-1",
       "ANS00182-2",
@@ -3402,7 +3402,7 @@ export const catalogProducts = [
     "regularPrice": "₹47,450",
     "salePrice": "₹42,840",
     "image": "ANS00184-1",
-    "lifestyle": "ANS00184-2",
+    "lifestyle": "ANS00184-3",
     "images": [
       "ANS00184-1",
       "ANS00184-2",
@@ -3443,7 +3443,7 @@ export const catalogProducts = [
     "regularPrice": "₹47,609",
     "salePrice": "₹42,540",
     "image": "ANS00185-1",
-    "lifestyle": "ANS00185-2",
+    "lifestyle": "ANS00185-3",
     "images": [
       "ANS00185-1",
       "ANS00185-2",
@@ -3484,7 +3484,7 @@ export const catalogProducts = [
     "regularPrice": "₹47,279",
     "salePrice": "₹42,605",
     "image": "ANS00186-1",
-    "lifestyle": "ANS00186-2",
+    "lifestyle": "ANS00186-3",
     "images": [
       "ANS00186-1",
       "ANS00186-2",
@@ -3525,7 +3525,7 @@ export const catalogProducts = [
     "regularPrice": "₹40,799",
     "salePrice": "₹36,501",
     "image": "ANT00082-1",
-    "lifestyle": "ANT00082-2",
+    "lifestyle": "ANT00082-3",
     "images": [
       "ANT00082-1",
       "ANT00082-2",
@@ -3566,7 +3566,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,345",
     "salePrice": "₹19,255",
     "image": "APS00217E-1",
-    "lifestyle": "APS00217E-2",
+    "lifestyle": "APS00217E-3",
     "images": [
       "APS00217E-1",
       "APS00217E-2",
@@ -3607,7 +3607,7 @@ export const catalogProducts = [
     "regularPrice": "₹54,883",
     "salePrice": "₹49,021",
     "image": "APS00264",
-    "lifestyle": "APS00264-N-1",
+    "lifestyle": "APS00264-N-3",
     "images": [
       "APS00264",
       "APS00264-N-1",
@@ -3692,7 +3692,7 @@ export const catalogProducts = [
     "regularPrice": "₹54,503",
     "salePrice": "₹49,043",
     "image": "APS00265-N-1",
-    "lifestyle": "APS00265-N-2",
+    "lifestyle": "APS00265-N-4",
     "images": [
       "APS00265-N-1",
       "APS00265-N-2",
@@ -3776,7 +3776,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,121",
     "salePrice": "₹19,322",
     "image": "APS00268-N-1",
-    "lifestyle": "APS00268-N-2",
+    "lifestyle": "APS00268-N-4",
     "images": [
       "APS00268-N-1",
       "APS00268-N-2",
@@ -3818,7 +3818,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,291",
     "salePrice": "₹19,314",
     "image": "APS00268E-1",
-    "lifestyle": "APS00268E-2",
+    "lifestyle": "APS00268E-3",
     "images": [
       "APS00268E-1",
       "APS00268E-2",
@@ -3859,7 +3859,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,205",
     "salePrice": "₹19,016",
     "image": "APS00270-N-1",
-    "lifestyle": "APS00270-N-2",
+    "lifestyle": "APS00270-N-4",
     "images": [
       "APS00270-N-1",
       "APS00270-N-2",
@@ -3901,7 +3901,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,070",
     "salePrice": "₹19,319",
     "image": "APS00270E-1",
-    "lifestyle": "APS00270E-2",
+    "lifestyle": "APS00270E-3",
     "images": [
       "APS00270E-1",
       "APS00270E-2",
@@ -3942,7 +3942,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,157",
     "salePrice": "₹19,148",
     "image": "APS00271-N-1",
-    "lifestyle": "APS00271-N-2",
+    "lifestyle": "APS00271-N-4",
     "images": [
       "APS00271-N-1",
       "APS00271-N-2",
@@ -3984,7 +3984,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,305",
     "salePrice": "₹19,221",
     "image": "APS00272-N-1",
-    "lifestyle": "APS00272-N-2",
+    "lifestyle": "APS00272-N-4",
     "images": [
       "APS00272-N-1",
       "APS00272-N-2",
@@ -4026,7 +4026,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,370",
     "salePrice": "₹19,118",
     "image": "APS00272E-1",
-    "lifestyle": "APS00272E-2",
+    "lifestyle": "APS00272E-3",
     "images": [
       "APS00272E-1",
       "APS00272E-2",
@@ -4067,7 +4067,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,169",
     "salePrice": "₹19,086",
     "image": "APS00273-N-1",
-    "lifestyle": "APS00273-N-2",
+    "lifestyle": "APS00273-N-4",
     "images": [
       "APS00273-N-1",
       "APS00273-N-2",
@@ -4109,7 +4109,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,423",
     "salePrice": "₹19,178",
     "image": "APS00273E-1",
-    "lifestyle": "APS00273E-2",
+    "lifestyle": "APS00273E-3",
     "images": [
       "APS00273E-1",
       "APS00273E-2",
@@ -4150,7 +4150,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,111",
     "salePrice": "₹19,137",
     "image": "APS00274-N-1",
-    "lifestyle": "APS00274-N-2",
+    "lifestyle": "APS00274-N-4",
     "images": [
       "APS00274-N-1",
       "APS00274-N-2",
@@ -4192,7 +4192,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,070",
     "salePrice": "₹19,205",
     "image": "APS00274E-1",
-    "lifestyle": "APS00274E-2",
+    "lifestyle": "APS00274E-3",
     "images": [
       "APS00274E-1",
       "APS00274E-2",
@@ -4233,7 +4233,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,146",
     "salePrice": "₹19,114",
     "image": "APS00275-N-1",
-    "lifestyle": "APS00275-N-2",
+    "lifestyle": "APS00275-N-4",
     "images": [
       "APS00275-N-1",
       "APS00275-N-2",
@@ -4275,7 +4275,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,142",
     "salePrice": "₹19,003",
     "image": "APS00275E-1",
-    "lifestyle": "APS00275E-2",
+    "lifestyle": "APS00275E-3",
     "images": [
       "APS00275E-1",
       "APS00275E-2",
@@ -4316,7 +4316,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,299",
     "salePrice": "₹19,029",
     "image": "APS00276-N-1",
-    "lifestyle": "APS00276-N-2",
+    "lifestyle": "APS00276-N-4",
     "images": [
       "APS00276-N-1",
       "APS00276-N-2",
@@ -4358,7 +4358,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,152",
     "salePrice": "₹18,991",
     "image": "APS00276E-1",
-    "lifestyle": "APS00276E-2",
+    "lifestyle": "APS00276E-3",
     "images": [
       "APS00276E-1",
       "APS00276E-2",
@@ -4399,7 +4399,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,304",
     "salePrice": "₹19,208",
     "image": "APS00277-N-1",
-    "lifestyle": "APS00277-N-2",
+    "lifestyle": "APS00277-N-4",
     "images": [
       "APS00277-N-1",
       "APS00277-N-2",
@@ -4441,7 +4441,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,443",
     "salePrice": "₹19,010",
     "image": "APS00277E-1",
-    "lifestyle": "APS00277E-2",
+    "lifestyle": "APS00277E-3",
     "images": [
       "APS00277E-1",
       "APS00277E-2",
@@ -4482,7 +4482,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,342",
     "salePrice": "₹18,931",
     "image": "APS00278-N-1",
-    "lifestyle": "APS00278-N-2",
+    "lifestyle": "APS00278-N-4",
     "images": [
       "APS00278-N-1",
       "APS00278-N-2",
@@ -4524,7 +4524,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,239",
     "salePrice": "₹19,203",
     "image": "APS00278E-1",
-    "lifestyle": "APS00278E-2",
+    "lifestyle": "APS00278E-3",
     "images": [
       "APS00278E-1",
       "APS00278E-2",
@@ -4565,7 +4565,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,322",
     "salePrice": "₹19,300",
     "image": "APS00279-N-1",
-    "lifestyle": "APS00279-N-2",
+    "lifestyle": "APS00279-N-4",
     "images": [
       "APS00279-N-1",
       "APS00279-N-2",
@@ -4607,7 +4607,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,383",
     "salePrice": "₹19,162",
     "image": "APS00279E-1",
-    "lifestyle": "APS00279E-2",
+    "lifestyle": "APS00279E-3",
     "images": [
       "APS00279E-1",
       "APS00279E-2",
@@ -4648,7 +4648,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,318",
     "salePrice": "₹19,112",
     "image": "APS00280-N-1",
-    "lifestyle": "APS00280-N-2",
+    "lifestyle": "APS00280-N-4",
     "images": [
       "APS00280-N-1",
       "APS00280-N-2",
@@ -4690,7 +4690,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,400",
     "salePrice": "₹19,168",
     "image": "APS00280E-1",
-    "lifestyle": "APS00280E-2",
+    "lifestyle": "APS00280E-3",
     "images": [
       "APS00280E-1",
       "APS00280E-2",
@@ -4731,7 +4731,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,358",
     "salePrice": "₹19,272",
     "image": "APS00295-N-1",
-    "lifestyle": "APS00295-N-2",
+    "lifestyle": "APS00295-N-4",
     "images": [
       "APS00295-N-1",
       "APS00295-N-2",
@@ -4773,7 +4773,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,089",
     "salePrice": "₹19,310",
     "image": "APS00295E-1",
-    "lifestyle": "APS00295E-2",
+    "lifestyle": "APS00295E-3",
     "images": [
       "APS00295E-1",
       "APS00295E-2",
@@ -4814,7 +4814,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,371",
     "salePrice": "₹18,967",
     "image": "APS00296-N-1",
-    "lifestyle": "APS00296-N-2",
+    "lifestyle": "APS00296-N-4",
     "images": [
       "APS00296-N-1",
       "APS00296-N-2",
@@ -4856,7 +4856,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,131",
     "salePrice": "₹18,999",
     "image": "APS00296E-1",
-    "lifestyle": "APS00296E-2",
+    "lifestyle": "APS00296E-3",
     "images": [
       "APS00296E-1",
       "APS00296E-2",
@@ -4897,7 +4897,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,199",
     "salePrice": "₹18,934",
     "image": "APS00297-N-1",
-    "lifestyle": "APS00297-N-2",
+    "lifestyle": "APS00297-N-4",
     "images": [
       "APS00297-N-1",
       "APS00297-N-2",
@@ -4939,7 +4939,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,440",
     "salePrice": "₹19,166",
     "image": "APS00297E-1",
-    "lifestyle": "APS00297E-2",
+    "lifestyle": "APS00297E-3",
     "images": [
       "APS00297E-1",
       "APS00297E-2",
@@ -4980,7 +4980,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,411",
     "salePrice": "₹18,999",
     "image": "APS00298-N-1",
-    "lifestyle": "APS00298-N-2",
+    "lifestyle": "APS00298-N-4",
     "images": [
       "APS00298-N-1",
       "APS00298-N-2",
@@ -5022,7 +5022,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,389",
     "salePrice": "₹18,934",
     "image": "APS00298E-1",
-    "lifestyle": "APS00298E-2",
+    "lifestyle": "APS00298E-3",
     "images": [
       "APS00298E-1",
       "APS00298E-2",
@@ -5063,7 +5063,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,181",
     "salePrice": "₹19,325",
     "image": "APS00299-N-1",
-    "lifestyle": "APS00299-N-2",
+    "lifestyle": "APS00299-N-4",
     "images": [
       "APS00299-N-1",
       "APS00299-N-2",
@@ -5105,7 +5105,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,220",
     "salePrice": "₹19,182",
     "image": "APS00299E-1",
-    "lifestyle": "APS00299E-2",
+    "lifestyle": "APS00299E-3",
     "images": [
       "APS00299E-1",
       "APS00299E-2",
@@ -5146,7 +5146,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,383",
     "salePrice": "₹19,071",
     "image": "APS00300-N-1",
-    "lifestyle": "APS00300-N-2",
+    "lifestyle": "APS00300-N-4",
     "images": [
       "APS00300-N-1",
       "APS00300-N-2",
@@ -5188,7 +5188,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,389",
     "salePrice": "₹19,213",
     "image": "APS00300E-1",
-    "lifestyle": "APS00300E-2",
+    "lifestyle": "APS00300E-3",
     "images": [
       "APS00300E-1",
       "APS00300E-2",
@@ -5229,7 +5229,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,098",
     "salePrice": "₹19,297",
     "image": "APS00301-N-1",
-    "lifestyle": "APS00301-N-2",
+    "lifestyle": "APS00301-N-4",
     "images": [
       "APS00301-N-1",
       "APS00301-N-2",
@@ -5271,7 +5271,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,400",
     "salePrice": "₹19,093",
     "image": "APS00301E-1",
-    "lifestyle": "APS00301E-2",
+    "lifestyle": "APS00301E-3",
     "images": [
       "APS00301E-1",
       "APS00301E-2",
@@ -5312,7 +5312,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,333",
     "salePrice": "₹19,182",
     "image": "APS00302-N-1",
-    "lifestyle": "APS00302-N-2",
+    "lifestyle": "APS00302-N-4",
     "images": [
       "APS00302-N-1",
       "APS00302-N-2",
@@ -5354,7 +5354,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,081",
     "salePrice": "₹19,197",
     "image": "APS00302E-1",
-    "lifestyle": "APS00302E-2",
+    "lifestyle": "APS00302E-3",
     "images": [
       "APS00302E-1",
       "APS00302E-2",
@@ -5395,7 +5395,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,381",
     "salePrice": "₹19,014",
     "image": "APS00303-N-1",
-    "lifestyle": "APS00303-N-2",
+    "lifestyle": "APS00303-N-4",
     "images": [
       "APS00303-N-1",
       "APS00303-N-2",
@@ -5437,7 +5437,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,406",
     "salePrice": "₹18,949",
     "image": "APS00303E-1",
-    "lifestyle": "APS00303E-2",
+    "lifestyle": "APS00303E-3",
     "images": [
       "APS00303E-1",
       "APS00303E-2",
@@ -5478,7 +5478,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,133",
     "salePrice": "₹19,180",
     "image": "APS00312-N-1",
-    "lifestyle": "APS00312-N-2",
+    "lifestyle": "APS00312-N-3",
     "images": [
       "APS00312-N-1",
       "APS00312-N-2",
@@ -5520,7 +5520,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,276",
     "salePrice": "₹19,181",
     "image": "APS00312-1",
-    "lifestyle": "APS00312-2",
+    "lifestyle": "APS00312-3",
     "images": [
       "APS00312-1",
       "APS00312-2",
@@ -5561,7 +5561,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,346",
     "salePrice": "₹19,265",
     "image": "APS00315-N-1",
-    "lifestyle": "APS00315-N-2",
+    "lifestyle": "APS00315-N-4",
     "images": [
       "APS00315-N-1",
       "APS00315-N-2",
@@ -5603,7 +5603,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,404",
     "salePrice": "₹19,184",
     "image": "APS00315E-1",
-    "lifestyle": "APS00315E-2",
+    "lifestyle": "APS00315E-3",
     "images": [
       "APS00315E-1",
       "APS00315E-2",
@@ -5644,7 +5644,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,347",
     "salePrice": "₹19,256",
     "image": "APS00316-N-1",
-    "lifestyle": "APS00316-N-2",
+    "lifestyle": "APS00316-N-4",
     "images": [
       "APS00316-N-1",
       "APS00316-N-2",
@@ -5686,7 +5686,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,288",
     "salePrice": "₹19,071",
     "image": "APS00316E-1",
-    "lifestyle": "APS00316E-2",
+    "lifestyle": "APS00316E-3",
     "images": [
       "APS00316E-1",
       "APS00316E-2",
@@ -5727,7 +5727,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,438",
     "salePrice": "₹19,077",
     "image": "APS00317-N-1",
-    "lifestyle": "APS00317-N-2",
+    "lifestyle": "APS00317-N-4",
     "images": [
       "APS00317-N-1",
       "APS00317-N-2",
@@ -5769,7 +5769,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,116",
     "salePrice": "₹18,957",
     "image": "APS00317E-1",
-    "lifestyle": "APS00317E-2",
+    "lifestyle": "APS00317E-3",
     "images": [
       "APS00317E-1",
       "APS00317E-2",
@@ -5810,7 +5810,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,213",
     "salePrice": "₹19,286",
     "image": "APS00318-N-1",
-    "lifestyle": "APS00318-N-2",
+    "lifestyle": "APS00318-N-4",
     "images": [
       "APS00318-N-1",
       "APS00318-N-2",
@@ -5852,7 +5852,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,057",
     "salePrice": "₹19,032",
     "image": "APS00318E-1",
-    "lifestyle": "APS00318E-2",
+    "lifestyle": "APS00318E-3",
     "images": [
       "APS00318E-1",
       "APS00318E-2",
@@ -5893,7 +5893,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,164",
     "salePrice": "₹19,041",
     "image": "APS00319-N-1",
-    "lifestyle": "APS00319-N-2",
+    "lifestyle": "APS00319-N-4",
     "images": [
       "APS00319-N-1",
       "APS00319-N-2",
@@ -5935,7 +5935,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,115",
     "salePrice": "₹19,005",
     "image": "APS00319E-1",
-    "lifestyle": "APS00319E-2",
+    "lifestyle": "APS00319E-3",
     "images": [
       "APS00319E-1",
       "APS00319E-2",
@@ -5976,7 +5976,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,078",
     "salePrice": "₹19,067",
     "image": "APS00320-N-1",
-    "lifestyle": "APS00320-N-2",
+    "lifestyle": "APS00320-N-4",
     "images": [
       "APS00320-N-1",
       "APS00320-N-2",
@@ -6018,7 +6018,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,422",
     "salePrice": "₹19,112",
     "image": "APS00320E-1",
-    "lifestyle": "APS00320E-2",
+    "lifestyle": "APS00320E-3",
     "images": [
       "APS00320E-1",
       "APS00320E-2",
@@ -6059,7 +6059,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,070",
     "salePrice": "₹19,097",
     "image": "APS00321-N-1",
-    "lifestyle": "APS00321-N-2",
+    "lifestyle": "APS00321-N-4",
     "images": [
       "APS00321-N-1",
       "APS00321-N-2",
@@ -6101,7 +6101,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,320",
     "salePrice": "₹19,172",
     "image": "APS00321E-1",
-    "lifestyle": "APS00321E-2",
+    "lifestyle": "APS00321E-3",
     "images": [
       "APS00321E-1",
       "APS00321E-2",
@@ -6142,7 +6142,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,382",
     "salePrice": "₹19,323",
     "image": "APS00322-N-1",
-    "lifestyle": "APS00322-N-2",
+    "lifestyle": "APS00322-N-4",
     "images": [
       "APS00322-N-1",
       "APS00322-N-2",
@@ -6184,7 +6184,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,179",
     "salePrice": "₹19,161",
     "image": "APS00322E-1",
-    "lifestyle": "APS00322E-2",
+    "lifestyle": "APS00322E-3",
     "images": [
       "APS00322E-1",
       "APS00322E-2",
@@ -6225,7 +6225,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,204",
     "salePrice": "₹19,325",
     "image": "APS00324-N-1",
-    "lifestyle": "APS00324-N-2",
+    "lifestyle": "APS00324-N-4",
     "images": [
       "APS00324-N-1",
       "APS00324-N-2",
@@ -6307,7 +6307,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,053",
     "salePrice": "₹19,149",
     "image": "APS00325-N-1",
-    "lifestyle": "APS00325-N-2",
+    "lifestyle": "APS00325-N-4",
     "images": [
       "APS00325-N-1",
       "APS00325-N-2",
@@ -6349,7 +6349,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,239",
     "salePrice": "₹19,030",
     "image": "APS00325E-1",
-    "lifestyle": "APS00325E-2",
+    "lifestyle": "APS00325E-3",
     "images": [
       "APS00325E-1",
       "APS00325E-2",
@@ -6390,7 +6390,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,269",
     "salePrice": "₹18,968",
     "image": "APS00326-N-1",
-    "lifestyle": "APS00326-N-2",
+    "lifestyle": "APS00326-N-4",
     "images": [
       "APS00326-N-1",
       "APS00326-N-2",
@@ -6432,7 +6432,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,156",
     "salePrice": "₹19,212",
     "image": "APS00326E-1",
-    "lifestyle": "APS00326E-2",
+    "lifestyle": "APS00326E-3",
     "images": [
       "APS00326E-1",
       "APS00326E-2",
@@ -6473,7 +6473,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,417",
     "salePrice": "₹18,983",
     "image": "APS00327-N-1",
-    "lifestyle": "APS00327-N-2",
+    "lifestyle": "APS00327-N-4",
     "images": [
       "APS00327-N-1",
       "APS00327-N-2",
@@ -6515,7 +6515,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,389",
     "salePrice": "₹19,056",
     "image": "APS00327E-1",
-    "lifestyle": "APS00327E-2",
+    "lifestyle": "APS00327E-3",
     "images": [
       "APS00327E-1",
       "APS00327E-2",
@@ -6556,7 +6556,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,248",
     "salePrice": "₹19,223",
     "image": "APS00328-N-1",
-    "lifestyle": "APS00328-N-2",
+    "lifestyle": "APS00328-N-4",
     "images": [
       "APS00328-N-1",
       "APS00328-N-2",
@@ -6598,7 +6598,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,257",
     "salePrice": "₹19,059",
     "image": "APS00328E-1",
-    "lifestyle": "APS00328E-2",
+    "lifestyle": "APS00328E-3",
     "images": [
       "APS00328E-1",
       "APS00328E-2",
@@ -6639,7 +6639,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,209",
     "salePrice": "₹19,116",
     "image": "APS00329-N-1",
-    "lifestyle": "APS00329-N-2",
+    "lifestyle": "APS00329-N-4",
     "images": [
       "APS00329-N-1",
       "APS00329-N-2",
@@ -6681,7 +6681,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,270",
     "salePrice": "₹19,157",
     "image": "APS00329E-1",
-    "lifestyle": "APS00329E-2",
+    "lifestyle": "APS00329E-3",
     "images": [
       "APS00329E-1",
       "APS00329E-2",
@@ -6722,7 +6722,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,340",
     "salePrice": "₹19,152",
     "image": "APS00332-N-1",
-    "lifestyle": "APS00332-N-2",
+    "lifestyle": "APS00332-N-4",
     "images": [
       "APS00332-N-1",
       "APS00332-N-2",
@@ -6764,7 +6764,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,398",
     "salePrice": "₹18,996",
     "image": "APS00332E-1",
-    "lifestyle": "APS00332E-2",
+    "lifestyle": "APS00332E-3",
     "images": [
       "APS00332E-1",
       "APS00332E-2",
@@ -6805,7 +6805,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,400",
     "salePrice": "₹19,074",
     "image": "APS00334-N-1",
-    "lifestyle": "APS00334-N-2",
+    "lifestyle": "APS00334-N-4",
     "images": [
       "APS00334-N-1",
       "APS00334-N-2",
@@ -6847,7 +6847,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,187",
     "salePrice": "₹19,120",
     "image": "APS00334E-1",
-    "lifestyle": "APS00334E-2",
+    "lifestyle": "APS00334E-3",
     "images": [
       "APS00334E-1",
       "APS00334E-2",
@@ -6888,7 +6888,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,271",
     "salePrice": "₹19,050",
     "image": "APS00357-N-1",
-    "lifestyle": "APS00357-N-2",
+    "lifestyle": "APS00357-N-4",
     "images": [
       "APS00357-N-1",
       "APS00357-N-2",
@@ -6930,7 +6930,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,348",
     "salePrice": "₹18,951",
     "image": "APS00357E-1",
-    "lifestyle": "APS00357E-2",
+    "lifestyle": "APS00357E-3",
     "images": [
       "APS00357E-1",
       "APS00357E-2",
@@ -6971,7 +6971,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,096",
     "salePrice": "₹19,135",
     "image": "APS00359-N-1",
-    "lifestyle": "APS00359-N-2",
+    "lifestyle": "APS00359-N-4",
     "images": [
       "APS00359-N-1",
       "APS00359-N-2",
@@ -7013,7 +7013,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,184",
     "salePrice": "₹19,110",
     "image": "APS00359E-1",
-    "lifestyle": "APS00359E-2",
+    "lifestyle": "APS00359E-3",
     "images": [
       "APS00359E-1",
       "APS00359E-2",
@@ -7054,7 +7054,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,298",
     "salePrice": "₹19,179",
     "image": "APS00360-N-1",
-    "lifestyle": "APS00360-N-2",
+    "lifestyle": "APS00360-N-4",
     "images": [
       "APS00360-N-1",
       "APS00360-N-2",
@@ -7096,7 +7096,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,116",
     "salePrice": "₹19,181",
     "image": "APS00360E-1",
-    "lifestyle": "APS00360E-2",
+    "lifestyle": "APS00360E-3",
     "images": [
       "APS00360E-1",
       "APS00360E-2",
@@ -7137,7 +7137,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,149",
     "salePrice": "₹19,268",
     "image": "APS00361-N-1",
-    "lifestyle": "APS00361-N-2",
+    "lifestyle": "APS00361-N-4",
     "images": [
       "APS00361-N-1",
       "APS00361-N-2",
@@ -7179,7 +7179,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,445",
     "salePrice": "₹19,148",
     "image": "APS00361E-1",
-    "lifestyle": "APS00361E-2",
+    "lifestyle": "APS00361E-3",
     "images": [
       "APS00361E-1",
       "APS00361E-2",
@@ -7220,7 +7220,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,436",
     "salePrice": "₹18,965",
     "image": "APS00362-N-1",
-    "lifestyle": "APS00362-N-2",
+    "lifestyle": "APS00362-N-4",
     "images": [
       "APS00362-N-1",
       "APS00362-N-2",
@@ -7262,7 +7262,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,192",
     "salePrice": "₹19,197",
     "image": "APS00362E-1",
-    "lifestyle": "APS00362E-2",
+    "lifestyle": "APS00362E-3",
     "images": [
       "APS00362E-1",
       "APS00362E-2",
@@ -7303,7 +7303,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,401",
     "salePrice": "₹18,968",
     "image": "APS00363-N-1",
-    "lifestyle": "APS00363-N-2",
+    "lifestyle": "APS00363-N-4",
     "images": [
       "APS00363-N-1",
       "APS00363-N-2",
@@ -7387,7 +7387,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,279",
     "salePrice": "₹18,965",
     "image": "APS00364-N-1",
-    "lifestyle": "APS00364-N-2",
+    "lifestyle": "APS00364-N-4",
     "images": [
       "APS00364-N-1",
       "APS00364-N-2",
@@ -7429,7 +7429,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,062",
     "salePrice": "₹18,983",
     "image": "APS00364E-1",
-    "lifestyle": "APS00364E-2",
+    "lifestyle": "APS00364E-3",
     "images": [
       "APS00364E-1",
       "APS00364E-2",
@@ -7470,7 +7470,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,228",
     "salePrice": "₹19,121",
     "image": "APS00365-N-1",
-    "lifestyle": "APS00365-N-2",
+    "lifestyle": "APS00365-N-4",
     "images": [
       "APS00365-N-1",
       "APS00365-N-2",
@@ -7512,7 +7512,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,286",
     "salePrice": "₹19,306",
     "image": "APS00365E-1",
-    "lifestyle": "APS00365E-2",
+    "lifestyle": "APS00365E-3",
     "images": [
       "APS00365E-1",
       "APS00365E-2",
@@ -7553,7 +7553,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,317",
     "salePrice": "₹19,199",
     "image": "APS00366-N-1",
-    "lifestyle": "APS00366-N-2",
+    "lifestyle": "APS00366-N-4",
     "images": [
       "APS00366-N-1",
       "APS00366-N-2",
@@ -7595,7 +7595,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,307",
     "salePrice": "₹19,180",
     "image": "APS00366E-1",
-    "lifestyle": "APS00366E-2",
+    "lifestyle": "APS00366E-3",
     "images": [
       "APS00366E-1",
       "APS00366E-2",
@@ -7636,7 +7636,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,349",
     "salePrice": "₹18,976",
     "image": "APS00367-N-1",
-    "lifestyle": "APS00367-N-2",
+    "lifestyle": "APS00367-N-4",
     "images": [
       "APS00367-N-1",
       "APS00367-N-2",
@@ -7678,7 +7678,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,330",
     "salePrice": "₹19,105",
     "image": "APS00367E-1",
-    "lifestyle": "APS00367E-2",
+    "lifestyle": "APS00367E-3",
     "images": [
       "APS00367E-1",
       "APS00367E-2",
@@ -7719,7 +7719,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,409",
     "salePrice": "₹18,978",
     "image": "APS00368-N-1",
-    "lifestyle": "APS00368-N-2",
+    "lifestyle": "APS00368-N-4",
     "images": [
       "APS00368-N-1",
       "APS00368-N-2",
@@ -7761,7 +7761,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,144",
     "salePrice": "₹19,038",
     "image": "APS00368E-1",
-    "lifestyle": "APS00368E-2",
+    "lifestyle": "APS00368E-3",
     "images": [
       "APS00368E-1",
       "APS00368E-2",
@@ -7802,7 +7802,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,283",
     "salePrice": "₹19,195",
     "image": "APS00370-N-1",
-    "lifestyle": "APS00370-N-2",
+    "lifestyle": "APS00370-N-4",
     "images": [
       "APS00370-N-1",
       "APS00370-N-2",
@@ -7844,7 +7844,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,238",
     "salePrice": "₹19,283",
     "image": "APS00370E-1",
-    "lifestyle": "APS00370E-2",
+    "lifestyle": "APS00370E-3",
     "images": [
       "APS00370E-1",
       "APS00370E-2",
@@ -7885,7 +7885,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,210",
     "salePrice": "₹19,001",
     "image": "APS00399-N-1",
-    "lifestyle": "APS00399-N-2",
+    "lifestyle": "APS00399-N-4",
     "images": [
       "APS00399-N-1",
       "APS00399-N-2",
@@ -7927,7 +7927,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,179",
     "salePrice": "₹19,252",
     "image": "APS00399E-1",
-    "lifestyle": "APS00399E-2",
+    "lifestyle": "APS00399E-3",
     "images": [
       "APS00399E-1",
       "APS00399E-2",
@@ -7968,7 +7968,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,357",
     "salePrice": "₹19,135",
     "image": "APS00426-N-1",
-    "lifestyle": "APS00426-N-2",
+    "lifestyle": "APS00426-N-4",
     "images": [
       "APS00426-N-1",
       "APS00426-N-2",
@@ -8010,7 +8010,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,371",
     "salePrice": "₹19,291",
     "image": "APS00426E-1",
-    "lifestyle": "APS00426E-2",
+    "lifestyle": "APS00426E-3",
     "images": [
       "APS00426E-1",
       "APS00426E-2",
@@ -8051,7 +8051,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,283",
     "salePrice": "₹19,181",
     "image": "APS00427E-1",
-    "lifestyle": "APS00427E-2",
+    "lifestyle": "APS00427E-3",
     "images": [
       "APS00427E-1",
       "APS00427E-2",
@@ -8092,7 +8092,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,186",
     "salePrice": "₹19,040",
     "image": "APS00427E-1",
-    "lifestyle": "APS00427E-2",
+    "lifestyle": "APS00427E-3",
     "images": [
       "APS00427E-1",
       "APS00427E-2",
@@ -8133,7 +8133,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,068",
     "salePrice": "₹18,973",
     "image": "APS00428-N-1",
-    "lifestyle": "APS00428-N-2",
+    "lifestyle": "APS00428-N-4",
     "images": [
       "APS00428-N-1",
       "APS00428-N-2",
@@ -8175,7 +8175,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,383",
     "salePrice": "₹19,182",
     "image": "APS00428E-1",
-    "lifestyle": "APS00428E-2",
+    "lifestyle": "APS00428E-3",
     "images": [
       "APS00428E-1",
       "APS00428E-2",
@@ -8216,7 +8216,7 @@ export const catalogProducts = [
     "regularPrice": "₹21,382",
     "salePrice": "₹19,174",
     "image": "APT00605-1",
-    "lifestyle": "APT00605-N-2",
+    "lifestyle": "APT00605-N-3",
     "images": [
       "APT00605-1",
       "APT00605-N-2",

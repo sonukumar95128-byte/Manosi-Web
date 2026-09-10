@@ -102,10 +102,42 @@ export function seedReels(catalogProducts = []) {
   ];
 }
 
+// Cycles through categories in the order they first appear so the picks span
+// the catalogue instead of all landing in whichever category is listed first
+// (the old slice(0, 4) put four bracelets in "Trending Now" every time). One
+// continuous rotation across both rows, rather than restarting the cycle for
+// each row, so a catalogue with more categories than a single row's length
+// (6 categories, 4 slots) still gets every category covered between the two
+// rows instead of the same leading few repeating in both.
+function pickAcrossCategories(catalogProducts, totalCount) {
+  const byCategory = new Map();
+  for (const product of catalogProducts) {
+    if (!byCategory.has(product.category)) byCategory.set(product.category, []);
+    byCategory.get(product.category).push(product);
+  }
+  const categories = [...byCategory.keys()];
+  const picks = [];
+  let index = 0;
+  while (picks.length < totalCount && categories.length) {
+    const category = categories[index % categories.length];
+    const bucket = byCategory.get(category);
+    if (!bucket.length) {
+      categories.splice(index % categories.length, 1);
+      continue;
+    }
+    picks.push(bucket.shift());
+    index++;
+  }
+  return picks;
+}
+
 export function seedHomepageProducts(catalogProducts = []) {
+  const picks = pickAcrossCategories(catalogProducts, 8);
+  const trending = picks.slice(0, 4);
+  const arrivals = picks.slice(4, 8);
   return {
-    trending: catalogProducts.slice(0, 4).map((product) => product.id),
-    arrivals: catalogProducts.slice(2, 6).map((product) => product.id),
-    featured: catalogProducts.slice(0, 4).map((product) => product.id),
+    trending: trending.map((product) => product.id),
+    arrivals: arrivals.map((product) => product.id),
+    featured: trending.map((product) => product.id),
   };
 }
