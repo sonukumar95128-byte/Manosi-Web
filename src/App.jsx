@@ -275,6 +275,20 @@ function productKarat(product) {
   return product.goldKarat || (product.detail || "").match(/\b(14KT|18KT|22KT|14K|18K|22K)\b/i)?.[0] || "14KT";
 }
 
+function karatNumber(label) {
+  return Number(String(label || "").replace(/[^0-9.]/g, "")) || 0;
+}
+
+function goldWeightGrams(product) {
+  return Number(String(product.goldWeight || "").replace(/[^0-9.]/g, "")) || 0;
+}
+
+// The admin's "gold rate" is always quoted per gram at 22K, the way Indian
+// jewellers price it - every other purity is that rate scaled by karat/22.
+function goldValueForKarat(weightGrams, karat, ratePerGram22K) {
+  return weightGrams * (karat / 22) * ratePerGram22K;
+}
+
 // The catalogue is imported one category at a time, so browsing "All
 // Jewellery" in import order shows fifteen bracelets before a single ring
 // appears. Round-robins across categories so the default grid reads as a
@@ -1321,8 +1335,27 @@ function ProductPage({ product, favorites, toggleFavorite, addToCart, buyNow, op
   const [purity, setPurity] = useState(productKarat(product).replace("KT", "K"));
   const [length, setLength] = useState(product.category === "Necklace" ? "16 inch" : "Standard size");
   const activeImage = galleryImages[activeIndex] || galleryImages[0] || PRODUCT_PLACEHOLDER;
-  const salePrice = cleanPrice(product.salePrice || product.price);
-  const regularPrice = product.regularPrice ? cleanPrice(product.regularPrice) : "";
+  // Gold value is the part of the price that actually moves with purity;
+  // diamonds, making charges and margin don't. Back out that gold value from
+  // the listed price at the product's own karat, then re-add it at whichever
+  // karat the shopper picks - same math jewellers use when quoting 9K/14K/18K
+  // versions of one design. Needs a real admin-set gold rate and a gold
+  // weight on the product; without either, the price simply doesn't change,
+  // same as before this existed.
+  const goldRate = Number(settings?.goldRate) || 0;
+  const weightGrams = goldWeightGrams(product);
+  const baseKarat = karatNumber(product.goldKarat);
+  const canPriceByPurity = goldRate > 0 && weightGrams > 0 && baseKarat > 0;
+  const baseSalePriceNumber = priceToNumber(product.salePrice || product.price);
+  const baseRegularPriceNumber = priceToNumber(product.regularPrice);
+  const baseGoldValue = canPriceByPurity ? goldValueForKarat(weightGrams, baseKarat, goldRate) : 0;
+  const nonGoldSaleValue = canPriceByPurity ? Math.max(0, baseSalePriceNumber - baseGoldValue) : 0;
+  const nonGoldRegularValue = canPriceByPurity && baseRegularPriceNumber ? Math.max(0, baseRegularPriceNumber - baseGoldValue) : 0;
+  const selectedKarat = karatNumber(purity);
+  const salePriceNumber = canPriceByPurity ? nonGoldSaleValue + goldValueForKarat(weightGrams, selectedKarat, goldRate) : baseSalePriceNumber;
+  const regularPriceNumber = canPriceByPurity && baseRegularPriceNumber ? nonGoldRegularValue + goldValueForKarat(weightGrams, selectedKarat, goldRate) : baseRegularPriceNumber;
+  const salePrice = cleanPrice(Math.round(salePriceNumber));
+  const regularPrice = regularPriceNumber ? cleanPrice(Math.round(regularPriceNumber)) : "";
   const category = product.category || "Jewellery";
   const collectionLabel = `${category}${category.endsWith("s") ? "" : "s"} Collection`;
   const specs = productSpecs(product);
@@ -1340,12 +1373,18 @@ function ProductPage({ product, favorites, toggleFavorite, addToCart, buyNow, op
   const tally = settings?.tally || {};
   // Same calculation the cart and checkout use, for a single unit of this product.
   const priceTotals = useMemo(() => computeInvoiceTotals({
-    items: [{ sku: product.sku || product.id, name: product.name, quantity: 1, rate: priceToNumber(product.salePrice || product.price) }],
+    items: [{ sku: product.sku || product.id, name: product.name, quantity: 1, rate: salePriceNumber }],
     gstRate: Number(settings?.gstGold || 3),
     sellerState: tally.sellerState,
     placeOfSupply: "",
     pricesIncludeGst: tally.pricesIncludeGst !== false,
-  }), [product.id, product.salePrice, product.price, settings?.gstGold, tally.sellerState, tally.pricesIncludeGst]);
+  }), [salePriceNumber, product.sku, product.id, product.name, settings?.gstGold, tally.sellerState, tally.pricesIncludeGst]);
+  // Purchasing at a purity other than the one listed carries the repriced
+  // amount into the cart/checkout - otherwise the price a shopper agreed to
+  // on this page wouldn't match what they're charged.
+  const effectiveProduct = canPriceByPurity && selectedKarat !== baseKarat
+    ? { ...product, salePrice, price: salePrice, regularPrice: regularPrice || product.regularPrice, goldKarat: `${selectedKarat}KT` }
+    : product;
 
   useEffect(() => {
     setActiveIndex(0);
@@ -1453,7 +1492,7 @@ function ProductPage({ product, favorites, toggleFavorite, addToCart, buyNow, op
           <div className="product-option-block">
             <span>Gold purity</span>
             <div className="product-purity-options">
-              {["14K", "18K"].map((option) => (
+              {["9K", "14K", "18K"].map((option) => (
                 <button className={purity === option ? "is-selected" : ""} key={option} onClick={() => setPurity(option)}>{option}</button>
               ))}
             </div>
@@ -1465,8 +1504,8 @@ function ProductPage({ product, favorites, toggleFavorite, addToCart, buyNow, op
             </select>
           </div>
           <div className="detail-actions product-action-grid">
-            <button onClick={() => addToCart(product)}>Add to Cart</button>
-            <button className="buy-now" onClick={() => buyNow(product)}>Buy Now</button>
+            <button onClick={() => addToCart(effectiveProduct)}>Add to Cart</button>
+            <button className="buy-now" onClick={() => buyNow(effectiveProduct)}>Buy Now</button>
             <button
               className="wishlist-square"
               onClick={() => toggleFavorite(product.id)}
@@ -2503,6 +2542,7 @@ function AdminPage({ cartItems, favorites, setPage }) {
       stock: product?.stock ?? 10,
       goldColour: product?.goldColour || "Rose Gold",
       goldKarat: product?.goldKarat || "18K",
+      goldWeight: product?.goldWeight || "",
       diamondType: product?.diamondType || "Natural diamonds",
       occasion: product?.occasion || "Daily wear",
       image: product?.originalImages?.[0] || product?.image || categoryFallbackImages[product?.category] || "/src/assets/real-products/ring.webp",
@@ -2831,7 +2871,9 @@ function AdminPage({ cartItems, favorites, setPage }) {
                 <h4>Organisation</h4>
                 <label>Category<select value={productEditor.category} onChange={(event) => changeProductDraft("category", event.target.value)}>{menuCategories.map((category) => <option key={category}>{category}</option>)}</select></label>
                 <label>Gold colour<select value={productEditor.goldColour} onChange={(event) => changeProductDraft("goldColour", event.target.value)}><option>Rose Gold</option><option>Yellow Gold</option><option>White Gold</option><option>Platinum</option></select></label>
-                <label>Gold karat<select value={productEditor.goldKarat} onChange={(event) => changeProductDraft("goldKarat", event.target.value)}><option>14K</option><option>18K</option><option>22K</option></select></label>
+                <label>Gold karat<select value={productEditor.goldKarat} onChange={(event) => changeProductDraft("goldKarat", event.target.value)}><option>9K</option><option>14K</option><option>18K</option><option>22K</option></select></label>
+                <label>Gold weight (grams)<input inputMode="decimal" value={productEditor.goldWeight} onChange={(event) => changeProductDraft("goldWeight", event.target.value.replace(/[^0-9.]/g, ""))} placeholder="1.96" /></label>
+                <p className="admin-field-hint">With this, the karat, and Settings → Gold rate all set, the product page prices 9K/14K/18K for real instead of just switching a label.</p>
                 <label>Diamond type<select value={productEditor.diamondType} onChange={(event) => changeProductDraft("diamondType", event.target.value)}><option>Natural diamonds</option><option>Certified natural diamonds</option><option>Solitaire natural diamond</option></select></label>
                 <label>Occasion<select value={productEditor.occasion} onChange={(event) => changeProductDraft("occasion", event.target.value)}><option>Daily wear</option><option>Office wear</option><option>Festive</option><option>Gifting</option><option>Bridal</option></select></label>
                 <button type="button" className="settings-line" onClick={() => changeProductDraft("featured", !productEditor.featured)}><span>Show in featured products</span><TogglePill on={productEditor.featured} /></button>

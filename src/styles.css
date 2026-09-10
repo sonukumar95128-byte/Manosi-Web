@@ -2744,6 +2744,13 @@ h3 {
   background: rgba(255, 250, 242, 0.94);
 }
 
+.admin-field-hint {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
 .admin-editor-main h4,
 .admin-editor-side h4 {
   margin: 0 0 16px;
