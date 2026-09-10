@@ -75,3 +75,38 @@ reuse an already-loaded page without re-running its mount effect, so a
 React app's one-time data fetch can go stale across a whole browsing session.
 Force a real navigation (change the URL, not just the hash) when the data
 should be fresh.
+
+## Category banner re-crop + footer content + collections carousel (2026-09-10)
+
+**Category banners re-cropped 6:1 → 3:1.** Sonu reported the Nosepins banner
+cropping the jewellery out on mobile. Re-generated all 8 Cloudinary banners
+(`c_fill,ar_3:1,g_center` + Playfair text overlay) at 1600×533. Fixing the
+ratio alone wasn't enough - `.shop-banner` had no explicit `width`, so with
+`aspect-ratio: 3/1` and `min-height: 160px` the browser derived width from
+the height floor (480px) instead of filling a 375px viewport, causing real
+overflow on every phone. Adding `width: 100%` fixed the overflow, but then
+every real phone width (375-430px) was still hitting the 160px floor and
+getting cropped against the 3:1 art - the exact bug being fixed. Reduced
+`min-height` to 90px (only guards screens under 270px, which don't occur).
+Verified live: 375×125 box vs 3.002 art ratio, 100% visible, no overflow,
+across all 8 categories on both desktop and mobile.
+
+**Footer content.** Every "Customer Service" link (FAQ, Shipping, Returns,
+Store Locator, Certifications) opened the Concierge form, and every
+"Policies" link (Privacy Policy, Terms, Return/Shipping Policy, Franchise)
+opened the diamond 4Cs education page - clicking any of them showed the same
+wrong content. Added `src/footerContent.js` (a content dictionary) and one
+`InfoPage` component that renders real, site-grounded copy per slug (GST-
+inclusive pricing, IGI certification, 30-day return/lifetime exchange, etc.
+all matching what the rest of the site already states). Privacy Policy and
+Terms use `[bracketed placeholders]` for legal facts that weren't supplied
+(registered business name/address, grievance officer) rather than inventing
+them - Sonu needs to fill those in before those two pages are legally
+complete. Verified live: all 11 footer links now produce distinct
+hash/title/content.
+
+**Collections carousel - 2 cards on mobile.** Was 1 full-width card per
+screen at ≤560px; changed to `--collection-visible: 2` with a 12px gap so it
+reads as a row to swipe rather than one slide per screen. Verified live on a
+375px viewport - two cards ("Love Forever", "Mini Me") sit side by side with
+no overflow.
