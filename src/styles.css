@@ -7020,17 +7020,6 @@ h3 {
   .collection-card.is-artwork:hover { transform: none; }
 }
 
-.admin-card-mode {
-  display: inline-block;
-  padding: 3px 10px;
-  border-radius: 999px;
-  background: var(--mist);
-  color: var(--muted);
-  font-size: 11px;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-
 /* ---- Shop on a phone ------------------------------------------------------ */
 
 /* The filter panel is a full screen tall, so on a phone it pushed the first

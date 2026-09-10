@@ -3481,20 +3481,15 @@ function AdminPage({ cartItems, favorites, setPage }) {
       <section className="admin-collections-panel">
         <button className="admin-primary-action" onClick={addCollection}>+ Add collection</button>
         <p className="admin-helper-copy">
-          Full card design: upload <b>1080 x 1440 px</b> (3:4). The artwork becomes the whole card - wording,
-          product and Shop Now panel all live inside it, and the card is clickable everywhere.
-          Leave it empty to keep the built-in layout instead, where the site draws the title and button
-          over a <b>1000 x 1000 px transparent PNG</b> cut-out.
+          Upload <b>1080 x 1440 px</b> (3:4). The artwork becomes the whole card - wording, product and Shop
+          Now panel all live inside it, and the card is clickable everywhere.
         </p>
         <div className="admin-collection-grid">
           {collectionRows.map((collection) => (
             <article key={collection.id || collection.name}>
               <img src={imageUrl(collection.cardImage || collection.image)} alt="" />
-              <span className="admin-card-mode">{collection.cardImage ? "Full card design" : "Built-in layout + cut-out"}</span>
-              <label className="admin-upload-control">Upload full card design 1080 x 1440<input type="file" accept="image/*" onChange={(event) => readImageFile(event.target.files?.[0], (cardImage) => updateCollection(collection, { cardImage }), "manosi/collections")} /></label>
-              {collection.cardImage && <button onClick={() => updateCollection(collection, { cardImage: "" })}>Remove full card design</button>}
-              <label className="admin-upload-control">Upload cut-out 1000 x 1000 PNG<input type="file" accept="image/*" onChange={(event) => readImageFile(event.target.files?.[0], (image) => updateCollection(collection, { image }), "manosi/collections")} /></label>
-              <button onClick={() => { const image = window.prompt("Image path or URL", collection.image); if (image) updateCollection(collection, { image }); }}>Change image</button>
+              <label className="admin-upload-control">Upload card design 1080 x 1440<input type="file" accept="image/*" onChange={(event) => readImageFile(event.target.files?.[0], (cardImage) => updateCollection(collection, { cardImage }), "manosi/collections")} /></label>
+              <button onClick={() => { const cardImage = window.prompt("Image path or URL", collection.cardImage); if (cardImage) updateCollection(collection, { cardImage }); }}>Change image URL</button>
               <input defaultValue={collection.name} onBlur={(event) => updateCollection(collection, { name: event.target.value })} />
               <input defaultValue={collection.subtitle || ""} onBlur={(event) => updateCollection(collection, { subtitle: event.target.value })} placeholder="Rings Collection" />
               <select defaultValue={collection.category || "All"} onChange={(event) => updateCollection(collection, { category: event.target.value })}>
