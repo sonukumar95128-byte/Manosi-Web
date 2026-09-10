@@ -4371,9 +4371,17 @@ h3 {
    desktop screen would force a crop mismatch right back in, the same problem
    this fixes. min-height only guards the very smallest phones. */
 .shop-banner {
+  /* Without an explicit width, aspect-ratio + min-height let the browser
+     derive width FROM the 160px floor (160 * 3 = 480px) instead of filling
+     the container - on a 375px phone that overflowed the banner past the
+     edge of the screen. width:100% pins it to the container regardless. */
+  width: 100%;
   aspect-ratio: 3 / 1;
   height: auto;
-  min-height: 160px;
+  /* 160px kicked in on every real phone (a 3:1 box only reaches 160px tall at
+     480px wide), re-cropping the banner on exactly the widths this exists to
+     fix. 90px only guards screens narrower than 270px, which do not occur. */
+  min-height: 90px;
   overflow: hidden;
   background: var(--soft-ink);
 }
@@ -5898,14 +5906,16 @@ h3 {
     font-size: 26px;
   }
 
+  /* Two cards side by side rather than one full-width, so the carousel reads
+     as a row to swipe through instead of a single slide per screen. */
   .collection-track {
-    --collection-visible: 1;
-    --collection-gap: 14px;
+    --collection-visible: 2;
+    --collection-gap: 12px;
   }
 
   .collection-card {
     flex-basis: var(--collection-card-width);
-    min-height: 470px;
+    min-height: 0;
   }
 
   .collection-copy {
