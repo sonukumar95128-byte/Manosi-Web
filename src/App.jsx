@@ -23,6 +23,28 @@ const API_ORIGIN = String(
 ).replace(/\/+$/, "");
 const API_BASE = `${API_ORIGIN}/api`;
 
+// Caching the last storefront response means a returning visitor's hero
+// banner is the real one from the very first paint, instead of the generic
+// stock fallback flashing while the fresh fetch is still in flight.
+const STORE_CONFIG_CACHE_KEY = "manosi-storefront-cache-v1";
+
+function readCachedStoreConfig() {
+  try {
+    const raw = window.localStorage.getItem(STORE_CONFIG_CACHE_KEY);
+    return raw ? JSON.parse(raw) : null;
+  } catch {
+    return null;
+  }
+}
+
+function writeCachedStoreConfig(data) {
+  try {
+    window.localStorage.setItem(STORE_CONFIG_CACHE_KEY, JSON.stringify(data));
+  } catch {
+    // Private browsing or a full quota - the cache is a convenience, not a requirement.
+  }
+}
+
 const sampleProducts = [
   {
     id: "aura",
@@ -521,7 +543,7 @@ function pickProductsByIds(ids, fallbackProducts, list = catalogFallbackProducts
   return selected.length ? selected : fallbackProducts;
 }
 
-function HomePage({ setPage, openProduct, openCategory, homepageProducts, homepageReels, homepageCollections, homepageBanners }) {
+function HomePage({ setPage, openProduct, openCategory, homepageProducts, homepageReels, homepageCollections, homepageBanners, bannersLoaded }) {
   const products = useProducts();
   const ringFeature = categoryFeature("Rings", 0, products);
   const earringFeature = categoryFeature("Earrings", 1, products);
@@ -530,16 +552,24 @@ function HomePage({ setPage, openProduct, openCategory, homepageProducts, homepa
   const braceletFeature = categoryFeature("Bracelet", 4, products);
   const nosepinFeature = categoryFeature("Nosepins", 5, products);
   const heroBanners = bannersForSection(homepageBanners, "hero");
+  // Before the storefront settings arrive, homepageBanners is empty - showing
+  // generic category stock photos then swapping to the real, admin-picked
+  // banner reads as the wrong banner flashing on load. Rendering nothing
+  // (just the section's own background) until we actually know there is no
+  // configured banner avoids that flash; it only falls back to stock photos
+  // once the fetch has genuinely come back empty.
   const heroSlides = heroBanners.length
     ? heroBanners.map((banner) => ({
         id: banner.id,
         image: banner.image,
         mobileImage: banner.mobileImage || banner.image,
       }))
-    : [ringFeature, necklaceFeature, braceletFeature].map((feature, index) => {
-        const image = imageFallbackFor(feature, true);
-        return { id: `hero-default-${index}`, image, mobileImage: image };
-      });
+    : bannersLoaded
+      ? [ringFeature, necklaceFeature, braceletFeature].map((feature, index) => {
+          const image = imageFallbackFor(feature, true);
+          return { id: `hero-default-${index}`, image, mobileImage: image };
+        })
+      : [];
   const [activeSlide, setActiveSlide] = useState(0);
   const [motionMuted, setMotionMuted] = useState(true);
 
@@ -784,24 +814,26 @@ function HomePage({ setPage, openProduct, openCategory, homepageProducts, homepa
             />
           </picture>
         ))}
-        <div className="hero-carousel-controls" aria-label="Banner controls">
-          <button onClick={() => changeSlide(-1)} aria-label="Previous banner">
-            <span className="material-symbols-rounded">west</span>
-          </button>
-          <div className="hero-dots">
-            {heroSlides.map((slide, index) => (
-              <button
-                className={activeSlide === index ? "is-active" : ""}
-                key={slide.id}
-                onClick={() => setActiveSlide(index)}
-                aria-label={`Show banner ${index + 1}`}
-              />
-            ))}
+        {heroSlides.length > 1 && (
+          <div className="hero-carousel-controls" aria-label="Banner controls">
+            <button onClick={() => changeSlide(-1)} aria-label="Previous banner">
+              <span className="material-symbols-rounded">west</span>
+            </button>
+            <div className="hero-dots">
+              {heroSlides.map((slide, index) => (
+                <button
+                  className={activeSlide === index ? "is-active" : ""}
+                  key={slide.id}
+                  onClick={() => setActiveSlide(index)}
+                  aria-label={`Show banner ${index + 1}`}
+                />
+              ))}
+            </div>
+            <button onClick={() => changeSlide(1)} aria-label="Next banner">
+              <span className="material-symbols-rounded">east</span>
+            </button>
           </div>
-          <button onClick={() => changeSlide(1)} aria-label="Next banner">
-            <span className="material-symbols-rounded">east</span>
-          </button>
-        </div>
+        )}
       </section>
 
       <section className="collection-showcase">
@@ -3684,7 +3716,7 @@ export function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [notice, setNotice] = useState("");
-  const [storeConfig, setStoreConfig] = useState(null);
+  const [storeConfig, setStoreConfig] = useState(readCachedStoreConfig);
 
   // Products published by the admin panel win; the bundled catalogue is the fallback.
   const products = useMemo(
@@ -3707,7 +3739,11 @@ export function App() {
     // Public endpoint: products and shop settings only, no orders or secrets.
     fetch(`${API_BASE}/storefront`, { signal: controller.signal })
       .then((response) => (response.ok ? response.json() : null))
-      .then((data) => data && setStoreConfig(data))
+      .then((data) => {
+        if (!data) return;
+        setStoreConfig(data);
+        writeCachedStoreConfig(data);
+      })
       .catch(() => {});
     return () => controller.abort();
   }, []);
@@ -3872,7 +3908,7 @@ export function App() {
         </nav>
       </header>}
 
-      {page === "home" && <HomePage setPage={setPage} openProduct={openProduct} openCategory={openCategory} homepageProducts={storeConfig?.homepageProducts} homepageReels={storeConfig?.reels} homepageCollections={storeConfig?.collections} homepageBanners={storeConfig?.banners} />}
+      {page === "home" && <HomePage setPage={setPage} openProduct={openProduct} openCategory={openCategory} homepageProducts={storeConfig?.homepageProducts} homepageReels={storeConfig?.reels} homepageCollections={storeConfig?.collections} homepageBanners={storeConfig?.banners} bannersLoaded={Boolean(storeConfig)} />}
       {page === "collections" && <CollectionsPage favorites={favorites} toggleFavorite={toggleFavorite} openProduct={openProduct} initialCategory={collectionCategory} categoryBanners={storeConfig?.settings?.categoryBanners} compare={compare} toggleCompare={toggleCompare} />}
       {page === "product" && selected && <ProductPage product={selected} favorites={favorites} toggleFavorite={toggleFavorite} addToCart={addToCart} buyNow={buyNow} openProduct={openProduct} />}
       {page === "new-arrivals" && <NewArrivalsPage openProduct={openProduct} />}
