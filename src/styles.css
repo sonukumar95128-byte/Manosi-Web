@@ -4345,6 +4345,12 @@ h3 {
   min-height: 620px;
 }
 
+.page-hero.no-image {
+  grid-template-columns: 1fr;
+  min-height: 0;
+  padding-block: clamp(40px, 6vw, 72px);
+}
+
 .page-hero.dark {
   background:
     radial-gradient(circle at 85% 10%, rgba(215, 168, 79, 0.16), transparent 30%),

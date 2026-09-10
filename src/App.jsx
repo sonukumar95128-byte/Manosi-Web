@@ -393,7 +393,7 @@ function IconButton({ label, onClick, active }) {
 
 function PageHero({ eyebrow, title, copy, image, dark = false }) {
   return (
-    <section className={`page-hero ${dark ? "dark" : ""}`}>
+    <section className={`page-hero ${dark ? "dark" : ""} ${image ? "" : "no-image"}`}>
       <div>
         <p className="eyebrow">{eyebrow}</p>
         <h2>{title}</h2>
@@ -1427,14 +1427,12 @@ function BespokePage({ setCartOpen }) {
 }
 
 function InfoPage({ slug, setPage }) {
-  const products = useProducts();
   const content = footerPages[slug];
   if (!content) return null;
-  const heroImage = products[(slug.length * 7) % Math.max(products.length, 1)]?.image;
 
   return (
     <>
-      <PageHero eyebrow={content.eyebrow} title={content.title} copy={content.intro} image={heroImage} />
+      <PageHero eyebrow={content.eyebrow} title={content.title} copy={content.intro} />
       <section className="policy-page">
         {content.qa ? (
           <div className="guide-page policy-qa">
@@ -1472,7 +1470,6 @@ function InfoPage({ slug, setPage }) {
 }
 
 function ConciergePage({ notice, setNotice }) {
-  const products = useProducts();
   function submit(event) {
     event.preventDefault();
     setNotice("Your concierge request is ready. We will prepare a private appointment summary.");
@@ -1484,7 +1481,6 @@ function ConciergePage({ notice, setNotice }) {
         eyebrow="Concierge"
         title="Find what you will actually wear"
         copy="Ask for help choosing lightweight natural diamond jewellery for office, gifting, mangalsutra styling, travel, or daily wear."
-        image={products[1]?.image}
       />
       <section className="contact-page">
         <form onSubmit={submit}>
